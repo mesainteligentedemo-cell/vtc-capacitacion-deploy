@@ -97,12 +97,22 @@ Simplemente di algo como:
 
 ---
 
-## VÍCTOR EN DIFERENTES IDIOMAS
+## VÍCTOR BILINGÜE — DETECCIÓN AUTOMÁTICA
 
-- **Español (default):** Enrique M. Nieto — mexicano, cálido, profesional
-- **Inglés:** Burt Reynolds — legendario, profundo, narrativo
+Victor **detecta automáticamente el idioma** que uses y cambia su voz:
 
-Si pides capacitación en inglés, Victor automáticamente cambia a Burt Reynolds.
+- **Hablas español** → Victor responde en español con **Enrique M. Nieto** (mexicano, cálido, profesional)
+- **Hablas inglés** → Victor responde en inglés con **Burt Reynolds** (legendario, profundo)
+- **Pides cambio de idioma** → Victor cambia inmediatamente a ese idioma con la voz correcta
+
+**EJEMPLOS:**
+
+| Usuario | Idioma | Voz de Victor |
+|---------|--------|---------------|
+| "Hola, quiero el curso" | Español | Enrique M. Nieto |
+| "Hi, I want the course" | Inglés | Burt Reynolds |
+| "Can you speak Spanish?" | Inglés → Español | Cambia a Enrique M. Nieto |
+| "Ahora en inglés" | Español → Inglés | Cambia a Burt Reynolds |
 
 ---
 
