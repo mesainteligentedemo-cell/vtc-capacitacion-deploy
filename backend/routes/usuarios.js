@@ -1,19 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
-const path = require('path');
 
-const usuariosFile = path.join(__dirname, '../data/usuarios.json');
+// In-memory storage
+const usuariosStore = new Map();
 
 const cargarUsuarios = () => {
-  if (fs.existsSync(usuariosFile)) {
-    return JSON.parse(fs.readFileSync(usuariosFile, 'utf8'));
-  }
-  return {};
+  const obj = {};
+  usuariosStore.forEach((val, key) => {
+    obj[key] = val;
+  });
+  return obj;
 };
 
 const guardarUsuarios = (datos) => {
-  fs.writeFileSync(usuariosFile, JSON.stringify(datos, null, 2), 'utf8');
+  usuariosStore.clear();
+  Object.entries(datos).forEach(([key, val]) => {
+    usuariosStore.set(key, val);
+  });
 };
 
 router.post('/create', (req, res) => {

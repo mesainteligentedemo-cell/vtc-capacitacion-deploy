@@ -1,0 +1,228 @@
+{
+  "VICTOR": {
+    "voz_espanol": {
+      "name": "Enrique M. Nieto",
+      "voice_id": "gbTn1bmCvNgk0QEAVyfM",
+      "accent": "mexican",
+      "lang": "es",
+      "descriptive": "gentle, calm",
+      "uso": "entrenamiento en español"
+    },
+    "voz_ingles": {
+      "name": "Burt Reynolds•",
+      "voice_id": "4YYIPFl9wE5c4L2eu2Gb",
+      "accent": "american",
+      "lang": "en",
+      "descriptive": "deep, narrative",
+      "uso": "entrenamiento en inglés"
+    }
+  },
+
+  "ROLEPLAY_ESPAÑOLAS": {
+    "ARGENTINA": {
+      "hombre": {
+        "name": "Franco - Argentino",
+        "voice_id": "JNcXxzrlvFDXcrGo2b47",
+        "descriptive": "casual, conversational",
+        "age": "young"
+      },
+      "mujer": {
+        "name": "VTC ArgentinaF",
+        "voice_id": "1ctzUhkgUOhdrYPLo67n",
+        "descriptive": "chill, natural",
+        "age": "middle_aged"
+      }
+    },
+    "MEXICO": {
+      "hombre_joven": {
+        "name": "Tom - Kind, Sincere and Calm",
+        "voice_id": "p1Q3ihQuPjyyENa1RGtl",
+        "descriptive": "confident, conversational",
+        "age": "young"
+      },
+      "hombre_adulto": {
+        "name": "Miguel - Clear, Calm and Measured",
+        "voice_id": "JX8y9ihlYvbtVC4XWmCY",
+        "descriptive": "casual, conversational",
+        "age": "middle_aged"
+      },
+      "hombre_maduro": {
+        "name": "Julián A-Calm - Warm and Conversational",
+        "voice_id": "JgmJ33RuT4tPQOENamHR",
+        "descriptive": "casual, conversational",
+        "age": "middle_aged"
+      },
+      "mujer_joven": {
+        "name": "Susana Elizabeth",
+        "voice_id": "cAvMBIZ0VNTU8XdsUpEq",
+        "descriptive": "casual, conversational",
+        "age": "young"
+      },
+      "mujer_adulta": {
+        "name": "Yuana - Brisk, Crisp and Authoritative",
+        "voice_id": "2KE5YlulAC1GU4TEBlQF",
+        "descriptive": "casual, conversational",
+        "age": "middle_aged"
+      },
+      "mujer_madura": {
+        "name": "Emily - Soft, Welcoming and Upbeat",
+        "voice_id": "SLiC4fN7sbVbYUgtVxNM",
+        "descriptive": "calm, conversational",
+        "age": "middle_aged"
+      }
+    },
+    "COLOMBIA": {
+      "hombre": {
+        "name": "VTC Colombiano",
+        "voice_id": "Y4HwpMNrBWN5dFKi5Lw8",
+        "descriptive": "calm, narrative",
+        "age": "middle_aged"
+      },
+      "mujer": {
+        "name": "VTC ColombianaF",
+        "voice_id": "gXNPKp01Qauo3Uoh4uUG",
+        "descriptive": "soft, natural",
+        "age": "young"
+      }
+    },
+    "CUBA": {
+      "hombre": {
+        "name": "VTC Cubano",
+        "voice_id": "N9oBfGvJMOhmjRantK3L",
+        "descriptive": "confident, educational",
+        "age": "middle_aged"
+      },
+      "mujer": {
+        "name": "VTC CubanaF",
+        "voice_id": "tGaqHUoNeMUctS0nje4o",
+        "descriptive": "upbeat, conversational",
+        "age": "young"
+      }
+    },
+    "VENEZUELA": {
+      "hombre": {
+        "name": "VTC Venezolano",
+        "voice_id": "wF7p6L9pwDvZVDoqbRiE",
+        "descriptive": "chill, conversational",
+        "age": "middle_aged"
+      },
+      "mujer": {
+        "name": "VTC VenezolanaF",
+        "voice_id": "Mm63ebCOpXkeocKpW3Up",
+        "descriptive": "excited, natural",
+        "age": "middle_aged"
+      }
+    },
+    "LATINOAMERICANA_GENERICO": {
+      "hombre_joven": {
+        "name": "Santiago - Latinamerican Spanish",
+        "voice_id": "15bJsujCI3tcDWeoZsQP",
+        "descriptive": "casual, conversational",
+        "age": "young"
+      },
+      "hombre_adulto": {
+        "name": "Juan Campillo",
+        "voice_id": "WOSzFvlJRm2hkYb3KA5w",
+        "descriptive": "casual, informative",
+        "age": "middle_aged"
+      },
+      "hombre_energetico": {
+        "name": "Hector Solar - Lively and Magnetic",
+        "voice_id": "e5TbU2GXreRROoYNjNdN",
+        "descriptive": "chill, energetic",
+        "age": "young"
+      },
+      "mujer_joven": {
+        "name": "Ana María - Calm & Natural",
+        "voice_id": "m7yTemJqdIqrcNleANfX",
+        "descriptive": "calm, conversational",
+        "age": "young"
+      },
+      "mujer_profesional": {
+        "name": "Fernanda Sanmiguel",
+        "voice_id": "1aJyZpkt0vxhGPBnPyrs",
+        "descriptive": "calm, professional",
+        "age": "middle_aged"
+      }
+    }
+  },
+
+  "ROLEPLAY_INGLESAS": {
+    "AMERICANA": {
+      "hombre_joven": {
+        "name": "Will - Relaxed Optimist",
+        "voice_id": "bIHbv24MWmeRgasZH58o",
+        "descriptive": "chill, conversational",
+        "age": "young"
+      },
+      "hombre_adulto": {
+        "name": "Chris - Charming, Down-to-Earth",
+        "voice_id": "iP95p4xoKVk53GoZ742B",
+        "descriptive": "casual, conversational",
+        "age": "middle_aged"
+      },
+      "hombre_profesional": {
+        "name": "Eric - Smooth, Trustworthy",
+        "voice_id": "cjVigY5qzO86Huf0OWal",
+        "descriptive": "classy, conversational",
+        "age": "middle_aged"
+      },
+      "mujer_joven": {
+        "name": "Jessica - Playful, Bright, Warm",
+        "voice_id": "cgSgspJ2msm6clMCkdW9",
+        "descriptive": "cute, conversational",
+        "age": "young"
+      },
+      "mujer_adulta": {
+        "name": "Hope - Your conversational bestie",
+        "voice_id": "uYXf8XasLslADfZ2MB4u",
+        "descriptive": "casual, conversational",
+        "age": "young"
+      },
+      "mujer_profesional": {
+        "name": "Sarah - Mature, Reassuring, Confident",
+        "voice_id": "EXAVITQu4vr4xnSDxMaL",
+        "descriptive": "professional, natural",
+        "age": "young"
+      }
+    },
+    "BRITANICA": {
+      "hombre": {
+        "name": "VTC BritanicoEN",
+        "voice_id": "Yex236tJMytMYoUWKVSJ",
+        "descriptive": "confident, narrative",
+        "age": "middle_aged"
+      },
+      "mujer": {
+        "name": "VTC BritanicaF",
+        "voice_id": "QrjqRcZWGRzghe6ZPmh2",
+        "descriptive": "confident, conversational",
+        "age": "young"
+      }
+    },
+    "AUSTRALIANA": {
+      "hombre": {
+        "name": "VTC AustralianoEN",
+        "voice_id": "on7De0nZUAc9uGezUxS6",
+        "descriptive": "casual, conversational",
+        "age": "middle_aged"
+      },
+      "mujer": {
+        "name": "VTC AustralianaF",
+        "voice_id": "U9VgC8Xinl7nnNsyDd3J",
+        "descriptive": "casual, natural",
+        "age": "young"
+      }
+    },
+    "CANADIENSE": {
+      "hombre": {
+        "name": "Patrick Québec Canada Montreal",
+        "voice_id": "XTyroWkQl32ZSd3rRVZ1",
+        "descriptive": "confident, informative",
+        "age": "middle_aged"
+      }
+    }
+  },
+
+  "NOTA": "Sistema completo de voces para roleplay de familias y parejas con acentos naturales. Victor usa Enrique M. Nieto en español y Burt Reynolds en inglés."
+}

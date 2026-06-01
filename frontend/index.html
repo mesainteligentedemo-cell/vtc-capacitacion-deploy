@@ -44,11 +44,48 @@
                         <h2>Bienvenido a VTC Capacitación</h2>
                         <p>El programa de entrenamiento más completo para dominar el cierre VTC</p>
                         <div class="hero-cta">
-                            <button id="btn-start-course" class="btn btn-primary btn-lg">
+                            <button id="btn-start-course" class="btn btn-primary btn-lg" onclick="showLoginForm()">
                                 Comenzar Capacitación
                             </button>
                         </div>
                     </div>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div id="login-container" class="section login-section" style="display:none; max-width: 400px; margin: 3rem auto; text-align: center;">
+                    <h2>Bienvenido a VTC Capacitación</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        Inicia sesión con tu información para continuar
+                    </p>
+
+                    <form id="login-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input
+                            type="text"
+                            id="login-nombre"
+                            placeholder="Nombre completo"
+                            required
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                        <input
+                            type="email"
+                            id="login-email"
+                            placeholder="Correo electrónico"
+                            required
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                        <select
+                            id="login-rol"
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                            <option value="opc">OPC</option>
+                            <option value="liner">Liner</option>
+                            <option value="closer">Closer</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Iniciar Capacitación
+                        </button>
+                    </form>
                 </div>
 
                 <!-- MODULE CONTENT -->

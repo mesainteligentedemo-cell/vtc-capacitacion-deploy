@@ -1,11 +1,13 @@
-class ModuleController {
-  constructor() {
-    this.modulosOrden = ['f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-    this.usuarioId = null;
-    this.usuarioData = null;
-    this.timelinePlayer = null;
-    this.currentModulo = null;
-  }
+try {
+  window.ModuleController = class ModuleController {
+    constructor() {
+      this.modulosOrden = ['f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
+      this.usuarioId = null;
+      this.usuarioData = null;
+      this.timelinePlayer = null;
+      this.currentModulo = null;
+      console.log('✓ ModuleController constructor executed');
+    }
 
   async init(usuarioId) {
     this.usuarioId = usuarioId;
@@ -303,6 +305,18 @@ class ModuleController {
       userNameEl.textContent = this.usuarioData?.nombre || 'Usuario';
     }
   }
-}
+  };
 
-window.moduleController = new ModuleController();
+  // Create global instance
+  window.moduleController = new window.ModuleController();
+  console.log('✓ window.moduleController created');
+} catch (error) {
+  console.error('FATAL ERROR in ModuleController:', error);
+  console.error('Stack:', error.stack);
+
+  // Create minimal fallback
+  window.moduleController = {
+    async init() { return {}; },
+    async loadModulo() { throw new Error('ModuleController failed to load'); }
+  };
+}

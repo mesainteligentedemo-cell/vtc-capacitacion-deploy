@@ -32,7 +32,7 @@ class UserState {
 
   async cargarUsuario(usuarioId) {
     try {
-      const response = await fetch(`${API_BASE}/api/usuarios/${usuarioId}`);
+      const response = await fetch(`${window.API_BASE}/api/usuarios/${usuarioId}`);
       const result = await response.json();
 
       if (result.usuario) {
@@ -55,7 +55,7 @@ class UserState {
     }
 
     try {
-      const response = await fetch(`${API_BASE}/api/usuarios/${this.usuario._id}/estado`);
+      const response = await fetch(`${window.API_BASE}/api/usuarios/${this.usuario._id}/estado`);
       const result = await response.json();
 
       if (result.estado) {

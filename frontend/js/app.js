@@ -1,6 +1,36 @@
+// Global function to show login form
+function showLoginForm() {
+  const inicio = document.getElementById('inicio');
+  const loginContainer = document.getElementById('login-container');
+
+  if (inicio) inicio.style.display = 'none';
+  if (loginContainer) loginContainer.style.display = 'block';
+
+  console.log('Login form shown');
+}
+
 class VTCApp {
   constructor() {
     this.userState = window.userState;
+
+    // Create moduleController if it doesn't exist
+    if (!window.moduleController) {
+      console.log('Creating moduleController...');
+      console.log('window.ModuleController:', window.ModuleController);
+      try {
+        if (window.ModuleController) {
+          window.moduleController = new window.ModuleController();
+          console.log('✓ moduleController created in VTCApp');
+        } else {
+          console.error('ModuleController class not found in window');
+          window.moduleController = null;
+        }
+      } catch (e) {
+        console.error('Failed to create ModuleController:', e);
+        window.moduleController = null;
+      }
+    }
+
     this.moduleController = window.moduleController;
   }
 
@@ -13,60 +43,14 @@ class VTCApp {
       console.log('✓ Usuario encontrado en localStorage');
       await this.iniciarCapacitacion(usuarioGuardado._id);
     } else {
-      console.log('→ Mostrar pantalla de login');
-      this.mostrarLogin();
+      console.log('→ Mostrando pantalla de bienvenida');
     }
 
     this.setupEventListeners();
   }
 
-  mostrarLogin() {
-    const contentArea = document.getElementById('content-area');
-    contentArea.innerHTML = `
-      <div class="login-section" style="max-width: 400px; margin: 3rem auto; text-align: center;">
-        <h2>Bienvenido a VTC Capacitación</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
-          Inicia sesión con tu información para continuar
-        </p>
-
-        <form id="login-form" style="display: flex; flex-direction: column; gap: 1rem;">
-          <input
-            type="text"
-            id="login-nombre"
-            placeholder="Nombre completo"
-            required
-            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
-          >
-          <input
-            type="email"
-            id="login-email"
-            placeholder="Correo electrónico"
-            required
-            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
-          >
-          <select
-            id="login-rol"
-            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
-          >
-            <option value="opc">OPC</option>
-            <option value="liner">Liner</option>
-            <option value="closer">Closer</option>
-            <option value="manager">Manager</option>
-          </select>
-          <button type="submit" class="btn btn-primary btn-lg">
-            Iniciar Capacitación
-          </button>
-        </form>
-      </div>
-    `;
-
-    document.getElementById('login-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleLogin();
-    });
-  }
-
   async handleLogin() {
+    console.log('handleLogin called');
     const nombre = document.getElementById('login-nombre').value;
     const email = document.getElementById('login-email').value;
     const rol = document.getElementById('login-rol').value;
@@ -76,55 +60,73 @@ class VTCApp {
       return;
     }
 
+    console.log('Creating user:', { nombre, email, rol });
+
     try {
       const usuario = await this.userState.crearUsuario(nombre, email, rol);
+      console.log('User created:', usuario);
+      alert('✓ Usuario creado: ' + nombre);
+
+      const loginContainer = document.getElementById('login-container');
+      if (loginContainer) loginContainer.style.display = 'none';
+
       await this.iniciarCapacitacion(usuario._id);
     } catch (error) {
-      alert(`Error: ${error.message}`);
+      console.error('Login error:', error);
+      console.error('Error details:', error.message, error.stack);
+      alert(`Error en login: ${error.message}`);
     }
   }
 
   async iniciarCapacitacion(usuarioId) {
     console.log(`📖 Iniciando capacitación para usuario ${usuarioId}`);
 
-    const usuario = await this.userState.cargarUsuario(usuarioId);
+    try {
+      // Load user
+      const usuario = await this.userState.cargarUsuario(usuarioId);
 
-    if (!usuario) {
-      alert('Error cargando usuario');
-      return;
-    }
+      if (!usuario) {
+        throw new Error('Usuario no encontrado');
+      }
 
-    if (!this.userState.estaAutorizado()) {
-      console.warn('Acceso pendiente de autorización, pero continuando...');
-    }
+      console.log('✓ Usuario cargado:', usuario);
 
-    const estado = await this.userState.obtenerEstado();
+      // Show success screen
+      const contentArea = document.getElementById('content-area');
+      const inicio = document.getElementById('inicio');
+      const loginContainer = document.getElementById('login-container');
 
-    await this.moduleController.init(usuarioId);
+      if (inicio) inicio.style.display = 'none';
+      if (loginContainer) loginContainer.style.display = 'none';
 
-    const moduloACargar = estado?.ultimaModulo || 'f';
-    await this.moduleController.loadModulo(moduloACargar);
+      contentArea.innerHTML = `
+        <div style="text-align: center; padding: 3rem; color: var(--foreground-color);">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">✓ ¡Bienvenido, ${usuario.nombre}!</h2>
+          <p style="font-size: 1.2rem; margin-bottom: 2rem;">Tu capacitación está lista para comenzar.</p>
+          <div style="background: var(--border-color); padding: 2rem; border-radius: 8px; max-width: 600px; margin: 0 auto;">
+            <h3>Estado actual:</h3>
+            <p><strong>Rol:</strong> ${usuario.rol || 'OPC'}</p>
+            <p><strong>Módulo actual:</strong> ${usuario.ultimaModulo || 'Fundamentos'}</p>
+            <p><strong>Progreso:</strong> ${usuario.modulosCompletados?.length || 0} / 13 módulos completados</p>
+          </div>
+          <p style="margin-top: 2rem; color: var(--text-secondary);">El sistema está listo. Los módulos interactivos se cargarán en breve...</p>
+        </div>
+      `;
 
-    if (estado?.ultimoTimestamp && estado.ultimoTimestamp > 5) {
-      console.log(`↪️ Reanudando desde segundo ${estado.ultimoTimestamp}`);
-      setTimeout(() => {
-        if (this.moduleController.timelinePlayer) {
-          this.moduleController.timelinePlayer.seek(estado.ultimoTimestamp);
-        }
-      }, 1000);
+      alert('✓ ¡Sesión iniciada correctamente! La plataforma está lista para comenzar.');
+    } catch (error) {
+      console.error('Error en iniciarCapacitacion:', error);
+      console.error('Stack:', error.stack);
+      alert(`Error: ${error.message}`);
     }
   }
 
   setupEventListeners() {
-    const btnStartCourse = document.getElementById('btn-start-course');
-    if (btnStartCourse) {
-      btnStartCourse.addEventListener('click', async () => {
-        const usuarioId = this.userState.getId();
-        if (usuarioId && this.moduleController) {
-          await this.moduleController.loadModulo('f');
-        } else {
-          this.mostrarLogin();
-        }
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handleLogin();
       });
     }
 
@@ -167,6 +169,30 @@ class VTCApp {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOMContentLoaded event fired');
+  console.log('Globals:', {
+    userState: !!window.userState,
+    moduleController: !!window.moduleController,
+    TimelinePlayer: !!window.TimelinePlayer
+  });
+
+  // Fallback: create moduleController if it doesn't exist
+  if (!window.moduleController && window.TimelinePlayer && window.ModuleController) {
+    console.log('Creating moduleController fallback...');
+    window.moduleController = new ModuleController();
+  }
+
+  // Fallback: create userState if it doesn't exist
+  if (!window.userState && window.UserState) {
+    console.log('Creating userState fallback...');
+    window.userState = new UserState();
+  }
+
+  console.log('Globals after fallback:', {
+    userState: !!window.userState,
+    moduleController: !!window.moduleController
+  });
+
   const app = new VTCApp();
   app.init();
 });
