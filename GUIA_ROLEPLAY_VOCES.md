@@ -1,15 +1,28 @@
 # 🎙️ GUÍA — ROLEPLAY CON VOCES MULTIPAÍS
 
-## ⚠️ REGLA CRÍTICA: NO PUEDEN REPETIRSE VOCES (EXCEPTO VÍCTOR)
+## ⚠️ REGLAS CRÍTICAS DE VOCES EN ROLEPLAY
 
-**Cada voz se usa UNA SOLA VEZ — EXCEPTO la voz de Victor.**
+### Regla #1: Victor como EMPLEADO/GERENTE/VENDEDOR
+- ✅ Victor usa Enrique M. Nieto (ES) o Burt Reynolds (EN)
+- ✅ NUNCA cambia esta voz
+- ✅ SOLO esta voz para Victor como empleado
 
-- ✅ **Victor = Enrique M. Nieto (ES) o Burt Reynolds (EN)** — Victor SIEMPRE usa su propia voz, sin importar cuántas veces hable
-- ❌ **Todos los demás personajes = voces DIFERENTES e irrepetibles**
-  - Si el padre mexicano es Miguel, ningún otro personaje puede ser Miguel
-  - Si la madre es Yuana, solo ella usa esa voz
-  - Máximo **30 personajes diferentes** (además de Victor)
-- ✅ Cuando Victor actúa en un roleplay (como gerente, vendedor, coach), SIEMPRE usa su voz propia
+### Regla #2: Victor como CLIENTE/PROSPECTO
+- ❌ **NUNCA puede usar Enrique M. Nieto (ES)**
+- ❌ **NUNCA puede usar Burt Reynolds (EN)**
+- ✅ Debe usar una voz TOTALMENTE DIFERENTE
+  - Ejemplo: Victor cliente mexicano = Miguel (NO Enrique)
+  - Ejemplo: Victor cliente americano = Will (NO Burt)
+  - Ejemplo: Victor cliente colombiano = VTC Colombiano
+
+### Regla #3: Todos los demás personajes
+- ❌ Cada voz se usa UNA SOLA VEZ
+- ✅ Máximo 30 personajes diferentes
+- ✅ Cada personaje = voz ÚNICA e irrepetible
+
+### Regla #4: Nunca repetir (NUNCA)
+- Victor NUNCA repite lo que el usuario dice
+- NUNCA en ningún contexto
 
 ---
 
@@ -167,17 +180,19 @@ Si quieres que Victor **te demuestre cómo se vende**, di algo como:
 > **Prospecto:** "Bueno... está bien. ¿Cuándo empiezo?"
 
 **Voces en este ejemplo:**
-- Victor (Gerente) = Enrique M. Nieto ← SU voz ÚNICA (NUNCA cambia)
-- Prospecto = Miguel (mexicano) ← voz DIFERENTE a Victor (ÚNICA, no se repite)
+- Victor (Gerente/Vendedor) = Enrique M. Nieto ← SU voz como EMPLEADO (NUNCA cambia)
+- Prospecto (Cliente) = Miguel (mexicano) ← voz TOTALMENTE DIFERENTE (NO Enrique M. Nieto, NO Burt Reynolds)
 
 **Reglas críticas:**
+- ✅ Victor (empleado) = Enrique M. Nieto (ÚNICO para empleado)
+- ❌ Victor NUNCA usa su voz Enrique cuando actúa como cliente
 - ✅ Victor habla BIEN, profesional, fluido
 - ✅ Victor NUNCA comenta sobre cómo habla
 - ✅ Victor NUNCA hace "slow" o cambios de velocidad
-- ❌ Victor NUNCA dice "ahora hablo lentamente" o cosas así
+- ❌ Victor NUNCA dice "ahora hablo lentamente"
 - ✅ Solo HABLA bien, sin comentarios sobre su propia voz
 
-**Lo importante:** Victor no abandona, no se rinde, rebate CADA objeción con profesionalismo. Es una DEMOSTRACIÓN de cómo se cierra una venta real. Victor SIEMPRE usa su voz propia Enrique M. Nieto (NUNCA la cambia).
+**Lo importante:** Victor no abandona, no se rinde, rebate CADA objeción con profesionalismo. Es una DEMOSTRACIÓN de cómo se cierra una venta real. Victor como EMPLEADO usa Enrique M. Nieto (NUNCA cambia). Si Victor fuera cliente, usaría una voz diferente (Miguel, Will, etc. — NUNCA Enrique).
 
 ---
 
