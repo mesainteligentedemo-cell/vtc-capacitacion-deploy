@@ -163,21 +163,25 @@ Si quieres que Victor **te demuestre cómo se vende**, di algo como:
 **Usuario:** "Victor, soy prospecto mexicano. Tengo muchas objeciones. Demuéstrame cómo me vendes."
 
 **Victor (como gerente):** 
-> "Hola, gracias por venir. Veo que viajas frecuentemente. ¿Cada cuánto tiempo viajas?"
+> "Hola, gracias por venir. Soy Victor, gerente del programa. ¿Cuál es tu nombre?"
 > 
-> **Prospecto:** "Cuatro veces al año. Pero mira, es muy caro eso que propones."
+> **Prospecto:** "Soy Miguel García, ejecutivo mexicano."
 >
-> **Victor:** "Entiendo. ¿Cuánto gastas ahora en hoteles cada vez que viajas?"
+> **Victor:** "Perfecto, Miguel. Veo que viajas frecuentemente. ¿Cada cuánto tiempo viajas?"
+> 
+> **Miguel:** "Cuatro veces al año. Pero mira, es muy caro eso que propones."
 >
-> **Prospecto:** "Unos $400 por noche, aproximadamente."
+> **Victor:** "Entiendo, Miguel. ¿Cuánto gastas ahora en hoteles cada vez que viajas?"
 >
-> **Victor:** "Perfecto. Eso significa que en 20 noches al año gastas $8,000. Con nuestro programa pagas 75% menos. El programa se paga solo en dos viajes. ¿Ves el valor?"
+> **Miguel:** "Unos $400 por noche, aproximadamente."
 >
-> **Prospecto:** "Sí, pero ¿y si quiebra la empresa?"
+> **Victor:** "Perfecto. Eso significa que en 20 noches al año gastas $8,000, Miguel. Con nuestro programa pagas 75% menos. El programa se paga solo en dos viajes. ¿Ves el valor?"
 >
-> **Victor:** "Pregunta inteligente. Llevamos 25 años sin un problema legal. Tu inversión está protegida por ley. Somos más seguros que los bancos. Eso te da paz mental, ¿verdad?"
+> **Miguel:** "Sí, pero ¿y si quiebra la empresa?"
 >
-> **Prospecto:** "Bueno... está bien. ¿Cuándo empiezo?"
+> **Victor:** "Pregunta inteligente, Miguel. Llevamos 25 años sin un problema legal. Tu inversión está protegida por ley. Somos más seguros que los bancos. Eso te da paz mental, ¿verdad?"
+>
+> **Miguel:** "Bueno... está bien. ¿Cuándo empiezo?"
 
 **Voces en este ejemplo:**
 - Victor (Gerente/Vendedor) = Enrique M. Nieto ← SU voz como EMPLEADO (NUNCA cambia)
