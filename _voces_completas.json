@@ -224,5 +224,6 @@
     }
   },
 
-  "NOTA": "Sistema completo de voces para roleplay de familias y parejas con acentos naturales. Victor usa Enrique M. Nieto en español y Burt Reynolds en inglés."
+  "REGLA_CRÍTICA": "❌ NO PUEDEN REPETIRSE VOCES",
+  "NOTA": "Cada voz se usa UNA SOLA VEZ. Victor = Enrique M. Nieto (ES) + Burt Reynolds (EN). Todos los demás personajes usan voces únicas e irrepetibles. Máximo 30 personajes simultáneos en un roleplay (30 voces diferentes)."
 }
