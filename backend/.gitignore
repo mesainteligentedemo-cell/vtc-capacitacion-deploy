@@ -15,3 +15,5 @@ build/
 *.swo
 *~
 data/usuarios.json
+
+.vercel

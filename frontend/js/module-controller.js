@@ -11,7 +11,7 @@ class ModuleController {
     this.usuarioId = usuarioId;
 
     try {
-      const response = await fetch(`/api/usuarios/${usuarioId}`);
+      const response = await fetch(`${API_BASE}/api/usuarios/${usuarioId}`);
       const result = await response.json();
 
       if (result.usuario) {
@@ -44,7 +44,7 @@ class ModuleController {
     console.log(`📦 Cargando módulo ${moduloId}...`);
 
     try {
-      const response = await fetch(`/api/timeline/${moduloId}`);
+      const response = await fetch(`${API_BASE}/api/timeline/${moduloId}`);
       const data = await response.json();
 
       if (!data.timeline) {
@@ -165,7 +165,7 @@ class ModuleController {
     }
 
     try {
-      const response = await fetch('/api/quiz/submit', {
+      const response = await fetch(`${API_BASE}/api/quiz/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -237,7 +237,7 @@ class ModuleController {
     const timecode = this.timelinePlayer.currentTime || 0;
 
     try {
-      const response = await fetch(`/api/usuarios/${this.usuarioId}/save-progress`, {
+      const response = await fetch(`${API_BASE}/api/usuarios/${this.usuarioId}/save-progress`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
