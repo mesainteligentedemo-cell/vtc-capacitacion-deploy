@@ -122,6 +122,8 @@ class VTCApp {
         const usuarioId = this.userState.getId();
         if (usuarioId && this.moduleController) {
           await this.moduleController.loadModulo('f');
+        } else {
+          this.mostrarLogin();
         }
       });
     }
