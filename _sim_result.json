@@ -1,0 +1,993 @@
+{
+ "simulated_conversation": [
+  {
+   "role": "agent",
+   "agent_metadata": {
+    "agent_id": "agent_9501k3vkt6svekjs6y0qe5xzcek1",
+    "branch_id": null,
+    "workflow_node_id": null,
+    "version_id": null
+   },
+   "message": "Hola, soy Víctor, tu coach del piso. ¿Practicamos un roleplay o repasamos un módulo? Puedo ser un cliente solo, una pareja, una familia entera opinando, o hasta el típico difícil del piso — en español o inglés.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": null,
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 0,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "user",
+   "agent_metadata": null,
+   "message": "Hola Víctor, ¡perfecto!  Practiquemos un roleplay. Me gustaría hacer el pitch VTC a una pareja, ¿te parece bien si tú interpretas a la pareja?",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": null,
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 1,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "agent",
+   "agent_metadata": {
+    "agent_id": "agent_9501k3vkt6svekjs6y0qe5xzcek1",
+    "branch_id": null,
+    "workflow_node_id": null,
+    "version_id": null
+   },
+   "message": "[Excited] ¡Excelente! Me parece perfecto. Para que sea lo más real  posible, necesito un poco más de información sobre esta pareja.\n\nDime, ¿qué  arquetipo DISC quieres que interprete para cada uno? ¿Y de qué nacionalidad te gustaría que fueran? Con eso, armamos la escena.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": {
+    "metrics": {
+     "convai_llm_service_ttf_sentence": {
+      "elapsed_time": 0.7088198290439323
+     },
+     "convai_llm_service_ttfb": {
+      "elapsed_time": 0.380936814006418
+     },
+     "convai_llm_service_tt_last_sentence": {
+      "elapsed_time": 1.0576785439625382
+     }
+    },
+    "convai_asr_provider": null,
+    "convai_tts_model": null,
+    "convai_tts_cascade": null
+   },
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 2,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "user",
+   "agent_metadata": null,
+   "message": "Perfecto.  Para la pareja, me gustaría que uno fuera un \"D\" (Dominante) y el otro un \"C\" (Concienzudo).  Que sean mexicanos, por favor.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": null,
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 3,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "agent",
+   "agent_metadata": {
+    "agent_id": "agent_9501k3vkt6svekjs6y0qe5xzcek1",
+    "branch_id": null,
+    "workflow_node_id": null,
+    "version_id": null
+   },
+   "message": "[Excited] ¡Excelente elección! Un \"D\" y un \"C\" mexicanos,  eso nos dará un roleplay muy interesante.\n\nEntonces, yo seré la  pareja. Para que quede claro, el \"D\" será el esposo, y la \"C\" la esposa. ¿Te parece bien?\n\nCuando estés listo,  empezamos desde el Meet & Greet, como si fuera el inicio del tour. Dime cuándo quieras que empiece a actuar como ellos.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": {
+    "metrics": {
+     "convai_llm_service_ttf_sentence": {
+      "elapsed_time": 1.0128978349966928
+     },
+     "convai_llm_service_ttfb": {
+      "elapsed_time": 0.8895181060070172
+     },
+     "convai_llm_service_tt_last_sentence": {
+      "elapsed_time": 2.4735712229739875
+     }
+    },
+    "convai_asr_provider": null,
+    "convai_tts_model": null,
+    "convai_tts_cascade": null
+   },
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 4,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "user",
+   "agent_metadata": null,
+   "message": "Sí, me parece perfecto. Esposo \"D\" y esposa \"C\".\n \nEstoy listo, empecemos con el Meet & Greet.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": null,
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 5,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "agent",
+   "agent_metadata": {
+    "agent_id": "agent_9501k3vkt6svekjs6y0qe5xzcek1",
+    "branch_id": null,
+    "workflow_node_id": null,
+    "version_id": null
+   },
+   "message": "[Excited] ¡Excelente! Me encanta esa energía.\n\n—el esposo, con voz firme  y directa, mirando su reloj— <Cliente>Buenos días. ¿Usted es  nuestro anfitrión? Nos dijeron que esto duraba noventa minutos, y tenemos un compromiso después.</Cliente>\n\n—la esposa, con un tono más reservado y observ ador— <Esposa>Sí, queremos asegurarnos de que el tiempo esté bien administrado.</Esposa>",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": {
+    "metrics": {
+     "convai_llm_service_ttf_sentence": {
+      "elapsed_time": 0.8118396979989484
+     },
+     "convai_llm_service_ttfb": {
+      "elapsed_time": 0.5925114820711315
+     },
+     "convai_llm_service_tt_last_sentence": {
+      "elapsed_time": 1.422125579090789
+     }
+    },
+    "convai_asr_provider": null,
+    "convai_tts_model": null,
+    "convai_tts_cascade": null
+   },
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 6,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "user",
+   "agent_metadata": null,
+   "message": "¡Hola! Sí, soy Andrés, su anfitrión.  No se preocupen, seré muy eficiente con su tiempo, justo como les prometieron.\n \nEstoy aquí para mostrarles algo realmente especial que sé que les va a encantar.",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": null,
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 7,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  },
+  {
+   "role": "agent",
+   "agent_metadata": {
+    "agent_id": "agent_9501k3vkt6svekjs6y0qe5xzcek1",
+    "branch_id": null,
+    "workflow_node_id": null,
+    "version_id": null
+   },
+   "message": "[Cliente] <Cliente>Esperemos que sí. Pero, ¿los noventa minutos son exact os o es una estimación?</Cliente>\n\n—la esposa, con un tono más  suave— <Esposa>Sí, nos gustaría saber si podemos confiar en el horario.</Esposa>",
+   "multivoice_message": null,
+   "tool_calls": [],
+   "tool_results": [],
+   "feedback": null,
+   "llm_override": null,
+   "time_in_call_secs": 0,
+   "conversation_turn_metrics": {
+    "metrics": {
+     "convai_llm_service_ttf_sentence": {
+      "elapsed_time": 0.7811124690342695
+     },
+     "convai_llm_service_ttfb": {
+      "elapsed_time": 0.5616812820080668
+     },
+     "convai_llm_service_tt_last_sentence": {
+      "elapsed_time": 1.0511019150726497
+     }
+    },
+    "convai_asr_provider": null,
+    "convai_tts_model": null,
+    "convai_tts_cascade": null
+   },
+   "rag_retrieval_info": null,
+   "llm_usage": null,
+   "interrupted": false,
+   "original_message": null,
+   "source_medium": null,
+   "source_event_id": 8,
+   "used_static_kb_document_ids": [],
+   "analysis": null,
+   "file_input": null,
+   "contextual_update_info": null
+  }
+ ],
+ "analysis": {
+  "evaluation_criteria_results": {
+   "mantuvo_postura": {
+    "criteria_id": "mantuvo_postura",
+    "result": "success",
+    "rationale": "El agente, en su rol de coach y cliente, mantuvo el control del roleplay y no presionó al usuario. Estableció las reglas del juego y se mantuvo en su personaje de cliente desafiante, lo cual es parte de la práctica."
+   },
+   "manejo_objeciones": {
+    "criteria_id": "manejo_objeciones",
+    "result": "unknown",
+    "rationale": "El agente, como cliente, presentó objeciones sobre el tiempo. Sin embargo, el roleplay se interrumpió antes de que el usuario (asesor) tuviera la oportunidad de aplicar completamente el framework VTC para manejarlas. Por lo tanto, no se puede evaluar si el agente permitió o facilitó el manejo de objeciones."
+   },
+   "leyo_la_sala": {
+    "criteria_id": "leyo_la_sala",
+    "result": "success",
+    "rationale": "El agente adaptó su pitch (como cliente) a los arquetipos DISC solicitados (D y C) y atendió a ambos decisores (esposo y esposa), presentando sus objeciones y personalidades de manera diferenciada."
+   },
+   "completo_practica": {
+    "criteria_id": "completo_practica",
+    "result": "failure",
+    "rationale": "El roleplay no se completó. La conversación terminó después de que el agente, como cliente, presentara una objeción sobre el tiempo, sin llegar al cierre o al feedback."
+   }
+  },
+  "data_collection_results": {
+   "employee_number": {
+    "data_collection_id": "employee_number",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Numero de empleado del asesor (ej. 12345). Pidelo al inicio para identificarlo en su reporte.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El número de empleado del asesor no se menciona en la conversación; el usuario solo se identifica como Andrés, su anfitrión."
+   },
+   "first_name": {
+    "data_collection_id": "first_name",
+    "value": "Andrés",
+    "json_schema": {
+     "type": "string",
+     "description": "Extrae el primer nombre de la persona que habla en la llamada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\" en su mensaje: \"¡Hola! Sí, soy Andrés, su anfitrión.\""
+   },
+   "call_audio": {
+    "data_collection_id": "call_audio",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Proporciona el enlace al archivo de audio en formato MP3 descargable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no proporciona ningún enlace a un archivo de audio MP3 descargable."
+   },
+   "full_transcript": {
+    "data_collection_id": "full_transcript",
+    "value": "agent at 1970-01-01T00:00:00+00:00: Hola, soy Víctor, tu coach del piso. ¿Practicamos un roleplay o repasamos un módulo? Puedo ser un cliente solo, una pareja, una familia entera opinando, o hasta el típico difícil del piso — en español o inglés.user at 1970-01-01T00:00:00+00:00: Hola Víctor, ¡perfecto! Practiquemos un roleplay. Me gustaría hacer el pitch VTC a una pareja, ¿te parece bien si tú interpretas a la pareja?agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente! Me parece perfecto. Para que sea lo más real posible, necesito un poco más de información sobre esta pareja. Dime, ¿qué arquetipo DISC quieres que interprete para cada uno? ¿Y de qué nacionalidad te gustaría que fueran? Con eso, armamos la escena.user at 1970-01-01T00:00:00+00:00: Perfecto. Para la pareja, me gustaría que uno fuera un \"D\" (Dominante) y el otro un \"C\" (Concienzudo). Que sean mexicanos, por favor.agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente elección! Un \"D\" y un \"C\" mexicanos, eso nos dará un roleplay muy interesante. Entonces, yo seré la pareja. Para que quede claro, el \"D\" será el esposo, y la \"C\" la esposa. ¿Te parece bien? Cuando estés listo, empezamos desde el Meet & Greet, como si fuera el inicio del tour. Dime cuándo quieras que empiece a actuar como ellos.user at 1970-01-01T00:00:00+00:00: Sí, me parece perfecto. Esposo \"D\" y esposa \"C\". Estoy listo, empecemos con el Meet & Greet.agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente! Me encanta esa energía. —el esposo, con voz firme y directa, mirando su reloj— <Cliente>Buenos días. ¿Usted es nuestro anfitrión? Nos dijeron que esto duraba noventa minutos, y tenemos un compromiso después.</Cliente> —la esposa, con un tono más reservado y observ ador— <Esposa>Sí, queremos asegurarnos de que el tiempo esté bien administrado.</Esposa>user at 1970-01-01T00:00:00+00:00: ¡Hola! Sí, soy Andrés, su anfitrión. No se preocupen, seré muy eficiente con su tiempo, justo como les prometieron. Estoy aquí para mostrarles algo realmente especial que sé que les va a encantar.agent at 1970-01-01T00:00:00+00:00: [Cliente] <Cliente>Esperemos que sí. Pero, ¿los noventa minutos son exact os o es una estimación?</Cliente> —la esposa, con un tono más suave— <Esposa>Sí, nos gustaría saber si podemos confiar en el horario.</Esposa>",
+    "json_schema": {
+     "type": "string",
+     "description": "Guarda la transcripción completa de la llamada en el idioma que se haya realizado.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El valor se extrajo concatenando todos los mensajes de la transcripción, ya que la conversación se llevó a cabo íntegramente en español."
+   },
+   "hours_spoken": {
+    "data_collection_id": "hours_spoken",
+    "value": 1.5,
+    "json_schema": {
+     "type": "number",
+     "description": "Calcula cuántas horas duró la llamada hablada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación indica que la duración de la llamada es de \"noventa minutos\", lo que equivale a 1.5 horas."
+   },
+   "call_summary": {
+    "data_collection_id": "call_summary",
+    "value": "El usuario solicitó un roleplay para practicar un pitch VTC con una pareja. El agente interpretó a una pareja mexicana, con el esposo como \"D\" (Dominante) y la esposa como \"C\" (Concienzuda). El roleplay comenzó con el \"Meet & Greet\", donde la pareja expresó su preocupación por la duración exacta de 90 minutos.",
+    "json_schema": {
+     "type": "string",
+     "description": "Haz un resumen breve de la llamada en máximo 3 frases en Español de México.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El resumen se basa en la solicitud del usuario de un roleplay, la configuración de los personajes por parte del agente y el inicio de la interacción con la preocupación de la pareja por el tiempo, como se evidencia en el transcript."
+   },
+   "minutes_spoken  ": {
+    "data_collection_id": "minutes_spoken  ",
+    "value": 90.0,
+    "json_schema": {
+     "type": "number",
+     "description": "Description: Calcula cuántos minutos duró la llamada hablada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El agente menciona que la actividad duraba \"noventa minutos\" y el usuario confirma que será eficiente con el tiempo prometido."
+   },
+   "last_name": {
+    "data_collection_id": "last_name",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Extrae el apellido de la persona que habla en la llamada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\", pero no se menciona ningún apellido en la conversación."
+   },
+   "user_name": {
+    "data_collection_id": "user_name",
+    "value": "Andrés",
+    "json_schema": {
+     "type": "string",
+     "description": "Nombre del asesor/usuario que entreno en esta sesion. Vacio si no se identifico.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\" en su mensaje, indicando que es el anfitrión de la sesión de entrenamiento."
+   },
+   "user_email": {
+    "data_collection_id": "user_email",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Correo electronico del asesor para enviarle su reporte. Pidelo amablemente al inicio si no lo tienes.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El correo electrónico del asesor no se menciona en la transcripción, por lo que no se puede extraer."
+   },
+   "user_role": {
+    "data_collection_id": "user_role",
+    "value": "liner",
+    "json_schema": {
+     "type": "string",
+     "description": "Rol del usuario: OPC, liner, closer, gerente, director o prospecto.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario está practicando un 'pitch VTC' y se identifica como 'su anfitrión', lo que corresponde al rol de un 'liner' que realiza la presentación de ventas inicial."
+   },
+   "tipo_actividad": {
+    "data_collection_id": "tipo_actividad",
+    "value": "roleplay",
+    "json_schema": {
+     "type": "string",
+     "description": "Que se hizo: 'roleplay', 'repaso_modulo', 'duda', 'coaching' o 'mixto'.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario solicitó explícitamente \"Practiquemos un roleplay\" al inicio de la conversación, lo que indica la actividad principal."
+   },
+   "escenario_roleplay": {
+    "data_collection_id": "escenario_roleplay",
+    "value": "pareja",
+    "json_schema": {
+     "type": "string",
+     "description": "Si hubo roleplay, el escenario: cliente_solo, pareja, familia_con_hijos, hijos_dificiles, adolescente_smartass, o combinacion. Vacio si no hubo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario solicitó específicamente practicar un roleplay con una 'pareja', y el agente confirmó que interpretaría ese rol."
+   },
+   "tipo_cliente": {
+    "data_collection_id": "tipo_cliente",
+    "value": "mezcla",
+    "json_schema": {
+     "type": "string",
+     "description": "Personalidad/dificultad encarnada: driver, analytic, amiable, expressive, mezcla, borracho, nefasto, necio, stroker, sabelotodo, etc.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El agente interpreta a una pareja con dos arquetipos DISC distintos, un \"D\" (Dominante) y un \"C\" (Concienzudo), lo que representa una mezcla de personalidades."
+   },
+   "modulos_practicados": {
+    "data_collection_id": "modulos_practicados",
+    "value": "Meet & Greet",
+    "json_schema": {
+     "type": "string",
+     "description": "Modulos del curso VTC tocados en la sesion, separados por coma (ej: 'M2 OPC, M7 Objeciones').",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario indica que quiere practicar un 'pitch VTC' y el roleplay comienza con 'Meet & Greet', lo que sugiere que este es el módulo inicial abordado."
+   },
+   "objeciones_trabajadas": {
+    "data_collection_id": "objeciones_trabajadas",
+    "value": "La objeción fue sobre la exactitud de los 90 minutos de duración de la reunión. El asesor inicialmente aseguró eficiencia y cumplimiento del tiempo prometido, pero la objeción fue reiterada pidiendo una confirmación más precisa.",
+    "json_schema": {
+     "type": "string",
+     "description": "Objeciones que el asesor enfrento y como las manejo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El cliente objeta la exactitud de los 90 minutos de duración, preguntando si es exacto o una estimación, después de que el asesor ya había prometido ser eficiente con el tiempo."
+   },
+   "desempeno_score": {
+    "data_collection_id": "desempeno_score",
+    "value": null,
+    "json_schema": {
+     "type": "number",
+     "description": "Calificacion del desempeno del asesor del 1 al 10 segun el manual VTC y neurociencia. Solo si hubo roleplay o practica evaluable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "No se proporciona una calificación del desempeño del asesor del 1 al 10 en la conversación, ya que el roleplay está en curso y no hay una evaluación final."
+   },
+   "fortalezas": {
+    "data_collection_id": "fortalezas",
+    "value": "El asesor abordó directamente la preocupación del cliente sobre el tiempo, prometiendo eficiencia y activando el Principio de Reducción de la Incertidumbre.",
+    "json_schema": {
+     "type": "string",
+     "description": "Lo que el asesor hizo bien en la sesion, con el principio neurocientifico que activo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El asesor respondió a la preocupación del cliente sobre el tiempo, lo cual es crucial para generar confianza y reducir la incertidumbre inicial."
+   },
+   "areas_mejora": {
+    "data_collection_id": "areas_mejora",
+    "value": "El asesor debe mejorar en la escucha activa y en abordar directamente las preocupaciones del cliente. En el momento en que el cliente pregunta si los noventa minutos son exactos o una estimación, el asesor solo ofrece una garantía general de eficiencia en lugar de una respuesta clara, lo que provoca que el cliente reitere su inquietud.",
+    "json_schema": {
+     "type": "string",
+     "description": "Lo que el asesor debe mejorar, con el momento y el principio que fallo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El asesor no respondió directamente a la pregunta del cliente sobre la exactitud del tiempo, lo que llevó a que el cliente repitiera su preocupación, indicando una falla en la escucha activa y la resolución directa de inquietudes."
+   },
+   "recomendacion_siguiente": {
+    "data_collection_id": "recomendacion_siguiente",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Drill o recomendacion concreta para la proxima sesion de entrenamiento.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación actual es un roleplay en curso y no contiene una recomendación o ejercicio concreto para la próxima sesión de entrenamiento."
+   },
+   "scores_competencias": {
+    "data_collection_id": "scores_competencias",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Sub-scores 0-10 por competencia, separados por pipe: \"rapport:8|postura:7|objeciones:6|sala:7|cierre:5|pnl:6\". Solo si hubo practica evaluable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación describe el inicio de un roleplay y no contiene ninguna práctica evaluable ni puntuaciones de competencias."
+   },
+   "momentos_clave": {
+    "data_collection_id": "momentos_clave",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Linea de tiempo de momentos clave, formato \"mm:ss etiqueta\" separados por pipe. Ej: \"00:30 Rapport | 04:00 Descubrimiento | 08:10 Objecion precio | 11:30 Cierre\".",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "No se pueden identificar múltiples momentos clave en la conversación, ya que solo cubre el inicio del roleplay (Meet & Greet) y no avanza a otras etapas como las sugeridas en el formato de línea de tiempo."
+   },
+   "analisis_pnl": {
+    "data_collection_id": "analisis_pnl",
+    "value": "Análisis PNL: El asesor (Andrés) usó un reencuadre al abordar la preocupación por el tiempo de los clientes (\"No se preocupen, seré muy eficiente con su tiempo\"). También empleó lenguaje sensorial al decir \"mostrarles algo realmente especial que sé que les va a encantar\". Faltó un espejeo más profundo de su lenguaje verbal o ritmo, y el uso de patrones Milton para guiar sutilmente su atención. Un tip concreto de PNL sería: para el cliente \"D\" y \"C\", el asesor podría haber validado su necesidad de precisión con el tiempo y luego redirigir la conversación a los beneficios inmediatos de la visita, usando un lenguaje más directo y orientado a resultados.",
+    "json_schema": {
+     "type": "string",
+     "description": "Analisis PNL: que patrones uso el asesor (espejeo, anclas, patron Milton, reencuadres, lenguaje sensorial), cuales le faltaron, y un tip concreto de PNL.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El valor se extrae del análisis de las interacciones del usuario (Andrés) con los clientes simulados por el agente, identificando los patrones de PNL utilizados, los ausentes y un consejo específico."
+   },
+   "principios_neuro": {
+    "data_collection_id": "principios_neuro",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Principios neurocientificos activados con intensidad 0-100, separados por pipe. Ej: \"Neuronas espejo:80|Oxitocina:60|Aversion a la perdida:40|Anclaje:30\".",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no menciona ningún principio neurocientífico ni su intensidad, por lo que no se puede extraer el valor solicitado."
+   },
+   "departamento": {
+    "data_collection_id": "departamento",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Departamento o puesto del asesor en el equipo VTC: OPC, Linea (Line), Front to Middle, Front to Back, Selfgen, Cierre (Closing), Gerencia o Direccion. Preguntalo al inicio si no lo sabes.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no especifica el departamento o puesto exacto del asesor en el equipo VTC, solo que es un \"anfitrión\" en un roleplay."
+   }
+  },
+  "evaluation_criteria_results_list": [
+   {
+    "criteria_id": "mantuvo_postura",
+    "result": "success",
+    "rationale": "El agente, en su rol de coach y cliente, mantuvo el control del roleplay y no presionó al usuario. Estableció las reglas del juego y se mantuvo en su personaje de cliente desafiante, lo cual es parte de la práctica."
+   },
+   {
+    "criteria_id": "manejo_objeciones",
+    "result": "unknown",
+    "rationale": "El agente, como cliente, presentó objeciones sobre el tiempo. Sin embargo, el roleplay se interrumpió antes de que el usuario (asesor) tuviera la oportunidad de aplicar completamente el framework VTC para manejarlas. Por lo tanto, no se puede evaluar si el agente permitió o facilitó el manejo de objeciones."
+   },
+   {
+    "criteria_id": "leyo_la_sala",
+    "result": "success",
+    "rationale": "El agente adaptó su pitch (como cliente) a los arquetipos DISC solicitados (D y C) y atendió a ambos decisores (esposo y esposa), presentando sus objeciones y personalidades de manera diferenciada."
+   },
+   {
+    "criteria_id": "completo_practica",
+    "result": "failure",
+    "rationale": "El roleplay no se completó. La conversación terminó después de que el agente, como cliente, presentara una objeción sobre el tiempo, sin llegar al cierre o al feedback."
+   }
+  ],
+  "data_collection_results_list": [
+   {
+    "data_collection_id": "employee_number",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Numero de empleado del asesor (ej. 12345). Pidelo al inicio para identificarlo en su reporte.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El número de empleado del asesor no se menciona en la conversación; el usuario solo se identifica como Andrés, su anfitrión."
+   },
+   {
+    "data_collection_id": "first_name",
+    "value": "Andrés",
+    "json_schema": {
+     "type": "string",
+     "description": "Extrae el primer nombre de la persona que habla en la llamada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\" en su mensaje: \"¡Hola! Sí, soy Andrés, su anfitrión.\""
+   },
+   {
+    "data_collection_id": "call_audio",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Proporciona el enlace al archivo de audio en formato MP3 descargable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no proporciona ningún enlace a un archivo de audio MP3 descargable."
+   },
+   {
+    "data_collection_id": "full_transcript",
+    "value": "agent at 1970-01-01T00:00:00+00:00: Hola, soy Víctor, tu coach del piso. ¿Practicamos un roleplay o repasamos un módulo? Puedo ser un cliente solo, una pareja, una familia entera opinando, o hasta el típico difícil del piso — en español o inglés.user at 1970-01-01T00:00:00+00:00: Hola Víctor, ¡perfecto! Practiquemos un roleplay. Me gustaría hacer el pitch VTC a una pareja, ¿te parece bien si tú interpretas a la pareja?agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente! Me parece perfecto. Para que sea lo más real posible, necesito un poco más de información sobre esta pareja. Dime, ¿qué arquetipo DISC quieres que interprete para cada uno? ¿Y de qué nacionalidad te gustaría que fueran? Con eso, armamos la escena.user at 1970-01-01T00:00:00+00:00: Perfecto. Para la pareja, me gustaría que uno fuera un \"D\" (Dominante) y el otro un \"C\" (Concienzudo). Que sean mexicanos, por favor.agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente elección! Un \"D\" y un \"C\" mexicanos, eso nos dará un roleplay muy interesante. Entonces, yo seré la pareja. Para que quede claro, el \"D\" será el esposo, y la \"C\" la esposa. ¿Te parece bien? Cuando estés listo, empezamos desde el Meet & Greet, como si fuera el inicio del tour. Dime cuándo quieras que empiece a actuar como ellos.user at 1970-01-01T00:00:00+00:00: Sí, me parece perfecto. Esposo \"D\" y esposa \"C\". Estoy listo, empecemos con el Meet & Greet.agent at 1970-01-01T00:00:00+00:00: [Excited] ¡Excelente! Me encanta esa energía. —el esposo, con voz firme y directa, mirando su reloj— <Cliente>Buenos días. ¿Usted es nuestro anfitrión? Nos dijeron que esto duraba noventa minutos, y tenemos un compromiso después.</Cliente> —la esposa, con un tono más reservado y observ ador— <Esposa>Sí, queremos asegurarnos de que el tiempo esté bien administrado.</Esposa>user at 1970-01-01T00:00:00+00:00: ¡Hola! Sí, soy Andrés, su anfitrión. No se preocupen, seré muy eficiente con su tiempo, justo como les prometieron. Estoy aquí para mostrarles algo realmente especial que sé que les va a encantar.agent at 1970-01-01T00:00:00+00:00: [Cliente] <Cliente>Esperemos que sí. Pero, ¿los noventa minutos son exact os o es una estimación?</Cliente> —la esposa, con un tono más suave— <Esposa>Sí, nos gustaría saber si podemos confiar en el horario.</Esposa>",
+    "json_schema": {
+     "type": "string",
+     "description": "Guarda la transcripción completa de la llamada en el idioma que se haya realizado.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El valor se extrajo concatenando todos los mensajes de la transcripción, ya que la conversación se llevó a cabo íntegramente en español."
+   },
+   {
+    "data_collection_id": "hours_spoken",
+    "value": 1.5,
+    "json_schema": {
+     "type": "number",
+     "description": "Calcula cuántas horas duró la llamada hablada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación indica que la duración de la llamada es de \"noventa minutos\", lo que equivale a 1.5 horas."
+   },
+   {
+    "data_collection_id": "call_summary",
+    "value": "El usuario solicitó un roleplay para practicar un pitch VTC con una pareja. El agente interpretó a una pareja mexicana, con el esposo como \"D\" (Dominante) y la esposa como \"C\" (Concienzuda). El roleplay comenzó con el \"Meet & Greet\", donde la pareja expresó su preocupación por la duración exacta de 90 minutos.",
+    "json_schema": {
+     "type": "string",
+     "description": "Haz un resumen breve de la llamada en máximo 3 frases en Español de México.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El resumen se basa en la solicitud del usuario de un roleplay, la configuración de los personajes por parte del agente y el inicio de la interacción con la preocupación de la pareja por el tiempo, como se evidencia en el transcript."
+   },
+   {
+    "data_collection_id": "minutes_spoken  ",
+    "value": 90.0,
+    "json_schema": {
+     "type": "number",
+     "description": "Description: Calcula cuántos minutos duró la llamada hablada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El agente menciona que la actividad duraba \"noventa minutos\" y el usuario confirma que será eficiente con el tiempo prometido."
+   },
+   {
+    "data_collection_id": "last_name",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Extrae el apellido de la persona que habla en la llamada.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\", pero no se menciona ningún apellido en la conversación."
+   },
+   {
+    "data_collection_id": "user_name",
+    "value": "Andrés",
+    "json_schema": {
+     "type": "string",
+     "description": "Nombre del asesor/usuario que entreno en esta sesion. Vacio si no se identifico.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario se identifica como \"Andrés\" en su mensaje, indicando que es el anfitrión de la sesión de entrenamiento."
+   },
+   {
+    "data_collection_id": "user_email",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Correo electronico del asesor para enviarle su reporte. Pidelo amablemente al inicio si no lo tienes.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El correo electrónico del asesor no se menciona en la transcripción, por lo que no se puede extraer."
+   },
+   {
+    "data_collection_id": "user_role",
+    "value": "liner",
+    "json_schema": {
+     "type": "string",
+     "description": "Rol del usuario: OPC, liner, closer, gerente, director o prospecto.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario está practicando un 'pitch VTC' y se identifica como 'su anfitrión', lo que corresponde al rol de un 'liner' que realiza la presentación de ventas inicial."
+   },
+   {
+    "data_collection_id": "tipo_actividad",
+    "value": "roleplay",
+    "json_schema": {
+     "type": "string",
+     "description": "Que se hizo: 'roleplay', 'repaso_modulo', 'duda', 'coaching' o 'mixto'.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario solicitó explícitamente \"Practiquemos un roleplay\" al inicio de la conversación, lo que indica la actividad principal."
+   },
+   {
+    "data_collection_id": "escenario_roleplay",
+    "value": "pareja",
+    "json_schema": {
+     "type": "string",
+     "description": "Si hubo roleplay, el escenario: cliente_solo, pareja, familia_con_hijos, hijos_dificiles, adolescente_smartass, o combinacion. Vacio si no hubo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario solicitó específicamente practicar un roleplay con una 'pareja', y el agente confirmó que interpretaría ese rol."
+   },
+   {
+    "data_collection_id": "tipo_cliente",
+    "value": "mezcla",
+    "json_schema": {
+     "type": "string",
+     "description": "Personalidad/dificultad encarnada: driver, analytic, amiable, expressive, mezcla, borracho, nefasto, necio, stroker, sabelotodo, etc.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El agente interpreta a una pareja con dos arquetipos DISC distintos, un \"D\" (Dominante) y un \"C\" (Concienzudo), lo que representa una mezcla de personalidades."
+   },
+   {
+    "data_collection_id": "modulos_practicados",
+    "value": "Meet & Greet",
+    "json_schema": {
+     "type": "string",
+     "description": "Modulos del curso VTC tocados en la sesion, separados por coma (ej: 'M2 OPC, M7 Objeciones').",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El usuario indica que quiere practicar un 'pitch VTC' y el roleplay comienza con 'Meet & Greet', lo que sugiere que este es el módulo inicial abordado."
+   },
+   {
+    "data_collection_id": "objeciones_trabajadas",
+    "value": "La objeción fue sobre la exactitud de los 90 minutos de duración de la reunión. El asesor inicialmente aseguró eficiencia y cumplimiento del tiempo prometido, pero la objeción fue reiterada pidiendo una confirmación más precisa.",
+    "json_schema": {
+     "type": "string",
+     "description": "Objeciones que el asesor enfrento y como las manejo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El cliente objeta la exactitud de los 90 minutos de duración, preguntando si es exacto o una estimación, después de que el asesor ya había prometido ser eficiente con el tiempo."
+   },
+   {
+    "data_collection_id": "desempeno_score",
+    "value": null,
+    "json_schema": {
+     "type": "number",
+     "description": "Calificacion del desempeno del asesor del 1 al 10 segun el manual VTC y neurociencia. Solo si hubo roleplay o practica evaluable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "No se proporciona una calificación del desempeño del asesor del 1 al 10 en la conversación, ya que el roleplay está en curso y no hay una evaluación final."
+   },
+   {
+    "data_collection_id": "fortalezas",
+    "value": "El asesor abordó directamente la preocupación del cliente sobre el tiempo, prometiendo eficiencia y activando el Principio de Reducción de la Incertidumbre.",
+    "json_schema": {
+     "type": "string",
+     "description": "Lo que el asesor hizo bien en la sesion, con el principio neurocientifico que activo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El asesor respondió a la preocupación del cliente sobre el tiempo, lo cual es crucial para generar confianza y reducir la incertidumbre inicial."
+   },
+   {
+    "data_collection_id": "areas_mejora",
+    "value": "El asesor debe mejorar en la escucha activa y en abordar directamente las preocupaciones del cliente. En el momento en que el cliente pregunta si los noventa minutos son exactos o una estimación, el asesor solo ofrece una garantía general de eficiencia en lugar de una respuesta clara, lo que provoca que el cliente reitere su inquietud.",
+    "json_schema": {
+     "type": "string",
+     "description": "Lo que el asesor debe mejorar, con el momento y el principio que fallo.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El asesor no respondió directamente a la pregunta del cliente sobre la exactitud del tiempo, lo que llevó a que el cliente repitiera su preocupación, indicando una falla en la escucha activa y la resolución directa de inquietudes."
+   },
+   {
+    "data_collection_id": "recomendacion_siguiente",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Drill o recomendacion concreta para la proxima sesion de entrenamiento.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación actual es un roleplay en curso y no contiene una recomendación o ejercicio concreto para la próxima sesión de entrenamiento."
+   },
+   {
+    "data_collection_id": "scores_competencias",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Sub-scores 0-10 por competencia, separados por pipe: \"rapport:8|postura:7|objeciones:6|sala:7|cierre:5|pnl:6\". Solo si hubo practica evaluable.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación describe el inicio de un roleplay y no contiene ninguna práctica evaluable ni puntuaciones de competencias."
+   },
+   {
+    "data_collection_id": "momentos_clave",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Linea de tiempo de momentos clave, formato \"mm:ss etiqueta\" separados por pipe. Ej: \"00:30 Rapport | 04:00 Descubrimiento | 08:10 Objecion precio | 11:30 Cierre\".",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "No se pueden identificar múltiples momentos clave en la conversación, ya que solo cubre el inicio del roleplay (Meet & Greet) y no avanza a otras etapas como las sugeridas en el formato de línea de tiempo."
+   },
+   {
+    "data_collection_id": "analisis_pnl",
+    "value": "Análisis PNL: El asesor (Andrés) usó un reencuadre al abordar la preocupación por el tiempo de los clientes (\"No se preocupen, seré muy eficiente con su tiempo\"). También empleó lenguaje sensorial al decir \"mostrarles algo realmente especial que sé que les va a encantar\". Faltó un espejeo más profundo de su lenguaje verbal o ritmo, y el uso de patrones Milton para guiar sutilmente su atención. Un tip concreto de PNL sería: para el cliente \"D\" y \"C\", el asesor podría haber validado su necesidad de precisión con el tiempo y luego redirigir la conversación a los beneficios inmediatos de la visita, usando un lenguaje más directo y orientado a resultados.",
+    "json_schema": {
+     "type": "string",
+     "description": "Analisis PNL: que patrones uso el asesor (espejeo, anclas, patron Milton, reencuadres, lenguaje sensorial), cuales le faltaron, y un tip concreto de PNL.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "El valor se extrae del análisis de las interacciones del usuario (Andrés) con los clientes simulados por el agente, identificando los patrones de PNL utilizados, los ausentes y un consejo específico."
+   },
+   {
+    "data_collection_id": "principios_neuro",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Principios neurocientificos activados con intensidad 0-100, separados por pipe. Ej: \"Neuronas espejo:80|Oxitocina:60|Aversion a la perdida:40|Anclaje:30\".",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no menciona ningún principio neurocientífico ni su intensidad, por lo que no se puede extraer el valor solicitado."
+   },
+   {
+    "data_collection_id": "departamento",
+    "value": null,
+    "json_schema": {
+     "type": "string",
+     "description": "Departamento o puesto del asesor en el equipo VTC: OPC, Linea (Line), Front to Middle, Front to Back, Selfgen, Cierre (Closing), Gerencia o Direccion. Preguntalo al inicio si no lo sabes.",
+     "enum": null,
+     "is_system_provided": false,
+     "dynamic_variable": "",
+     "constant_value": ""
+    },
+    "rationale": "La conversación no especifica el departamento o puesto exacto del asesor en el equipo VTC, solo que es un \"anfitrión\" en un roleplay."
+   }
+  ],
+  "call_successful": "failure",
+  "transcript_summary": "El usuario solicitó un roleplay para practicar un pitch VTC. El agente interpretará a una pareja mexicana, con el esposo siendo un arquetipo \"D\" (Dominante) y la esposa un \"C\" (Concienzuda). El roleplay comenzó con el \"Meet & Greet\", donde la pareja mostró preocupación inmediata por la gestión del tiempo y la duración exacta de la cita.",
+  "call_summary_title": "Roleplay Pitch Pareja",
+  "scoped": [],
+  "sentiment_analysis": null
+ },
+ "guardrails_result": null
+}

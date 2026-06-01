@@ -1,0 +1,458 @@
+{
+ "createdAt": "2026-05-31T03:28:52.303Z",
+ "updatedAt": "2026-05-31T03:31:48.000Z",
+ "id": "qE8qzVlqybRA8yvg",
+ "name": "Victor IA — ElevenLabs Post-Call (audio + transcripción + resumen)",
+ "active": true,
+ "isArchived": false,
+ "nodes": [
+  {
+   "parameters": {
+    "httpMethod": "POST",
+    "path": "elevenlabs-postcall",
+    "responseMode": "responseNode",
+    "options": {}
+   },
+   "id": "4ef6fd90-fe43-42cb-9894-225618f4d4c7",
+   "name": "Llamada terminada (post-call)",
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "position": [
+    -240,
+    -144
+   ],
+   "webhookId": "elevenlabs-postcall"
+  },
+  {
+   "parameters": {
+    "jsCode": "const b = $input.first().json.body || $input.first().json;\nconst id = b.conversation_id || (b.data && b.data.conversation_id) || '';\nreturn [{ json: { conversation_id: id } }];"
+   },
+   "id": "1bfe97a0-b5a6-4ed1-be92-65148565fde3",
+   "name": "Extraer conversation_id",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    -32,
+    -144
+   ]
+  },
+  {
+   "parameters": {
+    "url": "=https://api.elevenlabs.io/v1/convai/conversations/{{ $json.conversation_id }}",
+    "sendHeaders": true,
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "xi-api-key",
+       "value": "sk_87d5a7899d6c489c94232248c4880a0c4fe317adb3701e67"
+      }
+     ]
+    },
+    "options": {}
+   },
+   "id": "03eb5bdb-1761-4472-aff9-5a9b93f912ae",
+   "name": "Traer detalle (ElevenLabs)",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    192,
+    -144
+   ]
+  },
+  {
+   "parameters": {
+    "jsCode": "const d = $input.first().json;\nconst id = d.conversation_id;\nconst a = d.analysis || {};\nconst meta = d.metadata || {};\nconst dur = meta.call_duration_secs || 0;\nconst durStr = Math.floor(dur/60) + ':' + String(dur%60).padStart(2,'0');\nconst title = a.call_summary_title || 'Llamada';\nconst summary = a.transcript_summary || '(sin resumen)';\nconst sentiment = (a.sentiment_analysis && (a.sentiment_analysis.overall_sentiment||a.sentiment_analysis.sentiment)) || '';\nconst dc = a.data_collection_results || {};\nfunction dcv(k){ const o = dc[k]; if(o==null) return ''; return (typeof o==='object' && 'value' in o)? o.value : o; }\nconst name = dcv('name') || dcv('nombre') || 'Usuario';\nconst email = dcv('email') || dcv('correo') || '';\nconst phone = dcv('phone') || dcv('telefono') || '';\nconst agent = d.agent_name || d.agent_id || 'Agente';\nconst esc = s => (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;');\nconst transcriptHtml = (d.transcript||[]).map(t=>{const role=t.role==='agent'?'Agente':'Usuario';const col=t.role==='agent'?'#3B82F6':'#22c55e';return '<div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid '+col+';border-radius:6px\"><b style=\"color:'+col+'\">'+role+':</b> <span style=\"color:#cfd3dc\">'+esc(t.message)+'</span></div>';}).join('');\nconst base = 'https://n8n.srv1013903.hstgr.cloud/webhook';\nconst playerUrl = base + '/call?id=' + id;\nconst sd = $getWorkflowStaticData('global');\nsd.calls = sd.calls || {};\nsd.calls[id] = { id, title, summary, durStr, name, email, phone, agent, sentiment, transcriptHtml, ts: Date.now() };\nconst ks = Object.keys(sd.calls); if(ks.length>60){ ks.sort((x,y)=>sd.calls[x].ts-sd.calls[y].ts).slice(0,ks.length-60).forEach(k=>delete sd.calls[k]); }\nconst subject = '📞 Llamada · ' + agent + ' · ' + name;\nconst resumen = summary.slice(0,200);\nconst tg = '📞 <b>Nueva llamada</b>\\n📋 <b>Resumen:</b> ' + resumen + '\\n\\n<b>Agente:</b> ' + agent + '\\n<b>Usuario:</b> ' + name + (email?('\\n<b>Email:</b> '+email):'') + '\\n<b>Duración:</b> ' + durStr + (sentiment?('\\n<b>Sentimiento:</b> '+sentiment):'') + '\\n\\n▶️ Escuchar + transcripción: ' + playerUrl;\nconst html = '<div style=\"font-family:Inter,Arial,sans-serif;max-width:640px;margin:0 auto;background:#0a0a0f;color:#e8eaf0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.08)\">'\n + '<div style=\"background:linear-gradient(135deg,#3B82F6,#8B5CF6);padding:22px 26px\"><div style=\"font-size:13px;letter-spacing:.18em;opacity:.85\">VICTOR IA · LLAMADA</div><div style=\"font-size:22px;font-weight:800;margin-top:4px\">📞 ' + esc(title) + '</div></div>'\n + '<div style=\"padding:24px 26px\">'\n + '<div style=\"display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px\">'\n + '<span style=\"background:rgba(59,130,246,.15);color:#93c5fd;padding:5px 12px;border-radius:20px;font-size:12px\">👤 ' + esc(name) + '</span>'\n + '<span style=\"background:rgba(255,255,255,.06);padding:5px 12px;border-radius:20px;font-size:12px\">⏱ ' + durStr + '</span>'\n + (sentiment?('<span style=\"background:rgba(34,197,94,.15);color:#86efac;padding:5px 12px;border-radius:20px;font-size:12px\">😊 ' + esc(sentiment) + '</span>'):'')\n + '<span style=\"background:rgba(255,255,255,.06);padding:5px 12px;border-radius:20px;font-size:12px\">🤖 ' + esc(agent) + '</span></div>'\n + '<div style=\"background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:16px;margin-bottom:20px\"><div style=\"font-size:12px;letter-spacing:.1em;color:#93c5fd;margin-bottom:6px\">RESUMEN</div><div style=\"font-size:15px;line-height:1.6\">' + esc(summary) + '</div></div>'\n + '<a href=\"' + playerUrl + '\" style=\"display:block;text-align:center;background:linear-gradient(135deg,#3B82F6,#8B5CF6);color:#fff;text-decoration:none;padding:14px;border-radius:12px;font-weight:700;font-size:15px;margin-bottom:22px\">▶ Escuchar grabación + transcripción completa</a>'\n + '<div style=\"font-size:12px;letter-spacing:.1em;color:#888;margin-bottom:8px\">TRANSCRIPCIÓN</div>' + transcriptHtml\n + '</div>'\n + '<div style=\"padding:16px 26px;border-top:1px solid rgba(255,255,255,.06);font-size:12px;color:#777\">Victor IA · info@victor-ia.com.mx · victor-ia.com.mx</div></div>';\nreturn [{ json: { id, subject, resumen, tg, html, name, email, playerUrl } }];"
+   },
+   "id": "8362490c-4f25-4a40-bccd-1e3f66f455c5",
+   "name": "Procesar llamada",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    400,
+    -144
+   ]
+  },
+  {
+   "parameters": {
+    "fromEmail": "info@victor-ia.com.mx",
+    "toEmail": "info@victor-ia.com.mx",
+    "subject": "={{ $('Procesar llamada').item.json.subject }}",
+    "html": "={{ $('Procesar llamada').item.json.html }}",
+    "options": {
+     "ccEmail": "eldudemateos@gmail.com,chrisoria16@gmail.com,mesainteligentedemo@gmail.com"
+    }
+   },
+   "id": "3a1ec781-96d4-4d78-bbf5-03d646d45838",
+   "name": "Email premium llamada",
+   "type": "n8n-nodes-base.emailSend",
+   "typeVersion": 2.1,
+   "position": [
+    624,
+    -144
+   ],
+   "webhookId": "0b434f5d-d59b-4404-9dbc-bd273c86c521",
+   "credentials": {
+    "smtp": {
+     "id": "mRkP3CyjbxBOGp11",
+     "name": "SMTP account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "chatId": "8937658296",
+    "text": "={{ $('Procesar llamada').item.json.tg }}",
+    "additionalFields": {
+     "parse_mode": "HTML"
+    }
+   },
+   "id": "9ee45347-a8cd-47ab-a26a-54995737517a",
+   "name": "Telegram llamada",
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "position": [
+    832,
+    -144
+   ],
+   "webhookId": "cbcfc665-429b-4f0c-8f35-65abea6a307c",
+   "credentials": {
+    "telegramApi": {
+     "id": "kxscFyX2XKIrqZUL",
+     "name": "Telegram account"
+    }
+   }
+  },
+  {
+   "parameters": {
+    "respondWith": "text",
+    "responseBody": "ok",
+    "options": {}
+   },
+   "id": "23740ed9-f58e-4e5c-be3a-511a47bff51e",
+   "name": "OK",
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1,
+   "position": [
+    1056,
+    -144
+   ]
+  },
+  {
+   "parameters": {
+    "path": "call",
+    "responseMode": "responseNode",
+    "options": {}
+   },
+   "id": "4b637c0d-ebf5-4615-b19d-ca584be04e35",
+   "name": "Player (GET /call)",
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "position": [
+    -240,
+    144
+   ],
+   "webhookId": "call"
+  },
+  {
+   "parameters": {
+    "jsCode": "const id = ($input.first().json.query && $input.first().json.query.id) || '';\nconst sd = $getWorkflowStaticData('global');\nconst c = (sd.calls && sd.calls[id]) || null;\nconst base = 'https://n8n.srv1013903.hstgr.cloud/webhook';\nlet html;\nif(!c){ html = '<html><body style=\"font-family:sans-serif;background:#0a0a0f;color:#fff;text-align:center;padding:60px\"><h2>Llamada no encontrada</h2></body></html>'; }\nelse {\n html = '<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>' + c.title + ' · Victor IA</title></head>'\n + '<body style=\"font-family:Inter,Arial,sans-serif;background:#0a0a0f;color:#e8eaf0;margin:0;padding:24px\">'\n + '<div style=\"max-width:680px;margin:0 auto\">'\n + '<div style=\"background:linear-gradient(135deg,#3B82F6,#8B5CF6);padding:22px 26px;border-radius:16px 16px 0 0\"><div style=\"font-size:12px;letter-spacing:.18em;opacity:.85\">VICTOR IA · GRABACIÓN</div><div style=\"font-size:24px;font-weight:800;margin-top:4px\">📞 ' + c.title + '</div></div>'\n + '<div style=\"background:#12121a;padding:24px 26px;border:1px solid rgba(255,255,255,.08);border-top:none\">'\n + '<div style=\"display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;font-size:13px\"><span style=\"background:rgba(59,130,246,.15);color:#93c5fd;padding:6px 12px;border-radius:20px\">👤 ' + c.name + '</span><span style=\"background:rgba(255,255,255,.06);padding:6px 12px;border-radius:20px\">⏱ ' + c.durStr + '</span>' + (c.sentiment?('<span style=\"background:rgba(34,197,94,.15);color:#86efac;padding:6px 12px;border-radius:20px\">😊 ' + c.sentiment + '</span>'):'') + '<span style=\"background:rgba(255,255,255,.06);padding:6px 12px;border-radius:20px\">🤖 ' + c.agent + '</span></div>'\n + '<audio controls style=\"width:100%;margin-bottom:8px\" src=\"' + base + '/call-audio?id=' + id + '\"></audio>'\n + '<a href=\"' + base + '/call-audio?id=' + id + '\" download=\"llamada-' + id + '.mp3\" style=\"display:inline-block;color:#93c5fd;font-size:13px;text-decoration:none;margin-bottom:20px\">⬇ Descargar audio (MP3)</a>'\n + '<div style=\"background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:16px;margin:18px 0\"><div style=\"font-size:12px;letter-spacing:.1em;color:#93c5fd;margin-bottom:6px\">RESUMEN</div><div style=\"line-height:1.6\">' + c.summary + '</div></div>'\n + '<div style=\"font-size:12px;letter-spacing:.1em;color:#888;margin:18px 0 8px\">TRANSCRIPCIÓN COMPLETA</div>' + c.transcriptHtml\n + '</div><div style=\"text-align:center;padding:16px;font-size:12px;color:#777\">Victor IA · info@victor-ia.com.mx</div></div></body></html>';\n}\nreturn [{ json: { html } }];"
+   },
+   "id": "07f65f53-62e0-4606-a051-e4f5146a60de",
+   "name": "Generar página player",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    -16,
+    144
+   ]
+  },
+  {
+   "parameters": {
+    "respondWith": "text",
+    "responseBody": "={{ $json.html }}",
+    "options": {
+     "responseHeaders": {
+      "entries": [
+       {
+        "name": "Content-Type",
+        "value": "text/html; charset=utf-8"
+       }
+      ]
+     }
+    }
+   },
+   "id": "3d69e85f-5105-44c6-a907-fbf4b0d75491",
+   "name": "Devolver página",
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1,
+   "position": [
+    240,
+    144
+   ]
+  },
+  {
+   "parameters": {
+    "path": "call-audio",
+    "responseMode": "responseNode",
+    "options": {}
+   },
+   "id": "8858388a-fe71-4cc4-abe9-ebc67d0869e4",
+   "name": "Audio proxy (GET /call-audio)",
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "position": [
+    -240,
+    384
+   ],
+   "webhookId": "call-audio"
+  },
+  {
+   "parameters": {
+    "url": "=https://api.elevenlabs.io/v1/convai/conversations/{{ $json.query.id }}/audio",
+    "sendHeaders": true,
+    "headerParameters": {
+     "parameters": [
+      {
+       "name": "xi-api-key",
+       "value": "sk_87d5a7899d6c489c94232248c4880a0c4fe317adb3701e67"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "responseFormat": "file"
+      }
+     }
+    }
+   },
+   "id": "c9da78b2-6979-4153-b4d5-fbe3d7129a69",
+   "name": "Bajar audio (ElevenLabs)",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    -16,
+    384
+   ]
+  },
+  {
+   "parameters": {
+    "respondWith": "binary",
+    "options": {
+     "responseHeaders": {
+      "entries": [
+       {
+        "name": "Content-Type",
+        "value": "audio/mpeg"
+       }
+      ]
+     }
+    }
+   },
+   "id": "2b587ec6-2a20-423a-baea-26336f3e93ea",
+   "name": "Devolver audio",
+   "type": "n8n-nodes-base.respondToWebhook",
+   "typeVersion": 1,
+   "position": [
+    240,
+    384
+   ]
+  }
+ ],
+ "connections": {
+  "Llamada terminada (post-call)": {
+   "main": [
+    [
+     {
+      "node": "Extraer conversation_id",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Extraer conversation_id": {
+   "main": [
+    [
+     {
+      "node": "Traer detalle (ElevenLabs)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Traer detalle (ElevenLabs)": {
+   "main": [
+    [
+     {
+      "node": "Procesar llamada",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Procesar llamada": {
+   "main": [
+    [
+     {
+      "node": "Email premium llamada",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Email premium llamada": {
+   "main": [
+    [
+     {
+      "node": "Telegram llamada",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Telegram llamada": {
+   "main": [
+    [
+     {
+      "node": "OK",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Player (GET /call)": {
+   "main": [
+    [
+     {
+      "node": "Generar página player",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Generar página player": {
+   "main": [
+    [
+     {
+      "node": "Devolver página",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Audio proxy (GET /call-audio)": {
+   "main": [
+    [
+     {
+      "node": "Bajar audio (ElevenLabs)",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Bajar audio (ElevenLabs)": {
+   "main": [
+    [
+     {
+      "node": "Devolver audio",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1"
+ },
+ "staticData": {
+  "global": {
+   "calls": {
+    "conv_3201ksxgc5fgfj3be648h1wkr8tm": {
+     "id": "conv_3201ksxgc5fgfj3be648h1wkr8tm",
+     "title": "Sales Coaching Pitches",
+     "summary": "The conversation between Andrés (employee 12345) and sales coach Victor focused on sales pitch training. They first discussed the \"Residence Pitch\" (module 13), which emphasizes making prospects feel ownership and belonging, with Victor providing examples for a show room in both Spanish and English. Subsequently, they covered the \"First Visit Incentives\" (module 6), highlighting its exclusivity, urgency, and the neuroscientific principle of loss aversion, again with a practical example.",
+     "durStr": "4:14",
+     "name": "Usuario",
+     "email": "",
+     "phone": "",
+     "agent": "VICTOR-IA",
+     "sentiment": "",
+     "transcriptHtml": "<div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">\"Hola, soy Victor, tu entrenador personal en ventas.\"</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">Hola, Víctor, soy Andrés. Mi número de empleado es 12345.</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>Hola, Víctor, soy Andrés. Mi número de empleado es 12345.&lt;/Cliente>\n[Excited] ¡Andrés! [Patient] Qué bueno tenerte por aquí. Veo que eres closer. ¿En qué módulo del pitch te gustaría que trabajemos hoy, o prefieres que hagamos un role-play completo?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">Quiero que me digas el \"residence pitch\".</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>Quiero que me digas el \"residence pitch\".&lt;/Cliente>\n[Patient] El Residence Pitch, [Excited] ¡excelente elección! Es el módulo trece. La frase ancla aquí es: \"No alquilan: son dueños de la experiencia\". Con esto, cambiamos la categoría mental del producto en la mente del prospecto, activando el principio neurocientífico de pertenencia. ¿Te gustaría que profundicemos en cómo aplicarlo o pasamos a otro módulo?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">¿Cómo lo aplicarías en la habitación muestra?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>¿Cómo lo aplicarías en la habitación muestra?&lt;/Cliente>\n[Patient] En la habitación muestra, [Excited] lo aplicarías haciendo que el prospecto se imagine viviendo ahí, no solo visitando. Por ejemplo, podrías decir: \"Imaginen despertar aquí cada mañana, con esta vista, sintiendo que este es su propio espacio, su segundo hogar\". La clave es que sientan que son dueños de la experiencia, no solo inquilinos. ¿Tiene sentido?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">A ver, ponme un ejemplo, ¿tú cómo lo harías?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>A ver, ponme un ejemplo, ¿ú cómo lo harías?&lt;/Cliente>\n[Patient] Claro, [Excited] te doy un ejemplo. Estando en la habitación muestra, yo diría: \"Aquí no están alquilando una noche, están invirtiendo en un estilo de vida. Imaginen que esta es su residencia, su refugio personal. ¿Cómo se sentirían al saber que este nivel de confort y exclusividad les pertenece, no solo por unos días, sino para siempre?\" Así, activamos esa sensación de pertenencia. ¿Qué te parece?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">¿Me puedes poner este mismo ejemplo, pero en inglés?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\"></span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\"></span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">[Patient] Of course, [Excited] I can give you that example in English. I would say: \"Here, you're not just renting a night; you're investing in a lifestyle. Imagine this as your residence, your personal sanctuary. How would you feel knowing this level of comfort and exclusivity belongs to you, not just for a few days, but forever?\" This way, we activate that sense of belonging. How does that sound?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">...</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">Are you...</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">Oye, Vi-- oye, Víctor, dime, ¿cuáles son los incentivos de primera visita? ¿Cuál es el \"pitch\" de los incentivos de primera visita?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>Oye, Vi-- oye, Víctor, dime, ¿cuáles son los incentivos de primera visita? ¿Cuál es el \"pitch\" de los incentivos de primera visita?&lt;/Cliente>\n[Patient] ¡Excelente pregunta, [Excited] Andrés! El módulo de First Visit Incentives, o FVI, es el número seis. Aquí presentamos un paquete de beneficios que solo aplica HOY y en este lugar. La clave es que es real y auditable, no es un truco. Neurocientíficamente, activa la aversión a la pérdida, creando un costo real por decir \"no\". ¿Quieres que te dé un ejemplo de cómo presentarlo?</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #22c55e;border-radius:6px\"><b style=\"color:#22c55e\">Usuario:</b> <span style=\"color:#cfd3dc\">Si.</span></div><div style=\"margin:8px 0;padding:8px 12px;background:rgba(255,255,255,.03);border-left:3px solid #3B82F6;border-radius:6px\"><b style=\"color:#3B82F6\">Agente:</b> <span style=\"color:#cfd3dc\">&lt;Cliente>Si.&lt;/Cliente>\n[Patient] Perfecto. [Excited] Al presentar los FVI, dirías algo como: \"Andrés, lo que te voy a mostrar ahora es un paquete exclusivo que hemos diseñado solo para nuestros visitantes de primera vez, como tú, y solo está disponible hoy, aquí mismo. Si decides no aprovecharlo, el costo real no es decir 'sí' a nuestro programa, sino decir 'no' a estos beneficios únicos que no volverás a ver.\" ¿Ves cómo se crea ese sentido de urgencia y valor?</span></div>",
+     "ts": 1780198338142
+    }
+   }
+  }
+ },
+ "meta": {
+  "templateCredsSetupCompleted": true
+ },
+ "pinData": {},
+ "versionId": "b913f97d-2433-40c3-8d5f-1fded43f448c",
+ "triggerCount": 3,
+ "shared": [
+  {
+   "createdAt": "2026-05-31T03:28:52.309Z",
+   "updatedAt": "2026-05-31T03:28:52.309Z",
+   "role": "workflow:owner",
+   "workflowId": "qE8qzVlqybRA8yvg",
+   "projectId": "ggklKeqTnjTIaPqR",
+   "project": {
+    "createdAt": "2025-09-25T13:09:14.957Z",
+    "updatedAt": "2026-05-28T05:31:44.759Z",
+    "id": "ggklKeqTnjTIaPqR",
+    "name": "Victor  IA <mesainteligentedemo@gmail.com>",
+    "type": "personal",
+    "icon": null,
+    "description": null,
+    "projectRelations": [
+     {
+      "createdAt": "2025-09-25T13:09:14.958Z",
+      "updatedAt": "2025-09-25T13:09:14.958Z",
+      "userId": "56313e8e-5902-4970-bced-5505293e7c0d",
+      "projectId": "ggklKeqTnjTIaPqR",
+      "user": {
+       "createdAt": "2025-09-25T13:09:13.828Z",
+       "updatedAt": "2026-05-30T23:18:38.000Z",
+       "id": "56313e8e-5902-4970-bced-5505293e7c0d",
+       "email": "mesainteligentedemo@gmail.com",
+       "firstName": "Victor ",
+       "lastName": "IA",
+       "personalizationAnswers": {
+        "version": "v4",
+        "personalization_survey_submitted_at": "2025-09-25T18:02:45.792Z",
+        "personalization_survey_n8n_version": "1.112.5",
+        "companyType": "personal",
+        "reportedSource": "other"
+       },
+       "settings": {
+        "userActivated": true,
+        "easyAIWorkflowOnboarded": true,
+        "firstSuccessfulWorkflowId": "A8azc2GdM3BInD6r",
+        "userActivatedAt": 1759608413459,
+        "npsSurvey": {
+         "responded": true,
+         "lastShownAt": 1779867841934
+        }
+       },
+       "disabled": false,
+       "mfaEnabled": false,
+       "lastActiveAt": "2026-05-30",
+       "isPending": false
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "tags": []
+}

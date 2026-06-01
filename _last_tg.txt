@@ -1,0 +1,17 @@
+SUBJECT: 🎯 Reporte VTC · Andrés
+
+----- TELEGRAM -----
+🎯 <b>Nuevo entrenamiento — VTC</b>
+
+👤 <b>Andrés</b> · Emp. 12345
+🌐 Español   ·   ⏱ 4:14   ·   💬 19 intervenciones
+🎭 Sesión
+
+📌 Sesión de repaso.
+
+📝 <b>Resumen</b>
+The conversation between Andrés (employee 12345) and sales coach Victor focused on sales pitch training. They first discussed the "Residence Pitch" (module 13), which emphasizes making prospects feel ownership and belonging, with Victor providing examples for a show room in both Spanish and English. Subsequently, th…
+
+🎧 <a href="https://vtc-capacitacion-deploy.vercel.app/api/audio?conv=conv_3201ksxgc5fgfj3be648h1wkr8tm">Escuchar conversación</a>
+📄 <a href="https://vtc-capacitacion-deploy.vercel.app/api/report?conv=conv_3201ksxgc5fgfj3be648h1wkr8tm">Ver reporte completo</a>
+🔁 <a href="https://vtc-capacitacion-deploy.vercel.app/">Volver a entrenar</a>

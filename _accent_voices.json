@@ -1,0 +1,134 @@
+{
+ "Argentino": {
+  "voice_id": "D09EpJbk4um1HKSpeTSc",
+  "name": "Agustin - Spirited, Forceful and Assured",
+  "accent": "argentine",
+  "lang": "es"
+ },
+ "Colombiano": {
+  "voice_id": "Y4HwpMNrBWN5dFKi5Lw8",
+  "name": "Carlos — Colombian Spanish Narrator",
+  "accent": "colombian",
+  "lang": "es"
+ },
+ "Cubano": {
+  "voice_id": "N9oBfGvJMOhmjRantK3L",
+  "name": "Liuver Duran",
+  "accent": "cuban",
+  "lang": "es"
+ },
+ "AmericanoEN": {
+  "voice_id": "SMwXhvo7aw4gwuVT7K0Q",
+  "name": "Ryan - Confident Sales",
+  "accent": "american",
+  "lang": "en"
+ },
+ "BritanicoEN": {
+  "voice_id": "Yex236tJMytMYoUWKVSJ",
+  "name": "Micky London - Authentic British Narrator",
+  "accent": "british",
+  "lang": "en"
+ },
+ "AustralianoEN": {
+  "voice_id": "on7De0nZUAc9uGezUxS6",
+  "name": "Dave - Expressive Australian English",
+  "accent": "australian",
+  "lang": "en"
+ },
+ "InduEN": {
+  "voice_id": "U4hJrwpyl0nYYkeTGFiX",
+  "name": "Krishna Veerm - Local malay indian english",
+  "accent": "malay",
+  "lang": "en"
+ },
+ "ArabeEN": {
+  "voice_id": "jAAHNNqlbAX9iWjJPEtE",
+  "name": "Sara - Soft, Calm and Gentle",
+  "accent": "jordanian",
+  "lang": "en"
+ },
+ "ItalianoEN": {
+  "voice_id": "yowh82B72eMNrxcxHgBh",
+  "name": "Lorenzo Prada - Refined Italian accent",
+  "accent": "italian",
+  "lang": "en"
+ },
+ "SudafricanoEN": {
+  "voice_id": "ryziVMdpAaocEG81oDcg",
+  "name": "Andre - SA",
+  "accent": "south african",
+  "lang": "en"
+ },
+ "AsiaticoEN": {
+  "voice_id": "O8ykjWKd0RjX6e5EyDuE",
+  "name": "Darryl Lim - Your Malaysian AI Voice",
+  "accent": "malay",
+  "lang": "en"
+ },
+ "Boricua": {
+  "voice_id": "MyekSLmW7kAELhyKA0xD",
+  "name": "Natalia - Expressive and Engaging",
+  "accent": "caribbean",
+  "lang": "es"
+ },
+ "AmericanaF": {
+  "voice_id": "8tsLeAV5vPVuzCCvqbbU",
+  "name": "Eryn - Confident Corporate Training American Female Voice",
+  "accent": "american",
+  "lang": "en"
+ },
+ "BritanicaF": {
+  "voice_id": "QrjqRcZWGRzghe6ZPmh2",
+  "name": "British Female - 25 to 35",
+  "accent": "british",
+  "lang": "en"
+ },
+ "AustralianaF": {
+  "voice_id": "U9VgC8Xinl7nnNsyDd3J",
+  "name": "Rachel - Fun, Casual, Australian Woman, English speaker",
+  "accent": "australian",
+  "lang": "en"
+ },
+ "InduF": {
+  "voice_id": "NyZqLdjqUb8SpOUKIlWT",
+  "name": "Sonal – Premium Indian English Voice",
+  "accent": "indian",
+  "lang": "en"
+ },
+ "ItalianaF": {
+  "voice_id": "ocb5roe7gELIkZqiOElv",
+  "name": "Clara",
+  "accent": "italian",
+  "lang": "en"
+ },
+ "ArgentinaF": {
+  "voice_id": "1ctzUhkgUOhdrYPLo67n",
+  "name": "Isabela - Spanish Meditations & ASMR ",
+  "accent": "argentine",
+  "lang": "es"
+ },
+ "ColombianaF": {
+  "voice_id": "gXNPKp01Qauo3Uoh4uUG",
+  "name": "Marcela - Soft & Intimate",
+  "accent": "colombian",
+  "lang": "es"
+ },
+ "VenezolanaF": {
+  "voice_id": "Mm63ebCOpXkeocKpW3Up",
+  "name": "Eleana",
+  "accent": "venezuelan",
+  "lang": "es"
+ },
+ "CubanaF": {
+  "voice_id": "tGaqHUoNeMUctS0nje4o",
+  "name": "Claudia - Relaxed, Natural and Warm",
+  "accent": "cuban",
+  "lang": "es"
+ },
+ "Venezolano": {
+  "voice_id": "wF7p6L9pwDvZVDoqbRiE",
+  "name": "Paul - Crisp, Rich and Educational",
+  "accent": "venezuelan",
+  "lang": "es"
+ }
+}

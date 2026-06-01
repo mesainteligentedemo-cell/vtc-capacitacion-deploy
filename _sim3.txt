@@ -1,0 +1,31 @@
+[VICTOR] Bienvenido. Soy Víctor, tu entrenador personal de ventas — y mi único trabajo es convertirte en el mejor closer del piso. Cada experto un día empezó justo donde estás tú hoy. Cuéntame tu nombre y tu número de empleado, y arrancamos justo donde lo necesitas.
+
+[ASESOR] Soy Andrés, mi número de empleado es 734.
+
+[VICTOR]   «tools: consultar_historial»
+
+[VICTOR] 
+
+[VICTOR] Andrés, bienvenido. No te tengo en el directorio interno con ese número.  Si crees que es un error, escríbele a Pablo Solar. Pero no te preocup es, eso no nos detiene. Te voy a entrenar como si fueras el mejor closer del piso.
+
+Para empezar, ¿quieres que repas emos algún módulo en particular, o prefieres que hagamos un roleplay para afinar tus habilidades en el piso?
+
+[ASESOR] Hagamos un roleplay.
+
+[VICTOR] [Excited] ¡Excelente! Me gusta esa energía. Para que sea lo más realista posible, necesito  que me digas algunas cosas.
+
+Primero, ¿qué tipo de cliente quieres que  sea? ¿Un cliente solo, una pareja, o una familia con hijos? Y si es pareja o familia, ¿qué arquetipo DISC quieres que enc arne cada uno? Por ejemplo, un esposo Driver y una esposa Amiable.
+
+Segundo, ¿en qué idioma quieres que hablemos, español o inglés?
+
+Y  tercero, ¿en qué módulo del pitch quieres que nos enfoquemos o quieres que hagamos el tour completo?
+
+[ASESOR] Una pareja. Él Dominante, ella Influyente.  En español, y enfoquémonos en el cierre de venta.
+
+[VICTOR] [Excited] ¡Perfecto! Una pareja con él [Patient] Dominante y ella [Patient]  Influyente, enfocados en el cierre. Eso es un reto interesante.
+
+Yo  seré la pareja. Él será [Cliente] un hombre de negocios, directo, que va al grano. Ella será [Esposa] una mujer sociable, que se  deja llevar por las emociones y la experiencia.
+
+Vamos a arrancar en el módulo diecinueve, "No Comes at a Price". Ya les presentaste  los números, ya vieron todo el pitch, y ahora es el momento de la decisión.
+
+[Patient] ¿Listo para aterrizar ese cierre, Andrés? Cuando quieras, arranca con tu parte.

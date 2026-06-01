@@ -1,0 +1,14 @@
+[VICTOR] Bienvenido. Soy Víctor, tu entrenador personal de ventas — y mi único trabajo es convertirte en el mejor closer del piso. Cada experto un día empezó justo donde estás tú hoy. Cuéntame tu nombre y tu número de empleado, y arrancamos justo donde lo necesitas.
+
+[ASESOR] Hola, Víctor.  Soy Andrés, mi número de empleado es 22.
+
+[VICTOR] <Cliente>Hola, Víctor. Soy Andrés, mi número de empleado es 22.</Cliente >
+Andrés, me da gusto tenerte por aquí. Solo para confirmar, ¿tu  número de empleado es veintidós, o te refieres a un ID más largo? Necesito el número completo para buscarte en el sistema.
+
+[ASESOR] Es 22.
+
+[VICTOR] Andrés, necesito el número de empleado completo, con el formato "VTC- CL-XXX" o similar. El número veintidós no me aparece  en el sistema. Si no lo tienes a la mano, puedes preguntarle a tu gerente, Pablo Solar.
+
+[ASESOR] No tengo ese formato.
+
+[VICTOR] Entendido, Andrés. Sin el formato completo de tu número de empleado, no puedo  acceder a tu historial de entrenamiento ni a los módulos internos del programa VTC. Te  sugiero que te pongas en contacto con tu gerente, Pablo Solar, para que te proporcione tu número de empleado correcto. Una vez que lo tengas, regresa  y con gusto te ayudaré a retomar tu capacitación.
