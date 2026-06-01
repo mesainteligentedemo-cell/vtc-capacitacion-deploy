@@ -23,6 +23,16 @@
 - ✅ **Mujer británica:** Isabella (conversational British accent)
 - ✅ Solo cuando pidas específicamente un roleplay británico
 
+### ⚠️ RESTRICCIÓN CRÍTICA DE PARTICIPANTES
+- ✅ Victor + 1 client (persona sola)
+- ✅ Victor + 2 clients (pareja: hombre + mujer)
+- ❌ **NUNCA más de 2 clientes (NO familia)**
+- ❌ **NUNCA 3+ personas + Victor (máximo 3 voces totales)**
+- ❌ Familia completa = FORBIDDEN
+- ❌ Padre + Madre + Hijo + Victor = FORBIDDEN
+
+**Máximo permitido:** 3 voces simultáneas (Victor + pareja o Victor + persona sola)
+
 ### Regla #4: Nunca repetir (NUNCA)
 - Victor NUNCA repite lo que el usuario dice
 - NUNCA en ningún contexto
@@ -128,11 +138,15 @@ Victor **detecta automáticamente el idioma** que uses:
 
 ## TIPS PARA MEJORES ROLEPLAYS
 
-1. **Sé específico:** Dice si es pareja, familia, ejecutivo, etc.
-2. **Mezcla nacionalidades:** "Ejecutivo americano con esposa mexicana" suena natural
+1. **Sé específico:** Di si prefieres single (persona sola) o pareja
+2. **Mezcla nacionalidades:** "Pareja: ejecutivo americano con esposa mexicana" suena natural
 3. **Pide escenarios:** "Roleplay en una oficina" / "En una cena de negocios"
-4. **Familias completas:** Padre, madre, hijos — cada uno con su rol
-5. **Objeciones realistas:** "Soy un prospecto escéptico" para practicar cerres
+4. **Objeciones realistas:** "Soy un prospecto escéptico" para practicar cerres
+
+⚠️ **RESTRICCIÓN CRÍTICA:**
+- ✅ Allowed: Singles (1 person + Victor)
+- ✅ Allowed: Couples (pareja: 2 people + Victor)
+- ❌ **FORBIDDEN: Family (3+ people + Victor)**
 
 ---
 
