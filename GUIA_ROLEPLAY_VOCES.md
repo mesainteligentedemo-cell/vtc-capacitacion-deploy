@@ -1,22 +1,27 @@
-# 🎙️ GUÍA — ROLEPLAY CON VOCES (SOLO MX + USA)
+# 🎙️ GUÍA — ROLEPLAY CON VOCES MULTIPAÍS
 
 ## ⚠️ REGLAS CRÍTICAS DE VOCES EN ROLEPLAY
 
-### Regla #1: Victor como EMPLEADO/GERENTE/VENDEDOR
-- ✅ Victor usa Enrique M. Nieto (ES e INGLÉS — MISMA voz)
-- ✅ NUNCA cambia esta voz
+### Victor (Empleado/Gerente/Coach)
+- ✅ **Español:** Enrique M. Nieto
+- ✅ **Inglés:** Enrique M. Nieto (MISMA voz en ambos idiomas)
+- ✅ NUNCA cambia de voz cuando es empleado
 - ✅ SOLO esta voz para Victor como empleado
 
-### Regla #2: Victor como CLIENTE/PROSPECTO
-- ❌ **NUNCA puede usar Enrique M. Nieto**
-- ✅ Debe usar una voz TOTALMENTE DIFERENTE
-  - Ejemplo: Victor cliente mexicano = Miguel (NO Enrique)
-  - Ejemplo: Victor cliente americano = Will (NO Enrique)
+### Clientes en Español
+- ✅ **Hombre cliente:** Miguel (mexicano)
+- ✅ **Mujer cliente:** Yuana (mexicana)
+- ❌ NUNCA Victor cuando actúa como cliente en español
 
-### Regla #3: Todos los demás personajes
-- ❌ Cada voz se usa UNA SOLA VEZ
-- ✅ Máximo 12 personajes diferentes (6 mexicanos + 6 estadounidenses)
-- ✅ Cada personaje = voz ÚNICA e irrepetible
+### Clientes en Inglés
+- ✅ **Hombre cliente:** Burt Reynolds
+- ✅ **Mujer cliente (esposa):** Hope (USA conversational)
+- ❌ NUNCA Victor cuando actúa como cliente en inglés
+
+### Clientes Británicos (Roleplay Especial)
+- ✅ **Hombre británico:** Brian (conversational British accent)
+- ✅ **Mujer británica:** Isabella (conversational British accent)
+- ✅ Solo cuando pidas específicamente un roleplay británico
 
 ### Regla #4: Nunca repetir (NUNCA)
 - Victor NUNCA repite lo que el usuario dice
@@ -30,40 +35,34 @@ Simplemente di algo como:
 
 ### Ejemplos de peticiones:
 
-**1. Familia mexicana completa:**
-- "Víctor, hazme un roleplay. Soy una familia mexicana con esposa e hijo. El padre es ejecutivo, la madre es ama de casa, el hijo tiene 12 años."
+**1. Pareja mexicana:**
+- "Víctor, hazme un roleplay. Soy una pareja mexicana que quiere entender el programa."
 
 **2. Pareja americana:**
-- "Quiero practicar con una pareja americana. Ella es doctora, él es ingeniero. Ambos viajen 4 veces al año."
+- "Quiero practicar con una pareja americana. Él es ejecutivo, ella es su esposa."
 
 **3. Prospecto mexicano + gerente:**
-- "Hazme el pitch. Soy un prospecto mexicano rico, y tú eres gerente."
+- "Hazme el pitch. Soy un prospecto mexicano y tú eres el gerente."
 
-**4. Familia mixta (mexicana + americana):**
-- "Roleplay: soy un americano casado con una mexicana. Tenemos 2 hijas adolescentes. Queremos entender el programa."
+**4. Pareja británica:**
+- "Roleplay: Soy una pareja británica que quiere invertir."
 
-**5. Agente de viajes y pareja americana:**
-- "Soy tú (agente), ellos son una pareja americana que quiere inversión para vacaciones."
+**5. Gerente mexicano con cliente americano:**
+- "Tú eres el gerente mexicano, yo soy un cliente americano con mi esposa."
 
 ---
 
-## ¿QUÉ VOCES TENGO DISPONIBLES?
+## TABLA DE VOCES
 
-### 🇲🇽 MÉXICO (6 voces)
-- **Hombre Joven:** Tom - Kind, Sincere and Calm
-- **Hombre Adulto:** Miguel - Clear, Calm and Measured
-- **Hombre Maduro:** Julián A-Calm - Warm and Conversational
-- **Mujer Joven:** Susana Elizabeth
-- **Mujer Adulta:** Yuana - Brisk, Crisp and Authoritative
-- **Mujer Madura:** Emily - Soft, Welcoming and Upbeat
-
-### 🇺🇸 INGLÉS ESTADOUNIDENSE (6 voces)
-- **Hombre Joven:** Will - Relaxed Optimist
-- **Hombre Adulto:** Chris - Charming, Down-to-Earth
-- **Hombre Profesional:** Eric - Smooth, Trustworthy
-- **Mujer Joven:** Jessica - Playful, Bright, Warm
-- **Mujer Adulta:** Hope - Your conversational bestie
-- **Mujer Profesional:** Sarah - Mature, Reassuring, Confident
+| Contexto | Rol | Voz | Idioma |
+|----------|-----|-----|--------|
+| Empleado/Gerente/Coach | Victor | Enrique M. Nieto | Español / Inglés |
+| Cliente | Hombre (mexicano) | Miguel | Español |
+| Cliente | Mujer (mexicana) | Yuana | Español |
+| Cliente | Hombre (USA) | Burt Reynolds | Inglés |
+| Cliente | Mujer/Esposa (USA) | Hope | Inglés |
+| Cliente | Hombre (británico) | Brian | Inglés |
+| Cliente | Mujer (británica) | Isabella | Inglés |
 
 ---
 
@@ -76,48 +75,64 @@ Victor **detecta automáticamente el idioma** que uses:
 - **Pides cambio de idioma** → Victor cambia inmediatamente a ese idioma con Enrique
 
 **VOCES DE VICTOR:**
-- **Español E Inglés:** Enrique M. Nieto (su ÚNICA voz)
-- **Clientes en español:** Voces mexicanas diferentes (Tom, Miguel, Julián, Susana, Yuana, Emily)
-- **Clientes en inglés:** Voces estadounidenses diferentes (Will, Chris, Eric, Jessica, Hope, Sarah)
+- **Español E Inglés:** Enrique M. Nieto (su ÚNICA voz como empleado)
+- **Clientes en español:** Miguel (hombre), Yuana (mujer)
+- **Clientes en inglés:** Burt Reynolds (hombre), Hope (mujer/esposa)
+- **Clientes británicos:** Brian (hombre), Isabella (mujer)
 
-**EJEMPLOS:**
+---
 
-| Usuario | Idioma | Voz de Victor |
-|---------|--------|---------------|
-| "Hola, quiero el curso" | Español | Enrique M. Nieto |
-| "Hi, I want the course" | Inglés | Enrique M. Nieto |
-| "Can you speak Spanish?" | Inglés → Español | Enrique M. Nieto |
-| "Ahora en inglés" | Español → Inglés | Enrique M. Nieto |
-| Cliente mexicano: "Soy Miguel" | Español | Miguel (voz diferente) |
-| Cliente americano: "I'm James" | Inglés | Will/Chris (voz diferente) |
+## EJEMPLOS DE ROLEPLAY
+
+### Ejemplo 1: Pareja Mexicana
+
+**Usuario dice:**
+> "Víctor, roleplay. Soy una pareja mexicana que quiere entender el programa."
+
+**Víctor responde:**
+> (Como Victor gerente) "Perfecto, bienvenidos."
+> 
+> (Hombre Miguel) "Hola, somos de México. Queremos saber cómo funciona el programa."
+>
+> (Mujer Yuana) "Sí, viajamos cuatro veces al año. ¿Cuál es el retorno real?"
+
+---
+
+### Ejemplo 2: Pareja Americana
+
+**Usuario dice:**
+> "Roleplay. Soy una pareja americana. Yo soy ejecutivo, ella es mi esposa."
+
+**Víctor responde:**
+> (Como Victor gerente) "Excelente, adelante."
+> 
+> (Hombre Burt Reynolds) "Hi, I'm interested in the program. I travel frequently."
+>
+> (Mujer Hope) "Yes, we want to know how safe our investment is."
+
+---
+
+### Ejemplo 3: Pareja Británica
+
+**Usuario dice:**
+> "Roleplay con una pareja británica por favor."
+
+**Víctor responde:**
+> (Como Victor gerente) "Perfect, let me show you."
+> 
+> (Hombre Brian) "Right, we're interested in the investment side of things."
+>
+> (Mujer Isabella) "Yes, and we'd like to understand the property portfolio."
 
 ---
 
 ## TIPS PARA MEJORES ROLEPLAYS
 
-1. **Sé específico:** Di edad, profesión, contexto de viajes
-2. **Mezcla nacionalidades:** "Americano + Mexicana" suena natural
+1. **Sé específico:** Dice si es pareja, familia, ejecutivo, etc.
+2. **Mezcla nacionalidades:** "Ejecutivo americano con esposa mexicana" suena natural
 3. **Pide escenarios:** "Roleplay en una oficina" / "En una cena de negocios"
-4. **Familias completas:** Padre, madre, hijos adolescentes — cada uno con voz diferente
+4. **Familias completas:** Padre, madre, hijos — cada uno con su rol
 5. **Objeciones realistas:** "Soy un prospecto escéptico" para practicar cerres
-
----
-
-## EJEMPLO COMPLETO
-
-**Usuario dice:**
-> "Víctor, hazme un roleplay. Soy una familia: padre mexicano ejecutivo, madre mexicana doctora, hijo adolescente mexicano. Queremos entender el programa completo antes de invertir."
-
-**Víctor responde:**
-> (Como Victor coach) "Perfecto, aquí está la familia García:"
-> 
-> (Padre Miguel) "Hola, somos la familia García. Mi esposa es doctora y yo soy ejecutivo. Queremos escuchar cómo funciona exactamente el programa."
->
-> (Madre Yuana) "Sí, nosotros viajamos cuatro veces al año. ¿Cuál es exactamente el retorno real? Porque no queremos confundir inversión con vacaciones..."
->
-> (Hijo Tom) "¿Puedo usar las propiedades con mis amigos o solo con familia?"
-
-**Nota:** Esto es una CONVERSACIÓN, no monólogos. Los personajes hablan entre ellos, se responden, hacen preguntas seguidas — suena como una familia platicando, no como líneas de teatro.
 
 ---
 
@@ -139,13 +154,8 @@ Si quieres que Victor **te demuestre cómo se vende**, di algo como:
 4. ✅ Explica el "por qué" de cada rebate (EDUCATIVO)
 5. ✅ Cierra la venta (o lo intenta profesionalmente)
 
-**Voces en este ejemplo:**
-- Victor (Gerente/Vendedor) = Enrique M. Nieto ← SU voz como EMPLEADO (NUNCA cambia)
-- Prospecto (Cliente) = Miguel (mexicano) ← voz TOTALMENTE DIFERENTE (NO Enrique M. Nieto)
-
 **Reglas críticas:**
-- ✅ Victor (empleado) = Enrique M. Nieto (ÚNICO para empleado)
-- ❌ Victor NUNCA usa su voz Enrique cuando actúa como cliente
+- ✅ Victor (empleado) = Enrique M. Nieto
 - ✅ Victor habla BIEN, profesional, fluido
 - ✅ Victor NUNCA comenta sobre cómo habla
 - ✅ Solo HABLA bien, sin comentarios sobre su propia voz

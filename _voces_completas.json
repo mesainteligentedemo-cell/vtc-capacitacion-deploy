@@ -6,7 +6,7 @@
       "accent": "mexican",
       "lang": "es",
       "descriptive": "gentle, calm, professional",
-      "uso": "Victor en español (cualquier contexto)"
+      "uso": "Victor en español (empleado/gerente/coach)"
     },
     "voz_ingles": {
       "name": "Enrique M. Nieto",
@@ -14,94 +14,60 @@
       "accent": "mexican",
       "lang": "en",
       "descriptive": "gentle, calm, professional",
-      "uso": "Victor en inglés (cualquier contexto - MISMA voz)"
+      "uso": "Victor en inglés (empleado/gerente/coach — MISMA voz)"
     }
   },
 
-  "CLIENTES_MEXICANAS": {
-    "hombre_joven": {
-      "name": "Tom - Kind, Sincere and Calm",
-      "voice_id": "p1Q3ihQuPjyyENa1RGtl",
-      "descriptive": "confident, conversational",
-      "age": "young"
-    },
-    "hombre_adulto": {
+  "CLIENTE_ESPANOL": {
+    "hombre": {
       "name": "Miguel - Clear, Calm and Measured",
       "voice_id": "JX8y9ihlYvbtVC4XWmCY",
       "descriptive": "casual, conversational",
-      "age": "middle_aged"
+      "nationality": "mexican"
     },
-    "hombre_maduro": {
-      "name": "Julián A-Calm - Warm and Conversational",
-      "voice_id": "JgmJ33RuT4tPQOENamHR",
-      "descriptive": "casual, conversational",
-      "age": "middle_aged"
-    },
-    "mujer_joven": {
-      "name": "Susana Elizabeth",
-      "voice_id": "cAvMBIZ0VNTU8XdsUpEq",
-      "descriptive": "casual, conversational",
-      "age": "young"
-    },
-    "mujer_adulta": {
+    "mujer": {
       "name": "Yuana - Brisk, Crisp and Authoritative",
       "voice_id": "2KE5YlulAC1GU4TEBlQF",
       "descriptive": "casual, conversational",
-      "age": "middle_aged"
-    },
-    "mujer_madura": {
-      "name": "Emily - Soft, Welcoming and Upbeat",
-      "voice_id": "SLiC4fN7sbVbYUgtVxNM",
-      "descriptive": "calm, conversational",
-      "age": "middle_aged"
+      "nationality": "mexican"
     }
   },
 
-  "CLIENTES_ESTADOUNIDENSES_INGLES": {
-    "hombre_joven": {
-      "name": "Will - Relaxed Optimist",
-      "voice_id": "bIHbv24MWmeRgasZH58o",
-      "descriptive": "chill, conversational",
-      "age": "young"
+  "CLIENTE_INGLES": {
+    "hombre": {
+      "name": "Burt Reynolds",
+      "voice_id": "JBFqnCBsd6RB2NXwIHly",
+      "descriptive": "deep, authoritative, conversational",
+      "nationality": "american"
     },
-    "hombre_adulto": {
-      "name": "Chris - Charming, Down-to-Earth",
-      "voice_id": "iP95p4xoKVk53GoZ742B",
-      "descriptive": "casual, conversational",
-      "age": "middle_aged"
-    },
-    "hombre_profesional": {
-      "name": "Eric - Smooth, Trustworthy",
-      "voice_id": "cjVigY5qzO86Huf0OWal",
-      "descriptive": "classy, conversational",
-      "age": "middle_aged"
-    },
-    "mujer_joven": {
-      "name": "Jessica - Playful, Bright, Warm",
-      "voice_id": "cgSgspJ2msm6clMCkdW9",
-      "descriptive": "cute, conversational",
-      "age": "young"
-    },
-    "mujer_adulta": {
+    "mujer": {
       "name": "Hope - Your conversational bestie",
       "voice_id": "uYXf8XasLslADfZ2MB4u",
-      "descriptive": "casual, conversational",
-      "age": "young"
+      "descriptive": "casual, conversational, warm",
+      "nationality": "american"
+    }
+  },
+
+  "VOCES_BRITANICAS": {
+    "hombre": {
+      "name": "Brian - British English, warm and articulate",
+      "voice_id": "V3Tz9Hm2pQ7nKx5rJ8wL",
+      "descriptive": "conversational, natural British accent",
+      "nationality": "british"
     },
-    "mujer_profesional": {
-      "name": "Sarah - Mature, Reassuring, Confident",
-      "voice_id": "EXAVITQu4vr4xnSDxMaL",
-      "descriptive": "professional, natural",
-      "age": "young"
+    "mujer": {
+      "name": "Isabella - British English, sophisticated and engaging",
+      "voice_id": "C2pM4nR6jK9sT1xW5vB",
+      "descriptive": "conversational, natural British accent",
+      "nationality": "british"
     }
   },
 
   "REGLAS_CRITICAS": {
-    "1_victor": "Victor SIEMPRE usa Enrique M. Nieto (ES e INGLÉS - MISMA voz)",
-    "2_clientes_español": "Clientes en español = voces mexicanas diferentes (6 voces: Tom, Miguel, Julián, Susana, Yuana, Emily)",
-    "3_clientes_ingles": "Clientes en inglés = voces estadounidenses diferentes (6 voces: Will, Chris, Eric, Jessica, Hope, Sarah)",
-    "4_no_repetir": "Cada voz se usa UNA SOLA VEZ por cliente/personaje",
-    "5_acentos": "SOLO mexicanas (ES) + estadounidenses (EN). SIN argentinos, colombianos, cubanos, venezolanos, británicos, australianos, canadienses",
-    "6_naturalidad": "Conversación fluida, rápida, sin meta-comentarios, como si fuera real"
+    "1_victor": "Victor SIEMPRE usa Enrique M. Nieto (ES e INGLÉS — MISMA voz) cuando es empleado/gerente/coach",
+    "2_cliente_espanol": "Clientes en español = voces mexicanas diferentes (Miguel = hombre, Yuana = mujer)",
+    "3_cliente_ingles": "Clientes en inglés = Burt Reynolds (hombre) + Hope (mujer/esposa)",
+    "4_britanicos": "Voces británicas para roleplay especial (Brian = hombre, Isabella = mujer)",
+    "5_naturalidad": "Conversación fluida, rápida, sin meta-comentarios, como si fuera real"
   }
 }
