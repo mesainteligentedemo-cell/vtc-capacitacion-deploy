@@ -1,0 +1,195 @@
+{
+  "modulo": "f",
+  "titulo": "Fundamentos del Negocio VTC",
+  "audioUrl": "https://s3.amazonaws.com/vtc-audios/modulo-f.mp3",
+  "duration": 487.5,
+  "generatedAt": "2026-05-31T12:00:00Z",
+  "bloques": [
+    {
+      "id": "block-0",
+      "titulo": "Por qué este módulo existe",
+      "contenido": "La mayoría de representantes nuevos fracasan porque no entienden qué venden realmente. Venden puntos, habitaciones, fechas. Pero eso está mal. El cliente no compra puntos. El cliente compra una idea: vacaciones garantizadas, sin preocupaciones, con tranquilidad mental. Esa es la diferencia entre un vendedor promedio y un vendedor VTC.",
+      "duracion": 18.5,
+      "acciones": [
+        {
+          "timecode": 0.5,
+          "tipo": "scroll",
+          "target": "#block-0",
+          "behavior": "smooth",
+          "duration": 800,
+          "description": "Scroll a bloque 0"
+        },
+        {
+          "timecode": 1.0,
+          "tipo": "speak-start",
+          "duracion": 18.5,
+          "description": "Victor explica: Por qué este módulo existe"
+        },
+        {
+          "timecode": 19.5,
+          "tipo": "highlight",
+          "text": "Por qué este módulo existe",
+          "color": "gold",
+          "duration": 3000,
+          "description": "Resaltar: Por qué este módulo existe"
+        },
+        {
+          "timecode": 22.5,
+          "tipo": "pause",
+          "duration": 2000,
+          "description": "Pausa para procesar"
+        },
+        {
+          "timecode": 24.5,
+          "tipo": "transition",
+          "text": "Ahora vamos al siguiente punto",
+          "description": "Transición al siguiente bloque"
+        }
+      ]
+    },
+    {
+      "id": "block-1",
+      "titulo": "Los tres pilares del éxito en VTC",
+      "contenido": "Primero: entender psicología del cliente. Segundo: dominar las técnicas de qualifying. Tercero: cerrar con confianza. Si dominas estos tres, cierras el 80 por ciento de tus prospectos.",
+      "duracion": 14.2,
+      "acciones": [
+        {
+          "timecode": 26.0,
+          "tipo": "scroll",
+          "target": "#block-1",
+          "behavior": "smooth",
+          "duration": 800,
+          "description": "Scroll a bloque 1"
+        },
+        {
+          "timecode": 26.5,
+          "tipo": "speak-start",
+          "duracion": 14.2,
+          "description": "Victor explica: Los tres pilares del éxito en VTC"
+        },
+        {
+          "timecode": 40.7,
+          "tipo": "highlight",
+          "text": "Los tres pilares del éxito en VTC",
+          "color": "gold",
+          "duration": 3000,
+          "description": "Resaltar: Los tres pilares del éxito en VTC"
+        },
+        {
+          "timecode": 43.7,
+          "tipo": "pause",
+          "duration": 2000,
+          "description": "Pausa para procesar"
+        },
+        {
+          "timecode": 45.7,
+          "tipo": "transition",
+          "text": "Ahora vamos al siguiente punto",
+          "description": "Transición al siguiente bloque"
+        }
+      ]
+    },
+    {
+      "id": "block-2",
+      "titulo": "Por qué VTC es diferente",
+      "contenido": "VTC no es un timeshare común. Es un sistema de vacaciones con beneficios reales. El cliente obtiene vacaciones de calidad, plusvalía, y seguridad. Eso es lo que vendemos.",
+      "duracion": 12.8,
+      "acciones": [
+        {
+          "timecode": 47.5,
+          "tipo": "scroll",
+          "target": "#block-2",
+          "behavior": "smooth",
+          "duration": 800,
+          "description": "Scroll a bloque 2"
+        },
+        {
+          "timecode": 48.0,
+          "tipo": "speak-start",
+          "duracion": 12.8,
+          "description": "Victor explica: Por qué VTC es diferente"
+        },
+        {
+          "timecode": 60.8,
+          "tipo": "highlight",
+          "text": "Por qué VTC es diferente",
+          "color": "gold",
+          "duration": 3000,
+          "description": "Resaltar: Por qué VTC es diferente"
+        },
+        {
+          "timecode": 63.8,
+          "tipo": "pause",
+          "duration": 2000,
+          "description": "Pausa para procesar"
+        },
+        {
+          "timecode": 65.8,
+          "tipo": "transition",
+          "text": "Ahora vamos al siguiente punto",
+          "description": "Transición al siguiente bloque"
+        }
+      ]
+    }
+  ],
+  "recap": {
+    "timecode": 400.0,
+    "duracion": 30.0,
+    "acciones": [
+      {
+        "timecode": 399.5,
+        "tipo": "scroll",
+        "target": "#recap-section",
+        "duration": 800
+      },
+      {
+        "timecode": 400.0,
+        "tipo": "speak-start",
+        "duracion": 30.0,
+        "description": "Victor da recap del módulo"
+      }
+    ]
+  },
+  "quiz": {
+    "timecode": 432.0,
+    "acciones": [
+      {
+        "timecode": 431.5,
+        "tipo": "scroll",
+        "target": "#quiz-section",
+        "duration": 800
+      },
+      {
+        "timecode": 432.0,
+        "tipo": "show-quiz",
+        "description": "Mostrar quiz"
+      }
+    ],
+    "preguntas": [
+      {
+        "id": "q1",
+        "texto": "¿Qué vende realmente un representante VTC?",
+        "opciones": [
+          "Timeshare",
+          "Tranquilidad mental",
+          "Puntos",
+          "Habitaciones"
+        ],
+        "respuesta_correcta": 1,
+        "explicacion": "El cliente compra la idea de vacaciones garantizadas con tranquilidad mental."
+      },
+      {
+        "id": "q2",
+        "texto": "¿Cuáles son los tres pilares del éxito?",
+        "opciones": [
+          "Precio, producto, promoción",
+          "Psicología, qualifying, cierre",
+          "Presentación, presión, persuasión",
+          "Publicidad, posicionamiento, posibilidad"
+        ],
+        "respuesta_correcta": 1,
+        "explicacion": "Psicología del cliente, dominio de técnicas de qualifying, y cierre con confianza."
+      }
+    ]
+  }
+}

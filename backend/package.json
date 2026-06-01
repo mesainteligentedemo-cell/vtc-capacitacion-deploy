@@ -1,0 +1,23 @@
+{
+  "name": "vtc-capacitacion-backend",
+  "version": "1.0.0",
+  "description": "Backend para plataforma VTC Capacitación",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "generate-timelines": "python generators/gen-timeline.py"
+  },
+  "keywords": ["vtc", "capacitacion", "timeshare"],
+  "author": "Pablo Solar",
+  "license": "PROPRIETARY",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "mongoose": "^7.0.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
