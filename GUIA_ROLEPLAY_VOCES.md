@@ -99,20 +99,27 @@ Simplemente di algo como:
 
 ## VÍCTOR BILINGÜE — DETECCIÓN AUTOMÁTICA
 
-Victor **detecta automáticamente el idioma** que uses y cambia su voz:
+Victor **detecta automáticamente el idioma** que uses:
 
-- **Hablas español** → Victor responde en español con **Enrique M. Nieto** (mexicano, cálido, profesional)
-- **Hablas inglés** → Victor responde en inglés con **Burt Reynolds** (legendario, profundo)
-- **Pides cambio de idioma** → Victor cambia inmediatamente a ese idioma con la voz correcta
+- **Hablas español** → Victor responde en español con **Enrique M. Nieto**
+- **Hablas inglés** → Victor responde en inglés con **Enrique M. Nieto** (MISMA voz)
+- **Pides cambio de idioma** → Victor cambia inmediatamente a ese idioma con Enrique
+
+**VOCES DE VICTOR:**
+- **Español E Inglés:** Enrique M. Nieto (su ÚNICA voz)
+- **Clientes en español:** Voces diferentes (Miguel, Yuana, Santiago, etc.)
+- **Clientes en inglés:** Voces diferentes (Will, Chris, Eric, Jessica, etc.)
 
 **EJEMPLOS:**
 
 | Usuario | Idioma | Voz de Victor |
 |---------|--------|---------------|
 | "Hola, quiero el curso" | Español | Enrique M. Nieto |
-| "Hi, I want the course" | Inglés | Burt Reynolds |
-| "Can you speak Spanish?" | Inglés → Español | Cambia a Enrique M. Nieto |
-| "Ahora en inglés" | Español → Inglés | Cambia a Burt Reynolds |
+| "Hi, I want the course" | Inglés | Enrique M. Nieto |
+| "Can you speak Spanish?" | Inglés → Español | Enrique M. Nieto |
+| "Ahora en inglés" | Español → Inglés | Enrique M. Nieto |
+| Cliente mexicano: "Soy Miguel" | Español | Miguel (voz diferente) |
+| Cliente americano: "I'm James" | Inglés | James/Will (voz diferente) |
 
 ---
 
