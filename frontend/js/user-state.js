@@ -1,4 +1,4 @@
-const API_BASE = 'https://backend-victor-ia.vercel.app';
+window.API_BASE = 'https://backend-victor-ia.vercel.app';
 
 class UserState {
   constructor() {
@@ -8,7 +8,7 @@ class UserState {
 
   async crearUsuario(nombre, email, rol = 'opc') {
     try {
-      const response = await fetch(`${API_BASE}/api/usuarios/create`, {
+      const response = await fetch(`${window.API_BASE}/api/usuarios/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ nombre, email, rol })
