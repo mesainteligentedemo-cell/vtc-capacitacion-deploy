@@ -1,12 +1,15 @@
 # 🎙️ GUÍA — ROLEPLAY CON VOCES MULTIPAÍS
 
-## ⚠️ REGLA CRÍTICA: NO PUEDEN REPETIRSE VOCES
+## ⚠️ REGLA CRÍTICA: NO PUEDEN REPETIRSE VOCES (EXCEPTO VÍCTOR)
 
-**Cada voz se usa UNA SOLA VEZ.** Si el padre mexicano es Miguel, ningún otro personaje puede ser Miguel. Cada personaje tiene su propia voz única.
+**Cada voz se usa UNA SOLA VEZ — EXCEPTO la voz de Victor.**
 
-- Máximo **30 personajes diferentes** en un roleplay
-- Cada uno con voz irrepetible
-- Victor siempre es Enrique M. Nieto (ES) o Burt Reynolds (EN)
+- ✅ **Victor = Enrique M. Nieto (ES) o Burt Reynolds (EN)** — Victor SIEMPRE usa su propia voz, sin importar cuántas veces hable
+- ❌ **Todos los demás personajes = voces DIFERENTES e irrepetibles**
+  - Si el padre mexicano es Miguel, ningún otro personaje puede ser Miguel
+  - Si la madre es Yuana, solo ella usa esa voz
+  - Máximo **30 personajes diferentes** (además de Victor)
+- ✅ Cuando Victor actúa en un roleplay (como gerente, vendedor, coach), SIEMPRE usa su voz propia
 
 ---
 
@@ -163,7 +166,11 @@ Si quieres que Victor **te demuestre cómo se vende**, di algo como:
 >
 > **Prospecto:** "Bueno... está bien. ¿Cuándo empiezo?"
 
-**Lo importante:** Victor no abandona, no se rinde, rebate CADA objeción con profesionalismo. Es una DEMOSTRACIÓN de cómo se cierra una venta real.
+**Voces en este ejemplo:**
+- Victor (Gerente) = Enrique M. Nieto ← SU voz (la usa siempre)
+- Prospecto = Miguel (mexicano) ← voz DIFERENTE (única del prospecto)
+
+**Lo importante:** Victor no abandona, no se rinde, rebate CADA objeción con profesionalismo. Es una DEMOSTRACIÓN de cómo se cierra una venta real. Victor SIEMPRE usa su voz propia Enrique M. Nieto.
 
 ---
 
