@@ -1797,30 +1797,46 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
-        runAfterVictorStops(function(){
-          console.log('[VICTOR-CONTROL] Scrolling to video and preparing to play');
-          r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll);
-          setTimeout(function(){
-            console.log('[VICTOR-CONTROL] PLAYING VIDEO. Victor silenced automatically.');
-            window.__vtcVideoPlaying=true;
-            r.video.play().catch(function(e){console.log('[VICTOR-CONTROL] Play error',e);});
+        console.log('[VICTOR] Waiting for speech to complete...');
+        /* PASO 1: Esperar a que Victor TERMINE de hablar completamente */
+        await new Promise(function(res){
+          var ciclos=0, iv=setInterval(function(){
+            ciclos++;
+            if(!window.__vtcSpeaking || ciclos>120){ /* 120 ciclos × 300ms = 36 segundos máximo */
+              clearInterval(iv);
+              console.log('[VICTOR] Speech complete. (ciclos:'+ciclos+')');
+              res();
+            }
           },300);
         });
-        /* Esperar a que video termine */
+        /* PASO 2: Pausa adicional para asegurar que audio terminó completamente */
+        await new Promise(function(res){setTimeout(res,1000);});
+        console.log('[VICTOR] 1 second pause. Now scrolling...');
+        /* PASO 3: SCROLL DOWN al video */
+        r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
+        vtcHL(r.scroll);
+        console.log('[VICTOR] Scrolled to video.');
+        /* PASO 4: Pausa antes de play */
+        await new Promise(function(res){setTimeout(res,700);});
+        /* PASO 5: AUTO-PLAY video */
+        console.log('[VICTOR] AUTO-PLAYING video now...');
+        window.__vtcVideoPlaying=true;
+        r.video.play().catch(function(e){console.log('[VICTOR] Play error',e);});
+        /* PASO 6: Esperar a que video termine */
         await new Promise(function(res){
           var checkInterval=setInterval(function(){
             if(r.video.ended){
               clearInterval(checkInterval);
               window.__vtcVideoPlaying=false;
-              console.log('[VICTOR-CONTROL] Video finished. Victor can talk again.');
+              console.log('[VICTOR] Video ended. Ready to talk again.');
               res();
             }
           },200);
         });
-        /* Enviar evento al sistema */
-        if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO] El video ha terminado. Continua con el siguiente paso.');
+        /* PASO 7: Enviar evento al sistema */
+        if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO] Video finished.');
         return '';
-      }catch(e){ console.log('[VICTOR-CONTROL] error',e); return 'error'; } },
+      }catch(e){ console.log('[VICTOR] Error:',e); return 'error'; } },
     ir_al_quiz: async(p)=>{ try{
         var sec=document.getElementById(vtcId(p));
         var q=sec?sec.querySelector('.quiz'):null;
