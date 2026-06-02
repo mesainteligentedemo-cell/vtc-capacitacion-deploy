@@ -1774,6 +1774,20 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
   function vtcId(p){ var m=String((p&&(p.modulo||p.module||p.id))||'').toLowerCase().trim().replace('módulo','').replace('modulo-','').replace('modulo','').trim(); return MAP[m]||('modulo-'+m); }
   function vtcMobMin(){ try{ if(window.innerWidth<700){ var pn=document.getElementById("vw-panel"); if(pn&&pn.classList.contains("vw-open")){ pn.classList.remove("vw-open"); var lc=document.getElementById("vw-launch"); if(lc) lc.style.display="flex"; } } }catch(e){} }
   function runAfterVictorStops(fn){ var ciclos=0,iv=setInterval(function(){ ciclos++; if(!window.__vtcSpeaking||ciclos>60){ clearInterval(iv); console.log('[GATE] Victor stopped. Executing action. (ciclos:'+ciclos+')'); if(fn) try{fn();}catch(e){console.log('[GATE] error',e);} } },300); console.log('[GATE] Action queued. Waiting for Victor to stop speaking...'); }
+  window.__vtcOrchestrator={state:'init',lastAction:0};
+  function autoPlayVideo(videoId){
+    var r=vtcResolve({id:videoId});
+    if(!r.video) return false;
+    runAfterVictorStops(function(){
+      console.log('[AUTO] Scrolling to video '+videoId);
+      r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
+      setTimeout(function(){
+        console.log('[AUTO] Playing video');
+        r.video.play().catch(function(e){console.log('[AUTO] Play error',e);});
+      },500);
+    });
+    return true;
+  }
   function vtcHL(el){ try{window.__vtcDrive=Date.now();}catch(e){} try{document.querySelectorAll(".vtc-hl").forEach(function(e){e.classList.remove("vtc-hl");});}catch(e){} if(el) el.classList.add("vtc-hl"); vtcMobMin(); }
   function vtcResolve(p){ var raw=String((p&&(p.modulo||p.module||p.id))||'').toLowerCase().replace(/\s+/g,' ').trim();
     var pm=raw.match(/(?:pitch|paso|step)\s*-?\s*([0-9]{1,2})/);
@@ -1892,7 +1906,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
         onModeChange:(m)=>{const md=(m&&m.mode)||m;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');}else setStatus('<b>Escuchando…</b>');},
-        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);const clean=txt.toLowerCase().replace(/[^a-z ]/g,'');if(txt&&clean.includes('video de bienvenida')){console.log('[ONMESSAGE] Detected: "video de bienvenida". __vtcSpeaking=',window.__vtcSpeaking);runAfterVictorStops(function(){console.log('[SCROLL] Executing scroll to bienvenida');try{var r=vtcResolve({id:'bienvenida'});if(r.scroll) r.scroll.scrollIntoView({behavior:'smooth',block:'start'});console.log('[SCROLL] Complete');}catch(e){console.log('auto-scroll error',e);}});}else console.log('[ONMESSAGE] No match. Text:',txt.substring(0,50));}else bubble('user',txt);},
+        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);const clean=txt.toLowerCase().replace(/[^a-z ]/g,'');if(clean.includes('video de bienvenida')){console.log('[AUTO] Playing bienvenida video...');autoPlayVideo('bienvenida');}else if(clean.includes('modulo video')||/modulo.?[0-9f]/i.test(txt)){var m=txt.match(/modulo.?([0-9f])/i);if(m){console.log('[AUTO] Playing modulo '+m[1]+' video...');autoPlayVideo('modulo-'+m[1]);}}}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
     connecting=false;
