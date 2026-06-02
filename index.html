@@ -1967,7 +1967,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
         onModeChange:(m)=>{const md=(m&&m.mode)||m;const wasSpeaking=window.__vtcSpeaking;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');window.__vtcSpeakingStarted=Date.now();}else{if(wasSpeaking){window.__vtcSpeakingEnded=Date.now();console.log('[SPEAK] Victor stopped speaking');if(window.__vtcWaitingForSpeechEnd){window.__vtcWaitingForSpeechEnd();}}setStatus('<b>Escuchando…</b>');}},
-        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);const clean=txt.toLowerCase().replace(/[^a-z ]/g,'');if(clean.includes('video de bienvenida')){console.log('[AUTO] Playing bienvenida video...');autoPlayVideo('bienvenida');}else if(clean.includes('modulo video')||/modulo.?[0-9f]/i.test(txt)){var m=txt.match(/modulo.?([0-9f])/i);if(m){console.log('[AUTO] Playing modulo '+m[1]+' video...');autoPlayVideo('modulo-'+m[1]);}}}else bubble('user',txt);},
+        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
     connecting=false;
