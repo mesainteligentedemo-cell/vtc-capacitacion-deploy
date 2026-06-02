@@ -1796,15 +1796,31 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
   const clientTools={
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
-        await new Promise(function(r){setTimeout(r,150);});
-        await new Promise(function(r){var n=0,iv=setInterval(function(){n++; if(!window.__vtcSpeaking||n>45){clearInterval(iv);r();}},300);});
-        var r=vtcResolve(p); if(!r.scroll) return 'modulo no encontrado';
-        r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll);
-        var v=r.video; if(!v) return 'ese modulo no tiene video; continua con la explicacion';
-        /* Arrancar keepalive para que el silencio del usuario viendo el video no dispare turno */
-        try{ if(!window._vKeep) window._vKeep=setInterval(function(){ try{ if(conv&&conv.sendUserActivity) conv.sendUserActivity(); }catch(e){} },8000); }catch(e){}
-        return 'ESPERA EN SILENCIO ABSOLUTO. El sistema detecta automaticamente cuando termina el video y te avisa. NO preguntes si termino. NO digas nada mas. Solo espera el aviso del sistema.';
-      }catch(e){ return 'error'; } },
+        var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
+        runAfterVictorStops(function(){
+          console.log('[VICTOR-CONTROL] Scrolling to video and preparing to play');
+          r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll);
+          setTimeout(function(){
+            console.log('[VICTOR-CONTROL] PLAYING VIDEO. Victor silenced automatically.');
+            window.__vtcVideoPlaying=true;
+            r.video.play().catch(function(e){console.log('[VICTOR-CONTROL] Play error',e);});
+          },300);
+        });
+        /* Esperar a que video termine */
+        await new Promise(function(res){
+          var checkInterval=setInterval(function(){
+            if(r.video.ended){
+              clearInterval(checkInterval);
+              window.__vtcVideoPlaying=false;
+              console.log('[VICTOR-CONTROL] Video finished. Victor can talk again.');
+              res();
+            }
+          },200);
+        });
+        /* Enviar evento al sistema */
+        if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO] El video ha terminado. Continua con el siguiente paso.');
+        return '';
+      }catch(e){ console.log('[VICTOR-CONTROL] error',e); return 'error'; } },
     ir_al_quiz: async(p)=>{ try{
         var sec=document.getElementById(vtcId(p));
         var q=sec?sec.querySelector('.quiz'):null;
