@@ -1986,7 +1986,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     if(!emp){err.textContent='Escribe tu número de empleado.';return;}
     err.textContent=''; try{localStorage.setItem('vtc_user',JSON.stringify({name:name,emp:emp,dep:dep}));}catch(e){} try{ var _bv=document.querySelector('#bienvenida video'); if(_bv){ _bv.muted=true; var _pp=_bv.play(); if(_pp&&_pp.then) _pp.then(function(){ _bv.pause(); try{_bv.currentTime=0;}catch(e){} _bv.muted=false; }).catch(function(){ _bv.muted=false; }); } }catch(e){} const cta=$('vw-cta'); cta.disabled=true; cta.textContent='Revisando acceso…';
     let hist='';
-    try{ const h=await (await fetch(SITE+'/api/history?emp='+encodeURIComponent(emp))).json(); if(h&&h.found) hist=h.texto||''; }catch(e){}
+    try{ const h=await (await fetch(SITE+'/api/history?emp='+encodeURIComponent(emp))).json(); if(h&&h.found) hist=h.texto||''; }catch(e){console.log('[HIST] No backend history available');}
     const firstMessage = hist
       ? '¡Qué gusto verte de nuevo, '+name+'! Ya revisé tu progreso. '+hist+'. ¿Seguimos desde ahí o quieres trabajar algo nuevo?'
       : '¡Bienvenido, '+name+'! Soy Victor, tu entrenador personal, y hoy vamos a hacerte mejor. ¿Quieres repasar un módulo o entramos directo a un roleplay?';
