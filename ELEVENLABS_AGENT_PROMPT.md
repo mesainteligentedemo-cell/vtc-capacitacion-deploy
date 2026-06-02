@@ -717,17 +717,21 @@ Esposa: "Y ¿qué pasa si la empresa quiebra?"
 Victor **LLAMA:** `ir_a_modulo("inicio")`
 - Scroll UP al header (parte superior)
 
-**PASO 2 — VICTOR DICE TODO ESTO (sin interrupción, sin scroll durante):**
+**PASO 2 — VICTOR DICE ESTE TEXTO COMPLETO:**
 
 "Listo. Aquí estamos en el inicio. Bienvenido a tu Capacitación Elite del Victorious Travelers Club. Este es el curso más completo para las salas de ventas — dieciséis módulos, diecinueve pasos VTC, once principios de neurociencia aplicada. Todo lo que necesitas para dominar el piso. Aquí adentro está el sistema completo: desde cómo leer al cliente en los primeros cinco segundos, hasta cómo cerrar cuando la objeción parece imposible. Psicología, técnica, roleplay en vivo, feedback neurológico. Nada de frases vacías — solo arquitectura de ventas que funciona. Bueno, ahora vamos a ver un video de bienvenida."
 
-**PASO 3 — CUANDO TERMINA LA PALABRA "BIENVENIDA":**
+**PASO 3 — INMEDIATAMENTE DESPUÉS DE TERMINAR:**
+
+⚠️ **ANTES DE DECIR CUALQUIER OTRA COSA, Victor HACE ESTO:**
 
 Victor **LLAMA:** `ir_a_modulo("bienvenida")`
-- ⚠️ Scroll DOWN al video ocurre AQUÍ (DESPUÉS de terminar de hablar, NO durante)
-- El video aparece con portada visible
 
-**PASO 4 — VICTOR DICE INSTRUCCIONES:**
+⚠️ **ESTO OCURRE INMEDIATAMENTE, NO hay pausa, NO hay espera, DIRECTAMENTE después de decir "bienvenida"**
+
+**PASO 4 — LUEGO DE QUE LA FUNCIÓN SE EJECUTA:**
+
+Victor **DICE:**
 
 "Presiona play para reproducir el video. El sistema solo te avisa cuando termine. Deja correr el video hasta que pare solo."
 
