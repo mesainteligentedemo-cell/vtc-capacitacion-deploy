@@ -1798,20 +1798,20 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
         console.log('[VIDEO] Victor must finish speaking FIRST');
-        /* PASO 1: Wait until Victor STOPS speaking */
+        /* PASO 1: Wait until Victor STOPS speaking — max 45 seconds */
         await new Promise(function(res){
-          var maxWait=40000, t0=Date.now();
+          var maxWait=45000, t0=Date.now();
           var iv=setInterval(function(){
             if(!window.__vtcSpeaking || Date.now()-t0>maxWait){
               clearInterval(iv);
-              console.log('[VIDEO] Victor stopped talking');
+              console.log('[VIDEO] Victor stopped (elapsed:'+(Date.now()-t0)/1000+'s)');
               res();
             }
-          },250);
+          },200);
         });
-        /* PASO 2: MANDATORY 2.5 second buffer to ensure speech completely finished */
-        console.log('[VIDEO] 2.5 second safety buffer...');
-        await new Promise(function(res){setTimeout(res,2500);});
+        /* PASO 2: Safety buffer (min 2s) */
+        console.log('[VIDEO] Safety buffer 2000ms...');
+        await new Promise(function(res){setTimeout(res,2000);});
         /* PASO 3: SCROLL DOWN to video */
         console.log('[VIDEO] Scrolling to video');
         r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1822,21 +1822,37 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         /* PASO 5: AUTO-PLAY video */
         console.log('[VIDEO] AUTO-PLAYING now');
         window.__vtcVideoPlaying=true;
-        r.video.play().catch(function(e){});
-        /* PASO 6: Wait for video to finish */
+        r.video.play().catch(function(e){
+          console.log('[VIDEO] play() error:',e.message);
+          window.__vtcVideoPlaying=false;
+        });
+        /* PASO 6: Wait for video to finish WITH TIMEOUT FALLBACK */
         await new Promise(function(res){
-          var done=function(){
-            r.video.removeEventListener('ended',done);
+          var done=false;
+          var onEnded=function(){
+            if(done) return;
+            done=true;
+            r.video.removeEventListener('ended',onEnded);
+            clearTimeout(tid);
             window.__vtcVideoPlaying=false;
-            console.log('[VIDEO] Video ended');
+            console.log('[VIDEO] Video ended via event');
             res();
           };
-          r.video.addEventListener('ended',done);
+          r.video.addEventListener('ended',onEnded);
+          /* Fallback timeout: 30 minutes max */
+          var tid=setTimeout(function(){
+            if(done) return;
+            done=true;
+            r.video.removeEventListener('ended',onEnded);
+            window.__vtcVideoPlaying=false;
+            console.log('[VIDEO] Timeout fallback (30min)');
+            res();
+          },1800000);
         });
         /* PASO 7: Notify system */
         if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO]');
         return '';
-      }catch(e){ console.log('[VIDEO] Error',e); return 'error'; } },
+      }catch(e){ console.log('[VIDEO] Error:',e.message); window.__vtcVideoPlaying=false; return 'error'; } },
     ir_al_quiz: async(p)=>{ try{
         var sec=document.getElementById(vtcId(p));
         var q=sec?sec.querySelector('.quiz'):null;
