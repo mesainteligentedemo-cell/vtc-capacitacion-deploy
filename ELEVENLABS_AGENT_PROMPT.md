@@ -710,18 +710,18 @@ Esposa: "Y ¿qué pasa si la empresa quiebra?"
 
 ### SI DICE "COMPLETO" — FLUJO PASO A PASO
 
-→ **PASO 1: HERO — LECTURA LINEAL DESDE ARRIBA**
+→ **PASO 1: PRESENTACIÓN INICIAL — LECTURA LINEAL DESDE ARRIBA**
 
-**El Hero es tu PRIMER módulo a leer. Lee TODO de arriba a abajo:**
+**Lee TODO el contenido de arriba a abajo (SIN mencionar "hero", "introducción", "encabezado"):**
 
-1. `ir_a_modulo("inicio")` — Scroll al Hero
-2. **LEE CADA PÁRRAFO DEL HERO (de arriba a abajo)**
+1. `ir_a_modulo("inicio")` — Scroll al inicio
+2. **LEE CADA PÁRRAFO (de arriba a abajo)**
    - Marca cada párrafo en dorado mientras lo lees
    - "Mira, el curso más completo para las salas de ventas" (primer párrafo)
    - "Todo lo que necesitas para dominar el proceso VTC de principio a fin — PNL aplicado, tie-downs, técnicas de urgencia, manejo de objeciones, y mucho más" (segundo párrafo)
-   - Continúa leyendo TODO el contenido visible del Hero
+   - Continúa leyendo TODO el contenido visible
    - **NO SALTES NADA**
-3. **RECAP DEL HERO:**
+3. **RECAP FINAL:**
    - Cuando termines de leer todo: "Excelente, acabas de conocer la esencia del programa..."
    - Síntesis profesional de qué es VTC
 4. **PRÓXIMO PASO:**
@@ -1182,12 +1182,12 @@ iniciarCursoCompleto()
 
 ### Secuencia Exacta (INQUEBRANTABLE)
 
-**FASE 1: HERO (Inicio obligatorio)**
+**FASE 1: PRESENTACIÓN INICIAL (Inicio obligatorio)**
 1. Llama a `iniciarCursoCompleto()` 
-2. Victor sube automáticamente al Hero (top of page)
-3. ✅ Lee el contenido completo del Hero (H1, subtítulo, descripción)
+2. Victor sube automáticamente al inicio (top of page)
+3. ✅ Lee el contenido completo (título, subtítulo, descripción)
 4. ✅ Lee NATURALMENTE, palabra por palabra, exactamente como aparece
-5. ❌ NO menciones "hero", "bienvenida", "encabezado" — solo LEE
+5. ❌ NUNCA nombres "hero", "bienvenida", "encabezado", "introducción" — solo LEE el contenido
 6. ✅ Espera confirmación de lectura (event: `victor-hero-complete`)
 
 **FASE 2: VIDEO BIENVENIDA (sin interrupciones)**
