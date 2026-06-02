@@ -1943,6 +1943,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
   function _vUn(){ try{conv&&conv.setMicMuted&&conv.setMicMuted(false);}catch(e){} try{conv&&conv.setVolume&&conv.setVolume({volume:1});}catch(e){} try{ if(window._vKeep){clearInterval(window._vKeep); window._vKeep=null;} }catch(e){} }
   document.addEventListener('play',function(e){ if(e.target&&e.target.tagName==='VIDEO'){ try{var _s=e.target.closest('[id^="modulo-"],#bienvenida,#lvc,#vtc19'); if(_s&&window.__vtcSeen&&window.__vtcSeen[_s.id]){ e.target.pause(); return; }}catch(x){} try{var b=e.target.closest('.lesson-video'); if(b) b.classList.add('vtc-playing');}catch(x){} if(conv) _vMute(); } },true);
   document.addEventListener('pause',function(e){ if(e.target&&e.target.tagName==='VIDEO'){ try{var b=e.target.closest('.lesson-video'); if(b&&e.target.ended) b.classList.remove('vtc-playing');}catch(x){} if(conv) setTimeout(function(){ if(!_vAny()) _vUn(); },300); } },true);
+  document.addEventListener('ended',function(e){ if(e.target&&e.target.tagName==='VIDEO'){ console.log('[VIDEO_GLOBAL] Video ended → notify Victor'); if(conv&&conv.sendUserMessage){ setTimeout(function(){ conv.sendUserMessage('[VIDEO_TERMINADO] El video acaba de terminar.'); },200); } } },true);
   document.addEventListener('ended',function(e){ if(e.target&&e.target.tagName==='VIDEO'){ if(e.target.__vtcEnded) return; e.target.__vtcEnded=true; try{var b=e.target.closest('.lesson-video'); if(b) b.classList.remove('vtc-playing');}catch(x){} setTimeout(function(){ _vUn(); try{ var sec=e.target.closest('[id^="modulo-"],#bienvenida,#lvc,#vtc19'); var sid=sec?sec.id:'video'; if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO] El video de '+sid+' ya termino. Continua leyendo el contenido.'); }catch(ex){} },800); } },true); input.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
   document.addEventListener('click',function(e){
     var o=e.target.closest&&e.target.closest('.q-opt'); if(!o||!conv) return;
@@ -2078,7 +2079,14 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     var s=v.querySelector('source'); if(!s) return; var src=s.getAttribute('src'); if(!src) return;
     function mark(){ if(!watched[src]){ watched[src]=1; vsave(); render(); } }
     v.addEventListener('timeupdate',function(){ if(v.duration && (v.currentTime/v.duration)>=0.95) mark(); });
-    v.addEventListener('ended',mark);
+    v.addEventListener('ended',function(){
+      mark();
+      /* NOTIFY VICTOR: Video ended */
+      console.log('[VIDEO] Video terminó → Notificando a Victor');
+      if(conv&&conv.sendUserMessage){
+        conv.sendUserMessage('[VIDEO_TERMINADO] El video acaba de terminar. Continúa cuando estés listo.');
+      }
+    });
   });
   /* medir la lectura: leído al llegar al final del contenido del módulo */
   var readObs=new IntersectionObserver(function(entries){
