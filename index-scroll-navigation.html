@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Capacitación - Sistema Integral</title>
+    <link rel="stylesheet" href="styles-scroll-nav.css">
+</head>
+<body>
+    <!-- NAVBAR STICKY -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">VTC</div>
+            <div class="navbar-breadcrumb">
+                <span id="breadcrumb-text">Inicio</span>
+            </div>
+            <div class="navbar-progress">
+                <span id="progress-text">0/16</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN SCROLL CONTAINER -->
+    <main class="scroll-container">
+
+        <!-- SECTION 0: HERO / HEADER -->
+        <section id="hero" class="module module-hero" data-module="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Bienvenido a VTC Capacitación</h1>
+                <p class="hero-subtitle">Sistema integral de formación profesional</p>
+                <video class="hero-video" poster="/videos/hero.jpg" controls>
+                    <source src="/videos/hero.mp4" type="video/mp4">
+                </video>
+                <button class="cta-button cta-primary" id="hero-cta">Comenzar →</button>
+            </div>
+            <div class="scroll-indicator">Desliza →</div>
+        </section>
+
+        <!-- SECTION 1: ÍNDICE / TEMARIO -->
+        <section id="temario" class="module module-index" data-module="temario">
+            <div class="index-header">
+                <h2>Temario Completo</h2>
+                <p>Selecciona un módulo para comenzar</p>
+            </div>
+            <div class="modules-grid" id="modules-grid"></div>
+            <div class="scroll-hint">
+                <p>↓ Desplázate hacia abajo para vista previa de módulos</p>
+            </div>
+        </section>
+
+        <!-- MÓDULO F (Fundamentos) -->
+        <section id="modulo-f" class="module module-content" data-module="f" data-module-number="1">
+            <div class="module-header">
+                <div class="module-number">01</div>
+                <h2 class="module-title">Fundamentos Esenciales</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-01.jpg" controls>
+                <source src="/videos/modulo-01.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Concepto 1: Introducción</li>
+                    <li>Concepto 2: Aplicación práctica</li>
+                    <li>Concepto 3: Evaluación</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="f">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO O (Operativo) -->
+        <section id="modulo-o" class="module module-content" data-module="o" data-module-number="2">
+            <div class="module-header">
+                <div class="module-number">02</div>
+                <h2 class="module-title">Operativa y Procesos</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-02.jpg" controls>
+                <source src="/videos/modulo-02.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Proceso 1: Planificación</li>
+                    <li>Proceso 2: Ejecución</li>
+                    <li>Proceso 3: Monitoreo</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="o">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO D (Digital) -->
+        <section id="modulo-d" class="module module-content" data-module="d" data-module-number="3">
+            <div class="module-header">
+                <div class="module-number">03</div>
+                <h2 class="module-title">Transformación Digital</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-03.jpg" controls>
+                <source src="/videos/modulo-03.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Herramienta 1: Automatización</li>
+                    <li>Herramienta 2: Análisis de datos</li>
+                    <li>Herramienta 3: Cloud computing</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="d">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO I (Innovación) -->
+        <section id="modulo-i" class="module module-content" data-module="i" data-module-number="4">
+            <div class="module-header">
+                <div class="module-number">04</div>
+                <h2 class="module-title">Innovación y Creatividad</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-04.jpg" controls>
+                <source src="/videos/modulo-04.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Metodología 1: Design Thinking</li>
+                    <li>Metodología 2: Brainstorming</li>
+                    <li>Metodología 3: Prototipado rápido</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="i">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO A (Análisis) -->
+        <section id="modulo-a" class="module module-content" data-module="a" data-module-number="5">
+            <div class="module-header">
+                <div class="module-number">05</div>
+                <h2 class="module-title">Análisis Estratégico</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-05.jpg" controls>
+                <source src="/videos/modulo-05.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Análisis 1: FODA</li>
+                    <li>Análisis 2: Competitivo</li>
+                    <li>Análisis 3: Predictivo</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="a">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO T (Talento) -->
+        <section id="modulo-t" class="module module-content" data-module="t" data-module-number="6">
+            <div class="module-header">
+                <div class="module-number">06</div>
+                <h2 class="module-title">Gestión de Talento</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-06.jpg" controls>
+                <source src="/videos/modulo-06.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Competencia 1: Reclutamiento</li>
+                    <li>Competencia 2: Desarrollo</li>
+                    <li>Competencia 3: Retención</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="t">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO C (Crecimiento) -->
+        <section id="modulo-c" class="module module-content" data-module="c" data-module-number="7">
+            <div class="module-header">
+                <div class="module-number">07</div>
+                <h2 class="module-title">Crecimiento Sostenible</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-07.jpg" controls>
+                <source src="/videos/modulo-07.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Modelo 1: Orgánico</li>
+                    <li>Modelo 2: Inorgánico</li>
+                    <li>Modelo 3: Mixto</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="c">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO V (Visión) -->
+        <section id="modulo-v" class="module module-content" data-module="v" data-module-number="8">
+            <div class="module-header">
+                <div class="module-number">08</div>
+                <h2 class="module-title">Visión y Estrategia</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-08.jpg" controls>
+                <source src="/videos/modulo-08.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Elemento 1: Misión</li>
+                    <li>Elemento 2: Visión</li>
+                    <li>Elemento 3: Valores</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="v">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO E1 (Especialización 1) -->
+        <section id="modulo-e1" class="module module-content" data-module="e1" data-module-number="9">
+            <div class="module-header">
+                <div class="module-number">09</div>
+                <h2 class="module-title">Especialización Avanzada I</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-09.jpg" controls>
+                <source src="/videos/modulo-09.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Técnica 1: Experticia</li>
+                    <li>Técnica 2: Certificación</li>
+                    <li>Técnica 3: Mastery</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="e1">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO E2 (Especialización 2) -->
+        <section id="modulo-e2" class="module module-content" data-module="e2" data-module-number="10">
+            <div class="module-header">
+                <div class="module-number">10</div>
+                <h2 class="module-title">Especialización Avanzada II</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-10.jpg" controls>
+                <source src="/videos/modulo-10.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Competencia 1: Técnica</li>
+                    <li>Competencia 2: Gestión</li>
+                    <li>Competencia 3: Liderazgo</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="e2">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO P1 (Proyecto 1) -->
+        <section id="modulo-p1" class="module module-content" data-module="p1" data-module-number="11">
+            <div class="module-header">
+                <div class="module-number">11</div>
+                <h2 class="module-title">Proyecto Integrador I</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-11.jpg" controls>
+                <source src="/videos/modulo-11.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Fase 1: Planificación</li>
+                    <li>Fase 2: Ejecución</li>
+                    <li>Fase 3: Presentación</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="p1">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO P2 (Proyecto 2) -->
+        <section id="modulo-p2" class="module module-content" data-module="p2" data-module-number="12">
+            <div class="module-header">
+                <div class="module-number">12</div>
+                <h2 class="module-title">Proyecto Integrador II</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-12.jpg" controls>
+                <source src="/videos/modulo-12.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Componente 1: Investigación</li>
+                    <li>Componente 2: Desarrollo</li>
+                    <li>Componente 3: Evaluación</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="p2">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO M1 (Mentoría 1) -->
+        <section id="modulo-m1" class="module module-content" data-module="m1" data-module-number="13">
+            <div class="module-header">
+                <div class="module-number">13</div>
+                <h2 class="module-title">Mentoría y Coaching I</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-13.jpg" controls>
+                <source src="/videos/modulo-13.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Sesión 1: Diagnóstico</li>
+                    <li>Sesión 2: Plan de desarrollo</li>
+                    <li>Sesión 3: Follow-up</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="m1">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO M2 (Mentoría 2) -->
+        <section id="modulo-m2" class="module module-content" data-module="m2" data-module-number="14">
+            <div class="module-header">
+                <div class="module-number">14</div>
+                <h2 class="module-title">Mentoría y Coaching II</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-14.jpg" controls>
+                <source src="/videos/modulo-14.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Módulo 1: Autoconocimiento</li>
+                    <li>Módulo 2: Empoderamiento</li>
+                    <li>Módulo 3: Acción</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="m2">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO R (Recapitulación) -->
+        <section id="modulo-r" class="module module-content" data-module="r" data-module-number="15">
+            <div class="module-header">
+                <div class="module-number">15</div>
+                <h2 class="module-title">Recapitulación y Síntesis</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-15.jpg" controls>
+                <source src="/videos/modulo-15.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Tema 1: Fundamentos repasados</li>
+                    <li>Tema 2: Aplicaciones prácticas</li>
+                    <li>Tema 3: Próximos pasos</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button" data-module="r">Responder cuestionario →</button>
+            </div>
+            <button class="cta-button cta-next">Siguiente →</button>
+        </section>
+
+        <!-- MÓDULO F2 (Final) -->
+        <section id="modulo-f2" class="module module-content module-final" data-module="f2" data-module-number="16">
+            <div class="module-header">
+                <div class="module-number">16</div>
+                <h2 class="module-title">Certificación Final</h2>
+            </div>
+            <video class="module-video" poster="/videos/modulo-16.jpg" controls>
+                <source src="/videos/modulo-16.mp4" type="video/mp4">
+            </video>
+            <div class="module-content-wrapper">
+                <h3>Contenido</h3>
+                <ul>
+                    <li>Examen 1: Teórico</li>
+                    <li>Examen 2: Práctico</li>
+                    <li>Examen 3: Integrativo</li>
+                </ul>
+            </div>
+            <div class="module-quiz">
+                <button class="quiz-button quiz-final" data-module="f2">Realizar examen final →</button>
+            </div>
+            <div class="final-cta">
+                <button class="cta-button cta-success" id="certificate-btn">Descargar certificado →</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>&copy; 2024 VTC Capacitación. Todos los derechos reservados.</p>
+        <p id="completion-status">Módulos completados: 0/16</p>
+    </footer>
+
+    <!-- PRELOAD IMAGES -->
+    <div id="preload" style="display:none;">
+        <img src="/videos/hero.jpg" alt="">
+        <img src="/videos/modulo-01.jpg" alt="">
+        <img src="/videos/modulo-02.jpg" alt="">
+        <img src="/videos/modulo-03.jpg" alt="">
+        <img src="/videos/modulo-04.jpg" alt="">
+        <img src="/videos/modulo-05.jpg" alt="">
+        <img src="/videos/modulo-06.jpg" alt="">
+        <img src="/videos/modulo-07.jpg" alt="">
+        <img src="/videos/modulo-08.jpg" alt="">
+        <img src="/videos/modulo-09.jpg" alt="">
+        <img src="/videos/modulo-10.jpg" alt="">
+        <img src="/videos/modulo-11.jpg" alt="">
+        <img src="/videos/modulo-12.jpg" alt="">
+        <img src="/videos/modulo-13.jpg" alt="">
+        <img src="/videos/modulo-14.jpg" alt="">
+        <img src="/videos/modulo-15.jpg" alt="">
+        <img src="/videos/modulo-16.jpg" alt="">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="main-scroll-nav.js"></script>
+</body>
+</html>
