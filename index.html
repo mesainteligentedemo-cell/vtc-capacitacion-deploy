@@ -1797,7 +1797,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
-        console.log('[VIDEO] WAITING FOR VICTOR TO FINISH SPEAKING');
+        console.log('[VIDEO] ESPERAR A QUE VICTOR TERMINE DE HABLAR COMPLETAMENTE');
         /* PASO 1: Wait until Victor TRULY stops speaking */
         await new Promise(function(res){
           var completed=false;
@@ -1805,46 +1805,56 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
           window.__vtcWaitingForSpeechEnd=function(){
             if(completed) return;
             completed=true;
-            console.log('[VIDEO] onModeChange callback: Victor stopped');
+            console.log('[VIDEO] ✓ Victor TERMINÓ de hablar (onModeChange)');
             res();
           };
-          /* Fallback: if Victor not currently speaking, add 3.5s minimum buffer */
+          /* Timeout basado en si Victor está hablando AHORA */
           if(!window.__vtcSpeaking){
-            console.log('[VIDEO] Victor already not speaking, waiting 3.5s buffer');
+            console.log('[VIDEO] Victor ya NO está hablando. Esperando 5s buffer mínimo...');
             setTimeout(function(){
               if(completed) return;
               completed=true;
-              console.log('[VIDEO] Fallback timeout: 3.5s buffer complete');
+              console.log('[VIDEO] ✓ 5s buffer complete');
               res();
-            },3500);
+            },5000);
           } else {
-            console.log('[VIDEO] Victor is speaking, waiting for speech to end');
-            /* Hard timeout: 45 seconds max */
+            console.log('[VIDEO] Victor ESTÁ HABLANDO AHORA. Esperando a que termine (máx 60s)...');
+            /* Wait for the callback OR 60 second timeout */
             setTimeout(function(){
               if(completed) return;
               completed=true;
-              console.log('[VIDEO] Hard timeout: 45s exceeded');
+              console.log('[VIDEO] ✓ Timeout 60s (Victor debería haber terminado)');
               res();
-            },45000);
+            },60000);
           }
         });
-        /* PASO 2: Additional safety buffer (500ms extra) */
-        console.log('[VIDEO] Final safety buffer 500ms...');
-        await new Promise(function(res){setTimeout(res,500);});
+        /* PASO 2: Extra safety buffer (1000ms) */
+        console.log('[VIDEO] Esperando 1000ms extra de seguridad...');
+        await new Promise(function(res){setTimeout(res,1000);});
         /* PASO 3: SCROLL DOWN to video */
-        console.log('[VIDEO] NOW SCROLLING to video');
+        console.log('[VIDEO] ► HACIENDO SCROLL DOWN al video');
         r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
         vtcHL(r.scroll);
         /* PASO 4: Wait for scroll animation to finish */
-        console.log('[VIDEO] Waiting for scroll animation (1000ms)');
-        await new Promise(function(res){setTimeout(res,1000);});
+        console.log('[VIDEO] Esperando animación de scroll (1500ms)...');
+        await new Promise(function(res){setTimeout(res,1500);});
         /* PASO 5: AUTO-PLAY video */
-        console.log('[VIDEO] AUTO-PLAYING video');
+        console.log('[VIDEO] ► INICIANDO AUTO-PLAY del video');
         window.__vtcVideoPlaying=true;
-        r.video.play().catch(function(e){
-          console.log('[VIDEO] play() failed:',e.message);
+        try{
+          var play=r.video.play();
+          if(play&&play.then){
+            play.then(function(){
+              console.log('[VIDEO] ✓ Video play() promise resuelto');
+            }).catch(function(e){
+              console.log('[VIDEO] ✗ play() error:',e.message);
+              window.__vtcVideoPlaying=false;
+            });
+          }
+        }catch(e){
+          console.log('[VIDEO] ✗ play() exception:',e.message);
           window.__vtcVideoPlaying=false;
-        });
+        }
         /* PASO 6: Wait for video to finish WITH TIMEOUT FALLBACK */
         await new Promise(function(res){
           var done=false;
