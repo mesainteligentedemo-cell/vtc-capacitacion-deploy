@@ -1772,13 +1772,15 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
   function typing(on){let e=$('vw-typing');if(on){if(!e){e=document.createElement('div');e.id='vw-typing';e.className='vw-b vw-ai';e.innerHTML='<span class="vw-dots"><span></span><span></span><span></span></span>';msgs.appendChild(e);msgs.scrollTop=msgs.scrollHeight;}}else if(e)e.remove();}
   const MAP={'inicio':'__top','cero':'__top','desde cero':'__top','principio':'__top','header':'__top','curso':'__top','top':'__top','h1':'__top','arriba':'__top','indice':'indice','modulos':'indice','todos':'indice','f':'modulo-f','fundamentos':'modulo-f','proceso':'lvc','lvc':'lvc','club':'lvc','vtc19':'vtc19','vtc 19':'vtc19','19':'vtc19','bienvenida':'bienvenida','fin':'modulo-FIN','cierre-curso':'modulo-FIN'};
   function vtcId(p){ var m=String((p&&(p.modulo||p.module||p.id))||'').toLowerCase().trim().replace('módulo','').replace('modulo-','').replace('modulo','').trim(); return MAP[m]||('modulo-'+m); }
-  function vtcMobMin(){ try{ if(window.innerWidth<700){ var pn=document.getElementById("vw-panel"); if(pn&&pn.classList.contains("vw-open")){ pn.classList.remove("vw-open"); var lc=document.getElementById("vw-launch"); if(lc) lc.style.display="flex"; } } }catch(e){} } function vtcHL(el){ try{window.__vtcDrive=Date.now();}catch(e){} try{document.querySelectorAll(".vtc-hl").forEach(function(e){e.classList.remove("vtc-hl");});}catch(e){} if(el) el.classList.add("vtc-hl"); vtcMobMin(); }
+  function vtcMobMin(){ try{ if(window.innerWidth<700){ var pn=document.getElementById("vw-panel"); if(pn&&pn.classList.contains("vw-open")){ pn.classList.remove("vw-open"); var lc=document.getElementById("vw-launch"); if(lc) lc.style.display="flex"; } } }catch(e){} }
+  function runAfterVictorStops(fn){ var ciclos=0,iv=setInterval(function(){ ciclos++; if(!window.__vtcSpeaking||ciclos>45){ clearInterval(iv); if(fn) try{fn();}catch(e){console.log('runAfterVictorStops error',e);} } },300); }
+  function vtcHL(el){ try{window.__vtcDrive=Date.now();}catch(e){} try{document.querySelectorAll(".vtc-hl").forEach(function(e){e.classList.remove("vtc-hl");});}catch(e){} if(el) el.classList.add("vtc-hl"); vtcMobMin(); }
   function vtcResolve(p){ var raw=String((p&&(p.modulo||p.module||p.id))||'').toLowerCase().replace(/\s+/g,' ').trim();
     var pm=raw.match(/(?:pitch|paso|step)\s*-?\s*([0-9]{1,2})/);
     if(pm){ var nn=('0'+pm[1]).slice(-2); var src=document.querySelector('#vtc19 source[src*="modulo-'+nn+'.mp4"]'); if(src){ var box=src.closest('.lesson-video'); var lab=(box&&box.previousElementSibling&&box.previousElementSibling.classList&&box.previousElementSibling.classList.contains('script-label'))?box.previousElementSibling:box; return {scroll:lab||box, video:box?box.querySelector('video'):null}; } }
     var id=vtcId(p); var el=document.getElementById(id); return {scroll:el, video:el?el.querySelector('video'):null, id:id}; }
   const clientTools={
-    ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ r.scroll.scrollIntoView({behavior:'instant',block:'start'}); vtcHL(r.scroll); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
+    ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         await new Promise(function(r){setTimeout(r,150);});
         await new Promise(function(r){var n=0,iv=setInterval(function(){n++; if(!window.__vtcSpeaking||n>45){clearInterval(iv);r();}},300);});
@@ -1793,9 +1795,11 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         var sec=document.getElementById(vtcId(p));
         var q=sec?sec.querySelector('.quiz'):null;
         if(!q) return 'ese modulo no tiene quiz; continua al siguiente modulo';
-        try{window.__vtcDrive=Date.now();}catch(e){}
-        q.scrollIntoView({behavior:'instant',block:'start'});
-        vtcHL(q);
+        runAfterVictorStops(function(){
+          try{window.__vtcDrive=Date.now();}catch(e){}
+          q.scrollIntoView({behavior:'smooth',block:'start'});
+          vtcHL(q);
+        });
         var pregs=[]; var total=0;
         q.querySelectorAll('.q').forEach(function(qq,idx){
           total++;
@@ -1888,7 +1892,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
         onModeChange:(m)=>{const md=(m&&m.mode)||m;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');}else setStatus('<b>Escuchando…</b>');},
-        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);if(txt&&txt.toLowerCase().replace(/[^a-z ]/g,'').includes('video de bienvenida')){setTimeout(()=>{try{var r=vtcResolve({id:'bienvenida'});if(r.scroll) r.scroll.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){console.log('auto-scroll trigger');}},200);}}else bubble('user',txt);},
+        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);if(txt&&txt.toLowerCase().replace(/[^a-z ]/g,'').includes('video de bienvenida')){runAfterVictorStops(function(){try{var r=vtcResolve({id:'bienvenida'});if(r.scroll) r.scroll.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){console.log('auto-scroll trigger');}});}}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
     connecting=false;
