@@ -1797,46 +1797,46 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
-        console.log('[VICTOR] Waiting for speech to complete...');
-        /* PASO 1: Esperar a que Victor TERMINE de hablar completamente */
+        console.log('[VIDEO] Victor must finish speaking FIRST');
+        /* PASO 1: Wait until Victor STOPS speaking */
         await new Promise(function(res){
-          var ciclos=0, iv=setInterval(function(){
-            ciclos++;
-            if(!window.__vtcSpeaking || ciclos>120){ /* 120 ciclos × 300ms = 36 segundos máximo */
+          var maxWait=40000, t0=Date.now();
+          var iv=setInterval(function(){
+            if(!window.__vtcSpeaking || Date.now()-t0>maxWait){
               clearInterval(iv);
-              console.log('[VICTOR] Speech complete. (ciclos:'+ciclos+')');
+              console.log('[VIDEO] Victor stopped talking');
               res();
             }
-          },300);
+          },250);
         });
-        /* PASO 2: Pausa adicional para asegurar que audio terminó completamente */
-        await new Promise(function(res){setTimeout(res,1000);});
-        console.log('[VICTOR] 1 second pause. Now scrolling...');
-        /* PASO 3: SCROLL DOWN al video */
+        /* PASO 2: MANDATORY 2.5 second buffer to ensure speech completely finished */
+        console.log('[VIDEO] 2.5 second safety buffer...');
+        await new Promise(function(res){setTimeout(res,2500);});
+        /* PASO 3: SCROLL DOWN to video */
+        console.log('[VIDEO] Scrolling to video');
         r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
         vtcHL(r.scroll);
-        console.log('[VICTOR] Scrolled to video.');
-        /* PASO 4: Pausa antes de play */
-        await new Promise(function(res){setTimeout(res,700);});
+        /* PASO 4: Wait for scroll animation to finish */
+        console.log('[VIDEO] Waiting for scroll animation');
+        await new Promise(function(res){setTimeout(res,1000);});
         /* PASO 5: AUTO-PLAY video */
-        console.log('[VICTOR] AUTO-PLAYING video now...');
+        console.log('[VIDEO] AUTO-PLAYING now');
         window.__vtcVideoPlaying=true;
-        r.video.play().catch(function(e){console.log('[VICTOR] Play error',e);});
-        /* PASO 6: Esperar a que video termine */
+        r.video.play().catch(function(e){});
+        /* PASO 6: Wait for video to finish */
         await new Promise(function(res){
-          var checkInterval=setInterval(function(){
-            if(r.video.ended){
-              clearInterval(checkInterval);
-              window.__vtcVideoPlaying=false;
-              console.log('[VICTOR] Video ended. Ready to talk again.');
-              res();
-            }
-          },200);
+          var done=function(){
+            r.video.removeEventListener('ended',done);
+            window.__vtcVideoPlaying=false;
+            console.log('[VIDEO] Video ended');
+            res();
+          };
+          r.video.addEventListener('ended',done);
         });
-        /* PASO 7: Enviar evento al sistema */
-        if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO] Video finished.');
+        /* PASO 7: Notify system */
+        if(conv&&conv.sendUserMessage) conv.sendUserMessage('[VIDEO_TERMINADO]');
         return '';
-      }catch(e){ console.log('[VICTOR] Error:',e); return 'error'; } },
+      }catch(e){ console.log('[VIDEO] Error',e); return 'error'; } },
     ir_al_quiz: async(p)=>{ try{
         var sec=document.getElementById(vtcId(p));
         var q=sec?sec.querySelector('.quiz'):null;
