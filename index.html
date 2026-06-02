@@ -1797,33 +1797,47 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
-        console.log('[VIDEO] Victor must finish speaking FIRST');
-        /* PASO 1: Wait until Victor STOPS speaking — max 45 seconds */
+        console.log('[VIDEO] WAITING FOR VICTOR TO FINISH SPEAKING COMPLETELY');
+        /* PASO 1: Wait until Victor TRULY stops speaking */
+        /* This waits for onModeChange to transition OUT of 'speaking' mode */
         await new Promise(function(res){
-          var maxWait=45000, t0=Date.now();
-          var iv=setInterval(function(){
-            if(!window.__vtcSpeaking || Date.now()-t0>maxWait){
-              clearInterval(iv);
-              console.log('[VIDEO] Victor stopped (elapsed:'+(Date.now()-t0)/1000+'s)');
+          if(!window.__vtcSpeaking){
+            /* Already not speaking, but ensure we caught the end event */
+            if(window.__vtcSpeakingEnded && window.__vtcSpeakingEnded > Date.now()-3000){
+              res(); return;
+            }
+          }
+          /* Wait for the callback from onModeChange */
+          var maxWait=50000, t0=Date.now();
+          window.__vtcWaitingForSpeechEnd=function(){
+            console.log('[VIDEO] Victor finished speaking at onModeChange');
+            window.__vtcWaitingForSpeechEnd=null;
+            res();
+          };
+          var fallback=setInterval(function(){
+            if(Date.now()-t0>maxWait){
+              clearInterval(fallback);
+              window.__vtcWaitingForSpeechEnd=null;
+              console.log('[VIDEO] Timeout waiting for speech end');
               res();
             }
-          },200);
+          },500);
         });
-        /* PASO 2: Safety buffer (min 2s) */
-        console.log('[VIDEO] Safety buffer 2000ms...');
-        await new Promise(function(res){setTimeout(res,2000);});
+        /* PASO 2: Additional safety buffer (500ms extra) */
+        console.log('[VIDEO] Final safety buffer 500ms...');
+        await new Promise(function(res){setTimeout(res,500);});
         /* PASO 3: SCROLL DOWN to video */
-        console.log('[VIDEO] Scrolling to video');
+        console.log('[VIDEO] NOW SCROLLING to video');
         r.scroll.scrollIntoView({behavior:'smooth',block:'start'});
         vtcHL(r.scroll);
         /* PASO 4: Wait for scroll animation to finish */
-        console.log('[VIDEO] Waiting for scroll animation');
+        console.log('[VIDEO] Waiting for scroll animation (1000ms)');
         await new Promise(function(res){setTimeout(res,1000);});
         /* PASO 5: AUTO-PLAY video */
-        console.log('[VIDEO] AUTO-PLAYING now');
+        console.log('[VIDEO] AUTO-PLAYING video');
         window.__vtcVideoPlaying=true;
         r.video.play().catch(function(e){
-          console.log('[VIDEO] play() error:',e.message);
+          console.log('[VIDEO] play() failed:',e.message);
           window.__vtcVideoPlaying=false;
         });
         /* PASO 6: Wait for video to finish WITH TIMEOUT FALLBACK */
@@ -1835,17 +1849,16 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
             r.video.removeEventListener('ended',onEnded);
             clearTimeout(tid);
             window.__vtcVideoPlaying=false;
-            console.log('[VIDEO] Video ended via event');
+            console.log('[VIDEO] Video ended');
             res();
           };
           r.video.addEventListener('ended',onEnded);
-          /* Fallback timeout: 30 minutes max */
           var tid=setTimeout(function(){
             if(done) return;
             done=true;
             r.video.removeEventListener('ended',onEnded);
             window.__vtcVideoPlaying=false;
-            console.log('[VIDEO] Timeout fallback (30min)');
+            console.log('[VIDEO] Fallback timeout (30min)');
             res();
           },1800000);
         });
@@ -1953,7 +1966,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onConnect:()=>{setStatus('<b>En línea</b>');mic.classList.add('vw-live');launch.classList.add('vw-active');},
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
-        onModeChange:(m)=>{const md=(m&&m.mode)||m;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');}else setStatus('<b>Escuchando…</b>');},
+        onModeChange:(m)=>{const md=(m&&m.mode)||m;const wasSpeaking=window.__vtcSpeaking;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');window.__vtcSpeakingStarted=Date.now();}else{if(wasSpeaking){window.__vtcSpeakingEnded=Date.now();console.log('[SPEAK] Victor stopped speaking');if(window.__vtcWaitingForSpeechEnd){window.__vtcWaitingForSpeechEnd();}}setStatus('<b>Escuchando…</b>');}},
         onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);const clean=txt.toLowerCase().replace(/[^a-z ]/g,'');if(clean.includes('video de bienvenida')){console.log('[AUTO] Playing bienvenida video...');autoPlayVideo('bienvenida');}else if(clean.includes('modulo video')||/modulo.?[0-9f]/i.test(txt)){var m=txt.match(/modulo.?([0-9f])/i);if(m){console.log('[AUTO] Playing modulo '+m[1]+' video...');autoPlayVideo('modulo-'+m[1]);}}}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
