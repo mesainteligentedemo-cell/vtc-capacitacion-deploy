@@ -51,10 +51,8 @@ module.exports = async (req, res) => {
       resumen: (det.analysis && det.analysis.transcript_summary) || '',
     };
     // texto listo para que el agente lo lea
-    resumen.texto = `Última sesión${fecha ? ' (' + fecha + ')' : ''}${resumen.nombre ? ' de ' + resumen.nombre : ''}: ` +
-      (resumen.modulos ? `practicó ${resumen.modulos}. ` : '') +
-      (resumen.hizo_bien ? `Hizo bien: ${resumen.hizo_bien} ` : '') +
-      (resumen.recomendacion ? `Le recomendaste: ${resumen.recomendacion}` : '');
+    resumen.texto = `Última sesión${fecha ? ' (' + fecha + ')' : ''}: ` +
+      (resumen.modulos ? `practicaste ${resumen.modulos}` : '');
     res.status(200).json(resumen);
   } catch (e) {
     res.status(200).json({ found: false, message: 'Sin memoria disponible.' });
