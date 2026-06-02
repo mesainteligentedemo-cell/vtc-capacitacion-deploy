@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
     const { det, dc, nm } = match;
     const start = det.metadata && det.metadata.start_time_unix_secs;
     const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    const fecha = start ? (() => { const dt = new Date(start * 1000); return dt.getDate() + ' de ' + MESES[dt.getMonth()]; })() : '';
+    const fecha = start ? (() => { const dt = new Date(start * 1000); dt.setHours(dt.getHours() - 5); return dt.getDate() + ' de ' + MESES[dt.getMonth()]; })() : '';
     const resumen = {
       found: true,
       nombre: nm || '',
