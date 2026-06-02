@@ -1888,7 +1888,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
         onModeChange:(m)=>{const md=(m&&m.mode)||m;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');}else setStatus('<b>Escuchando…</b>');},
-        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);}else bubble('user',txt);},
+        onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);if(txt&&txt.includes('ahora vamos a ver un video de bienvenida')){setTimeout(()=>{try{var r=vtcResolve({id:'bienvenida'});if(r.scroll) r.scroll.scrollIntoView({behavior:'smooth',block:'start'});}catch(e){console.log('auto-scroll trigger');}},200);}}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
     connecting=false;
