@@ -1797,31 +1797,36 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
     ir_a_modulo: async(p)=>{ try{ var id=vtcId(p); if(id==='__top'){ runAfterVictorStops(function(){ try{window.__vtcDrive=Date.now();}catch(e){} window.scrollTo({top:0,behavior:'smooth'}); }); return 'En el inicio del curso'; } var r=vtcResolve(p); if(r.scroll){ runAfterVictorStops(function(){ r.scroll.scrollIntoView({behavior:'smooth',block:'start'}); vtcHL(r.scroll); }); return 'Navegado y resaltado'; } return 'modulo no encontrado'; }catch(e){return 'error';} },
     reproducir_video: async(p)=>{ try{
         var r=vtcResolve(p); if(!r.scroll||!r.video) return 'modulo no encontrado';
-        console.log('[VIDEO] WAITING FOR VICTOR TO FINISH SPEAKING COMPLETELY');
+        console.log('[VIDEO] WAITING FOR VICTOR TO FINISH SPEAKING');
         /* PASO 1: Wait until Victor TRULY stops speaking */
-        /* This waits for onModeChange to transition OUT of 'speaking' mode */
         await new Promise(function(res){
-          if(!window.__vtcSpeaking){
-            /* Already not speaking, but ensure we caught the end event */
-            if(window.__vtcSpeakingEnded && window.__vtcSpeakingEnded > Date.now()-3000){
-              res(); return;
-            }
-          }
-          /* Wait for the callback from onModeChange */
-          var maxWait=50000, t0=Date.now();
+          var completed=false;
+          /* Setup callback from onModeChange for speech end */
           window.__vtcWaitingForSpeechEnd=function(){
-            console.log('[VIDEO] Victor finished speaking at onModeChange');
-            window.__vtcWaitingForSpeechEnd=null;
+            if(completed) return;
+            completed=true;
+            console.log('[VIDEO] onModeChange callback: Victor stopped');
             res();
           };
-          var fallback=setInterval(function(){
-            if(Date.now()-t0>maxWait){
-              clearInterval(fallback);
-              window.__vtcWaitingForSpeechEnd=null;
-              console.log('[VIDEO] Timeout waiting for speech end');
+          /* Fallback: if Victor not currently speaking, add 3.5s minimum buffer */
+          if(!window.__vtcSpeaking){
+            console.log('[VIDEO] Victor already not speaking, waiting 3.5s buffer');
+            setTimeout(function(){
+              if(completed) return;
+              completed=true;
+              console.log('[VIDEO] Fallback timeout: 3.5s buffer complete');
               res();
-            }
-          },500);
+            },3500);
+          } else {
+            console.log('[VIDEO] Victor is speaking, waiting for speech to end');
+            /* Hard timeout: 45 seconds max */
+            setTimeout(function(){
+              if(completed) return;
+              completed=true;
+              console.log('[VIDEO] Hard timeout: 45s exceeded');
+              res();
+            },45000);
+          }
         });
         /* PASO 2: Additional safety buffer (500ms extra) */
         console.log('[VIDEO] Final safety buffer 500ms...');
@@ -1966,7 +1971,7 @@ body.drawer-open .cn-backdrop{opacity:1;pointer-events:auto;}
         onConnect:()=>{setStatus('<b>En línea</b>');mic.classList.add('vw-live');launch.classList.add('vw-active');},
         onDisconnect:()=>{setStatus('Sesión terminada');mic.classList.remove('vw-live');launch.classList.remove('vw-active');conv=null;started=false;},
         onError:(e)=>{setStatus('Error de conexión');console.error(e);},
-        onModeChange:(m)=>{const md=(m&&m.mode)||m;const wasSpeaking=window.__vtcSpeaking;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');window.__vtcSpeakingStarted=Date.now();}else{if(wasSpeaking){window.__vtcSpeakingEnded=Date.now();console.log('[SPEAK] Victor stopped speaking');if(window.__vtcWaitingForSpeechEnd){window.__vtcWaitingForSpeechEnd();}if(window.__vtcLastMessage){var txt=window.__vtcLastMessage.toLowerCase().replace(/[^a-z ]/g,'');if(txt.includes('video de bienvenida')){setTimeout(function(){console.log('[AUTO] Scrolling+playing bienvenida after speech end');autoPlayVideo('bienvenida');},600);}else if(txt.includes('modulo video')||/modulo.?[0-9f]/i.test(window.__vtcLastMessage)){var m=window.__vtcLastMessage.match(/modulo.?([0-9f])/i);if(m){setTimeout(function(){console.log('[AUTO] Scrolling+playing modulo '+m[1]+' after speech end');autoPlayVideo('modulo-'+m[1]);},600);}}}}setStatus('<b>Escuchando…</b>');}},
+        onModeChange:(m)=>{const md=(m&&m.mode)||m;const wasSpeaking=window.__vtcSpeaking;window.__vtcSpeaking=(md==='speaking');if(md==='speaking'){typing(false);setStatus('<b>Victor hablando…</b>');window.__vtcSpeakingStarted=Date.now();}else{if(wasSpeaking){window.__vtcSpeakingEnded=Date.now();console.log('[SPEAK] Victor stopped speaking');if(window.__vtcWaitingForSpeechEnd){console.log('[SPEAK] Firing callback for reproducir_video');window.__vtcWaitingForSpeechEnd();}}setStatus('<b>Escuchando…</b>');}},
         onMessage:(m)=>{const s=m.source||m.role,txt=m.message||m.text||'';if(s==='ai'||s==='agent'){typing(false);bubble('ai',txt);window.__vtcLastMessage=txt;}else bubble('user',txt);},
       });
     }catch(e){setStatus('No se pudo conectar');console.error(e);}
