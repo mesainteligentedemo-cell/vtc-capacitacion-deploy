@@ -23,12 +23,12 @@ async function handleElevenLabsAgent(req, res) {
 
         const finalAgentId = agentId || ELEVENLABS_CONFIG.agentId;
 
-        // Call ElevenLabs Convai API
+        // Call ElevenLabs Agent API (proper endpoint)
         const response = await axios.post(
-            `${ELEVENLABS_CONFIG.baseUrl}/convai/agents/${finalAgentId}/messages`,
+            `${ELEVENLABS_CONFIG.baseUrl}/agents/${finalAgentId}/interact`,
             {
-                message: message,
-                user_id: userId || 'anonymous',
+                user_input: message,
+                user_id: userId || 'user_' + Date.now(),
                 conversation_id: generateConversationId(userId)
             },
             {
@@ -39,15 +39,19 @@ async function handleElevenLabsAgent(req, res) {
             }
         );
 
-        // ElevenLabs Convai returns the agent response in various formats
-        const agentText = response.data.message ||
+        // Extract agent response (ElevenLabs returns various formats)
+        const agentText = response.data.agent_output ||
                          response.data.output ||
+                         response.data.message ||
                          response.data.text ||
+                         (response.data.response ? response.data.response[0]?.message : null) ||
                          JSON.stringify(response.data);
+
+        console.log('Agent response received:', agentText);
 
         res.json({
             success: true,
-            response: agentText
+            response: agentText || 'No response from agent'
         });
 
     } catch (error) {

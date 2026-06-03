@@ -1444,8 +1444,8 @@
 </footer>
 <!-- VICTOR · Chat de capacitacion VTC — UI propia -->
 <style>
-  #vw-launch{position:fixed;right:24px;bottom:24px;width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg, #1a1814 0%, #0d0d0f 100%);border:2px solid #b89a6a;box-shadow:0 0 0 2px #0a0a0c,0 12px 40px rgba(184,154,106,.25),inset 0 1px 0 rgba(255,255,255,.1);cursor:pointer;z-index:99998;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.16,.84,.44,1)}
-  #vw-launch:hover{transform:scale(1.12);box-shadow:0 0 0 2px #0a0a0c,0 18px 50px rgba(184,154,106,.35),inset 0 1px 0 rgba(255,255,255,.1)} #vw-launch img{width:52px;height:52px;border-radius:50%;object-fit:cover;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  #vw-launch{position:fixed;right:24px;bottom:24px;width:88px;height:88px;border-radius:50%;background:#0d0d0f;border:2px solid #b89a6a;box-shadow:0 0 0 2px #0a0a0c,0 12px 40px rgba(184,154,106,.25);cursor:pointer;z-index:99998;display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:44px;font-weight:bold;color:#b89a6a;font-family:Georgia,serif}
+  #vw-launch:hover{transform:scale(1.12);box-shadow:0 0 0 2px #0a0a0c,0 18px 50px rgba(184,154,106,.35)} #vw-launch img{display:none}
   #vw-launch .vw-pulse{position:absolute;inset:-3px;border-radius:50%;border:2px solid #b89a6a;animation:vwp 2.8s infinite ease-out;opacity:0}
   #vw-launch.vw-active .vw-pulse{animation:vwp 1.6s infinite ease-out;border-color:#c9aa75}
   @keyframes vwp{0%{transform:scale(1);opacity:.8;border-color:#b89a6a}50%{opacity:.3}100%{transform:scale(1.8);opacity:0}}
@@ -1495,7 +1495,7 @@
   @media(max-width:480px){#vw-panel{right:8px;left:8px;bottom:8px;width:auto;max-width:none;height:min(72vh,560px)}#vw-launch{right:14px;bottom:14px}}
   @media(max-width:480px) and (orientation:landscape){#vw-panel{height:calc(100vh - 16px)}}
 </style>
-<div id="vw-launch" title="Habla con Victor"><span class="vw-pulse"></span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230d0d0f'/%3E%3Ccircle cx='50' cy='50' r='47' stroke='%23b89a6a' stroke-width='2' fill='none'/%3E%3Ctext x='50' y='65' font-family='serif' font-size='50' font-weight='bold' text-anchor='middle' fill='%23b89a6a'%3EV%3C/text%3E%3C/svg%3E" alt="Victor" style="width:52px;height:52px;"></div>
+<div id="vw-launch" title="Habla con Victor"><span class="vw-pulse"></span>V</div>
 <div id="vw-panel">
   <div class="vw-head">
     <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%230d0d0f'/%3E%3Ccircle cx='50' cy='50' r='47' stroke='%23b89a6a' stroke-width='2' fill='none'/%3E%3Ctext x='50' y='65' font-family='serif' font-size='50' font-weight='bold' text-anchor='middle' fill='%23b89a6a'%3EV%3C/text%3E%3C/svg%3E" alt="Victor" style="width:40px;height:40px;flex-shrink:0;">
