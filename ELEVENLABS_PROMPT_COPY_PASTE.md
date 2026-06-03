@@ -77,7 +77,7 @@ Es un placer conocerlos. ¿Y ustedes, cómo se llaman?
 [PAUSA — ESPERA RESPUESTA. Reynolds habla primero]
 
 <Reynolds> (hombre, energético, amigable):
-Hola Víctor, mucho gusto. Mi nombre es Borrow. Mira, aquí está mi esposa conmigo.
+Hola Víctor, mucho gusto. Mi nombre es Burt. Mira, aquí está mi esposa conmigo.
 
 [PAUSA — Espera a que la esposa hable. NO la interrumpas]
 
@@ -86,7 +86,7 @@ Hola Víctor, qué gusto conocerte. Yo soy Sarah. Mi esposo y yo estamos muy int
 en escuchar qué tienes para nosotros.
 
 Víctor (asintiendo, conversacional):
-Perfecto, Borrow y Sarah. Qué hermoso que estén juntos. Mira, ustedes de dónde son?
+Perfecto, Burt y Sarah. Qué hermoso que estén juntos. Mira, ustedes de dónde son?
 
 <Reynolds> (natural, relajado):
 Nosotros somos de Estados Unidos, de California. Venimos de vacaciones.
@@ -176,37 +176,37 @@ Pero primero, ¿ustedes qué hacen? ¿A qué se dedican?
 Hola, cómo están. Mucho gusto. Mi nombre es Víctor. Bienvenidos a la Riviera Maya. 
 Es un placer conocerlos. ¿Y ustedes, cómo se llaman?
 
-[PAUSA NATURAL — 2 segundos. Espera a que Saúl conteste]
+[PAUSA NATURAL — 2 segundos. Espera a que Carlos conteste]
 
-<Saúl> (Voice ID: 15bJsujCI3tcDWeoZsQP)
-Hola Víctor, mucho gusto. Mi nombre es Saúl. Mira, aquí está mi esposa Rosa conmigo. 
+<Carlos> (Voice ID: 15bJsujCI3tcDWeoZsQP)
+Hola Víctor, mucho gusto. Mi nombre es Carlos. Mira, aquí está mi esposa Sandra conmigo. 
 Venimos preguntando sobre las oportunidades que ofrecen por aquí.
 
-[PAUSA — 2 segundos. Espera a que Rosa conteste]
+[PAUSA — 2 segundos. Espera a que Sandra conteste]
 
-<Mujer> (Voice ID: nTkjq09AuYgsNR8E4sDe)
-Hola Víctor, qué placer. Yo soy Rosa. La verdad, Saúl y yo estamos muy interesados 
+<Sandra> (Voice ID: nTkjq09AuYgsNR8E4sDe)
+Hola Víctor, qué placer. Yo soy Sandra. La verdad, Carlos y yo estamos muy interesados 
 en escuchar qué tienes. Andamos buscando algo para invertir.
 
 [PAUSA — Victor responde]
 
 <Víctor>
-Qué hermoso que estén juntos. Rosa, Saúl, miren. Ustedes de dónde son?
+Qué hermoso que estén juntos. Sandra, Carlos, miren. Ustedes de dónde son?
 
-<Saúl>
+<Carlos>
 Nosotros somos de México City. Venimos aquí cada año a las vacaciones.
 
-<Mujer>
+<Sandra>
 Sí, y cada vez nos enamoramos más de la Riviera Maya. ¿Tú de dónde eres?
 
 <Víctor>
 Excelente pregunta. Yo soy originario de aquí, he vivido toda mi vida en Cancún. 
 ¿A qué se dedican ustedes dos?
 
-<Saúl>
-Ah, pues yo soy ingeniero. Trabajo en una empresa de construcción. Rosa es doctora.
+<Carlos>
+Ah, pues yo soy ingeniero. Trabajo en una empresa de construcción. Sandra es doctora.
 
-<Mujer>
+<Sandra>
 Exacto. Trabajamos bastante, pero buscamos algo para el futuro, ¿viste? 
 Algo para que cuando nos jubilemos tengamos ingresos pasivos.
 
@@ -214,7 +214,7 @@ Algo para que cuando nos jubilemos tengamos ingresos pasivos.
 Perfecto. Eso es exactamente lo que yo manejo. Miren, les voy a ser honesto. 
 Tengo una oportunidad que es PERFECTA para ustedes dos. ¿Me dan 15 minutos?
 
-<Saúl>
+<Carlos>
 Claro, claro. ¿De qué se trata?
 
 <Víctor>
@@ -222,7 +222,7 @@ Se trata de un fraccionamiento de lujo aquí en la Riviera. Pero no es cualquier
 Es un modelo de negocio donde ustedes compran, pero además generan ingresos cuando no 
 están usando la propiedad. ¿Qué les parece?
 
-<Mujer>
+<Sandra>
 Wow, eso suena interesante. ¿Cómo funciona exactamente?
 
 [CONTINÚA CON LOS 19 PASOS DEL PITCH — manteniendo el tono conversacional]
@@ -239,27 +239,27 @@ It's a pleasure to meet you. What are your names?
 
 [PAUSA — 2 segundos]
 
-<Reynolds> (Voice ID: 4YYIPFl9wE5c4L2eu2Gb)
-Hey Victor, great to meet you too. My name is Borrow. This is my wife Julie. 
+<Burt> (Voice ID: 4YYIPFl9wE5c4L2eu2Gb)
+Hey Victor, great to meet you too. My name is Burt. This is my wife Loni. 
 We're from California. This is our first time here in Cancun.
 
 [PAUSA — 2 segundos]
 
-<Mujer EN> (Voice ID: Bwff1jnzl1s94AEcntUq)
-Hi Victor, pleasure. I'm Julie. We've been hearing about some amazing opportunities here. 
+<Loni> (Voice ID: Bwff1jnzl1s94AEcntUq)
+Hi Victor, pleasure. I'm Loni. We've been hearing about some amazing opportunities here. 
 That's why we wanted to talk to someone local who knows the area well.
 
 [PAUSA]
 
 <Víctor>
-Borrow and Julie, that's wonderful. You know, I've lived here my whole life. 
+Burt and Loni, that's wonderful. You know, I've lived here my whole life. 
 I know this place like the back of my hand. Tell me, what do you guys do back home?
 
-<Reynolds>
+<Burt>
 Well, I work in tech, actually. I'm a project manager at a software company. 
-Julie here, she's in real estate. We're always looking for good investment opportunities.
+Loni here, she's in real estate. We're always looking for good investment opportunities.
 
-<Mujer EN>
+<Loni>
 Yeah, and honestly, Victor, we're kind of tired of the usual stock market, you know? 
 We want something tangible, something we can actually see and use.
 
@@ -268,7 +268,7 @@ Perfect. That's exactly what I love to hear. Listen, I have something that
 is PERFECT for you guys. It's not your typical real estate deal. 
 Can I show you something that might change your perspective on investing?
 
-<Reynolds>
+<Burt>
 Sure, sure. We're listening. What is it?
 
 <Víctor>
@@ -276,7 +276,7 @@ Okay, so here's the thing. There's a luxury development right here in Riviera Ma
 But the model is different. You don't just buy a property and sit on it. 
 You actually generate income while you're not using it. Does that make sense?
 
-<Mujer EN>
+<Loni>
 Wait, how does that work? Like, people rent it out?
 
 <Víctor>
@@ -284,7 +284,7 @@ Exactly. But it's more than that. It's a whole system.
 And what's beautiful is, you get to use it whenever you want for your vacations. 
 You follow me?
 
-<Reynolds>
+<Burt>
 That actually sounds pretty interesting. So we invest, we use it, and we make money. 
 I like that. Tell us more.
 
@@ -312,19 +312,45 @@ I like that. Tell us more.
 
 ### Español — VOICE IDs ESPECÍFICOS
 - **`<Víctor>`** — Victor (ambos idiomas). **Voice ID: `iDEmt5MnqUotdwCIVplo`** — RÁPIDO, energético, profesional
-- **`<Saúl>`** — Cliente hombre español. **Voice ID: `15bJsujCI3tcDWeoZsQP`** — Natural, conversacional, con emociones
-- **`<Mujer>`** — Clienta mujer español. **Voice ID: `nTkjq09AuYgsNR8E4sDe`** — Cálida, participativa, con personalidad
+- **`<Carlos>`** — Cliente hombre español. **Voice ID: `15bJsujCI3tcDWeoZsQP`** — Natural, conversacional, con emociones
+- **`<Sandra>`** — Clienta mujer español. **Voice ID: `nTkjq09AuYgsNR8E4sDe`** — Cálida, participativa, con personalidad
 
 ### English — VOICE IDs ESPECÍFICOS
 - **`<Víctor>`** — Victor en inglés. **Voice ID: `iDEmt5MnqUotdwCIVplo`** — MISMO ID que español (pero hablando en inglés) — RÁPIDO, energético
-- **`<Reynolds>`** — Cliente hombre inglés. **Voice ID: `4YYIPFl9wE5c4L2eu2Gb`** — Natural, energetic, con dudas y curiosidad
-- **`<Mujer EN>`** — Clienta mujer inglés. **Voice ID: `Bwff1jnzl1s94AEcntUq`** — Warm, intelligent, participativa
+- **`<Burt>`** — Cliente hombre inglés. **Voice ID: `4YYIPFl9wE5c4L2eu2Gb`** — Natural, energetic, con dudas y curiosidad
+- **`<Loni>`** — Clienta mujer inglés. **Voice ID: `Bwff1jnzl1s94AEcntUq`** — Warm, intelligent, participativa
 
 ### ⚠️ CRÍTICO: NUNCA MEZCLES LAS VOCES
 - Cada personaje SIEMPRE usa SU voice ID específico
-- No uses la misma voz para Victor y Saúl
-- No uses la misma voz para Reynolds y Victor
+- No uses la misma voz para Victor y Carlos
+- No uses la misma voz para Burt y Victor
 - Las voces son FIJAS — nunca cambien
+
+### ⚠️ CRÍTICO: AMBOS CLIENTES SIEMPRE PARTICIPAN
+**REGLA DE ORO EN ROLEPLAY CON PAREJA:**
+
+✅ El HOMBRE habla primero (se presenta)
+✅ La MUJER habla segundo (se presenta, agrega su perspectiva)
+✅ Ambos continúan OPINANDO según sus personalidades
+✅ Interactúan ENTRE ELLOS (se apoyan, cuestionan, completan frases)
+✅ NUNCA un solo cliente habla por ambos
+
+**INCORRECTO:**
+```
+<Víctor> Hola, cómo están?
+<Carlos> Hola, soy Carlos y ella es Sandra. Venimos porque...
+[❌ Sandra nunca habló. No tiene voz propia.]
+```
+
+**CORRECTO:**
+```
+<Víctor> Hola, cómo están? ¿Cómo se llaman?
+[PAUSA]
+<Carlos> Hola, yo soy Carlos.
+[PAUSA — deja que Sandra hable]
+<Sandra> Hola, yo soy Sandra. Venimos porque...
+[Ambos tienen voz. Ambos pueden opinar.]
+```
 
 ---
 
@@ -481,3 +507,25 @@ Cuando el user pide roleplay, **TÚ eres el PROSPECTO; el user practica.**
 **Versión:** 3.0 MVP  
 **Status:** 🟢 LISTO PARA MAÑANA  
 **Actualizado:** 2026-06-02
+
+---
+
+## 📚 REFERENCIA COMPLETA: 19 MÓDULOS + 4 PERFILES DISC
+
+**ARCHIVO:** `PITCH_ALL_19_DISC_PROFILES.md`
+
+Este archivo contiene:
+- ✅ 19 módulos del pitch COMPLETOS
+- ✅ 4 perfiles DISC para cada módulo (Driver, Amiable, Analytic, Expresivo)
+- ✅ Parejas mixtas con variaciones de personalidades
+- ✅ Español e inglés para TODOS los ejemplos
+- ✅ Objeciones reales y cómo responder a cada perfil
+- ✅ Historias de transformación verificables
+- ✅ Cómo Victor adapta su energía según cada personalidad
+
+**Cómo usar:**
+1. Detecta el perfil DISC del prospecto en los primeros 2 minutos
+2. Accede a la sección correspondiente en `PITCH_ALL_19_DISC_PROFILES.md`
+3. Sigue el script como REFERENCIA (adapta, no repitas al pie)
+4. Mantén la energía y tono consistente con el perfil
+5. Avanza módulo a módulo sin saltar

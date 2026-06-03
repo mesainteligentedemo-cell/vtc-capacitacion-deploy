@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-06-03 00:56:47",
+  "total": 12,
+  "exitosas": 0,
+  "fallidas": 12,
+  "voces": {
+    "NIÑO_6_AÑOS": "ERROR",
+    "NIÑA_16_AÑOS": "ERROR",
+    "NIÑA_4_AÑOS": "ERROR",
+    "NIÑO_14_AÑOS": "ERROR",
+    "MUJER_24_AÑOS": "ERROR",
+    "MUJER_60_AÑOS": "ERROR",
+    "HOMBRE_20_AÑOS": "ERROR",
+    "HOMBRE_65_AÑOS": "ERROR",
+    "HOMBRE_45_CÁLIDO": "ERROR",
+    "HOMBRE_45_EJECUTIVO": "ERROR",
+    "MUJER_40_EJECUTIVA": "ERROR",
+    "MUJER_40_CÁLIDA": "ERROR"
+  }
+}

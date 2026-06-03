@@ -1,0 +1,188 @@
+════════════════════════════════════════════════════════════════════════════
+  MAPA DE CAMBIOS — Dónde encontrar cada elemento en index.html
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS 17-64: HEADER UNIFICADO VICTOR IA
+   ├── <div class="read-progress"> (barra de lectura)
+   ├── <header class="vi-header">
+   │   ├── Logo "Victor IA"
+   │   ├── <nav class="vi-nav-main"> (5 items: Inicio, Módulos, Mi Progreso, Certificados, Soporte)
+   │   └── <div class="vi-meta-nav"> (Selector de apps)
+   │       ├── Button "VTC"
+   │       └── Dropdown menu (Website, Dashboard, VTC, Brain Tracker)
+   └── <button class="cn-toggle"> (toggle del sidebar)
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS 66-76: MENÚ LATERAL DE MÓDULOS (SIN CAMBIOS ESTRUCTURALES)
+   ├── <aside class="course-nav"> (se reposiciona: top: 56px)
+   │   ├── .cn-progress (anillo de progreso)
+   │   │   ├── SVG del círculo
+   │   │   └── Contadores de módulos
+   │   └── <ul class="cn-list"> (lista de módulos)
+   └── Funcionalidad: igual que antes
+       • Toggle sigue funcionando
+       • Progreso visual intacto
+       • Scroll del sidebar intacto
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS ~77-2300: CONTENIDO ORIGINAL (SIN CAMBIOS)
+   ├── Secciones de módulos (bienvenida, F, 0, 1, 2, 3...)
+   ├── Videos y contenido
+   ├── Exámenes y quizzes
+   ├── Scripts de JavaScript originales
+   └── TODO SIGUE IGUAL
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS ~1520-1600: CSS DEL HEADER/FOOTER (NUEVO)
+   ├── .vi-header (estilos del header)
+   │   ├── position: fixed
+   │   ├── height: 56px
+   │   ├── z-index: 99
+   │   └── backdrop-filter: blur(12px)
+   │
+   ├── .vi-nav-main (nav principal)
+   │   ├── Flexbox layout
+   │   ├── 5 items con hover effects
+   │   └── Underline animation
+   │
+   ├── .vi-app-selector (botón de apps)
+   │   ├── Button styling
+   │   ├── Border + hover
+   │   └── aria-expanded
+   │
+   ├── .vi-app-menu (dropdown de apps)
+   │   ├── position: absolute
+   │   ├── 4 links
+   │   └── Indicador de "current" app
+   │
+   ├── Ajustes de layout
+   │   ├── .course-nav { top: 56px; height: calc(100vh - 56px); }
+   │   ├── .cn-toggle { top: 56px; }
+   │   ├── .read-progress { top: 56px; }
+   │   └── section[id] { scroll-margin-top: 130px; }
+   │
+   ├── .vi-footer (estilos del footer)
+   │   ├── background: var(--ink2)
+   │   ├── border-top: 1px solid var(--faint)
+   │   ├── padding: 4rem 2rem 2rem
+   │   └── margin-top: 4rem
+   │
+   ├── .vi-footer-container (grid de 3 columnas)
+   │   ├── grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+   │   ├── gap: 3rem
+   │   └── max-width: 1400px
+   │
+   ├── .vi-footer-col (columnas)
+   │   ├── Logo + descripción
+   │   ├── Recursos (Doc, FAQ, Contacto, Legal)
+   │   └── Ecosistema (Website, Dashboard, Brain Tracker)
+   │
+   ├── .vi-footer-bottom (barra inferior)
+   │   └── Copyright + créditos
+   │
+   └── @media queries (responsive)
+       ├── @media(max-width: 1200px) — gap y padding reducidos
+       ├── @media(max-width: 1000px) — nav main oculta
+       └── @media(max-width: 768px) — footer 1 columna
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS ~2300-2400: SCRIPTS ORIGINALES (SIN CAMBIOS)
+   ├── Menu toggle handler
+   ├── Chat send button handler
+   ├── Module list rendering
+   ├── Read progress tracking
+   └── Agent feedback system
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS 2403-2432: JAVASCRIPT DEL SELECTOR DE APPS (NUEVO)
+   ├── (function(){
+   │   ├── var selector = document.getElementById('viAppSelector');
+   │   ├── var menu = document.getElementById('viAppMenu');
+   │   │
+   │   ├── selector.addEventListener('click', ...) — toggle dropdown
+   │   ├── menu.querySelectorAll('a').forEach(...) — cierra al clickear link
+   │   └── document.addEventListener('click', ...) — cierra al clickear fuera
+   └── })();
+
+════════════════════════════════════════════════════════════════════════════
+
+📍 LÍNEAS 2404-2440: FOOTER UNIFICADO (NUEVO)
+   ├── <footer class="vi-footer">
+   │   ├── <div class="vi-footer-container">
+   │   │   ├── COLUMNA 1: Logo + Descripción
+   │   │   │   ├── <div class="vi-footer-logo">Victor IA</div>
+   │   │   │   └── <p class="vi-footer-desc">Capacitación de elite...</p>
+   │   │   │
+   │   │   ├── COLUMNA 2: Recursos
+   │   │   │   ├── <h4 class="vi-footer-title">Recursos</h4>
+   │   │   │   └── <ul class="vi-footer-links">
+   │   │   │       ├── Documentación
+   │   │   │       ├── Preguntas Frecuentes
+   │   │   │       ├── Contacto
+   │   │   │       └── Términos y Condiciones
+   │   │   │
+   │   │   └── COLUMNA 3: Ecosistema Victor IA
+   │   │       ├── <h4 class="vi-footer-title">Ecosistema Victor IA</h4>
+   │   │       └── <ul class="vi-footer-links">
+   │   │           ├── Website Principal
+   │   │           ├── Dashboard BI
+   │   │           └── Brain Tracker
+   │   │
+   │   └── <div class="vi-footer-bottom">
+   │       ├── © 2024 Victor IA...
+   │       └── Diseño y desarrollo...
+   │
+   └── </footer>
+
+════════════════════════════════════════════════════════════════════════════
+
+RESUMEN DEL FLUJO VISUAL:
+
+┌─────────────────────────────────────────────────────────────────┐
+│ HEADER UNIFICADO (56px fixed)                                  │
+│ ┌─ Logo Victor IA ── Nav Main ────── App Selector ──────────┐  │
+│ │  (5 items)        (Website, etc) │  │
+│ └─────────────────────────────────────────────────────────────┘  │
+├─────────────────────────────────────────────────────────────────┤
+│ CONTENIDO PRINCIPAL                                              │
+│ ┌──────────────────────────────────────────────────────────────┐ │
+│ │ ┌─ Sidebar Menu ─┐ ┌─ Módulos / Content ──────────────────┐ │ │
+│ │ │ (280px fixed)  │ │                                       │ │ │
+│ │ │ • Progreso     │ │ • Secciones                          │ │ │
+│ │ │ • Módulos      │ │ • Videos                             │ │ │
+│ │ │                │ │ • Exámenes                           │ │ │
+│ │ └────────────────┘ │ • Scripts                            │ │ │
+│ │                    │                                       │ │ │
+│ │                    └───────────────────────────────────────┘ │ │
+│ └──────────────────────────────────────────────────────────────┘ │
+├─────────────────────────────────────────────────────────────────┤
+│ FOOTER UNIFICADO                                                 │
+│ ┌─ Victor IA + Desc ─┐ ┌─ Recursos ────┐ ┌─ Ecosistema ─────┐  │
+│ │                    │ │ • Doc         │ │ • Website       │  │
+│ │                    │ │ • FAQ         │ │ • Dashboard     │  │
+│ │                    │ │ • Contacto    │ │ • Brain Tracker │  │
+│ │                    │ │ • Legal       │ │                 │  │
+│ └────────────────────┘ └───────────────┘ └─────────────────┘  │
+│ © 2024 Victor IA. Diseño y desarrollo: Victor IA Team         │
+└─────────────────────────────────────────────────────────────────┘
+
+════════════════════════════════════════════════════════════════════════════
+
+LÍNEAS TOTALES MODIFICADAS:
+├── Líneas agregadas: ~200 (header + footer + CSS + JS)
+├── Líneas eliminadas: ~30 (nav anterior)
+├── Neto: +170 líneas
+└── Tamaño final: ~2,440 líneas
+
+REGLAS CSS NUEVAS: ~100 líneas
+REGLAS JS NUEVAS: ~30 líneas
+
+VARIABLES CSS UTILIZADAS: 10 (todas de VTC, sin cambios)
+CAMBIOS SEMÁNTICOS: 0 (estructura HTML original intacta)
+
+════════════════════════════════════════════════════════════════════════════

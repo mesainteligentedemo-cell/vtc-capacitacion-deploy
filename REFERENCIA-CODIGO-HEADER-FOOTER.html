@@ -1,0 +1,461 @@
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- REFERENCIA DE CÓDIGO — Header/Footer Unificado Victor IA para VTC -->
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<!-- ════════ 1. HTML DEL HEADER (reemplaza la nav anterior) ════════ -->
+<!--
+UBICACIÓN EN VTC: Líneas 17-76 del index.html
+REEMPLAZA: El <nav> original y el <div class="read-progress">
+-->
+
+<div class="read-progress" id="readProgress"></div>
+
+<header class="vi-header" role="banner">
+  <div class="vi-header-top">
+    <div class="vi-header-container">
+      <!-- Logo y marca -->
+      <a href="/" class="vi-logo" aria-label="Victor IA">
+        <span class="vi-logo-text">Victor IA</span>
+      </a>
+
+      <!-- Nav principal (Inicio, Módulos, Mi Progreso, Certificados, Soporte) -->
+      <nav class="vi-nav-main" aria-label="Navegación principal">
+        <ul class="vi-nav-links">
+          <li><a href="#inicio" class="vi-nav-link">Inicio</a></li>
+          <li><a href="#indice" class="vi-nav-link">Módulos</a></li>
+          <li><a href="#mi-progreso" class="vi-nav-link">Mi Progreso</a></li>
+          <li><a href="#certificados" class="vi-nav-link">Certificados</a></li>
+          <li><a href="#soporte" class="vi-nav-link">Soporte</a></li>
+        </ul>
+      </nav>
+
+      <!-- Meta-nav: selector de apps -->
+      <div class="vi-meta-nav">
+        <button class="vi-app-selector" id="viAppSelector" aria-label="Cambiar aplicación" aria-expanded="false">
+          <span class="vi-app-label">VTC</span>
+          <span class="vi-app-icon">⋯</span>
+        </button>
+        <div class="vi-app-menu" id="viAppMenu" hidden>
+          <a href="https://victor-ia-website.vercel.app" class="vi-app-link">Website</a>
+          <a href="https://victor-ia-dashboard.vercel.app" class="vi-app-link">Dashboard</a>
+          <a href="https://vtc-capacitacion-deploy.vercel.app" class="vi-app-link vi-app-current" data-current="true">VTC</a>
+          <a href="https://victor-ia-brain-tracker.vercel.app" class="vi-app-link">Brain Tracker</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ 2. HTML DEL FOOTER (va antes de </body>) ════════ -->
+<!--
+UBICACIÓN EN VTC: Antes del </body>, línea ~2404
+INSERTAR: Justo después del último </script> y antes de </body>
+-->
+
+<footer class="vi-footer" role="contentinfo">
+  <div class="vi-footer-container">
+    <!-- Sección izquierda: Logo y descripción -->
+    <div class="vi-footer-col">
+      <div class="vi-footer-logo">Victor IA</div>
+      <p class="vi-footer-desc">Capacitación de elite para salas de ventas VTC</p>
+    </div>
+
+    <!-- Sección centro: Links de utilidad -->
+    <div class="vi-footer-col">
+      <h4 class="vi-footer-title">Recursos</h4>
+      <ul class="vi-footer-links">
+        <li><a href="#documentacion">Documentación</a></li>
+        <li><a href="#faq">Preguntas Frecuentes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#legal">Términos y Condiciones</a></li>
+      </ul>
+    </div>
+
+    <!-- Sección derecha: Social / Apps -->
+    <div class="vi-footer-col">
+      <h4 class="vi-footer-title">Ecosistema Victor IA</h4>
+      <ul class="vi-footer-links">
+        <li><a href="https://victor-ia-website.vercel.app">Website Principal</a></li>
+        <li><a href="https://victor-ia-dashboard.vercel.app">Dashboard BI</a></li>
+        <li><a href="https://victor-ia-brain-tracker.vercel.app">Brain Tracker</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Barra inferior: Copyright y créditos -->
+  <div class="vi-footer-bottom">
+    <p class="vi-footer-credit">© 2024 Victor IA. Todos los derechos reservados.</p>
+    <p class="vi-footer-credit">Diseño y desarrollo: Victor IA Team</p>
+  </div>
+</footer>
+
+<!-- ════════ 3. CSS DEL HEADER/FOOTER ════════ -->
+<!--
+UBICACIÓN EN VTC: Dentro de <style>, antes de </style> (línea ~1585)
+NOTA: Usar las variables CSS existentes (--gold, --ink2, --muted, etc)
+-->
+
+<style>
+  /* ════════ HEADER UNIFICADO VICTOR IA ════════ */
+  .vi-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: rgba(10,14,39,.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--faint);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+  }
+
+  .vi-header-top {
+    width: 100%;
+    height: 100%;
+  }
+
+  .vi-header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  /* Logo */
+  .vi-logo {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: .15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    flex-shrink: 0;
+    transition: .2s;
+  }
+
+  .vi-logo:hover {
+    color: var(--gold2);
+  }
+
+  .vi-logo-text {
+    font-weight: 300;
+  }
+
+  /* Nav principal */
+  .vi-nav-main {
+    display: flex;
+    flex: 1;
+    margin-left: 3rem;
+  }
+
+  .vi-nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .vi-nav-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: .2s;
+    position: relative;
+  }
+
+  .vi-nav-link:hover {
+    color: var(--cream);
+  }
+
+  .vi-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+  }
+
+  .vi-nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Meta-nav: selector de apps */
+  .vi-meta-nav {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .vi-app-selector {
+    background: transparent;
+    border: 1px solid var(--faint);
+    color: var(--muted);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .vi-app-selector:hover {
+    border-color: var(--gold3);
+    color: var(--cream);
+  }
+
+  .vi-app-icon {
+    font-size: .8rem;
+  }
+
+  .vi-app-label {
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  /* Menu de apps */
+  .vi-app-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--ink2);
+    border: 1px solid var(--faint);
+    border-radius: 6px;
+    min-width: 220px;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
+  }
+
+  .vi-app-menu[hidden] {
+    display: none;
+  }
+
+  .vi-app-link {
+    display: block;
+    padding: .75rem 1.2rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: .2s;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+
+  .vi-app-link:last-child {
+    border-bottom: none;
+  }
+
+  .vi-app-link:hover {
+    background: rgba(184,154,106,.08);
+    color: var(--cream);
+  }
+
+  .vi-app-link[data-current="true"] {
+    background: rgba(184,154,106,.12);
+    color: var(--gold2);
+    border-left: 3px solid var(--gold);
+  }
+
+  /* Ajuste de posición del menú lateral bajo el header */
+  .course-nav {
+    top: 56px;
+    height: calc(100vh - 56px);
+  }
+
+  .cn-toggle {
+    top: 56px;
+  }
+
+  .read-progress {
+    top: 56px;
+  }
+
+  section[id] {
+    scroll-margin-top: calc(74px + 56px);
+  }
+
+  @media(max-width: 1200px) {
+    .vi-header-container {
+      gap: 1.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .vi-nav-main {
+      margin-left: 2rem;
+    }
+
+    .vi-nav-links {
+      gap: 1.2rem;
+    }
+  }
+
+  @media(max-width: 1000px) {
+    .vi-nav-main {
+      display: none;
+    }
+
+    .vi-nav-links {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* ════════ FOOTER UNIFICADO VICTOR IA ════════ */
+  .vi-footer {
+    background: var(--ink2);
+    border-top: 1px solid var(--faint);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .vi-footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .vi-footer-col h4 {
+    display: none;
+  }
+
+  .vi-footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    letter-spacing: .2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+  }
+
+  .vi-footer-desc {
+    color: var(--muted);
+    font-size: .85rem;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .vi-footer-title {
+    font-size: .7rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .vi-footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .vi-footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: .8rem;
+    letter-spacing: .05em;
+    transition: .2s;
+  }
+
+  .vi-footer-links a:hover {
+    color: var(--cream);
+    text-decoration: underline;
+  }
+
+  .vi-footer-bottom {
+    border-top: 1px solid var(--faint);
+    padding-top: 1.5rem;
+    text-align: center;
+  }
+
+  .vi-footer-credit {
+    color: var(--muted);
+    font-size: .7rem;
+    letter-spacing: .08em;
+    margin: .5rem 0;
+    text-transform: uppercase;
+  }
+
+  @media(max-width: 768px) {
+    .vi-footer {
+      padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .vi-footer-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
+
+<!-- ════════ 4. JAVASCRIPT DEL SELECTOR DE APPS ════════ -->
+<!--
+UBICACIÓN EN VTC: Antes de </footer>, línea ~2403
+-->
+
+<script>
+(function(){
+  var selector = document.getElementById('viAppSelector');
+  var menu = document.getElementById('viAppMenu');
+  if(!selector || !menu) return;
+
+  selector.addEventListener('click', function(e){
+    e.stopPropagation();
+    var isOpen = !menu.hasAttribute('hidden');
+    if(isOpen){
+      menu.setAttribute('hidden', '');
+    } else {
+      menu.removeAttribute('hidden');
+    }
+    selector.setAttribute('aria-expanded', !isOpen);
+  });
+
+  // Cerrar menú al hacer click en un link
+  menu.querySelectorAll('a').forEach(function(link){
+    link.addEventListener('click', function(){
+      menu.setAttribute('hidden', '');
+      selector.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Cerrar menú al hacer click fuera
+  document.addEventListener('click', function(e){
+    if(!menu.contains(e.target) && !selector.contains(e.target)){
+      menu.setAttribute('hidden', '');
+      selector.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
+</script>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+<!-- FIN DE LA REFERENCIA DE CÓDIGO -->
+<!-- ════════════════════════════════════════════════════════════════ -->
