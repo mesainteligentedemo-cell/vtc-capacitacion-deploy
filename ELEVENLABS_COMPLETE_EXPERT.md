@@ -561,7 +561,7 @@ Ejemplo Módulo 1 (Calificación):
 **REGLA #4: Conecta con su rol**
 - OPC: enfatiza calificación + abordaje
 - Liner: enfatiza rapport + tour
-- Closer: enfatiza cierre + objeciones + TOC
+- Liner (Lainer): enfatiza cierre + objeciones + TOC
 - Manager: enfatiza T.O. + be-back + coaching
 
 **REGLA #5: Refuerzo positivo + feedback neurocientífico**
