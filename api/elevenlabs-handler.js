@@ -39,16 +39,24 @@ async function handleElevenLabsAgent(req, res) {
             }
         );
 
+        // ElevenLabs Convai returns the agent response in various formats
+        const agentText = response.data.message ||
+                         response.data.output ||
+                         response.data.text ||
+                         JSON.stringify(response.data);
+
         res.json({
             success: true,
-            agentResponse: response.data
+            response: agentText
         });
 
     } catch (error) {
         console.error('ElevenLabs API Error:', error.message);
+        console.error('Error details:', error.response?.data || error);
         res.status(500).json({
             error: 'Failed to communicate with agent',
-            details: error.message
+            details: error.message,
+            response: 'Lo siento, hubo un error conectando con ElevenLabs. Por favor intenta de nuevo.'
         });
     }
 }
