@@ -80,43 +80,69 @@ Víctor demuestra CÓMO se hace. Usuario escucha y aprende.
 
 ### Español
 - **`<Víctor>`** — Entrenador maestro. Voz de Víctor (neutral, profesional, con autoridad).
-- **`<Cliente>`** — Prospecto hombre (español). Voz diferente, natural, con personalidad.
-- **`<Clienta>`** — Prosposa/pareja (español). Voz de mujer natural, diferente a Víctor.
+- **`<Saúl>`** — Cliente hombre (español). **SIEMPRE Saúl para prospect hombre en español**. Voz natural, con personalidad.
+- **`<Mujer>`** — Esposa/pareja (español). Voz de mujer natural, diferente a Víctor y Saúl.
 
 ### English
 - **`<Víctor>`** — Master coach in English. MISMA voz que en español (pero hablando en inglés).
-- **`<Borrow Reynolds>`** — Male prospect (English). Natural male voice, different from Víctor. Could have accent (American, British, etc.).
-- **`<Reynolds Wife>`** — Female prospect (English). Natural female voice, warm, different.
+- **`<Borrow Reynolds>`** — Male prospect (English). Natural male voice, different from Víctor.
+- **`<Mujer EN>`** — Female prospect (English). Natural female voice, warm, diferente. **MISMA mujer que en español pero hablando inglés**.
 
 ---
 
-## 📝 FORMATO DE DIÁLOGO ROLEPLAY
+## 📝 FORMATO DE DIÁLOGO ROLEPLAY — EDUCATIVO CON PARADAS EXPLICATIVAS
 
-**Estructura = realista + natural:**
+**Estructura = Enseñanza en vivo. Explica → Espera → Contesta → Explica.**
+
+**MODO ENSEÑANZA (Victor como Liner):**
 
 ```
-<Víctor Cliente>
-Hola, buenas tardes. ¿Cómo está? Yo soy Juan, ¿y usted cómo se llama?
+Víctor (explicativo):
+Mira, el primer paso del pitch es el SALUDO. Es crítico porque estableces rapport y el prospecto decide en los primeros 3 segundos si te va a escuchar.
+Te voy a saludar como se hace. Fíjate en:
+1. Tono amigable pero profesional
+2. Energia alta (no aburrido)
+3. Pregunta su nombre — es personal, no transaccional
 
-<Usuario - Liner>
-Hola Juan. Gusto, soy Carlos. Mira, te llamaba porque tengo una oportunidad que creo te va a interesar.
+Ahora miro:
 
-<Víctor Cliente>
-Ah sí, ¿de qué se trata? La verdad estoy un poco ocupado ahora...
+<Saúl>
+Hola, buenas tardes. ¿Cómo está? Yo soy Saúl. ¿Y usted, cómo se llama?
 
-<Usuario - Liner>
-Entiendo. Solo son dos minutos. Se trata de...
+Víctor (explicativo, pausando):
+¿Ves? Saúl respondió así. Ahora le digo esto porque quiero caer bien y hacerlo sentir cómodo. Notaste que no le metí ventas en el saludo — eso es un ERROR que cometen los closers nuevos.
+
+Ahora continúo con el siguiente paso: la AGENDA. Le voy a pedir 15 minutos de su tiempo.
+
+<Saúl>
+Perfecto. ¿Y qué me ibas a decir?
+
+Víctor (explicativo):
+¡Exacto! Ahora debo ser directo. Si vago, pierdo. Mira cómo lo hago:
+[Hace la agenda tal cual]
+
+<Saúl>
+[Responde al agenda]
+
+Víctor (explicativo):
+¿Ves la diferencia? Cuando eres directo y respetas su tiempo, el cliente dice que sí. Ahora vamos al DESAYUNO — el paso donde generamos deseo...
 ```
 
 **Características CRÍTICAS:**
-- ✅ Turnos cortos (1-3 frases máximo)
-- ✅ Objeciones reales ("Estoy ocupado", "Ya tengo algo", "No tengo dinero ahora")
-- ✅ Personalidad: risas, dudas, interrupciones
-- ✅ Acento/dialecto según el país (mexicano, colombiano, argentino, etc.)
-- ✅ La esposa interviene naturalmente (preguntas, dudas, aprobación/desaprobación)
-- ✅ NUNCA robot. Siempre humano.
+- ✅ **CADA paso explicado ANTES de ejecutarlo** ("Ahora vamos a hacer X porque...")
+- ✅ **Víctor PAUSA entre diálogos** para explicar qué pasó y por qué
+- ✅ **Los clientes responden REALMENTE** (no monólogo)
+- ✅ **Los 19 pasos COMPLETOS** sin saltarse ninguno
+- ✅ **Objeciones MANEJADAS** en vivo (no ignoradas)
+- ✅ **Mujer interviene naturalmente** (preguntas, dudas, "¿Qué dice aquí?")
+- ✅ **Explicación del POR QUÉ de cada paso** — principios neuro, psychology, VTC
+- ✅ **NUNCA robot.** Conversación natural pero pedagógica
 
-**ANTI-PATRÓN:** No hagas que los clientes sean demasiado dóciles. Dale dificultad real.
+**VOCES:**
+- `<Víctor>` explica
+- `<Saúl>` responde (cliente hombre, español)
+- `<Mujer>` interviene (esposa, natural)
+- En inglés: `<Víctor>` (mismo), `<Borrow Reynolds>`, `<Mujer EN>`
 
 ---
 

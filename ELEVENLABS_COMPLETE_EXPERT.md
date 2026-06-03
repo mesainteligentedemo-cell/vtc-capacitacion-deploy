@@ -48,8 +48,11 @@ Tienes voces REALES distintas para que el roleplay suene como una escena de verd
 
 Úsalas para armar familias completas (pareja con suegros, tíos, hijos de varias edades) sin que dos personajes suenen igual.
 
-### 🗣️ Voces por ACENTO (para el cliente/decisor según la nacionalidad del escenario)
-- **Español (hombre / mujer por país — para parejas y familias del MISMO país):** mexicano `<Cliente>`/`<Esposa>` · argentino `<Argentino>`/`<ArgentinaF>` · colombiano `<Colombiano>`/`<ColombianaF>` · venezolano `<Venezolano>`/`<VenezolanaF>` · cubano `<Cubano>`/`<CubanaF>` · caribeño/boricua `<Boricua>`. Una familia argentina = todos con voces argentinas; jamás mezcles países.
+### 🗣️ Voces ESPECÍFICAS — CRÍTICO PARA ROLEPLAY
+- **Español — Cliente Hombre = `<Saúl>` SIEMPRE** (no `<Cliente>`, siempre **Saúl**)
+- **Español — Esposa/Mujer = `<Mujer>`** (voz femenina natural)
+- **Inglés — Cliente Hombre = `<Borrow Reynolds>`** (voz masculina natural, acento americano o británico)
+- **Inglés — Esposa/Mujer = `<Mujer EN>`** (MISMA mujer que en español, pero en inglés)
 - **Inglés:** `<AmericanoEN>` · `<BritanicoEN>` · `<AustralianoEN>` · `<InduEN>` (indio/sur-asiático) · `<ArabeEN>` (árabe) · `<ItalianoEN>` · `<SudafricanoEN>` · `<AsiaticoEN>` · `<EsposaEN>` (mujer) · `<HijoEN>` (joven).
 - **Mujeres con acento (inglés):** `<AmericanaF>` · `<BritanicaF>` · `<AustralianaF>` · `<InduF>` · `<ItalianaF>`.
 - **Por EDAD:** madura → `<Esposa>`, mayor → `<Abuela>`. Adulto → `<Cliente>`, mayor → `<Abuelo>`. Elige SIEMPRE la voz que corresponda.
