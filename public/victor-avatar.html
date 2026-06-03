@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+<canvas id="canvas" width="200" height="200"></canvas>
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Background
+ctx.fillStyle = '#0d0d0f';
+ctx.fillRect(0, 0, 200, 200);
+
+// Border circle
+ctx.strokeStyle = '#b89a6a';
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.arc(100, 100, 97, 0, Math.PI * 2);
+ctx.stroke();
+
+// V text
+ctx.fillStyle = '#b89a6a';
+ctx.font = 'bold 120px serif';
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText('V', 100, 105);
+
+// Download as PNG
+canvas.toBlob(blob => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'victor-avatar.png';
+  a.click();
+});
+</script>
+</body>
+</html>
