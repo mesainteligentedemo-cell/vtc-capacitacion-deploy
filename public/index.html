@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VTC Membresía - Club Vacacional de Lujo</title>
+    <title>VTC - Club Vacacional de Lujo</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -11,20 +11,23 @@
             background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
             color: #fff;
             min-height: 100vh;
+            padding-top: 120px;
         }
 
-        /* NAVBAR */
-        .navbar {
-            background: rgba(10, 14, 39, 0.95);
+        /* NAVBAR SUPERIOR */
+        .navbar-top {
+            background: rgba(10, 14, 39, 0.98);
             backdrop-filter: blur(10px);
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #FFD60A;
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
         }
-        .navbar-inner {
-            max-width: 1200px;
+        .navbar-top-inner {
+            max-width: 1600px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -32,35 +35,47 @@
             align-items: center;
         }
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: #FFD60A;
             letter-spacing: 2px;
         }
-        .nav-buttons {
+
+        /* MENÚ DE BOTONES */
+        .menu-buttons {
             display: flex;
-            gap: 15px;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
-        .nav-btn {
-            background: transparent;
+        .menu-btn {
+            background: rgba(255,214,10,0.15);
             border: 1px solid #FFD60A;
             color: #FFD60A;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
         }
-        .nav-btn:hover {
+        .menu-btn:hover {
             background: #FFD60A;
             color: #000;
+            transform: translateY(-2px);
+        }
+        .menu-btn-icon {
+            font-size: 1rem;
         }
 
         /* HERO */
         .hero {
-            min-height: 90vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -267,43 +282,6 @@
             box-shadow: 0 10px 30px rgba(255,214,10,0.3);
         }
 
-        /* CTA */
-        .cta {
-            max-width: 1000px;
-            margin: 80px auto;
-            padding: 60px;
-            background: linear-gradient(135deg, rgba(0,245,132,0.1), rgba(0,217,255,0.1));
-            border: 3px solid #00F584;
-            border-radius: 12px;
-            text-align: center;
-        }
-        .cta h2 {
-            color: #00F584;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        .cta p {
-            color: #b0b0b0;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        .cta-btn {
-            background: linear-gradient(135deg, #00F584, #FFD60A);
-            border: none;
-            color: #000;
-            padding: 18px 50px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .cta-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 20px 50px rgba(0,245,132,0.4);
-        }
-
         /* FOOTER */
         .footer {
             background: rgba(10, 14, 39, 0.95);
@@ -337,32 +315,70 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .menu-buttons {
+                gap: 5px;
+            }
+            .menu-btn {
+                padding: 6px 10px;
+                font-size: 0.7rem;
+            }
+            .menu-btn-icon {
+                font-size: 0.85rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            body { padding-top: 180px; }
+            .navbar-top-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .menu-buttons {
+                width: 100%;
+                justify-content: center;
+            }
             .hero h1 { font-size: 2.5rem; }
             .hero .description { font-size: 1rem; }
             .hero-buttons { flex-direction: column; }
             .hero-btn { width: 100%; }
             .section-title { font-size: 2rem; }
-            .nav-buttons { gap: 8px; }
-            .nav-btn { padding: 6px 12px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <div class="navbar-inner">
+    <!-- NAVBAR CON MENÚ DE BOTONES -->
+    <div class="navbar-top">
+        <div class="navbar-top-inner">
             <div class="logo">VTC</div>
-            <div class="nav-buttons">
-                <a href="#beneficios" class="nav-btn">Beneficios</a>
-                <a href="#membresías" class="nav-btn">Membresías</a>
-                <a href="./sistema.html" class="nav-btn" style="background: #FFD60A; color: #000;">Sistema</a>
+            <div class="menu-buttons">
+                <a href="#capacitacion" class="menu-btn">
+                    <span class="menu-btn-icon">🎓</span> Capacitación
+                </a>
+                <a href="./modulo-opc.html" class="menu-btn">
+                    <span class="menu-btn-icon">🎁</span> OPC
+                </a>
+                <a href="./modulo-hosteo.html" class="menu-btn">
+                    <span class="menu-btn-icon">🏨</span> Hosteo
+                </a>
+                <a href="./modulo-worksheet.html" class="menu-btn">
+                    <span class="menu-btn-icon">📋</span> Worksheet
+                </a>
+                <a href="./dashboard-vendedores.html" class="menu-btn">
+                    <span class="menu-btn-icon">👥</span> Vendedores
+                </a>
+                <a href="./dashboard-admin.html" class="menu-btn">
+                    <span class="menu-btn-icon">🏢</span> Admin
+                </a>
+                <a href="./dashboard-embudo-ventas.html" class="menu-btn">
+                    <span class="menu-btn-icon">📈</span> Embudo
+                </a>
             </div>
         </div>
     </div>
 
     <!-- HERO -->
-    <div class="hero">
+    <div class="hero" id="capacitacion">
         <div class="hero-content">
             <h1>Vacaciones Premium<br>Para Toda la Vida</h1>
             <p class="tagline">Club Vacacional VTC • Membresía de Lujo</p>
@@ -375,15 +391,12 @@
                 <button class="hero-btn" onclick="document.getElementById('membresías').scrollIntoView({ behavior: 'smooth' })">
                     Ver Membresías
                 </button>
-                <a href="./sistema.html" class="hero-btn secondary">
-                    Acceder al Sistema
-                </a>
             </div>
         </div>
     </div>
 
     <!-- BENEFICIOS -->
-    <div class="benefits" id="beneficios">
+    <div class="benefits">
         <h2 class="section-title">¿Por Qué VTC?</h2>
         <div class="benefits-grid">
             <div class="benefit-card">
@@ -483,24 +496,13 @@
         </div>
     </div>
 
-    <!-- CTA -->
-    <div class="cta">
-        <h2>¿Listo para Vivir?</h2>
-        <p>
-            Únete a miles de familias que ya disfrutan de vacaciones de lujo
-            sin preocupaciones. Membresía flexible, asequible y con garantía de satisfacción.
-        </p>
-        <a href="./sistema.html" class="cta-btn">Comenzar Ahora</a>
-    </div>
-
     <!-- FOOTER -->
     <div class="footer">
         <div class="footer-content">
             <p><strong>VTC Membresía • Club Vacacional Premium</strong></p>
             <div class="footer-links">
-                <a href="#beneficios">Beneficios</a>
+                <a href="#capacitacion">Inicio</a>
                 <a href="#membresías">Membresías</a>
-                <a href="./sistema.html">Sistema</a>
                 <a href="./dashboard-customers.html">Mi Cuenta</a>
             </div>
             <p style="margin-top: 30px; font-size: 0.85rem; color: #888;">
