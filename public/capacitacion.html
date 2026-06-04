@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VTC | Software Automatizado para Timeshare</title>
+    <title>VTC | Automatiza tu Sala de Ventas • Implementa IA</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -13,6 +13,7 @@
             min-height: 100vh;
         }
 
+        /* NAVBAR */
         .navbar {
             background: rgba(10, 14, 39, 0.98);
             backdrop-filter: blur(10px);
@@ -56,6 +57,7 @@
 
         body { padding-top: 60px; }
 
+        /* HERO */
         .hero {
             min-height: 90vh;
             display: flex;
@@ -107,134 +109,190 @@
             box-shadow: 0 25px 60px rgba(255,214,10,0.5);
         }
 
+        /* PROBLEMS SECTION */
+        .problems {
+            background: rgba(255,107,53,0.08);
+            padding: 100px 20px;
+        }
         .section-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
         }
-
-        .features-section {
-            padding: 100px 20px;
-        }
-        .features-title {
+        .section-title {
             text-align: center;
             font-size: 3.2rem;
-            color: #FFD60A;
+            color: #FF6B35;
             margin-bottom: 60px;
             font-weight: 800;
         }
-        .features-grid {
+        .problems-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
-        .feature-card {
-            background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,217,255,0.1));
-            border: 2px solid #FFD60A;
+        .problem-card {
+            background: linear-gradient(135deg, rgba(192,57,43,0.2), rgba(255,107,53,0.15));
+            border: 2px solid #FF6B35;
             border-radius: 12px;
             padding: 40px;
             transition: all 0.3s;
         }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(255,214,10,0.3);
-            border-color: #00D9FF;
+        .problem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255,107,53,0.3);
         }
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .feature-card h3 {
-            color: #00F584;
+        .problem-icon {
+            font-size: 2.5rem;
             margin-bottom: 15px;
+        }
+        .problem-card h3 {
+            color: #FF6B35;
+            margin-bottom: 12px;
             font-size: 1.3rem;
             font-weight: 700;
         }
-        .feature-card p {
+        .problem-card p {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* SOLUTION SECTION */
+        .solution {
+            padding: 100px 20px;
+        }
+        .solution-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .solution-header h2 {
+            font-size: 3.2rem;
+            color: #FFD60A;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        .solution-header p {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        .solution-card {
+            background: linear-gradient(135deg, rgba(0,245,132,0.15), rgba(0,217,255,0.1));
+            border: 2px solid #00F584;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,245,132,0.3);
+            border-color: #00D9FF;
+        }
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .solution-card h3 {
+            color: #00F584;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .solution-card p {
             color: #b0b0b0;
             line-height: 1.8;
             font-size: 0.95rem;
         }
 
-        .benefits {
-            background: rgba(0,245,132,0.08);
+        /* FEATURES */
+        .features-section {
+            background: rgba(255,214,10,0.03);
             padding: 100px 20px;
         }
-        .benefits-title {
-            text-align: center;
-            font-size: 3.2rem;
-            color: #00F584;
-            margin-bottom: 60px;
-            font-weight: 800;
-        }
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .benefit-card {
-            background: linear-gradient(135deg, rgba(0,245,132,0.15), rgba(0,217,255,0.1));
-            border: 2px solid #00F584;
-            border-radius: 12px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .benefit-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,245,132,0.3);
-        }
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .benefit-card h4 {
-            color: #00F584;
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-        .benefit-card p {
-            color: #b0b0b0;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .stats {
-            padding: 100px 20px;
-        }
-        .stats-title {
+        .features-title {
             text-align: center;
             font-size: 2.8rem;
             color: #FFD60A;
             margin-bottom: 60px;
             font-weight: 800;
         }
-        .stats-grid {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            text-align: center;
         }
-        .stat-card {
-            padding: 40px;
-            background: rgba(255,214,10,0.1);
+        .feature {
+            background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,217,255,0.1));
             border: 2px solid #FFD60A;
             border-radius: 12px;
+            padding: 35px;
+            transition: all 0.3s;
         }
-        .stat-number {
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255,214,10,0.3);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .feature h4 {
+            color: #FFD60A;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .feature p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* RESULTS */
+        .results {
+            padding: 100px 20px;
+        }
+        .results-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #FFD60A;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
+            text-align: center;
+        }
+        .result-item {
+            padding: 40px;
+            background: rgba(0,245,132,0.1);
+            border: 2px solid #00F584;
+            border-radius: 12px;
+        }
+        .result-number {
             font-size: 3.5rem;
-            color: #00F584;
+            color: #FFD60A;
             font-weight: 800;
             margin-bottom: 15px;
         }
-        .stat-text {
+        .result-text {
             color: #b0b0b0;
             font-size: 1.05rem;
             line-height: 1.7;
         }
 
-        .cta-section {
+        /* CTA */
+        .cta {
             background: linear-gradient(135deg, rgba(0,245,132,0.2), rgba(0,217,255,0.15));
             border: 3px solid #00F584;
             border-radius: 14px;
@@ -243,13 +301,13 @@
             max-width: 1100px;
             margin: 100px auto;
         }
-        .cta-section h2 {
+        .cta h2 {
             color: #00F584;
             font-size: 3.2rem;
             margin-bottom: 25px;
             font-weight: 800;
         }
-        .cta-section p {
+        .cta p {
             color: #b0b0b0;
             font-size: 1.2rem;
             margin-bottom: 35px;
@@ -271,6 +329,7 @@
             box-shadow: 0 30px 70px rgba(0,245,132,0.5);
         }
 
+        /* FOOTER */
         .footer {
             background: rgba(10, 14, 39, 0.95);
             border-top: 1px solid #FFD60A;
@@ -361,13 +420,14 @@
             font-size: 1.2rem;
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
             .hero .subtitle { font-size: 1.05rem; }
-            .features-title { font-size: 2.2rem; }
+            .section-title { font-size: 2.2rem; }
             .hero-buttons { flex-direction: column; }
             .btn-primary { width: 100%; }
-            .cta-section { padding: 40px 25px; }
+            .cta { padding: 40px 25px; }
             .nav-btn { display: none; }
             .hamburger { display: flex; }
         }
@@ -377,9 +437,9 @@
     <!-- NAVBAR -->
     <div class="navbar">
         <div class="navbar-inner">
-            <div class="logo">VTC</div>
+            <div class="logo">VTC Capacitación</div>
             <button class="nav-btn" onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })">
-                Ver Demo
+                Activar Sistema
             </button>
             <button class="hamburger" id="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -392,9 +452,9 @@
     <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-links">
-            <a href="./capacitacion.html" class="mobile-menu-link" onclick="closeMenu()">
-                <span class="menu-icon">🎓</span>
-                Capacitación
+            <a href="../" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🏠</span>
+                Inicio
             </a>
             <a href="./modulo-opc.html" class="mobile-menu-link" onclick="closeMenu()">
                 <span class="menu-icon">🎁</span>
@@ -426,21 +486,121 @@
     <!-- HERO -->
     <div class="hero">
         <div class="hero-inner">
-            <h1>Software Automatizado<br>Para Salas de Ventas Timeshare</h1>
+            <h1>Automatiza Tu Sala de Ventas<br>Implementa IA</h1>
             <p class="subtitle">
-                Automatiza tus procesos de marketing, hosteo, worksheets y contratos.
+                Vendedores lentos. Errores constantes. Follow ups que no funcionan.
                 <br>
-                Capacitación personalizada 24/7 con agentes IA.
+                Cancelaciones que destruyen tu conversión. Procesos de los 90's.
                 <br>
-                <strong style="color: #FFD60A;">Genera reportes, controla costos, mide cada actividad.</strong>
+                <strong style="color: #FFD60A;">Capacitación sin seguimiento. Resultados impredecibles.</strong>
             </p>
             <div class="hero-buttons">
-                <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })">
-                    Explorar Sistema →
+                <button class="btn-primary" onclick="document.getElementById('solutions').scrollIntoView({ behavior: 'smooth' })">
+                    Ver la Solución →
                 </button>
-                <button class="btn-primary" onclick="window.location.href='./capacitacion.html'" style="background: linear-gradient(135deg, #00F584, #FFD60A);">
-                    Ver Capacitación
-                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROBLEMS -->
+    <div class="problems">
+        <div class="section-inner">
+            <h2 class="section-title">Esto Es Lo Malo</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🐌</div>
+                    <h3>Vendedores Lentos</h3>
+                    <p>Informales. Sin estándar. Cada uno hace lo que quiere. No hay consistencia. Tu conversión es una ruleta rusa.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">❌</div>
+                    <h3>Errores Constantemente</h3>
+                    <p>Datos duplicados. Información perdida. Malos registros. Los clientes se pierden entre los dedos. Caos administrativo.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">☎️</div>
+                    <h3>Follow Ups Mal Hechos</h3>
+                    <p>Llamadas olvidadas. Clientes tibios que se enfrían. Vendedores que no saben cuándo llamar. Dinero perdido.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⛔</div>
+                    <h3>Cancelaciones Frecuentes</h3>
+                    <p>Clientes que se arrepienten. Objeciones no manejadas. El cierre fue débil. Ventas que desaparecen después del contrato.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⏳</div>
+                    <h3>Procesos Largos</h3>
+                    <p>Desde invitación a contrato: semanas. Papeles volando. Firmas en diferentes lados. Lentitud que mata el momentum.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">📋</div>
+                    <h3>Power Lines Manuales</h3>
+                    <p>Todo en papeles. Excel corruptados. Datos inconsistentes. Tiempo valioso perdido en administrativo en lugar de venta.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">👤</div>
+                    <h3>Capacitación Sin Capacitador</h3>
+                    <p>¿Quién entrena? ¿El mejor vendedor que no quiere dejar de vender? Capacitación inconsistente. Técnicas que no se transfieren.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🚫</div>
+                    <h3>Seguimiento Nulo</h3>
+                    <p>¿Qué aprendió cada asesor? ¿Mejoró su conversión? No hay feedback. No hay métrica. Inversión en capacitación al aire.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💾</div>
+                    <h3>Procesos de los 90's</h3>
+                    <p>Tu competencia automatiza. Tú: papeles. Tu competencia usa IA. Tú: intuición. Tu competencia cierra 70%. Tú: 25%.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOLUTION -->
+    <div class="solution" id="solutions">
+        <div class="section-inner">
+            <div class="solution-header">
+                <h2>Ya Sabes Lo Que Hacemos</h2>
+                <p>
+                    Automatizamos cada paso. Implementamos IA que entrena, que cierra, que rastrea, que mejora.
+                    <br>
+                    Vendedores rápidos. Procesos limpios. Follow ups que funcionan. Cero cancelaciones.
+                    <br>
+                    <strong>Tu sala entra al futuro.</strong>
+                </p>
+            </div>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🤖</div>
+                    <h3>IA que Entrena</h3>
+                    <p>Agentes que enseñan 24/7. Manejan 76 objeciones reales. Tu peor vendedor se convierte en estrella. Sin intervención manual.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">⚡</div>
+                    <h3>Procesos Automáticos</h3>
+                    <p>Invitación → Hosteo → Worksheet → Contrato. Sin papeles. Sin esperas. Lo que tardaba 2 semanas, ahora 2 horas.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">☎️</div>
+                    <h3>Follow Ups Inteligentes</h3>
+                    <p>IA que sabe cuándo llamar. Secuencias automáticas. Clientes tibios que se calienten. Dinero que vuelve a la caja.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🎯</div>
+                    <h3>Cierre Garantizado</h3>
+                    <p>Manejo de objeciones perfecto. Calculadora inteligente. Contrato que se firma al instante. Cancelaciones: casi cero.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3>Dashboards Reales</h3>
+                    <p>Ves TODO en tiempo real. Conversión. Revenue. Performance por asesor. Métricas que venden. Decisiones que funcionan.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🔄</div>
+                    <h3>Post-Venta Automático</h3>
+                    <p>Seguimiento. Renovaciones. Referrals. El cliente que compra hoy vuelve mañana. Ingresos recurrentes garantizados.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -448,118 +608,79 @@
     <!-- FEATURES -->
     <div class="features-section">
         <div class="section-inner">
-            <h2 class="features-title">Qué Incluye Tu Sistema</h2>
+            <h3 class="features-title">Específicamente:</h3>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>Capacitación IA 24/7</h3>
-                    <p>19 etapas de pitch. 76 objeciones. Agents que entrenan a tu equipo sin parar. Role-play en vivo. Mejora constante.</p>
-                </div>
-                <div class="feature-card">
+                <div class="feature">
                     <div class="feature-icon">🎁</div>
-                    <h3>OPC Automático</h3>
-                    <p>Captura invitaciones sin errores. Registra regalos. Datos limpios desde el inicio. Cero fricción.</p>
+                    <h4>OPC Automático</h4>
+                    <p>Invitaciones sin errores. Regalos registrados. Datos limpios. Cero fricción en el primer paso.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature">
                     <div class="feature-icon">🏨</div>
-                    <h3>Hosteo Digital</h3>
-                    <p>Datos pre-llenados. Cliente armado. Presentación que cierra. Sin papeles ni demoras.</p>
+                    <h4>Hosteo Digital</h4>
+                    <p>Cliente pre-llenado. Datos del OPC llegan solos. Asesor entra armado. Presentación que cierra.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature">
                     <div class="feature-icon">📋</div>
-                    <h3>Worksheet Inteligente</h3>
-                    <p>Calculadora VCM con descuentos. Membresía seleccionada. Firma digital integrada. Contrato automático.</p>
+                    <h4>Worksheet Inteligente</h4>
+                    <p>Membresía seleccionada. Calculadora automática. Cliente viendo su inversión. Firma al instante.</p>
                 </div>
-                <div class="feature-card">
+                <div class="feature">
+                    <div class="feature-icon">📜</div>
+                    <h4>Contratos Automáticos</h4>
+                    <p>Generados al instante. Firmas digitales integradas. Legalmente listos. Cero papeles.</p>
+                </div>
+                <div class="feature">
                     <div class="feature-icon">📞</div>
-                    <h3>Follow Up Automático</h3>
-                    <p>Secuencias inteligentes. Clientes tibios que se calientan. SMS, email, llamadas coordinadas.</p>
+                    <h4>Follow Up Agresivo</h4>
+                    <p>Emails, SMS, llamadas automáticas. Secuencias que no fallan. Dinero que vuelve.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Dashboards Ejecutivos</h3>
-                    <p>Vendedores. Embudo de ventas. Admin. Customer Service. Métricas en tiempo real. Decisiones que funcionan.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- BENEFITS -->
-    <div class="benefits">
-        <div class="section-inner">
-            <h2 class="benefits-title">Lo Que Logras</h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h4>-70% Tiempo de Proceso</h4>
-                    <p>De invitación a contrato firmado: 2 horas en lugar de 2 semanas.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">📈</div>
-                    <h4>+40% Conversión</h4>
-                    <p>Primera semana. Vendedores rápidos. Procesos limpios. Cierre garantizado.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">💰</div>
-                    <h4>+$250K Ingresos Anuales</h4>
-                    <p>Por sala. Cancelaciones eliminadas. Post-venta automático. Renovaciones aseguradas.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎯</div>
-                    <h4>-80% Cancelaciones</h4>
-                    <p>Manejo perfecto de objeciones. Cliente que se arrepiente: casi cero.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🤖</div>
-                    <h4>Capacitación Sin Pausa</h4>
-                    <p>Tu peor vendedor se convierte en estrella. IA que enseña 24/7. Sin intervención.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚙️</div>
-                    <h4>Panel de Configuración</h4>
-                    <p>Edita precios, descuentos, comisiones. Sin tocar código. Real-time updates.</p>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h4>Objeciones Resueltas</h4>
+                    <p>76 objeciones manejadas. IA que responde como tu mejor vendedor. Precio que deja de ser un problema.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- STATS -->
-    <div class="stats">
+    <!-- RESULTS -->
+    <div class="results">
         <div class="section-inner">
-            <h2 class="stats-title">Sistema Completo</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">7</div>
-                    <div class="stat-text">Dashboards Operacionales</div>
+            <h3 class="results-title">Resultados que Ves Inmediatamente</h3>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">+40%</div>
+                    <div class="result-text">Conversión<br><small>Primera semana</small></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-text">Módulos de Captura</div>
+                <div class="result-item">
+                    <div class="result-number">-70%</div>
+                    <div class="result-text">Tiempo de proceso<br><small>Invitación a pago</small></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">76</div>
-                    <div class="stat-text">Objeciones Manejadas</div>
+                <div class="result-item">
+                    <div class="result-number">-80%</div>
+                    <div class="result-text">Cancelaciones<br><small>Clientes que se arrepienten</small></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">19</div>
-                    <div class="stat-text">Etapas de Pitch</div>
+                <div class="result-item">
+                    <div class="result-number">+$250K</div>
+                    <div class="result-text">Ingresos anuales<br><small>Por sala</small></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- CTA -->
-    <div id="cta">
+    <div class="section" id="cta">
         <div class="section-inner">
-            <div class="cta-section">
-                <h2>Activa Tu Sistema Hoy</h2>
+            <div class="cta">
+                <h2>Automatiza Tu Sala Hoy</h2>
                 <p>
-                    Automatiza tu sala. Implementa IA. Mide todo.
+                    Vendedores rápidos. Procesos limpios. Conversión garantizada.
                     <br>
-                    <strong style="color: #00F584;">+40% conversión o dinero de vuelta. Garantizado.</strong>
+                    <strong style="color: #00F584;">+40% en conversión o dinero de vuelta. Sin preguntas.</strong>
                 </p>
-                <button class="cta-btn" onclick="window.location.href='./capacitacion.html'">
-                    Entrar al Sistema Completo
+                <button class="cta-btn" onclick="window.location.href='./sistema.html'">
+                    Activar Sistema Ahora
                 </button>
             </div>
         </div>
