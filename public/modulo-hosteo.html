@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Hosteo - Datos Ampliados</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 900px; margin: 0 auto; background: rgba(255,214,10,0.05); border: 2px solid #FFD60A; border-radius: 12px; padding: 40px; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 { font-size: 2.5rem; color: #FFD60A; margin-bottom: 10px; }
+        .form-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #FFD60A;
+        }
+        .form-section:last-child { border-bottom: none; }
+        .section-title {
+            font-size: 1.3rem;
+            color: #FFD60A;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .form-row.full { grid-template-columns: 1fr; }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #FFD60A;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #FFD60A;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #888;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            background: rgba(255,214,10,0.2);
+            border-color: #00D9FF;
+            box-shadow: 0 0 10px rgba(0,217,255,0.3);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row.full textarea { grid-column: 1; }
+        .file-upload {
+            border: 2px dashed #FFD60A;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .file-upload:hover {
+            background: rgba(255,214,10,0.1);
+        }
+        .file-upload input { display: none; }
+        .file-upload p { color: #b0b0b0; margin-bottom: 10px; }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255,214,10,0.3);
+        }
+        .info-box {
+            background: rgba(0,245,132,0.1);
+            border-left: 4px solid #00F584;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏨 Módulo Hosteo</h1>
+            <p>Completar Datos Amplios del Cliente</p>
+        </div>
+
+        <div class="info-box">
+            ℹ️ Este formulario complementa la información de la invitación (OPC) con datos detallados.
+            Se transfiere automáticamente al Worksheet.
+        </div>
+
+        <form id="hosteoForm">
+            <!-- INFORMACIÓN PERSONAL -->
+            <div class="form-section">
+                <h2 class="section-title">👤 Información Personal</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre Completo *</label>
+                        <input type="text" name="nombre" placeholder="Ej: Carlos García López" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Edad *</label>
+                        <input type="number" name="edad" placeholder="Ej: 45" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Estado Civil *</label>
+                        <select name="estado_civil" required>
+                            <option>Soltero/a</option>
+                            <option>Casado/a</option>
+                            <option>Divorciado/a</option>
+                            <option>Viudo/a</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" placeholder="Ej: carlos@email.com" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN DE CONTACTO -->
+            <div class="form-section">
+                <h2 class="section-title">📞 Contacto y Domicilio</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Domicilio Completo *</label>
+                        <textarea name="domicilio" placeholder="Calle, número, ciudad, estado, país, código postal" required></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Teléfono Principal *</label>
+                        <input type="tel" name="telefono_principal" placeholder="Ej: +34 666 123 456" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono Secundario</label>
+                        <input type="tel" name="telefono_secundario" placeholder="Ej: +34 666 789 012">
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN LABORAL -->
+            <div class="form-section">
+                <h2 class="section-title">💼 Información Laboral</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Puesto Laboral *</label>
+                        <input type="text" name="puesto" placeholder="Ej: Director Ejecutivo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Empresa *</label>
+                        <input type="text" name="empresa" placeholder="Ej: Acme Corporation" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Rango de Ingresos Anuales *</label>
+                        <select name="ingresos" required>
+                            <option>$50K - $100K</option>
+                            <option>$100K - $250K</option>
+                            <option>$250K - $500K</option>
+                            <option>$500K - $1M</option>
+                            <option>$1M+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Años en Posición Actual *</label>
+                        <input type="number" name="anos_posicion" placeholder="Ej: 5" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MÉTODOS DE PAGO -->
+            <div class="form-section">
+                <h2 class="section-title">💳 Métodos de Pago</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Tipo de Tarjeta Principal *</label>
+                        <select name="tipo_tarjeta" required>
+                            <option>Visa</option>
+                            <option>Mastercard</option>
+                            <option>American Express</option>
+                            <option>Discover</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Últimos 4 Dígitos *</label>
+                        <input type="text" name="digitos_tarjeta" placeholder="Ej: 4532" maxlength="4" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>¿Utiliza Tarjeta Digital? *</label>
+                        <select name="tarjeta_digital" required>
+                            <option>No</option>
+                            <option>Apple Pay</option>
+                            <option>Google Pay</option>
+                            <option>Samsung Pay</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Otras Tarjetas</label>
+                        <input type="text" name="otras_tarjetas" placeholder="Ej: MC 8901, Amex 2345">
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIAJES Y DISPONIBILIDAD -->
+            <div class="form-section">
+                <h2 class="section-title">✈️ Viajes y Disponibilidad</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>¿Cuántas veces viaja al año? *</label>
+                        <select name="frecuencia_viajes" required>
+                            <option>1-2 veces</option>
+                            <option>3-4 veces</option>
+                            <option>5-6 veces</option>
+                            <option>7+ veces</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Destinos Favoritos *</label>
+                        <input type="text" name="destinos" placeholder="Ej: Playa, Montaña, Europa" required>
+                    </div>
+                </div>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Historial de Viajes Previos</label>
+                        <textarea name="historial_viajes" placeholder="Ej: México (5 veces), Caribe (3 veces), Europa (2 veces)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IDENTIFICACIÓN -->
+            <div class="form-section">
+                <h2 class="section-title">🆔 Identificación</h2>
+                <p style="color: #b0b0b0; margin-bottom: 15px;">Cargar fotos de identificación (frente y reverso)</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Foto ID - Frente</label>
+                        <div class="file-upload" onclick="document.querySelector('input[name=\"id_frente\"]').click()">
+                            <p>📸 Haz clic para cargar</p>
+                            <input type="file" name="id_frente" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Foto ID - Reverso</label>
+                        <div class="file-upload" onclick="document.querySelector('input[name=\"id_reverso\"]').click()">
+                            <p>📸 Haz clic para cargar</p>
+                            <input type="file" name="id_reverso" accept="image/*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">✓ Guardar y Continuar a Worksheet</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('hosteoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = {
+                timestamp: new Date().toISOString(),
+                modulo: 'HOSTEO',
+                data: Object.fromEntries(formData)
+            };
+            localStorage.setItem('vtc_hosteo_' + formData.get('nombre'), JSON.stringify(data));
+            alert('✓ Datos guardados correctamente.\n\nSiguiente paso: Módulo WORKSHEET');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

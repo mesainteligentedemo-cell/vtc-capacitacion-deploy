@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPC - Invitación a Presentación</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 214, 10, 0.05);
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+            padding: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #FFD60A;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #FFD60A;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #FFD60A;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        input::placeholder, textarea::placeholder {
+            color: #888;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            background: rgba(255, 214, 10, 0.2);
+            border-color: #00D9FF;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(255, 214, 10, 0.3);
+        }
+        .info-box {
+            background: rgba(0, 245, 132, 0.1);
+            border-left: 4px solid #00F584;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 OPC - Invitación</h1>
+            <p>Formulario para Invitar Familias a Presentación VTC</p>
+        </div>
+
+        <div class="info-box">
+            ℹ️ Este formulario captura la información inicial de la familia invitada.
+            Será transferida automáticamente al módulo HOSTEO.
+        </div>
+
+        <form id="opcForm">
+            <!-- DATOS DE QUIEN INVITA -->
+            <h3 style="color: #FFD60A; margin: 30px 0 20px;">👤 Datos de Quien Invita</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" name="nombre_invita" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="form-group">
+                    <label>Teléfono *</label>
+                    <input type="tel" name="telefono_invita" placeholder="Ej: +34 666 123 456" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Email *</label>
+                <input type="email" name="email_invita" placeholder="Ej: juan@email.com" required>
+            </div>
+
+            <!-- DATOS DE LA FAMILIA INVITADA -->
+            <h3 style="color: #FFD60A; margin: 30px 0 20px;">👨‍👩‍👧‍👦 Datos de Familia Invitada</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Nombre (Principal) *</label>
+                    <input type="text" name="nombre_invitado" placeholder="Ej: Carlos López" required>
+                </div>
+                <div class="form-group">
+                    <label>Nombre (Acompañante)</label>
+                    <input type="text" name="nombre_acompanante" placeholder="Ej: María López">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Teléfono Invitado *</label>
+                    <input type="tel" name="telefono_invitado" placeholder="Ej: +34 666 789 012" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Invitado *</label>
+                    <input type="email" name="email_invitado" placeholder="Ej: carlos@email.com" required>
+                </div>
+            </div>
+
+            <!-- INFORMACIÓN DE LA INVITACIÓN -->
+            <h3 style="color: #FFD60A; margin: 30px 0 20px;">📅 Detalles de Presentación</h3>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Fecha Presentación *</label>
+                    <input type="date" name="fecha_presentacion" required>
+                </div>
+                <div class="form-group">
+                    <label>Hora *</label>
+                    <input type="time" name="hora_presentacion" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Ubicación Presentación *</label>
+                <input type="text" name="ubicacion" placeholder="Ej: Hotel XXX, Sala de Conferencias A" required>
+            </div>
+
+            <div class="form-group">
+                <label>¿Cómo conoces a esta familia? *</label>
+                <textarea name="relacion" placeholder="Ej: Amigos de la infancia, colegas de trabajo, etc." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>¿Por qué crees que les interesará? *</label>
+                <textarea name="motivo" placeholder="Ej: Son muy viajeros, tienen buen presupuesto, buscan crecimiento..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">✓ Enviar Invitación</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('opcForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const data = {
+                timestamp: new Date().toISOString(),
+                modulo: 'OPC',
+                data: {
+                    nombre_invita: document.querySelector('[name="nombre_invita"]').value,
+                    telefono_invita: document.querySelector('[name="telefono_invita"]').value,
+                    email_invita: document.querySelector('[name="email_invita"]').value,
+                    nombre_invitado: document.querySelector('[name="nombre_invitado"]').value,
+                    nombre_acompanante: document.querySelector('[name="nombre_acompanante"]').value,
+                    telefono_invitado: document.querySelector('[name="telefono_invitado"]').value,
+                    email_invitado: document.querySelector('[name="email_invitado"]').value,
+                    fecha_presentacion: document.querySelector('[name="fecha_presentacion"]').value,
+                    hora_presentacion: document.querySelector('[name="hora_presentacion"]').value,
+                    ubicacion: document.querySelector('[name="ubicacion"]').value,
+                    relacion: document.querySelector('[name="relacion"]').value,
+                    motivo: document.querySelector('[name="motivo"]').value,
+                }
+            };
+
+            localStorage.setItem('vtc_opc_' + data.data.nombre_invitado, JSON.stringify(data));
+            alert('✓ Invitación registrada correctamente.\n\nSiguiente paso: Módulo HOSTEO para ampliar datos.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

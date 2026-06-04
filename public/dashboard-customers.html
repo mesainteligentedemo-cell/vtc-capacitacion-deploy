@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Customer Service VTC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #FFD60A;
+            padding-bottom: 20px;
+        }
+        .header h1 { font-size: 2.5rem; color: #FFD60A; }
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: rgba(255, 214, 10, 0.2);
+            border: 1px solid #FFD60A;
+            color: #FFD60A;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #FFD60A;
+            color: #000;
+        }
+        .table-wrapper {
+            background: rgba(255, 214, 10, 0.05);
+            border: 1px solid #FFD60A;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background: rgba(255, 214, 10, 0.2);
+            padding: 15px;
+            text-align: left;
+            color: #FFD60A;
+            font-weight: 600;
+            border-bottom: 1px solid #FFD60A;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(255, 214, 10, 0.2);
+        }
+        tr:hover { background: rgba(255, 214, 10, 0.05); }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .badge-active { background: #00F584; color: #000; }
+        .badge-renewal { background: #FFD60A; color: #000; }
+        .badge-inactive { background: #FF6B35; color: #fff; }
+        .badge-nps { background: #00D9FF; color: #000; }
+        .action-btn {
+            background: #FFD60A;
+            color: #000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .action-btn:hover { background: #00D9FF; }
+        .section-title {
+            font-size: 1.5rem;
+            color: #FFD60A;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #FFD60A;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255, 214, 10, 0.05);
+            border: 1px solid #FFD60A;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .stat-card h3 { color: #FFD60A; margin-bottom: 10px; font-size: 0.95rem; }
+        .stat-value { font-size: 2rem; color: #00D9FF; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>👥 Dashboard Customer Service VTC</h1>
+            <p>Seguimiento Post-Venta y Satisfacción de Clientes</p>
+        </div>
+
+        <!-- ESTADÍSTICAS GENERALES -->
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h3>Clientes Activos</h3>
+                <div class="stat-value">128</div>
+            </div>
+            <div class="stat-card">
+                <h3>NPS Promedio</h3>
+                <div class="stat-value">8.2</div>
+            </div>
+            <div class="stat-card">
+                <h3>Renovaciones Próximas</h3>
+                <div class="stat-value">24</div>
+            </div>
+            <div class="stat-card">
+                <h3>Lifetime Value Avg</h3>
+                <div class="stat-value">$89K</div>
+            </div>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="filters">
+            <button class="filter-btn active">Todos</button>
+            <button class="filter-btn">Activos</button>
+            <button class="filter-btn">Próxima Renovación</button>
+            <button class="filter-btn">NPS Bajo</button>
+            <button class="filter-btn">Referrals Pendientes</button>
+        </div>
+
+        <!-- CLIENTES ACTIVOS -->
+        <h2 class="section-title">📊 Clientes Activos</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Membresía</th>
+                        <th>Semanas Usadas</th>
+                        <th>Próxima Renovación</th>
+                        <th>NPS</th>
+                        <th>Referrals</th>
+                        <th>LTV</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Juan García</strong></td>
+                        <td><span class="badge badge-active">Premium</span></td>
+                        <td>6/12 semanas</td>
+                        <td>2026-12-15</td>
+                        <td><span class="badge badge-nps">9/10</span></td>
+                        <td>2 referidos</td>
+                        <td>$89K</td>
+                        <td><button class="action-btn">Seguimiento</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>María López</strong></td>
+                        <td><span class="badge badge-active">Platinum</span></td>
+                        <td>10/20 semanas</td>
+                        <td>2027-01-20</td>
+                        <td><span class="badge badge-nps">8/10</span></td>
+                        <td>1 referido</td>
+                        <td>$105K</td>
+                        <td><button class="action-btn">Seguimiento</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carlos Rodríguez</strong></td>
+                        <td><span class="badge badge-renewal">Vitalicia</span></td>
+                        <td>4/∞ semanas</td>
+                        <td>Nunca</td>
+                        <td><span class="badge badge-nps">7/10</span></td>
+                        <td>0 referidos</td>
+                        <td>$150K+</td>
+                        <td><button class="action-btn">Promover</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ana Martínez</strong></td>
+                        <td><span class="badge badge-active">Premium</span></td>
+                        <td>3/12 semanas</td>
+                        <td>2026-11-30</td>
+                        <td><span class="badge badge-nps">8/10</span></td>
+                        <td>3 referidos</td>
+                        <td>$95K</td>
+                        <td><button class="action-btn">Seguimiento</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- RENOVACIONES PRÓXIMAS -->
+        <h2 class="section-title">🔄 Renovaciones Próximas (Próximos 60 días)</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Membresía Actual</th>
+                        <th>Vencimiento</th>
+                        <th>Días Restantes</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Roberto Silva</strong></td>
+                        <td>Premium (5 años)</td>
+                        <td>2026-07-15</td>
+                        <td><span style="color: #FF6B35; font-weight: bold;">42 días</span></td>
+                        <td><button class="action-btn">Contactar</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sofía González</strong></td>
+                        <td>Platinum (3 años)</td>
+                        <td>2026-08-20</td>
+                        <td><span style="color: #FFD60A; font-weight: bold;">78 días</span></td>
+                        <td><button class="action-btn">Contactar</button></td>
+                    </tr>
+                    <tr>
+                        <td><strong>David Pérez</strong></td>
+                        <td>Premium (1 año)</td>
+                        <td>2026-07-10</td>
+                        <td><span style="color: #FF6B35; font-weight: bold;">37 días</span></td>
+                        <td><button class="action-btn">Contactar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- REFERRALS -->
+        <h2 class="section-title">🎯 Referrals Activos</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente Original</th>
+                        <th>Referido</th>
+                        <th>Status</th>
+                        <th>Fecha Referencia</th>
+                        <th>Comisión</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ana Martínez</td>
+                        <td>Ricardo López</td>
+                        <td><span class="badge badge-active">Activo</span></td>
+                        <td>2026-04-15</td>
+                        <td>1 semana gratis</td>
+                    </tr>
+                    <tr>
+                        <td>Ana Martínez</td>
+                        <td>Gabriela Soto</td>
+                        <td><span class="badge badge-active">Activo</span></td>
+                        <td>2026-05-20</td>
+                        <td>1 semana gratis</td>
+                    </tr>
+                    <tr>
+                        <td>Juan García</td>
+                        <td>Miguel Herrera</td>
+                        <td><span class="badge badge-active">Activo</span></td>
+                        <td>2026-05-10</td>
+                        <td>1 semana gratis</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SATISFACCIÓN -->
+        <h2 class="section-title">😊 Satisfacción (NPS)</h2>
+        <div style="background: rgba(255,214,10,0.05); border: 1px solid #FFD60A; border-radius: 8px; padding: 20px;">
+            <p style="margin-bottom: 15px;"><strong>NPS Global: 8.2/10</strong> - Muy Satisfechos</p>
+            <ul style="color: #b0b0b0; margin-left: 20px;">
+                <li>Promotores (9-10): 65% (83 clientes)</li>
+                <li>Pasivos (7-8): 28% (36 clientes)</li>
+                <li>Detractores (0-6): 7% (9 clientes) - Requieren atención</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

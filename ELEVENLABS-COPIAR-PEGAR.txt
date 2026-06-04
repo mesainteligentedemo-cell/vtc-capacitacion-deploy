@@ -1,0 +1,412 @@
+================================================================================
+ELEVENLABS - COPIA TODO ESTO Y PÉGALO EN TU AGENTE VTC
+================================================================================
+
+PASO 1: Sistema Prompt
+Copiar TODO esto (desde "Eres un coach..." hasta "...con tu equipo"):
+
+---INICIO COPIAR---
+
+Eres un coach experto en ventas y pitch de VTC Capacitación.
+
+Tu rol: Entrenar a nuevos asesores de capacitación usando el Manual de Pitch VTC.
+
+INSTRUCCIONES OPERATIVAS:
+1. Siempre referencia las 12 etapas del manual
+2. Enseña scripts palabra-por-palabra
+3. Practica tie-downs (preguntas de cierre)
+4. Corrige de forma constructiva
+5. Celebra logros
+6. Usa ejemplos reales del manual
+
+REGLAS IRROMPIBLES (según el manual):
+✓ Relación ANTES que producto
+✓ Discovery continuo desde el saludo
+✓ Agenda obligatoria (QUÉ, CUÁNTO, QUÉ SIGUE)
+✓ Control del asesor siempre
+✓ Ejemplos preparados (nunca improvisar)
+✓ Pequeños compromisos verbales continuo
+✓ El asesor NUNCA da precios (lo hace el cerrador)
+
+TONO:
+- Profesional pero cálido
+- Motivador y empático
+- Directo y práctico
+- Orientado a resultados
+
+Cuando el usuario pida practicar:
+1. Role-play: TÚ ERES EL INVITADO, ELLOS SON EL ASESOR
+2. Después, da feedback específico basado en el manual
+3. Sugiere mejoras en 2-3 puntos clave
+
+Cuando el usuario haga preguntas:
+1. Responde con referencia al manual
+2. Da ejemplos de las 12 etapas
+3. Proporciona el script exacto si aplica
+
+LAS 12 ETAPAS DEL PITCH VTC:
+1. RECEPCIÓN Y PRIMERA IMPRESIÓN (5 min) - Crear relación positiva. El asesor se presenta, da la mano, sonríe, confirma nombres.
+2. DISCOVERY SUTIL (10 min) - Conocer perfil. Preguntar: ¿ocasión?, ¿cuántos años?, ¿dónde viajan?, ¿estilo de vida?
+3. AGENDA Y UBICACIÓN (5 min) - Explicar: QUÉ se hará, CUÁNTO dura, QUÉ sigue. Quitar ansiedad.
+4. DEMO INTERACTIVA (15 min) - Mostrar funcionalidades. Dashboard, módulos, certificados, comunidad, progreso.
+5. OPCIONES COMERCIALES (5 min) - Crear urgencia. Plan Acceso Abierto ($0), Plan Básico ($X/mes), Plan Vitalicio (oferta hoy).
+6. ROMPER PACTO MENTAL (5 min) - Abrir mente. "Sé que muchos vienen a decir que no. Les pido que mantengan mente abierta."
+7. TRANSICIÓN EMOCIONAL (5 min) - Mostrar testimonios. Conectar emocionalmente con historias reales de miembros.
+8. VISUALIZACIÓN EN SALA (10 min) - Poner en la picture. "¿Cómo te verías con 12 certificados en 3 meses?"
+9. CREDIBILIDAD VTC (5 min) - Reforzar expertise. "Llevamos 10+ años, 50,000+ certificaciones, 8 países."
+10. ENTRADA A SALA (3 min) - Ubicación óptima. Mejor vista, privacidad, control visual del asesor.
+11. PRESENTACIÓN DEL PRODUCTO (15 min) - Explicar membresía. MIEMBRO: acceso total + comunidad. VISITANTE: acceso limitado.
+12. T.O. AL CERRADOR (5 min) - Pasar con interés. El asesor NO da precios. El cerrador cierra.
+
+TIE-DOWNS EFECTIVOS (Pequeños "sí" que construyen el "sí" final):
+- "¿Tiene sentido?"
+- "¿Verdad?"
+- "¿Con quién lo compartirías?"
+- "¿Cómo te verías en 3 meses con esto?"
+- "¿Esto es lo que buscabas?"
+- "¿Cuántos módulos te gustaría completar?"
+- "¿Qué te gustó más?"
+
+FRASES QUE VENDEN:
+- "No es un curso. Es una comunidad con educación."
+- "Imagínate con 12 certificados en 3 meses."
+- "La mayoría llega con exactamente tus dudas. Después dicen: ¿Por qué no lo hice antes?"
+- "El costo de no hacer nada es muchísimo mayor que el costo de hacerlo."
+
+PROTOCOLOS ESPECIALES:
+Si dice "Es muy caro": NUNCA bajes precio. SIEMPRE pregunta "¿Cuál es el costo de no hacerlo? En 5 años, ¿dónde quieres estar?"
+Si pide tiempo: NUNCA le des tiempo. SIEMPRE continúa calificando: "Para decidir bien necesitamos 2-3 preguntas más."
+Si la pareja discrepa: "¿Podemos empezar con una opción más pequeña? En 3 meses revisamos."
+
+---FIN COPIAR---
+
+PASO 2: Dónde pegarlo
+1. Ve a: elevenlabs.io/app/agents
+2. Selecciona tu agente VTC
+3. Busca la pestaña "Instructions" o "System Prompt"
+4. Borra lo que esté ahí
+5. Pega TODO lo que está entre "---INICIO COPIAR---" y "---FIN COPIAR---"
+6. Haz clic en "Save"
+7. Haz clic en "Publish"
+
+PASO 3: Agregar Knowledge Base (Documento del Manual)
+1. En el mismo agente, busca "Knowledge Base"
+2. Haz clic en "+ Add" o "+ Upload"
+3. Copia TODO EL CONTENIDO debajo (desde "MANUAL PITCH VTC" hasta el final)
+4. Pégalo en un notepad, guarda como "manual-pitch-vtc.txt"
+5. Sube ese archivo a ElevenLabs
+6. Espera a que diga "Indexed" (2-3 minutos)
+
+================================================================================
+MANUAL PITCH VTC - CONTENIDO COMPLETO PARA ELEVENLABS
+================================================================================
+
+MANUAL PITCH VTC - 12 ETAPAS COMPLETAS
+
+OBJETIVO: Entrenar asesores de capacitación. Duración: 90 minutos. Principio: La venta no empieza con el producto, sino con relación y confianza.
+
+ETAPA 1: RECEPCIÓN Y PRIMERA IMPRESIÓN
+Lugar: Área de recepción | Duración: 5 min
+QUÉ HACER:
+- La recepcionista presenta al asesor y entrega resumen
+- El asesor se presenta: dar la mano, mirar a los ojos, sonreír
+- Confirmar nombres completos
+- Comenzar discovery de manera sutil
+PUNTOS ESTRATÉGICOS:
+✓ Buscar genuinamente caerle bien al invitado
+✓ Tiene solo segundos para iniciar una relación positiva
+✓ Usar el nombre desde el inicio genera cercanía
+OBSERVACIONES:
+- Nunca empezar hablando del producto
+- No sonar mecánico ni apurado
+- Confirmar nombres y usar para iniciar conversación
+
+ETAPA 2: DISCOVERY SUTIL
+Lugar: Pasillo, sala espera | Duración: 10 min
+QUÉ HACER:
+- Romper el hielo con conversación natural
+- Aprovechar datos como aniversarios, cumpleaños, ocasión especial
+- Profundizar sin parecer interrogatorio
+DISCOVERY KEY QUESTIONS:
+- ¿Qué traerlos hoy? / ¿Cuál es la ocasión?
+- ¿Cuántos años llevan juntos / en la empresa?
+- ¿Dónde suelen pasar vacaciones?
+- ¿A quién le encanta aprender más?
+- ¿Tienen hijos? / ¿Edades?
+- ¿Qué tipo de experiencias disfrutan?
+PUNTOS ESTRATÉGICOS:
+✓ Preguntar con naturalidad
+✓ No tomar notas todavía, solo conocer el perfil
+✓ Nunca desperdiciar momentos de transición
+OBSERVACIONES:
+- El discovery comienza AQUÍ, no en la mesa
+- La conversación debe sentirse humana
+- Escuchar activamente más que hablar
+
+ETAPA 3: AGENDA Y UBICACIÓN
+Lugar: Sala de capacitación | Duración: 5 min
+QUÉ HACER:
+- El asesor elige la ubicación (siempre del lado del invitado, nunca de frente)
+- Sienta al invitado con la mejor vista
+- Luego presenta la agenda de los 90 minutos
+LA AGENDA IDEAL:
+"En los próximos 90 minutos vamos a:
+1. Desayunar y conocernos mejor (15 min)
+2. Mostrar cómo funciona nuestro programa (20 min)
+3. Ver una demo en vivo (15 min)
+4. Contarte por qué somos diferentes (10 min)
+5. Responder preguntas (15 min)
+6. Un pequeño obsequio (5 min)
+¿Alguna pregunta antes de empezar?"
+PUNTOS ESTRATÉGICOS:
+✓ La agenda quita ansiedad y marca autoridad
+✓ Mencionar el regalo al final crea expectativa
+✓ Pasar al buffet solo una vez mantiene control
+✓ Siempre dejar la mejor vista para el invitado
+OBSERVACIONES:
+- El desayuno es la etapa emocional más importante antes del pitch
+- Confirmando qué gustó, cómo lo usaría, la negociación es más sólida
+
+ETAPA 4: DEMO INTERACTIVA
+Lugar: Aula modelo | Duración: 15 min
+QUÉ HACER:
+- El asesor se sirve poco, rápido y regresa primero a la mesa
+- Mientras espera, completa el survey con lo descubierto
+- Cuando llegan los invitados, dice "Buen provecho" y comienza
+- Mantiene conversación natural mientras sigue descubriendo
+QUÉ MOSTRAR:
+- Dashboard principal (módulos disponibles)
+- Acceso a un módulo de ejemplo (vídeo o contenido)
+- Certificados y logros que se ganan
+- Comunidad de estudiantes (testimonios)
+- Acceso a recursos exclusivos
+- Progreso y estadísticas personales
+PUNTOS ESTRATÉGICOS:
+✓ El objetivo NO es comer; es compartir la mesa
+✓ El desayuno es la etapa emocional más importante
+✓ Las preguntas dentro de conversación, nunca como interrogatorio
+✓ Detectar frecuencia de aprendizaje y motivación
+OBSERVACIONES:
+- Comer poco facilita hablar y mantener energía
+- Observar y escuchar detecta patrones de consumo
+- Completar formulario con datos recopilados
+
+ETAPA 5: OPCIONES COMERCIALES
+Lugar: Mesa de sala | Duración: 5 min
+QUÉ HACER:
+- Después del desayuno, presentar la carta de opciones (membresías/planes)
+- Explicar que existe una ÚNICA oportunidad de beneficios hoy
+- Pedir que pongan sus iniciales para confirmar que la carta fue presentada
+- Explicar lógica: socios vs. acceso abierto
+LAS OPCIONES:
+PLAN ACCESO ABIERTO
+└─ Acceso a módulos seleccionados
+└─ Sin certificación oficial
+└─ $0 (acceso freemium)
+
+PLAN MIEMBRO BÁSICO
+└─ Todos los módulos + certificación
+└─ Comunidad exclusiva
+└─ Costo especial: $X/mes
+
+PLAN VITALICIO (Oferta Hoy)
+└─ Acceso de por vida a TODOS los módulos
+└─ Comunidad privada VTC
+└─ Certificación oficial permanente
+└─ Costo especial hoy: $Z
+PUNTOS ESTRATÉGICOS:
+✓ La carta genera urgencia legítima
+✓ Este paso se monitorea desde gerencia
+✓ Reforzar que el momento es especial por aniversario VTC
+✓ Las iniciales confirman participación y ayudan al control operativo
+OBSERVACIONES:
+- Palabra clave: AHORA
+- Las iniciales son confirmación, no un trámite
+
+ETAPA 6: ROMPER EL PACTO MENTAL
+Lugar: Mesa | Duración: 5 min
+QUÉ HACER:
+- Reconocer directamente el "pacto mental" que muchos traen
+- Invitar a mantener mente abierta SI lo que ven les gusta
+- Explicar diferencias: formación abierta vs. membresía socia
+- Sembrar valor de ser parte de la comunidad VTC
+CÓMO DECIRLO:
+"Miren, sé que muchos vienen con la idea de escuchar, divertirse y después decir que no. Y está bien. Pero les pido UN favor: que mantengan la mente abierta.
+
+Si lo que les mostramos no tiene sentido, díganme.
+Pero si lo que ven les gusta y les suma, vamos a explorar cómo podría funcionar en su vida. ¿Trato?"
+PUNTOS ESTRATÉGICOS:
+✓ No confrontar; abrir mentalidad
+✓ Introducir diferencias entre acceso abierto vs. comunidad
+✓ Siembra valor de ser parte de algo más grande
+✓ Hace pequeños compromisos verbales ("¿Correcto?", "¿Tiene sentido?")
+OBSERVACIONES:
+- El objetivo es generar lógica y curiosidad, NO saturar
+- Pequeños "yes set" durante la explicación
+
+ETAPA 7: TRANSICIÓN Y VALOR EMOCIONAL
+Lugar: Pasillo hacia sala de presentación | Duración: 5 min
+QUÉ HACER:
+- Asesor se levanta y acompaña a los invitados hacia la sala
+- En el camino, hacer breve pausa en espacio especial
+- Reforzar valor emocional: historias, certificaciones, impacto
+- Mantener breve y poderoso
+QUÉ DECIR:
+"Acá es donde puedo mostrarles algo especial. Estos son los testimonios de gente como ustedes que hace 6, 12, incluso 24 meses que están en VTC.
+
+Miren: personas como ustedes. Con vidas ocupadas. Y decidieron crecer. Miren sus historias."
+PUNTOS ESTRATÉGICOS:
+✓ La gente se motiva más con historias que con datos
+✓ La transición NO es tiempo muerto; genera valor
+✓ Mantener breve — el detalle viene después
+✓ Conectar emocionalmente ANTES de hablar de precio
+OBSERVACIONES:
+- Usar testimonios reales de miembros actuales
+- Mostrar diversidad: diferentes edades, profesiones, motivaciones
+- Cerrar con pregunta abierta
+
+ETAPA 8: VISUALIZACIÓN EN SALA
+Lugar: Sala de presentación | Duración: 10 min
+QUÉ HACER:
+- Mostrar dashboard principal y flujo de uso
+- Demostrar 2-3 módulos clave (videos, ejercicios, evaluaciones)
+- Mostrar certificado de ejemplo
+- Preguntar: "¿Cómo te verías completando esto en 3 meses?"
+DEMO SCRIPT:
+"Esto es el corazón de VTC. Esto es lo que ven nuestros miembros cada vez que entran.
+
+Estos son todos los módulos disponibles. Van desde lo básico hasta lo avanzado. Y se pueden hacer a tu ritmo.
+
+Mira este módulo específico: [ABRE MÓDULO]
+Tiene video, ejercicios interactivos, evaluación final y certificado.
+
+Imagínate completando uno de estos a la semana.
+En 3 meses tendrías 12 certificados.
+¿Cómo te verías con eso?"
+PUNTOS ESTRATÉGICOS:
+✓ Poner al cliente EN la picture — es el "hero"
+✓ NO hablar solo de características; hablar de su experiencia
+✓ Hacer preguntas visuales: "¿Cómo te verías?", "¿Con quién lo compartirías?"
+✓ Usar tie-downs emocionales antes de hablar de precio
+OBSERVACIONES:
+- Nunca soltar el control de la pantalla
+- Dejar que piense: "Yo quiero eso"
+- Uno de los momentos más fuertes para generar deseo
+
+ETAPA 9: CREDIBILIDAD DE VTC
+Lugar: Galería de credibilidad / Certificaciones | Duración: 5 min
+QUÉ HACER:
+- Mostrar historia de VTC: más de 10 años formando profesionales
+- Explicar: 12 años creando comunidad, expansión futura
+- Números: X estudiantes, X certificaciones, X países
+- Mostrar partners, afiliaciones, premios
+NARRATIVE:
+"VTC no es una startup que apareció el mes pasado.
+Llevamos MÁS DE 10 AÑOS aquí.
+
+En la década pasada formamos a miles de profesionales.
+Creamos comunidades en 8 países diferentes.
+Entregamos más de 50,000 certificaciones válidas internacionalmente.
+
+Y lo más importante: somos rentables, somos estables,
+y estamos expandiendo. Esto es el futuro de la educación."
+PUNTOS ESTRATÉGICOS:
+✓ Mejor momento para confirmar que NO es improvisado
+✓ Funciona especialmente bien después del deseo emocional
+✓ Números concretos > promesas vagas
+✓ Historias de crecimiento = confianza de futuro
+OBSERVACIONES:
+- Tener números actualizados
+- Mostrar testimonios de estudiantes de años anteriores
+- Demostrar sostenibilidad y crecimiento
+
+ETAPA 10: ENTRADA A SALA DE PRESENTACIÓN
+Lugar: Sala de ventas | Duración: 3 min
+QUÉ HACER:
+- Asignar o elegir mesa según disponibilidad
+- NUNCA sentarse cerca de otra pareja con mismo idioma
+- Sentar al invitado con vista óptima
+- El asesor mantiene su atención
+- Conservar regla "hombre con hombre, mujer con mujer"
+PUNTOS ESTRATÉGICOS:
+✓ La ubicación afecta privacidad, concentración y control
+✓ Vista espectacular es para el invitado
+✓ El foco debe seguir siendo la presentación
+✓ Proximidad = construcción de confianza
+OBSERVACIONES:
+- Posición correcta ayuda incluso en objeciones
+- Evitar ruido de otras presentaciones
+- Mantener dinamismo y energía
+
+ETAPA 11: PRESENTACIÓN DEL PRODUCTO EN SALA
+Lugar: Mesa de sala con pantalla | Duración: 15 min
+QUÉ HACER:
+- Utilizar material visual preparado (no improvisar)
+- Explicar BREVE y CLARO cómo funciona VTC
+- Mostrar beneficios para miembros vs. acceso abierto
+- Demostrar funciones internas y externas
+- NUNCA soltar control de pantalla
+LA PRESENTACIÓN EN 5 MINUTOS:
+"Miren, la plataforma tiene dos formas de uso principales:
+
+1. COMO MIEMBRO: Tienen acceso total. Pueden hacer módulos a su ritmo, participar en grupos privados, obtener certificación oficial.
+
+2. COMO VISITANTE: Acceso limitado. Pueden ver algunos módulos básicos, pero sin comunidad ni certificación.
+
+La diferencia es la COMUNIDAD.
+Cuando son miembros, no están solos.
+Están con gente como ustedes.
+
+¿Hacemos la prueba?"
+TIE-DOWNS DURANTE PRESENTACIÓN:
+✓ "¿Tiene sentido hasta aquí?"
+✓ "¿Esto es lo que buscaban?"
+✓ "¿Con quién lo compartirías?"
+✓ "¿Cuántos módulos te gustaría completar?"
+✓ "¿Verdad que esto simplifica todo?"
+PUNTOS ESTRATÉGICOS:
+✓ Valor con ejemplos preparados, NO improvisación
+✓ Asesor domina lo que muestra
+✓ Casos de alto impacto listos
+✓ Información clara, sin saturación
+OBSERVACIONES:
+- Al final: "¿Qué fue lo que más te gustó?"
+- Escuchar respuesta y anotar
+- Pasar a cerrador con datos específicos
+
+ETAPA 12: T.O. (TALK OVER) POSITIVO AL CERRADOR
+Lugar: Mesa de cierre | Duración: 5 min
+QUÉ HACER:
+- El asesor hace señal al cerrador (levanta la mano o protocolo interno)
+- La presentación al cerrador es POSITIVA, CONCRETA y ESPECÍFICA
+- Incluir todos los compromisos obtenidos
+- El asesor se retira para que cerrador tenga privacidad
+EL T.O. PERFECTO:
+"[Nombre del invitado], aquí está [Nombre del cerrador].
+Él va a explicarte con detalle todas las opciones.
+
+De mi parte: Vimos que les encantó especialmente
+el módulo de [X]. Viajan frecuentemente.
+Se ven como socios de la comunidad.
+Y preguntaron específicamente por acceso a [Y].
+
+Adelante, [Cerrador]."
+QUÉ NO DECIR AL PASAR A CERRADOR:
+❌ "El precio es lo de abajo" (no preocupes)
+❌ "Quizás puedas negociar" (muestra debilidad)
+❌ "Yo creo que no te alcanza" (asuma lo mejor)
+❌ "Déjame en paz que le cobro caro" (destructivo)
+PUNTOS ESTRATÉGICOS:
+✓ No hablas de precio — es trabajo del cerrador
+✓ Tu función es transferir deseo, claridad e interés
+✓ Mientras más positivo y específico sea el T.O., mejor cierra el cerrador
+✓ La pregunta "¿Cuánto cuesta?" = señal de interés, NO de rechazo
+OBSERVACIONES:
+- El cerrador ya sabe qué decir
+- Tú diste toda la información necesaria
+- Ahora entra la magia del cierre
+
+================================================================================
+LISTO. Copia TODO esto que está arriba y pégalo en ElevenLabs.
+Cualquier pregunta, pregunta al bot en ElevenLabs y responderá basado en este manual.
+================================================================================

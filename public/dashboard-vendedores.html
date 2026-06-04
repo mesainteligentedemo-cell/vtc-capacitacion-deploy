@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Vendedores - Dashboard de Progreso</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #FFD60A;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            color: #FFD60A;
+            margin-bottom: 5px;
+        }
+        .header p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: rgba(255, 214, 10, 0.1);
+            border: 1px solid #FFD60A;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .stat-card h3 {
+            color: #FFD60A;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .stat-card p {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .vendedores-section {
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            color: #FFD60A;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .table-wrapper {
+            background: rgba(255, 214, 10, 0.05);
+            border: 1px solid #FFD60A;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            background: rgba(255, 214, 10, 0.2);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #FFD60A;
+            border-bottom: 1px solid #FFD60A;
+        }
+        td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 214, 10, 0.2);
+        }
+        tr:hover {
+            background: rgba(255, 214, 10, 0.08);
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 8px;
+            overflow: hidden;
+            margin: 5px 0;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #FFD60A, #00D9FF);
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .badge-success {
+            background: #00F584;
+            color: #000;
+        }
+        .badge-warning {
+            background: #FF6B35;
+            color: #fff;
+        }
+        .badge-primary {
+            background: #00D9FF;
+            color: #000;
+        }
+
+        .action-btn {
+            background: #FFD60A;
+            color: #000;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .action-btn:hover {
+            background: #00D9FF;
+            transform: scale(1.05);
+        }
+
+        .etapas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .etapa-item {
+            background: rgba(255, 214, 10, 0.1);
+            border: 1px solid #FFD60A;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        .etapa-item.completed {
+            background: rgba(0, 245, 132, 0.2);
+            border-color: #00F584;
+        }
+
+        .chart-container {
+            background: rgba(255, 214, 10, 0.05);
+            border: 1px solid #FFD60A;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #b0b0b0;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 214, 10, 0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #0A0E27;
+            border: 2px solid #FFD60A;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+        }
+        .close-btn {
+            color: #FFD60A;
+            font-size: 2rem;
+            cursor: pointer;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 VTC VENDEDORES - DASHBOARD</h1>
+            <p>Seguimiento de Progreso y Entrenamiento en Tiempo Real</p>
+        </div>
+
+        <!-- ESTADÍSTICAS GENERALES -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Vendedores Activos</p>
+            </div>
+            <div class="stat-card">
+                <h3>127</h3>
+                <p>Total Role-Plays</p>
+            </div>
+            <div class="stat-card">
+                <h3>58</h3>
+                <p>Objeciones Practicadas</p>
+            </div>
+            <div class="stat-card">
+                <h3>$892K</h3>
+                <p>Ventas Este Mes</p>
+            </div>
+        </div>
+
+        <!-- PROGRESO POR VENDEDOR -->
+        <div class="vendedores-section">
+            <div class="section-title">👥 Progreso de Vendedores</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Nivel</th>
+                            <th>Etapas Dominadas</th>
+                            <th>Role-Plays</th>
+                            <th>Objeciones</th>
+                            <th>Progreso</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Carlos M.</strong></td>
+                            <td><span class="badge badge-success">Avanzado</span></td>
+                            <td>19/19</td>
+                            <td>28</td>
+                            <td>52/60</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%;"></div>
+                                </div>
+                                95%
+                            </td>
+                            <td><button class="action-btn">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Laura G.</strong></td>
+                            <td><span class="badge badge-success">Intermedio</span></td>
+                            <td>15/19</td>
+                            <td>18</td>
+                            <td>42/60</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                                78%
+                            </td>
+                            <td><button class="action-btn">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Juan P.</strong></td>
+                            <td><span class="badge badge-warning">Principiante</span></td>
+                            <td>8/19</td>
+                            <td>12</td>
+                            <td>28/60</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%;"></div>
+                                </div>
+                                45%
+                            </td>
+                            <td><button class="action-btn">Entrenar</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>María L.</strong></td>
+                            <td><span class="badge badge-success">Intermedio</span></td>
+                            <td>14/19</td>
+                            <td>21</td>
+                            <td>48/60</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 82%;"></div>
+                                </div>
+                                82%
+                            </td>
+                            <td><button class="action-btn">Ver</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diego H.</strong></td>
+                            <td><span class="badge badge-warning">Principiante</span></td>
+                            <td>6/19</td>
+                            <td>8</td>
+                            <td>18/60</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 35%;"></div>
+                                </div>
+                                35%
+                            </td>
+                            <td><button class="action-btn">Entrenar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ETAPAS POR VENDEDOR (EJEMPLO CARLOS) -->
+        <div class="vendedores-section">
+            <div class="section-title">📊 Detalles - Carlos M. (Avanzado)</div>
+            <div class="chart-container">
+                <h3>Etapas Completadas</h3>
+                <div class="etapas-grid">
+                    <div class="etapa-item completed">✓ Meet & Greet</div>
+                    <div class="etapa-item completed">✓ Agenda</div>
+                    <div class="etapa-item completed">✓ Breakfast</div>
+                    <div class="etapa-item completed">✓ Discovery</div>
+                    <div class="etapa-item completed">✓ Pact</div>
+                    <div class="etapa-item completed">✓ 3Way Pitch</div>
+                    <div class="etapa-item completed">✓ Platform Tour</div>
+                    <div class="etapa-item completed">✓ Membership</div>
+                    <div class="etapa-item completed">✓ Model Course</div>
+                    <div class="etapa-item completed">✓ Wall Tour</div>
+                    <div class="etapa-item completed">✓ Features</div>
+                    <div class="etapa-item completed">✓ Confirmation</div>
+                    <div class="etapa-item completed">✓ Projection</div>
+                    <div class="etapa-item completed">✓ Programs</div>
+                    <div class="etapa-item completed">✓ Payment</div>
+                    <div class="etapa-item completed">✓ Logic</div>
+                    <div class="etapa-item completed">✓ Think Objection</div>
+                    <div class="etapa-item completed">✓ Expensive Objection</div>
+                    <div class="etapa-item completed">✓ Final T.O.</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Objeciones Practicadas (52/60)</h3>
+                <p style="color: #b0b0b0; margin-bottom: 10px;">Próximas objeciones a practicar: #34, #45, #51, #56, #60</p>
+                <div style="background: rgba(255, 214, 10, 0.2); padding: 15px; border-radius: 6px;">
+                    <strong>Última sesión:</strong> Hoy, 3:45pm<br>
+                    <strong>Objeción lanzada:</strong> #12 (No tengo tiempo)<br>
+                    <strong>Resultado:</strong> ✓ Respondió correctamente<br>
+                    <strong>Feedback:</strong> Excelente reframe. Próxima: Intenta #45 (Voy a tener un hijo)
+                </div>
+            </div>
+        </div>
+
+        <!-- ESTADÍSTICAS MENSUALES -->
+        <div class="vendedores-section">
+            <div class="section-title">📈 Ventas por Vendedor (Este Mes)</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vendedor</th>
+                            <th>Presentaciones</th>
+                            <th>Cierres</th>
+                            <th>Tasa de Conversión</th>
+                            <th>Ingresos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Carlos M.</strong></td>
+                            <td>16</td>
+                            <td>12</td>
+                            <td><span class="badge badge-success">75%</span></td>
+                            <td><strong>$180,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Laura G.</strong></td>
+                            <td>14</td>
+                            <td>10</td>
+                            <td><span class="badge badge-success">71%</span></td>
+                            <td><strong>$155,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>María L.</strong></td>
+                            <td>12</td>
+                            <td>8</td>
+                            <td><span class="badge badge-success">67%</span></td>
+                            <td><strong>$128,000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Juan P.</strong></td>
+                            <td>18</td>
+                            <td>9</td>
+                            <td><span class="badge badge-warning">50%</span></td>
+                            <td><strong>$145,000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- PRÓXIMAS SESIONES -->
+        <div class="vendedores-section">
+            <div class="section-title">📅 Sesiones Programadas Hoy</div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vendedor</th>
+                            <th>Hora</th>
+                            <th>Tipo</th>
+                            <th>Objetivo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Juan P.</strong></td>
+                            <td>2:00 PM</td>
+                            <td>Role-Play Full Pitch</td>
+                            <td>Dominar Etapas 1-5</td>
+                            <td><span class="badge badge-primary">Próximo</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diego H.</strong></td>
+                            <td>3:30 PM</td>
+                            <td>Objeción Practice</td>
+                            <td>Preguntas #10-15</td>
+                            <td><span class="badge badge-primary">Programado</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Laura G.</strong></td>
+                            <td>4:45 PM</td>
+                            <td>Cierre Advanced</td>
+                            <td>Etapas 17-19</td>
+                            <td><span class="badge badge-primary">Programado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Dashboard Actualizado en Tiempo Real | VTC Training System v2.0</p>
+            <p>🎓 Desarrollando a los Mejores Vendedores del Mundo</p>
+        </div>
+    </div>
+</body>
+</html>

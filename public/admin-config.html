@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚙️ Panel de Configuración VTC</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #FFD60A;
+            padding-bottom: 20px;
+        }
+        .header h1 { font-size: 2.5rem; color: #FFD60A; margin-bottom: 10px; }
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .tab-btn {
+            background: rgba(255,214,10,0.2);
+            border: 2px solid #FFD60A;
+            color: #FFD60A;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tab-btn:hover { background: rgba(255,214,10,0.3); }
+        .tab-btn.active {
+            background: #FFD60A;
+            color: #000;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .config-section {
+            background: rgba(255,214,10,0.05);
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        .config-section h2 {
+            color: #FFD60A;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .config-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0,217,255,0.05);
+            border-radius: 8px;
+            align-items: center;
+        }
+        .config-row.full { grid-template-columns: 1fr; }
+        .label-col { color: #FFD60A; font-weight: 600; }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        input[type="number"], input[type="text"], input[type="range"] {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #FFD60A;
+            border-radius: 6px;
+            color: #fff;
+            padding: 8px 12px;
+            font-size: 0.95rem;
+        }
+        input[type="range"] {
+            padding: 0;
+            height: 6px;
+            flex: 1;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FFD60A;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FFD60A;
+            cursor: pointer;
+            border: none;
+        }
+        .value-display {
+            background: rgba(255,214,10,0.2);
+            border: 1px solid #FFD60A;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 80px;
+            color: #00D9FF;
+            font-weight: 600;
+        }
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .price-card {
+            background: rgba(0,217,255,0.1);
+            border: 1px solid #00D9FF;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .price-card label {
+            color: #00D9FF;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .price-card input {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .price-values {
+            font-size: 0.85rem;
+            color: #b0b0b0;
+            margin-top: 10px;
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .btn-save {
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            color: #000;
+        }
+        .btn-save:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,214,10,0.3); }
+        .btn-reset {
+            background: #FF6B35;
+            color: #fff;
+        }
+        .btn-reset:hover { background: #ff5a20; }
+        .btn-export {
+            background: #00F584;
+            color: #000;
+        }
+        .btn-export:hover { background: #00d46f; }
+        .preview-box {
+            background: rgba(0,245,132,0.1);
+            border: 2px solid #00F584;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .preview-box h3 {
+            color: #00F584;
+            margin-bottom: 15px;
+        }
+        .preview-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,245,132,0.2);
+        }
+        .preview-row:last-child { border-bottom: none; }
+        .preview-row strong { color: #FFD60A; }
+        .commission-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .commission-table td {
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,214,10,0.2);
+        }
+        .commission-table td:first-child {
+            color: #FFD60A;
+            font-weight: 600;
+        }
+        .success-msg {
+            background: rgba(0,245,132,0.2);
+            border-left: 4px solid #00F584;
+            color: #00F584;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .addon-list {
+            display: grid;
+            gap: 10px;
+        }
+        .addon-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(0,217,255,0.05);
+            border-radius: 6px;
+            align-items: center;
+        }
+        .addon-item label {
+            color: #FFD60A;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        .addon-item input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚙️ Panel de Configuración VTC</h1>
+            <p>Gestiona precios, comisiones, descuentos y parámetros del sistema</p>
+        </div>
+
+        <div class="success-msg" id="successMsg">✅ Configuración guardada correctamente</div>
+
+        <div class="tabs" id="tabs">
+            <button class="tab-btn active" onclick="switchTab('precios')">💰 Precios</button>
+            <button class="tab-btn" onclick="switchTab('descuentos')">📉 Descuentos</button>
+            <button class="tab-btn" onclick="switchTab('comisiones')">💵 Comisiones</button>
+            <button class="tab-btn" onclick="switchTab('adicionales')">✨ Adicionales</button>
+            <button class="tab-btn" onclick="switchTab('metas')">🎯 Metas</button>
+            <button class="tab-btn" onclick="switchTab('exportar')">📤 Exportar</button>
+        </div>
+
+        <!-- PRECIOS -->
+        <div id="precios" class="tab-content active">
+            <div class="config-section">
+                <h2>💳 Precios Base por Membresía</h2>
+                <p style="color: #b0b0b0; margin-bottom: 20px;">Ajusta los precios base. El sistema calculará automáticamente las duraciones.</p>
+
+                <div class="price-grid">
+                    <!-- PREMIUM -->
+                    <div class="price-card">
+                        <label>Premium (12 sem/año)</label>
+                        <input type="number" id="pricePremium1" placeholder="1 año" value="8000">
+                        <div class="price-values">
+                            <div>3 años: <span id="premiumPrice3">$22,000</span></div>
+                            <div>5 años: <span id="premiumPrice5">$35,000</span></div>
+                            <div>10 años: <span id="premiumPrice10">$65,000</span></div>
+                            <div>Vitalicia: <span id="premiumLifetime">$95,000</span></div>
+                        </div>
+                    </div>
+
+                    <!-- PLATINUM -->
+                    <div class="price-card">
+                        <label>Platinum (20 sem/año)</label>
+                        <input type="number" id="pricePlatinum1" placeholder="1 año" value="12000">
+                        <div class="price-values">
+                            <div>3 años: <span id="platinumPrice3">$33,000</span></div>
+                            <div>5 años: <span id="platinumPrice5">$52,500</span></div>
+                            <div>10 años: <span id="platinumPrice10">$97,500</span></div>
+                            <div>Vitalicia: <span id="platinumLifetime">$145,000</span></div>
+                        </div>
+                    </div>
+
+                    <!-- ULTRA -->
+                    <div class="price-card">
+                        <label>Ultra (30+ sem/año)</label>
+                        <input type="number" id="priceUltra1" placeholder="1 año" value="16000">
+                        <div class="price-values">
+                            <div>3 años: <span id="ultraPrice3">$44,000</span></div>
+                            <div>5 años: <span id="ultraPrice5">$70,000</span></div>
+                            <div>10 años: <span id="ultraPrice10">$130,000</span></div>
+                            <div>Vitalicia: <span id="ultraLifetime">$195,000</span></div>
+                        </div>
+                    </div>
+
+                    <!-- VITALICIA -->
+                    <div class="price-card">
+                        <label>Vitalicia (Sin expiración)</label>
+                        <input type="number" id="priceVitalicia" placeholder="Precio" value="195000">
+                        <div class="price-values">
+                            <div style="color: #FFD60A; margin-top: 10px;">Precio único</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="config-section">
+                <h2>📊 Fórmulas de Cálculo</h2>
+                <div class="config-row">
+                    <div class="label-col">Factor 3 años:</div>
+                    <input type="number" id="factor3years" value="2.75" step="0.1" style="width: 100%;">
+                    <div class="value-display" id="factor3display">2.75x</div>
+                </div>
+                <div class="config-row">
+                    <div class="label-col">Factor 5 años:</div>
+                    <input type="number" id="factor5years" value="4.375" step="0.1" style="width: 100%;">
+                    <div class="value-display" id="factor5display">4.375x</div>
+                </div>
+                <div class="config-row">
+                    <div class="label-col">Factor 10 años:</div>
+                    <input type="number" id="factor10years" value="8.125" step="0.1" style="width: 100%;">
+                    <div class="value-display" id="factor10display">8.125x</div>
+                </div>
+                <div class="config-row">
+                    <div class="label-col">Factor Vitalicia:</div>
+                    <input type="number" id="factorLifetime" value="12.1875" step="0.1" style="width: 100%;">
+                    <div class="value-display" id="factorLifetimeDisplay">12.1875x</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DESCUENTOS -->
+        <div id="descuentos" class="tab-content">
+            <div class="config-section">
+                <h2>📉 Descuentos y Promociones</h2>
+
+                <div class="config-row">
+                    <div class="label-col">Descuento Membresía VCM:</div>
+                    <div class="input-group">
+                        <input type="range" id="vcmDiscount" min="0" max="50" value="20" oninput="updateVcmDisplay()">
+                        <div class="value-display" id="vcmDisplay">20%</div>
+                    </div>
+                </div>
+
+                <div class="preview-box">
+                    <h3>Ejemplo con VCM (20%)</h3>
+                    <div class="preview-row">
+                        <span>Premium 1 año SIN VCM:</span>
+                        <strong>$8,000</strong>
+                    </div>
+                    <div class="preview-row">
+                        <span>Premium 1 año CON VCM:</span>
+                        <strong id="vcmPreview">$6,400</strong>
+                    </div>
+                    <div class="preview-row">
+                        <span>Ahorro:</span>
+                        <strong style="color: #00F584;" id="vcmSavings">$1,600</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMISIONES -->
+        <div id="comisiones" class="tab-content">
+            <div class="config-section">
+                <h2>💵 Estructura de Comisiones</h2>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="color: #FFD60A; display: block; margin-bottom: 10px;">Comisión por Etapa:</label>
+                    <table class="commission-table">
+                        <tr>
+                            <td>OPC (Invitación completada):</td>
+                            <td><input type="number" id="commOpc" value="500" style="width: 100px;"> por invitación</td>
+                        </tr>
+                        <tr>
+                            <td>Hosteo (Presentación completada):</td>
+                            <td><input type="number" id="commHosteo" value="1000" style="width: 100px;"> por presentación</td>
+                        </tr>
+                        <tr>
+                            <td>Contrato Firmado:</td>
+                            <td><input type="number" id="commSigned" value="0" style="width: 100px;"> % sobre ticket</td>
+                        </tr>
+                        <tr>
+                            <td>Pago Confirmado:</td>
+                            <td><input type="number" id="commPaid" value="5" style="width: 100px;"> % sobre ticket</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="preview-box">
+                    <h3>Ejemplo: Venta de $50,000</h3>
+                    <div class="preview-row">
+                        <span>OPC (invitación):</span>
+                        <strong id="commOpcExample">$500</strong>
+                    </div>
+                    <div class="preview-row">
+                        <span>Hosteo (presentación):</span>
+                        <strong id="commHosteoExample">$1,000</strong>
+                    </div>
+                    <div class="preview-row">
+                        <span>Contrato firmado (0%):</span>
+                        <strong id="commSignedExample">$0</strong>
+                    </div>
+                    <div class="preview-row">
+                        <span>Pago confirmado (5%):</span>
+                        <strong id="commPaidExample">$2,500</strong>
+                    </div>
+                    <div class="preview-row" style="border-top: 2px solid #FFD60A; padding-top: 12px; margin-top: 12px;">
+                        <span style="color: #FFD60A;">TOTAL COMISIÓN:</span>
+                        <strong style="color: #00F584;" id="totalCommExample">$4,000</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADICIONALES -->
+        <div id="adicionales" class="tab-content">
+            <div class="config-section">
+                <h2>✨ Precios de Opcionales</h2>
+
+                <div class="addon-list">
+                    <div class="addon-item">
+                        <label>🌍 RCI (Resorts internacionales)</label>
+                        <input type="number" id="addonRci" value="2000" placeholder="Precio">
+                    </div>
+                    <div class="addon-item">
+                        <label>📜 Certificados Personalizados</label>
+                        <input type="number" id="addonCerts" value="1500" placeholder="Precio">
+                    </div>
+                    <div class="addon-item">
+                        <label>🎁 Regalo Bienvenida</label>
+                        <input type="number" id="addonGift" value="500" placeholder="Precio">
+                    </div>
+                    <div class="addon-item">
+                        <label>📱 App Móvil Premium</label>
+                        <input type="number" id="addonApp" value="300" placeholder="Precio">
+                    </div>
+                    <div class="addon-item">
+                        <label>👨‍👩‍👧‍👦 Membresía Familiar</label>
+                        <input type="number" id="addonFamily" value="3000" placeholder="Precio">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- METAS -->
+        <div id="metas" class="tab-content">
+            <div class="config-section">
+                <h2>🎯 Metas Mensuales</h2>
+
+                <div class="config-row">
+                    <div class="label-col">Meta de Ingresos (mes):</div>
+                    <div class="input-group">
+                        <span style="color: #FFD60A;">$</span>
+                        <input type="number" id="goalRevenue" value="1000000" style="flex: 1;">
+                    </div>
+                </div>
+
+                <div class="config-row">
+                    <div class="label-col">Meta de Conversión OPC→Pagado:</div>
+                    <div class="input-group">
+                        <input type="range" id="goalConversion" min="10" max="80" value="40">
+                        <div class="value-display" id="goalConversionDisplay">40%</div>
+                    </div>
+                </div>
+
+                <div class="config-row">
+                    <div class="label-col">Meta Ticket Promedio:</div>
+                    <div class="input-group">
+                        <span style="color: #FFD60A;">$</span>
+                        <input type="number" id="goalTicket" value="50000" style="flex: 1;">
+                    </div>
+                </div>
+
+                <div class="config-row">
+                    <div class="label-col">Número de Asesores:</div>
+                    <div class="input-group">
+                        <input type="number" id="numAdvisors" value="8" style="flex: 1; max-width: 100px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXPORTAR/IMPORTAR -->
+        <div id="exportar" class="tab-content">
+            <div class="config-section">
+                <h2>📤 Gestión de Configuración</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h3 style="color: #FFD60A; margin-bottom: 15px;">Exportar Configuración</h3>
+                        <p style="color: #b0b0b0; margin-bottom: 15px;">Descarga todos los parámetros como JSON para backup o compartir.</p>
+                        <button class="btn btn-export" onclick="exportConfig()">📥 Descargar JSON</button>
+                    </div>
+                    <div>
+                        <h3 style="color: #FFD60A; margin-bottom: 15px;">Importar Configuración</h3>
+                        <p style="color: #b0b0b0; margin-bottom: 15px;">Carga una configuración previa (JSON).</p>
+                        <input type="file" id="importFile" accept=".json" style="display: none;">
+                        <button class="btn btn-export" onclick="document.getElementById('importFile').click()">📤 Cargar JSON</button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #FFD60A; margin-bottom: 15px;">Vista Previa JSON</h3>
+                    <textarea id="configPreview" style="width: 100%; height: 300px; background: rgba(0,0,0,0.5); border: 1px solid #FFD60A; color: #00F584; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.85rem;" readonly></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTONES GLOBALES -->
+        <div class="button-group">
+            <button class="btn btn-save" onclick="saveConfig()">💾 Guardar Configuración</button>
+            <button class="btn btn-reset" onclick="resetConfig()">🔄 Restaurar Defaults</button>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_CONFIG = {
+            prices: {
+                premium: { 1: 8000, 3: 22000, 5: 35000, 10: 65000, lifetime: 95000 },
+                platinum: { 1: 12000, 3: 33000, 5: 52500, 10: 97500, lifetime: 145000 },
+                ultra: { 1: 16000, 3: 44000, 5: 70000, 10: 130000, lifetime: 195000 },
+                vitalicia: { lifetime: 195000 }
+            },
+            factors: { 3: 2.75, 5: 4.375, 10: 8.125, lifetime: 12.1875 },
+            discounts: { vcm: 20 },
+            commissions: { opc: 500, hosteo: 1000, signed: 0, paid: 5 },
+            addons: { rci: 2000, certs: 1500, gift: 500, app: 300, family: 3000 },
+            goals: { revenue: 1000000, conversion: 40, ticket: 50000, advisors: 8 }
+        };
+
+        function loadConfig() {
+            const saved = localStorage.getItem('vtcConfig');
+            return saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+        }
+
+        function saveConfig() {
+            const config = {
+                prices: {
+                    premium: { 1: parseInt(document.getElementById('pricePremium1').value) || 8000 },
+                    platinum: { 1: parseInt(document.getElementById('pricePlatinum1').value) || 12000 },
+                    ultra: { 1: parseInt(document.getElementById('priceUltra1').value) || 16000 },
+                    vitalicia: { lifetime: parseInt(document.getElementById('priceVitalicia').value) || 195000 }
+                },
+                factors: {
+                    3: parseFloat(document.getElementById('factor3years').value) || 2.75,
+                    5: parseFloat(document.getElementById('factor5years').value) || 4.375,
+                    10: parseFloat(document.getElementById('factor10years').value) || 8.125,
+                    lifetime: parseFloat(document.getElementById('factorLifetime').value) || 12.1875
+                },
+                discounts: { vcm: parseInt(document.getElementById('vcmDiscount').value) || 20 },
+                commissions: {
+                    opc: parseInt(document.getElementById('commOpc').value) || 500,
+                    hosteo: parseInt(document.getElementById('commHosteo').value) || 1000,
+                    signed: parseInt(document.getElementById('commSigned').value) || 0,
+                    paid: parseInt(document.getElementById('commPaid').value) || 5
+                },
+                addons: {
+                    rci: parseInt(document.getElementById('addonRci').value) || 2000,
+                    certs: parseInt(document.getElementById('addonCerts').value) || 1500,
+                    gift: parseInt(document.getElementById('addonGift').value) || 500,
+                    app: parseInt(document.getElementById('addonApp').value) || 300,
+                    family: parseInt(document.getElementById('addonFamily').value) || 3000
+                },
+                goals: {
+                    revenue: parseInt(document.getElementById('goalRevenue').value) || 1000000,
+                    conversion: parseInt(document.getElementById('goalConversion').value) || 40,
+                    ticket: parseInt(document.getElementById('goalTicket').value) || 50000,
+                    advisors: parseInt(document.getElementById('numAdvisors').value) || 8
+                }
+            };
+
+            // Calculate derived prices
+            Object.keys(config.prices).forEach(type => {
+                if (type !== 'vitalicia' && config.prices[type][1]) {
+                    config.prices[type][3] = Math.round(config.prices[type][1] * config.factors[3]);
+                    config.prices[type][5] = Math.round(config.prices[type][1] * config.factors[5]);
+                    config.prices[type][10] = Math.round(config.prices[type][1] * config.factors[10]);
+                    config.prices[type]['lifetime'] = Math.round(config.prices[type][1] * config.factors['lifetime']);
+                }
+            });
+
+            localStorage.setItem('vtcConfig', JSON.stringify(config));
+            document.getElementById('successMsg').style.display = 'block';
+            setTimeout(() => document.getElementById('successMsg').style.display = 'none', 3000);
+            updatePreviews();
+            updateConfigPreview();
+        }
+
+        function resetConfig() {
+            if (confirm('¿Restaurar valores por defecto?')) {
+                localStorage.removeItem('vtcConfig');
+                location.reload();
+            }
+        }
+
+        function updatePreviews() {
+            const config = loadConfig();
+            updateVcmDisplay();
+            updateCommissionExamples();
+        }
+
+        function updateVcmDisplay() {
+            const pct = parseInt(document.getElementById('vcmDiscount').value);
+            document.getElementById('vcmDisplay').textContent = pct + '%';
+            const basePrice = 8000;
+            const discount = Math.round(basePrice * (pct / 100));
+            const finalPrice = basePrice - discount;
+            document.getElementById('vcmPreview').textContent = '$' + finalPrice.toLocaleString();
+            document.getElementById('vcmSavings').textContent = '$' + discount.toLocaleString();
+        }
+
+        function updateCommissionExamples() {
+            const salePrice = 50000;
+            const opc = parseInt(document.getElementById('commOpc').value) || 0;
+            const hosteo = parseInt(document.getElementById('commHosteo').value) || 0;
+            const signedPct = (parseInt(document.getElementById('commSigned').value) || 0) / 100;
+            const paidPct = (parseInt(document.getElementById('commPaid').value) || 0) / 100;
+
+            const signed = Math.round(salePrice * signedPct);
+            const paid = Math.round(salePrice * paidPct);
+            const total = opc + hosteo + signed + paid;
+
+            document.getElementById('commOpcExample').textContent = '$' + opc.toLocaleString();
+            document.getElementById('commHosteoExample').textContent = '$' + hosteo.toLocaleString();
+            document.getElementById('commSignedExample').textContent = '$' + signed.toLocaleString();
+            document.getElementById('commPaidExample').textContent = '$' + paid.toLocaleString();
+            document.getElementById('totalCommExample').textContent = '$' + total.toLocaleString();
+        }
+
+        function updateConfigPreview() {
+            const config = loadConfig();
+            document.getElementById('configPreview').value = JSON.stringify(config, null, 2);
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function exportConfig() {
+            const config = loadConfig();
+            const json = JSON.stringify(config, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'vtc-config-' + new Date().toISOString().split('T')[0] + '.json';
+            a.click();
+        }
+
+        document.getElementById('importFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const config = JSON.parse(event.target.result);
+                    localStorage.setItem('vtcConfig', JSON.stringify(config));
+                    location.reload();
+                } catch (err) {
+                    alert('Error al importar: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        // Load on init
+        const config = loadConfig();
+        document.getElementById('pricePremium1').value = config.prices.premium[1];
+        document.getElementById('pricePlatinum1').value = config.prices.platinum[1];
+        document.getElementById('priceUltra1').value = config.prices.ultra[1];
+        document.getElementById('priceVitalicia').value = config.prices.vitalicia.lifetime;
+        document.getElementById('vcmDiscount').value = config.discounts.vcm;
+        document.getElementById('commOpc').value = config.commissions.opc;
+        document.getElementById('commHosteo').value = config.commissions.hosteo;
+        document.getElementById('commSigned').value = config.commissions.signed;
+        document.getElementById('commPaid').value = config.commissions.paid;
+        document.getElementById('goalRevenue').value = config.goals.revenue;
+        document.getElementById('goalConversion').value = config.goals.conversion;
+        document.getElementById('goalTicket').value = config.goals.ticket;
+        document.getElementById('numAdvisors').value = config.goals.advisors;
+
+        // Add event listeners to recalculate prices
+        ['pricePremium1', 'pricePlatinum1', 'priceUltra1'].forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                const val = parseInt(this.value) || 0;
+                const f3 = config.factors[3];
+                const f5 = config.factors[5];
+                const f10 = config.factors[10];
+                const flife = config.factors.lifetime;
+
+                if (id === 'pricePremium1') {
+                    document.getElementById('premiumPrice3').textContent = '$' + Math.round(val * f3).toLocaleString();
+                    document.getElementById('premiumPrice5').textContent = '$' + Math.round(val * f5).toLocaleString();
+                    document.getElementById('premiumPrice10').textContent = '$' + Math.round(val * f10).toLocaleString();
+                    document.getElementById('premiumLifetime').textContent = '$' + Math.round(val * flife).toLocaleString();
+                } else if (id === 'pricePlatinum1') {
+                    document.getElementById('platinumPrice3').textContent = '$' + Math.round(val * f3).toLocaleString();
+                    document.getElementById('platinumPrice5').textContent = '$' + Math.round(val * f5).toLocaleString();
+                    document.getElementById('platinumPrice10').textContent = '$' + Math.round(val * f10).toLocaleString();
+                    document.getElementById('platinumLifetime').textContent = '$' + Math.round(val * flife).toLocaleString();
+                } else if (id === 'priceUltra1') {
+                    document.getElementById('ultraPrice3').textContent = '$' + Math.round(val * f3).toLocaleString();
+                    document.getElementById('ultraPrice5').textContent = '$' + Math.round(val * f5).toLocaleString();
+                    document.getElementById('ultraPrice10').textContent = '$' + Math.round(val * f10).toLocaleString();
+                    document.getElementById('ultraLifetime').textContent = '$' + Math.round(val * flife).toLocaleString();
+                }
+            });
+        });
+
+        document.getElementById('vcmDiscount').addEventListener('input', updateVcmDisplay);
+        document.getElementById('commOpc').addEventListener('change', updateCommissionExamples);
+        document.getElementById('commHosteo').addEventListener('change', updateCommissionExamples);
+        document.getElementById('commSigned').addEventListener('change', updateCommissionExamples);
+        document.getElementById('commPaid').addEventListener('change', updateCommissionExamples);
+        document.getElementById('goalConversion').addEventListener('input', function() {
+            document.getElementById('goalConversionDisplay').textContent = this.value + '%';
+        });
+
+        updatePreviews();
+    </script>
+</body>
+</html>
