@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VTC Capacitación - Sistema de Timeshare Completo</title>
+    <title>VTC Membresía - Club Vacacional de Lujo</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -51,6 +51,7 @@
             font-weight: 600;
             transition: all 0.3s;
             font-size: 0.85rem;
+            text-decoration: none;
         }
         .nav-btn:hover {
             background: #FFD60A;
@@ -59,16 +60,16 @@
 
         /* HERO */
         .hero {
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 60px 20px;
             text-align: center;
-            background: linear-gradient(180deg, rgba(255,214,10,0.05) 0%, transparent 100%);
+            background: linear-gradient(180deg, rgba(255,214,10,0.08) 0%, transparent 100%);
         }
         .hero-content {
-            max-width: 900px;
+            max-width: 1000px;
             animation: fadeInDown 0.8s ease;
         }
         @keyframes fadeInDown {
@@ -82,156 +83,246 @@
             }
         }
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: #FFD60A;
             margin-bottom: 20px;
             text-shadow: 0 0 30px rgba(255,214,10,0.3);
+            line-height: 1.1;
         }
-        .hero .subtitle {
-            font-size: 1.5rem;
-            color: #b0b0b0;
-            margin-bottom: 30px;
-            line-height: 1.8;
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: #00D9FF;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
         .hero .description {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #b0b0b0;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             line-height: 1.8;
-            max-width: 700px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* FEATURES GRID */
-        .features {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-        .features-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #FFD60A;
-            margin-bottom: 50px;
-        }
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        .feature-card {
-            background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,217,255,0.1));
-            border: 2px solid #FFD60A;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255,214,10,0.3);
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .feature-card h3 {
-            color: #FFD60A;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        .feature-card p {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* BUTTONS SECTION */
-        .buttons-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .buttons-title {
-            font-size: 2.5rem;
-            color: #FFD60A;
-            margin-bottom: 50px;
-        }
-        .buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        .hero-buttons {
+            display: flex;
             gap: 20px;
-            margin-bottom: 60px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .main-btn {
+        .hero-btn {
             background: linear-gradient(135deg, #FFD60A, #00D9FF);
             border: none;
             color: #000;
-            padding: 20px;
+            padding: 18px 40px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(255,214,10,0.4);
+        }
+        .hero-btn.secondary {
+            background: transparent;
+            border: 2px solid #FFD60A;
+            color: #FFD60A;
+        }
+        .hero-btn.secondary:hover {
+            background: #FFD60A;
+            color: #000;
+        }
+
+        /* BENEFITS */
+        .benefits {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #FFD60A;
+            margin-bottom: 60px;
+            text-shadow: 0 0 20px rgba(255,214,10,0.2);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .benefit-card {
+            background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,217,255,0.1));
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255,214,10,0.3);
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .benefit-card h3 {
+            color: #FFD60A;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .benefit-card p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* MEMBERSHIPS */
+        .memberships {
+            background: rgba(255,214,10,0.03);
+            padding: 80px 20px;
+            margin: 60px 0;
+        }
+        .memberships-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .memberships-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .membership {
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .membership:hover {
+            background: rgba(10, 14, 39, 0.95);
+            border-color: #00D9FF;
+            box-shadow: 0 20px 40px rgba(255,214,10,0.2);
+        }
+        .membership-name {
+            font-size: 1.8rem;
+            color: #FFD60A;
+            margin-bottom: 15px;
+        }
+        .membership-weeks {
+            font-size: 2.5rem;
+            color: #00D9FF;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .membership-weeks-label {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .membership-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .membership-features li {
+            color: #b0b0b0;
+            margin: 12px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .membership-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00F584;
+            font-weight: 700;
+        }
+        .membership-price {
+            font-size: 2.2rem;
+            color: #FFD60A;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        .membership-btn {
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            border: none;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .membership-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,214,10,0.3);
+        }
+
+        /* CTA */
+        .cta {
+            max-width: 1000px;
+            margin: 80px auto;
+            padding: 60px;
+            background: linear-gradient(135deg, rgba(0,245,132,0.1), rgba(0,217,255,0.1));
+            border: 3px solid #00F584;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .cta h2 {
+            color: #00F584;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .cta-btn {
+            background: linear-gradient(135deg, #00F584, #FFD60A);
+            border: none;
+            color: #000;
+            padding: 18px 50px;
             border-radius: 10px;
             font-weight: 700;
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
         }
-        .main-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255,214,10,0.4);
-        }
-        .main-btn-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        /* STATS */
-        .stats {
-            background: rgba(255,214,10,0.05);
-            border: 2px solid #FFD60A;
-            border-radius: 12px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
-            padding: 40px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        .stat {
-            padding: 20px;
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            color: #FFD60A;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .stat-label {
-            color: #b0b0b0;
-            font-size: 1rem;
+        .cta-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 20px 50px rgba(0,245,132,0.4);
         }
 
         /* FOOTER */
         .footer {
             background: rgba(10, 14, 39, 0.95);
             border-top: 1px solid #FFD60A;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             color: #b0b0b0;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .footer p {
             margin: 10px 0;
         }
         .footer-links {
-            margin: 20px 0;
+            margin: 30px 0;
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -248,10 +339,12 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.2rem; }
-            .features-title { font-size: 1.8rem; }
-            .buttons-title { font-size: 1.8rem; }
-            .nav-buttons { display: none; }
+            .hero .description { font-size: 1rem; }
+            .hero-buttons { flex-direction: column; }
+            .hero-btn { width: 100%; }
+            .section-title { font-size: 2rem; }
+            .nav-buttons { gap: 8px; }
+            .nav-btn { padding: 6px 12px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -261,150 +354,159 @@
         <div class="navbar-inner">
             <div class="logo">VTC</div>
             <div class="nav-buttons">
-                <button class="nav-btn" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })">Características</button>
-                <button class="nav-btn" onclick="document.getElementById('tools').scrollIntoView({ behavior: 'smooth' })">Herramientas</button>
+                <a href="#beneficios" class="nav-btn">Beneficios</a>
+                <a href="#membresías" class="nav-btn">Membresías</a>
+                <a href="./sistema.html" class="nav-btn" style="background: #FFD60A; color: #000;">Sistema</a>
             </div>
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <div class="hero">
         <div class="hero-content">
-            <h1>🎓 VTC Capacitación</h1>
-            <p class="subtitle">Sistema Operativo Completo para Timeshare</p>
+            <h1>Vacaciones Premium<br>Para Toda la Vida</h1>
+            <p class="tagline">Club Vacacional VTC • Membresía de Lujo</p>
             <p class="description">
-                19 Etapas de Pitch • 76 Objeciones • Dashboards en Tiempo Real
-                <br>
-                Capacitación de Asesores + Módulos Operacionales + Gestión Administrativa
+                Disfruta de resorts 5 estrellas en los destinos más hermosos del mundo.
+                Semanas de vacaciones garantizadas, descuentos exclusivos y acceso a
+                la red internacional de hoteles RCI.
             </p>
-            <p style="color: #00F584; font-size: 0.95rem;">✓ 100% Operativo • ✓ Pronto para Producción • ✓ Sistema Integrado</p>
-        </div>
-    </div>
-
-    <!-- FEATURES -->
-    <div class="features" id="features">
-        <h2 class="features-title">Características del Sistema</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🎤</div>
-                <h3>Capacitación IA</h3>
-                <p>19 etapas de pitch + 76 objeciones. Role-play en vivo con ElevenLabs Agent.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📝</div>
-                <h3>Módulos Operacionales</h3>
-                <p>OPC → Hosteo → Worksheet. Automatiza captura de datos y genera contratos.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Dashboards Inteligentes</h3>
-                <p>Vendedores, Embudo, Admin, Customer Service. Métricas en tiempo real.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚙️</div>
-                <h3>Panel de Configuración</h3>
-                <p>Edita precios, descuentos, comisiones, metas sin tocar código.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Calculadora VCM</h3>
-                <p>Membresía con descuentos (20%) y múltiples duraciones. Vista previa en vivo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3>Fully Responsive</h3>
-                <p>Funciona en desktop, tablet y móvil. Deploy en Vercel con actualizaciones automáticas.</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="document.getElementById('membresías').scrollIntoView({ behavior: 'smooth' })">
+                    Ver Membresías
+                </button>
+                <a href="./sistema.html" class="hero-btn secondary">
+                    Acceder al Sistema
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- STATS -->
-    <div class="stats">
-        <div class="stat">
-            <div class="stat-number">19</div>
-            <div class="stat-label">Etapas de Pitch</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">76</div>
-            <div class="stat-label">Objeciones Totales</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">7</div>
-            <div class="stat-label">Dashboards</div>
-        </div>
-        <div class="stat">
-            <div class="stat-number">3</div>
-            <div class="stat-label">Módulos</div>
+    <!-- BENEFICIOS -->
+    <div class="benefits" id="beneficios">
+        <h2 class="section-title">¿Por Qué VTC?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🏨</div>
+                <h3>Resorts de Lujo</h3>
+                <p>Acceso exclusivo a 5,000+ resorts 5 estrellas en todo el mundo. Playa, montaña, ciudad.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💳</div>
+                <h3>Flexibilidad</h3>
+                <p>Elige tus fechas, destinos y duración. Intercambia semanas entre temporadas y años.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌍</div>
+                <h3>Red Global</h3>
+                <p>Acceso RCI a hoteles en 170 países. Vacaciones garantizadas o dinero de vuelta.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">👨‍👩‍👧‍👦</div>
+                <h3>Para la Familia</h3>
+                <p>Crea recuerdos inolvidables. Membresía transferible a hijos y herederos.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Ahorro Garantizado</h3>
+                <p>Paga UNA sola vez. No hay cuotas anuales. Ahorras miles en hoteles cada año.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📱</div>
+                <h3>Servicio 24/7</h3>
+                <p>Equipo dedicado para reservas, cambios y soporte en cualquier momento.</p>
+            </div>
         </div>
     </div>
 
-    <!-- BUTTONS SECTION -->
-    <div class="buttons-section" id="tools">
-        <h2 class="buttons-title">Acceso a Herramientas</h2>
-        <div class="buttons-grid">
-            <!-- Capacitación -->
-            <a href="./" class="main-btn" style="background: linear-gradient(135deg, #00F584, #FFD60A);">
-                <span class="main-btn-icon">🎓</span>
-                Capacitación
-            </a>
+    <!-- MEMBRESÍAS -->
+    <div class="memberships" id="membresías">
+        <div class="memberships-inner">
+            <h2 class="section-title">Nuestras Membresías</h2>
+            <div class="memberships-grid">
+                <div class="membership">
+                    <div class="membership-name">Premium</div>
+                    <div class="membership-weeks">12</div>
+                    <div class="membership-weeks-label">semanas/año</div>
+                    <ul class="membership-features">
+                        <li>Resorts Premium</li>
+                        <li>Acceso RCI</li>
+                        <li>Cambios ilimitados</li>
+                        <li>Redes globales</li>
+                    </ul>
+                    <div class="membership-price">$8,000</div>
+                    <button class="membership-btn">Seleccionar</button>
+                </div>
 
-            <!-- OPC -->
-            <a href="./modulo-opc.html" class="main-btn">
-                <span class="main-btn-icon">🎁</span>
-                OPC
-            </a>
+                <div class="membership">
+                    <div class="membership-name">Platinum</div>
+                    <div class="membership-weeks">20</div>
+                    <div class="membership-weeks-label">semanas/año</div>
+                    <ul class="membership-features">
+                        <li>Resorts Ultra Premium</li>
+                        <li>Acceso RCI Plus</li>
+                        <li>Prioridad en reservas</li>
+                        <li>Descuentos adicionales</li>
+                    </ul>
+                    <div class="membership-price">$12,000</div>
+                    <button class="membership-btn">Seleccionar</button>
+                </div>
 
-            <!-- Hosteo -->
-            <a href="./modulo-hosteo.html" class="main-btn">
-                <span class="main-btn-icon">🏨</span>
-                Hosteo
-            </a>
+                <div class="membership">
+                    <div class="membership-name">Ultra</div>
+                    <div class="membership-weeks">30+</div>
+                    <div class="membership-weeks-label">semanas/año</div>
+                    <ul class="membership-features">
+                        <li>Acceso VIP total</li>
+                        <li>Personal concierge</li>
+                        <li>Viajes a medida</li>
+                        <li>Máximos beneficios</li>
+                    </ul>
+                    <div class="membership-price">$16,000</div>
+                    <button class="membership-btn">Seleccionar</button>
+                </div>
 
-            <!-- Worksheet -->
-            <a href="./modulo-worksheet.html" class="main-btn">
-                <span class="main-btn-icon">📋</span>
-                Worksheet
-            </a>
-
-            <!-- Vendedores -->
-            <a href="./dashboard-vendedores.html" class="main-btn">
-                <span class="main-btn-icon">👥</span>
-                Vendedores
-            </a>
-
-            <!-- Administración -->
-            <a href="./dashboard-admin.html" class="main-btn">
-                <span class="main-btn-icon">🏢</span>
-                Administración
-            </a>
-
-            <!-- Embudo de Ventas -->
-            <a href="./dashboard-embudo-ventas.html" class="main-btn">
-                <span class="main-btn-icon">📈</span>
-                Embudo Ventas
-            </a>
+                <div class="membership">
+                    <div class="membership-name">Vitalicia</div>
+                    <div class="membership-weeks">∞</div>
+                    <div class="membership-weeks-label">para siempre</div>
+                    <ul class="membership-features">
+                        <li>Acceso ilimitado</li>
+                        <li>Heredable</li>
+                        <li>Máximo VIP</li>
+                        <li>Inversión patrimonial</li>
+                    </ul>
+                    <div class="membership-price">$195,000</div>
+                    <button class="membership-btn">Seleccionar</button>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <!-- Panel Config -->
-        <div style="margin-top: 30px; padding: 30px; background: rgba(255,214,10,0.1); border: 2px solid #FFD60A; border-radius: 12px;">
-            <h3 style="color: #FFD60A; margin-bottom: 15px;">⚙️ Panel de Configuración</h3>
-            <p style="color: #b0b0b0; margin-bottom: 20px;">Edita precios, descuentos, comisiones, metas sin tocar código</p>
-            <a href="./admin-config.html" class="main-btn" style="background: linear-gradient(135deg, #FFD60A, #00D9FF); display: inline-block;">
-                Abrir Panel →
-            </a>
-        </div>
+    <!-- CTA -->
+    <div class="cta">
+        <h2>¿Listo para Vivir?</h2>
+        <p>
+            Únete a miles de familias que ya disfrutan de vacaciones de lujo
+            sin preocupaciones. Membresía flexible, asequible y con garantía de satisfacción.
+        </p>
+        <a href="./sistema.html" class="cta-btn">Comenzar Ahora</a>
     </div>
 
     <!-- FOOTER -->
     <div class="footer">
-        <p><strong>VTC Capacitación v1.0</strong></p>
-        <p>Sistema Operativo Completo para Timeshare • Deployado en Vercel</p>
-        <div class="footer-links">
-            <a href="#features">Características</a>
-            <a href="#tools">Herramientas</a>
-            <a href="./dashboard-customers.html">Customer Service</a>
+        <div class="footer-content">
+            <p><strong>VTC Membresía • Club Vacacional Premium</strong></p>
+            <div class="footer-links">
+                <a href="#beneficios">Beneficios</a>
+                <a href="#membresías">Membresías</a>
+                <a href="./sistema.html">Sistema</a>
+                <a href="./dashboard-customers.html">Mi Cuenta</a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.85rem; color: #888;">
+                © 2026 VTC Membresía • Vacaciones de Lujo Garantizadas
+            </p>
         </div>
-        <p style="margin-top: 20px; font-size: 0.85rem; color: #888;">© 2026 VTC Capacitación • Todos los derechos reservados</p>
     </div>
 </body>
 </html>
