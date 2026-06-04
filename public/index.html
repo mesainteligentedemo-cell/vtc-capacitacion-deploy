@@ -338,6 +338,88 @@
             color: #b0b0b0;
         }
 
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFD60A;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #FFD60A;
+            z-index: 99;
+            padding: 20px;
+            animation: slideDown 0.3s ease;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255,214,10,0.15);
+            border: 1px solid #FFD60A;
+            border-radius: 6px;
+            color: #FFD60A;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .mobile-menu-link:hover {
+            background: #FFD60A;
+            color: #000;
+        }
+        .menu-icon {
+            font-size: 1.2rem;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
@@ -346,6 +428,8 @@
             .hero-buttons { flex-direction: column; }
             .btn-primary { width: 100%; }
             .cta { padding: 40px 25px; }
+            .nav-btn { display: none; }
+            .hamburger { display: flex; }
         }
     </style>
 </head>
@@ -357,6 +441,45 @@
             <button class="nav-btn" onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })">
                 Automatiza Ahora
             </button>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-links">
+            <a href="./" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🎓</span>
+                Capacitación
+            </a>
+            <a href="./modulo-opc.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🎁</span>
+                OPC
+            </a>
+            <a href="./modulo-hosteo.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🏨</span>
+                Hosteo
+            </a>
+            <a href="./modulo-worksheet.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">📋</span>
+                Worksheet
+            </a>
+            <a href="./dashboard-vendedores.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">👥</span>
+                Vendedores
+            </a>
+            <a href="./dashboard-admin.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🏢</span>
+                Administración
+            </a>
+            <a href="./dashboard-embudo-ventas.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">📈</span>
+                Embudo Ventas
+            </a>
         </div>
     </div>
 
@@ -570,5 +693,31 @@
             © 2026 VTC Software
         </p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!e.target.closest('.hamburger') && !e.target.closest('.mobile-menu')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
