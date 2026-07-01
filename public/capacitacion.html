@@ -219,7 +219,8 @@
 
 <!-- HERO 1: BIENVENIDA -->
 <section class="hero-section">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+         poster="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.jpg">
     <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -233,7 +234,8 @@
 
 <!-- HERO 2: FUNDAMENTOS -->
 <section class="hero-section" id="fundamentals">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+         poster="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-F.jpg">
     <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-F.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -247,7 +249,8 @@
 
 <!-- HERO 3: PSICOLOGÍA -->
 <section class="hero-section" id="psychology">
-  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+         poster="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-00.jpg">
     <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-00.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
@@ -338,7 +341,32 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
 
+// Force background hero videos to play — guarantees they are visible/reproducing.
+// If the browser blocks autoplay, retry on the first user interaction.
+function forcePlayHeroVideos() {
+  document.querySelectorAll('.hero-video').forEach(v => {
+    v.muted = true;
+    v.setAttribute('muted', '');
+    const p = v.play();
+    if (p && p.catch) {
+      p.catch(() => {
+        const retry = () => {
+          document.querySelectorAll('.hero-video').forEach(x => x.play().catch(() => {}));
+          document.removeEventListener('click', retry);
+          document.removeEventListener('touchstart', retry);
+          document.removeEventListener('scroll', retry);
+        };
+        document.addEventListener('click', retry, { once: true });
+        document.addEventListener('touchstart', retry, { once: true });
+        document.addEventListener('scroll', retry, { once: true });
+      });
+    }
+  });
+}
+
 init();
+forcePlayHeroVideos();
+window.addEventListener('load', forcePlayHeroVideos);
 </script>
 
 </body>
