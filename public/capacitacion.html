@@ -3,449 +3,441 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VTC — Capacitación Elite</title>
+  <title>VTC — Capacitación Elite · Victorious Travelers Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --ink: #070708;
       --ink2: #0A0A0C;
       --ink3: #0F0F12;
+      --ink4: #141418;
       --cream: #EAE6DF;
       --muted: #706C66;
+      --faint: #2A2824;
       --gold: #B89A6A;
+      --gold2: #CDB28C;
+      --gold3: #8B7250;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--ink); color: var(--cream); font-family: 'Inter', sans-serif; line-height: 1.7; }
 
-    /* NAV SUPERIOR */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAVIGATION */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      height: 56px;
-      background: rgba(7,7,8,.95);
+      background: rgba(7, 7, 8, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(42,40,36,.5);
+      border-bottom: 1px solid var(--faint);
       padding: 0 2rem;
     }
+
     .nav-inner {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 56px;
     }
+
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       letter-spacing: 0.15em;
       color: var(--gold);
       text-transform: uppercase;
     }
+
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       list-style: none;
     }
+
     .nav-links a {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 0.2s;
       cursor: pointer;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--cream); }
-
-    /* MAIN CONTENT */
-    main {
-      margin-top: 56px;
-      margin-right: 340px;
-      padding: 0 4rem;
     }
 
-    /* HERO LANDING */
-    .hero-landing {
+    .nav-links a:hover {
+      color: var(--cream);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 4rem 2rem;
-    }
-    .hero-landing-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2rem;
-    }
-    .hero-landing h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    .hero-landing h1 em { color: var(--gold); font-style: italic; }
-    .hero-landing p {
-      max-width: 700px;
-      margin: 0 auto 4rem;
-      color: rgba(234,230,223,.8);
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 3rem;
-      width: 100%;
-      max-width: 900px;
-      padding-top: 3rem;
-      border-top: 1px solid rgba(42,40,36,.5);
-    }
-    .stat {
-      text-align: center;
-    }
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-    .stat-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* MODULO SECTION */
-    .module-section {
-      padding: 6rem 0;
-      border-bottom: 1px solid rgba(42,40,36,.5);
-    }
-    .module-breadcrumb {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2rem;
-    }
-    .module-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    .module-intro {
-      max-width: 800px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 3rem;
-    }
-
-    /* MODULE HERO VIDEO */
-    .module-hero {
-      position: relative;
-      height: 450px;
-      margin: 3rem 0;
-      border-radius: 8px;
+      margin-top: 56px;
       overflow: hidden;
-      background: #000;
     }
-    .module-hero video {
+
+    .hero-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      z-index: 0;
     }
-    .module-hero-overlay {
+
+    .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(7,7,8,0) 0%, rgba(7,7,8,.7) 70%, rgba(7,7,8,.9) 100%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(184, 154, 106, 0.1) 0%, rgba(7, 7, 8, 0.8) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
       z-index: 2;
+      padding: 4rem 2rem;
+      max-width: 700px;
     }
-    .module-hero-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 3;
-      padding: 3rem;
-      color: white;
-      text-align: left;
-    }
-    .module-hero-label {
+
+    .hero-label {
       font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-    }
-    .module-hero-label::before {
-      content: '';
-      width: 40px;
-      height: 2px;
-      background: var(--gold);
-      margin-right: 1rem;
-    }
-    .module-hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      line-height: 1.1;
-      text-transform: uppercase;
       margin-bottom: 1.5rem;
     }
-    .module-hero-title em { color: var(--gold); font-style: italic; }
-    .module-hero-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 1.5rem;
-      background: none;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      cursor: pointer;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 4px;
-      transition: 0.2s;
-    }
-    .module-hero-button:hover {
-      background: rgba(184,154,106,.1);
-    }
-    .play-icon {
-      width: 24px;
-      height: 24px;
-      border-left: 6px solid currentColor;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      margin-right: 0.5rem;
-    }
 
-    /* MODULE CONTENT */
-    .module-content {
-      max-width: 800px;
-      margin: 3rem 0;
-    }
-    .content-block {
-      margin: 2.5rem 0;
-    }
-    .block-title {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .block-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(42,40,36,.5);
-    }
-    .block-text {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.85;
-    }
-    .block-text strong { color: var(--cream); font-weight: 500; }
-    .block-text em { color: var(--gold); font-style: italic; }
-
-    /* QUOTE BOX */
-    .quote-box {
-      background: rgba(184,154,106,.04);
-      border-left: 3px solid var(--gold);
-      padding: 2rem;
-      margin: 2rem 0;
-      border-radius: 4px;
-    }
-    .quote-box-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .quote-text {
+    .hero h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-style: italic;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.15;
       color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold2);
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      color: rgba(234, 230, 223, 0.8);
+      font-size: 0.95rem;
       line-height: 1.8;
     }
 
-    /* ARCHETYPES GRID */
-    .archetypes-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(42,40,36,.5);
-      margin: 2rem 0;
-    }
-    .archetype-card {
-      background: var(--ink2);
-      padding: 1.5rem;
-    }
-    .archetype-label {
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-    .archetype-name {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-    .archetype-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* PANEL LATERAL */
-    .sidebar {
-      position: fixed;
-      top: 80px;
+    /* FORM CONTAINER */
+    .form-container {
+      position: absolute;
+      top: 56px;
       right: 2rem;
-      width: 300px;
-      z-index: 50;
-    }
-    .victor-card {
-      background: rgba(10,10,12,.95);
-      border: 1px solid rgba(184,154,106,.2);
+      width: 340px;
+      background: rgba(10, 10, 12, 0.92);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--faint);
       border-radius: 8px;
       padding: 2rem;
-      text-align: center;
-      margin-bottom: 1.5rem;
+      z-index: 50;
     }
-    .victor-avatar {
-      width: 60px;
-      height: 60px;
+
+    .form-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .form-icon {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
-      background: var(--gold);
+      border: 2px solid var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
       margin: 0 auto 1rem;
-      color: var(--ink);
-    }
-    .victor-name {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-    .victor-title {
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: 1.2rem;
     }
 
-    .module-card {
-      background: rgba(10,10,12,.95);
-      border: 1px solid rgba(184,154,106,.2);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
+    .form-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      margin-bottom: 0.25rem;
     }
-    .module-card-label {
-      font-size: 0.65rem;
+
+    .form-header p {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 0.5rem;
     }
-    .module-card-title {
-      font-size: 0.95rem;
-      font-weight: 500;
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(20, 20, 24, 0.6);
+      border: 1px solid var(--faint);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      transition: 0.2s;
     }
 
-    .victor-message {
-      background: rgba(184,154,106,.08);
-      border: 1px solid rgba(184,154,106,.2);
-      border-left: 3px solid var(--gold);
-      border-radius: 4px;
-      padding: 1.25rem;
-      font-size: 0.85rem;
-      line-height: 1.6;
+    .form-input:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(20, 20, 24, 0.8);
+    }
+
+    .form-input::placeholder {
+      color: var(--muted);
+    }
+
+    .form-select {
+      cursor: pointer;
+    }
+
+    .form-select option {
+      background: var(--ink2);
       color: var(--cream);
     }
 
-    /* MODAL VIDEO */
-    .modal {
+    .form-button {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--gold);
+      color: var(--ink);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .form-button:hover {
+      background: var(--gold2);
+    }
+
+    /* MODULES SECTION */
+    .modules-section {
+      display: none;
+      padding: 4rem 2rem;
+      background: var(--ink3);
+    }
+
+    .modules-section.active {
+      display: block;
+    }
+
+    .modules-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .modules-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--faint);
+    }
+
+    .module-card {
+      background: var(--ink2);
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: 0.2s;
+      border: none;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .module-card:hover {
+      background: var(--ink4);
+    }
+
+    .module-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--gold3);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-name {
+      color: var(--cream);
+      font-size: 0.95rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .module-desc {
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    /* VIDEO MODAL */
+    .video-modal {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(7,7,8,.98);
+      background: rgba(7, 7, 8, 0.98);
       z-index: 200;
       align-items: center;
       justify-content: center;
       padding: 2rem;
     }
-    .modal.active { display: flex; }
-    .modal-content {
+
+    .video-modal.active {
+      display: flex;
+    }
+
+    .video-container {
       width: 100%;
       max-width: 900px;
       position: relative;
     }
-    .modal-close {
+
+    .video-player {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      background: var(--ink);
+    }
+
+    .video-close {
       position: absolute;
-      top: -50px;
+      top: -40px;
       right: 0;
       background: none;
       border: none;
       color: var(--cream);
       font-size: 2rem;
       cursor: pointer;
-      z-index: 201;
-    }
-    .modal-close:hover { color: var(--gold); }
-    video {
-      width: 100%;
-      height: auto;
-      background: #000;
-      border-radius: 8px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
     }
 
-    @media (max-width: 1200px) {
-      main { margin-right: 0; }
-      .sidebar { position: relative; top: auto; right: auto; margin-top: 3rem; width: 100%; }
+    .video-close:hover {
+      color: var(--gold);
+    }
+
+    .video-info {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .video-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 0.5rem;
+    }
+
+    .video-info p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .form-container {
+        width: 100%;
+        max-width: none;
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 2rem;
+      }
     }
 
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-      .archetypes-grid { grid-template-columns: repeat(2, 1fr); }
-      main { padding: 0 2rem; }
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .form-container {
+        width: 100%;
+      }
+
+      .module-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ElevenLabs Chat Widget Styling */
+    #vw-launch {
+      z-index: 99 !important;
     }
   </style>
 </head>
@@ -455,199 +447,225 @@
   <div class="nav-inner">
     <div class="nav-logo">V T C · Capacitación</div>
     <ul class="nav-links">
-      <li><a href="#modulos">Módulos</a></li>
-      <li><a href="#fundamentals">Fundamentos</a></li>
+      <li><a onclick="scrollToModules()">Módulos</a></li>
+      <li><a href="#fundamentos">Fundamentos</a></li>
       <li><a href="#pnl">PNL</a></li>
-      <li><a href="#objections">Objeciones</a></li>
-      <li><a href="#process">El Proceso VTC</a></li>
+      <li><a href="#objeciones">Objeciones</a></li>
+      <li><a href="#proceso">El Proceso VTC</a></li>
       <li><a href="#vtc19">VTC 19</a></li>
     </ul>
   </div>
 </nav>
 
-<main>
-  <!-- HERO LANDING -->
-  <section class="hero-landing" id="home">
-    <div class="hero-landing-label">Victorious Travelers Club · Capacitación Elite</div>
-    <h1>El Curso Más Completo<br>para <em>Salas de Ventas</em></h1>
-    <p>Todo lo que necesitas para dominar el proceso VTC de principio a fin. PNL aplicado, tie-downs, técnicas de urgencia, manejo de objeciones, El Proceso VTC y los 19 módulos del pitch — con scripts listos para el piso.</p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">16</div>
-        <div class="stat-label">Módulos</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">19</div>
-        <div class="stat-label">VTC Pitch Steps</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">12</div>
-        <div class="stat-label">Etapas del Proceso VTC</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">11</div>
-        <div class="stat-label">Principios Neurociencia</div>
-      </div>
-    </div>
-  </section>
+<!-- HERO + FORM -->
+<section class="hero">
+  <video class="hero-bg" autoplay muted loop playsinline>
+    <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
 
-  <!-- BIENVENIDA -->
-  <section class="module-section">
-    <div class="module-breadcrumb">Bienvenida · Para Nuevos y Veteranos</div>
-    <h2 class="module-title">Bienvenido a tu Capacitación</h2>
-    <p class="module-intro">Seas de nuevo ingreso o lleves años en el piso, este curso te va a convertir en un sharp del timeshare. Empieza por aquí.</p>
-
-    <div class="module-hero">
-      <video autoplay muted loop playsinline>
-        <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.mp4" type="video/mp4">
-      </video>
-      <div class="module-hero-overlay"></div>
-      <div class="module-hero-content">
-        <div class="module-hero-label">Bienvenida · Para Nuevos y Veteranos</div>
-        <h3 class="module-hero-title">Bienvenido a tu<br>Capacitación</h3>
-        <button class="module-hero-button" onclick="playVideo('WEL', 'Bienvenida')"><span class="play-icon"></span>Ver Módulo</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODULO F -->
-  <section class="module-section" id="fundamentals">
-    <div class="module-breadcrumb">Módulo F · Todos los Roles · Prerequisito: Ninguno</div>
-    <h2 class="module-title">Fundamentos del Negocio VTC</h2>
-    <p class="module-intro">Antes de vender cualquier cosa, tienes que entender qué estás vendiendo, por qué funciona el modelo, y cuál es la mentalidad que separa a los que cierran de los que solo presentan.</p>
-
-    <div class="module-hero">
-      <video autoplay muted loop playsinline>
-        <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-F.mp4" type="video/mp4">
-      </video>
-      <div class="module-hero-overlay"></div>
-      <div class="module-hero-content">
-        <div class="module-hero-label">Módulo F · Formación · Todos los Roles</div>
-        <h3 class="module-hero-title">Fundamentos<br>del <em>Negocio VTC</em></h3>
-        <button class="module-hero-button" onclick="playVideo('F', 'Fundamentos del Negocio VTC')"><span class="play-icon"></span>Ver Módulo</button>
-      </div>
-    </div>
-
-    <div class="module-content">
-      <div class="content-block">
-        <h4 class="block-title">Por Qué Este Módulo Existe</h4>
-        <p class="block-text">El 60% de los vendedores nuevos pierden cierres porque no entienden <strong>qué venden realmente</strong>. No venden puntos ni semanas. No venden habitaciones. Venden el derecho a que una familia tenga vacaciones de calidad garantizada, año tras año, sin la ruleta de la plataforma de rentas ni los costos ocultos del timeshare clásico.</p>
-      </div>
-
-      <div class="content-block">
-        <h4 class="block-title">Qué Es VTC — En Una Línea</h4>
-        <div class="quote-box">
-          <div class="quote-box-label">Definición de Trabajo</div>
-          <p class="quote-text">"VTC es una membresía vacacional de lujo que te da acceso garantizado a más de 60 propiedades premium y 4,300 destinos en 100 países — con una cuota anual de solo $155 USD, sin los problemas del timeshare clásico ni los costos ocultos de las rentas temporales."</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODULO 0 -->
-  <section class="module-section">
-    <div class="module-breadcrumb">Módulo 0 · Todos los Roles · Prerequisito: Módulo F</div>
-    <h2 class="module-title">Psicología del Vendedor de Éxito</h2>
-    <p class="module-intro">El producto más importante que vendes eres tú. Tu estado emocional, tu mentalidad y tu arquetipo de vendedor determinan tu closing rate antes de que el prospecto abra la boca.</p>
-
-    <div class="module-hero">
-      <video autoplay muted loop playsinline>
-        <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-00.mp4" type="video/mp4">
-      </video>
-      <div class="module-hero-overlay"></div>
-      <div class="module-hero-content">
-        <div class="module-hero-label">Módulo 0 · Formación · Mentalidad</div>
-        <h3 class="module-hero-title">Psicología del<br><em>Vendedor</em></h3>
-        <button class="module-hero-button" onclick="playVideo('00', 'Psicología del Vendedor')"><span class="play-icon"></span>Ver Módulo</button>
-      </div>
-    </div>
-
-    <div class="module-content">
-      <div class="content-block">
-        <h4 class="block-title">Los 4 Arquetipos del Vendedor de Timeshare</h4>
-        <p class="block-text">Cada vendedor tiende naturalmente hacia uno de estos arquetipos. Identificar el tuyo es el primer paso para corregirlo o potenciarlo.</p>
-        <div class="archetypes-grid">
-          <div class="archetype-card">
-            <div class="archetype-label">Arquetipo 1 · Más Común</div>
-            <div class="archetype-name">El Informador</div>
-            <p class="archetype-desc">Recita los beneficios como un folleto. El cliente decide solo, sin guía emocional. <strong>Cierre promedio: 8–10%</strong></p>
-          </div>
-          <div class="archetype-card">
-            <div class="archetype-label">Arquetipo 2 · Popular</div>
-            <div class="archetype-name">El Relacionador</div>
-            <p class="archetype-desc">Excelente rapport, se queda en la amistad. Miedo al cierre, no quiere "presionar". <strong>Cierre promedio: 12–14%</strong></p>
-          </div>
-          <div class="archetype-card">
-            <div class="archetype-label">Arquetipo 3 · El Que Gana Más</div>
-            <div class="archetype-name">El Challenger</div>
-            <p class="archetype-desc">Educa al prospecto, reencuadra sus creencias. Toma control sin dominar. <strong>Cierre promedio: 20–28%</strong></p>
-          </div>
-          <div class="archetype-card">
-            <div class="archetype-label">Arquetipo 4 · Alta Precisión</div>
-            <div class="archetype-name">El Cerrador Puro</div>
-            <p class="archetype-desc">Directo al dinero, sin relación. Alta presión, quema miembros. <strong>Cierre: 18–22% pero rescisión alta</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- SIDEBAR LATERAL -->
-<aside class="sidebar">
-  <div class="victor-card">
-    <div class="victor-avatar">V</div>
-    <div class="victor-name">Victor</div>
-    <div class="victor-title">Entrenador Maestro VTC</div>
+  <div class="hero-content">
+    <div class="hero-label">Bienvenida · Nuevos y Veteranos</div>
+    <h1>Bienvenido a tu <em>Capacitación</em></h1>
+    <p>Accede a tu entrenamiento personal · VTC</p>
   </div>
 
-  <div class="module-card" id="sidebarModule">
-    <div class="module-card-label">Módulo F</div>
-    <div class="module-card-title">Fundamentos</div>
-  </div>
+  <div class="form-container">
+    <div class="form-header">
+      <div class="form-icon">V</div>
+      <h3>Victor</h3>
+      <p>Tu entrenador personal · VTC</p>
+    </div>
 
-  <div class="victor-message" id="victorMessage">
-    ¡Hola! Soy Victor. Estamos en el Módulo F: Fundamentos. Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?
-  </div>
-</aside>
+    <form id="accessForm">
+      <div class="form-group">
+        <label class="form-label">Nombre Completo</label>
+        <input type="text" class="form-input" id="userName" placeholder="Tu nombre" required/>
+      </div>
 
-<!-- MODAL VIDEO -->
-<div class="modal" id="videoModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeVideo()">✕</button>
-    <video id="videoPlayer" controls></video>
+      <div class="form-group">
+        <label class="form-label">Número de Empleado</label>
+        <input type="text" class="form-input" id="employeeId" placeholder="Ej. 12345" required/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Departamento</label>
+        <select class="form-select" id="department" required>
+          <option value="">Selecciona...</option>
+          <option value="OPC">OPC</option>
+          <option value="Liner">Liner</option>
+          <option value="Closer">Closer</option>
+          <option value="Manager">Manager</option>
+          <option value="Director">Director</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+
+      <button type="submit" class="form-button">Comenzar Capacitación</button>
+    </form>
+  </div>
+</section>
+
+<!-- MODULES SECTION -->
+<section class="modules-section" id="modulesSection">
+  <div class="modules-inner">
+    <h2 class="modules-title">Módulos de Capacitación</h2>
+
+    <div class="module-grid" id="moduleGrid">
+      <!-- Modules will be generated here -->
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="video-modal" id="videoModal">
+  <div class="video-container">
+    <button class="video-close" onclick="closeVideo()">✕</button>
+    <video class="video-player" id="videoPlayer" controls playsinline></video>
+    <div class="video-info">
+      <h2 id="videoTitle"></h2>
+      <p id="videoDesc"></p>
+    </div>
   </div>
 </div>
 
-<!-- ELEVENLABS CHAT -->
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
-<div id="vw-launch" data-agent-id="agent_5701kr0h5gg6eetb69tv6c5hwfj1" style="position: fixed; bottom: 20px; right: 20px; z-index: 99;"></div>
+<!-- ElevenLabs Chat Widget -->
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<div id="vw-launch" data-agent-id="agent_5701kr0h5gg6eetb69tv6c5hwfj1"></div>
 
 <script>
-function playVideo(moduleId, moduleName) {
-  const videoUrl = `https://vtc-capacitacion-deploy.vercel.app/videos/modulo-${moduleId}.mp4`;
-  document.getElementById('videoPlayer').src = videoUrl;
-  document.getElementById('videoModal').classList.add('active');
-  document.getElementById('videoPlayer').play();
+  const MODULES = [
+    { id: 'WEL', title: 'Bienvenida', desc: 'Introducción a la capacitación VTC' },
+    { id: '00', title: 'Fundamentos del Negocio VTC', desc: 'Base de la industria de timeshare' },
+    { id: '01', title: 'Psicología del Vendedor', desc: 'Mentalidad ganadora en ventas' },
+    { id: '02', title: 'Calificación y Prospecto Ideal', desc: 'Identifica a tus mejores prospectos' },
+    { id: '03', title: 'OPC - Captura y Abordaje', desc: 'El primer eslabón de la cadena' },
+    { id: '04', title: 'Rapport y PNL', desc: 'Crea conexiones auténticas' },
+    { id: '05', title: 'El Tour de Presentación', desc: 'Camina el resort como experto' },
+    { id: '06', title: 'La Presentación - Datos Duros', desc: 'El pitch que convence' },
+    { id: '07', title: 'El Cierre - Dos Cierres Probados', desc: 'Cierra con confianza' },
+    { id: '08', title: 'Objeciones - La Verdad Detrás', desc: 'Maneja cada objeción' },
+    { id: '09', title: 'TOC - Técnica de Objeción Confirmada', desc: 'Procedimiento probado' },
+    { id: '10', title: 'Manager Close - El Cierre del Manager', desc: 'Cierre de segunda oportunidad' },
+    { id: '11', title: 'PNL Avanzado - Anclaje Emocional', desc: 'Técnicas de persuasión profunda' },
+    { id: 'M0', title: 'Nacionalidades - Inglés', desc: 'Scripts en inglés' },
+    { id: 'M1', title: 'Nacionalidades - Francés', desc: 'Scripts en francés' },
+    { id: 'M2', title: 'Nacionalidades - Canadiense', desc: 'Scripts canadienses' },
+    { id: 'M3', title: 'Nacionalidades - Alemán', desc: 'Scripts alemanes' },
+    { id: 'M4', title: 'Nacionalidades - Italiano', desc: 'Scripts italianos' },
+    { id: 'M5', title: 'Nacionalidades - Portugués', desc: 'Scripts portugueses' },
+    { id: 'M6', title: 'Nacionalidades - Español', desc: 'Scripts españoles' },
+    { id: 'M7', title: 'Nacionalidades - Ruso', desc: 'Scripts rusos' },
+    { id: 'M8', title: 'Nacionalidades - Chino', desc: 'Scripts chinos' },
+    { id: 'M9', title: 'Nacionalidades - Árabe', desc: 'Scripts árabes' },
+    { id: 'M10', title: 'Nacionalidades - Hebreo', desc: 'Scripts hebreos' },
+    { id: 'M11', title: 'Nacionalidades - Sueco', desc: 'Scripts suecos' },
+    { id: 'M12', title: 'Nacionalidades - Holandés', desc: 'Scripts holandeses' },
+    { id: 'PV', title: 'PNL Avanzado - Visión 360°', desc: 'Perspectivas múltiples' },
+    { id: 'F', title: 'Ética, Legal y Compliance', desc: 'Marco normativo VTC' },
+    { id: 'FIN', title: 'Examen Final', desc: 'Valida tu aprendizaje' },
+  ];
 
-  // Update sidebar
-  document.getElementById('sidebarModule').innerHTML = `
-    <div class="module-card-label">Módulo ${moduleId}</div>
-    <div class="module-card-title">${moduleName}</div>
-  `;
-  document.getElementById('victorMessage').textContent = `¡Hola! Soy Victor. Estamos en el Módulo ${moduleId}: ${moduleName}. Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?`;
-}
+  // Generate module grid
+  function generateModules() {
+    const grid = document.getElementById('moduleGrid');
+    grid.innerHTML = MODULES.map(module => `
+      <button class="module-card" onclick="playVideo('${module.id}', '${module.title}')">
+        <div class="module-num">Módulo · ${module.id}</div>
+        <div class="module-name">${module.title}</div>
+        <div class="module-desc">${module.desc}</div>
+      </button>
+    `).join('');
+  }
 
-function closeVideo() {
-  document.getElementById('videoModal').classList.remove('active');
-  document.getElementById('videoPlayer').pause();
-  document.getElementById('videoPlayer').src = '';
-}
+  // Form submission
+  document.getElementById('accessForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('userName').value;
+    const empId = document.getElementById('employeeId').value;
+    const dept = document.getElementById('department').value;
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeVideo();
-});
+    // Store in localStorage for persistence
+    localStorage.setItem('vtcUser', JSON.stringify({ name, empId, dept }));
+
+    // Show modules section
+    document.getElementById('modulesSection').classList.add('active');
+
+    // Generate modules
+    generateModules();
+
+    // Scroll to modules
+    setTimeout(() => {
+      document.getElementById('modulesSection').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  });
+
+  // Video playback
+  function playVideo(moduleId, moduleTitle) {
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoTitle = document.getElementById('videoTitle');
+    const videoDesc = document.getElementById('videoDesc');
+
+    // Find module details
+    const module = MODULES.find(m => m.id === moduleId);
+
+    const videoUrl = `https://vtc-capacitacion-deploy.vercel.app/videos/modulo-${moduleId}.mp4`;
+
+    // Reset player completely before loading new video
+    videoPlayer.pause();
+    videoPlayer.removeAttribute('src');
+    videoPlayer.load();
+
+    // Set src directly on the <video> element (no <source> child — avoids browser conflicts)
+    videoPlayer.src = videoUrl;
+    videoPlayer.load();
+
+    videoTitle.textContent = moduleTitle;
+    videoDesc.textContent = module ? module.desc : '';
+
+    videoModal.classList.add('active');
+
+    // Play once canplay fires — more reliable than setTimeout
+    videoPlayer.addEventListener('canplay', function onCanPlay() {
+      videoPlayer.removeEventListener('canplay', onCanPlay);
+      videoPlayer.play().catch(e => console.log('Autoplay prevented:', e.message));
+    }, { once: true });
+  }
+
+  // Close video
+  function closeVideo() {
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    videoModal.classList.remove('active');
+    videoPlayer.pause();
+    videoPlayer.removeAttribute('src');
+    videoPlayer.load();
+  }
+
+  // Scroll helper
+  function scrollToModules() {
+    const section = document.getElementById('modulesSection');
+    if (section.classList.contains('active')) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // Close modal on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeVideo();
+    }
+  });
+
+  // Check if user already logged in
+  window.addEventListener('load', () => {
+    const user = localStorage.getItem('vtcUser');
+    if (user) {
+      document.getElementById('modulesSection').classList.add('active');
+      generateModules();
+    }
+  });
 </script>
 
 </body>
