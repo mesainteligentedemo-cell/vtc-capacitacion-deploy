@@ -3,112 +3,40 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VTC — Capacitación Elite · Victorious Travelers Club</title>
+  <title>VTC — Capacitación Elite</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --ink: #070708;
-      --ink2: #0A0A0C;
-      --ink3: #0F0F12;
-      --ink4: #141418;
-      --cream: #EAE6DF;
-      --muted: #706C66;
-      --faint: #2A2824;
-      --gold: #B89A6A;
-      --gold2: #CDB28C;
-      --gold3: #8B7250;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: #070708; color: #EAE6DF; font-family: 'Inter', sans-serif; line-height: 1.7; }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 60px; background: rgba(7,7,8,.95); backdrop-filter: blur(12px); border-bottom: 1px solid #2A2824; padding: 0 2rem; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; letter-spacing: 0.15em; color: #B89A6A; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #706C66; text-decoration: none; cursor: pointer; }
+    .nav-links a:hover { color: #EAE6DF; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--ink);
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-weight: 300;
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(7, 7, 8, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--faint);
-      padding: 0 2rem;
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover {
-      color: var(--cream);
-    }
-
-    /* HERO */
-    .hero {
+    .hero-section {
       position: relative;
       min-height: 100vh;
+      margin-top: 60px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: 56px;
+      justify-content: flex-start;
       overflow: hidden;
+      background: #000;
     }
 
-    .hero-bg {
+    .hero-video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
+      z-index: 1;
     }
 
     .hero-overlay {
@@ -117,166 +45,75 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(ellipse at 50% 0%, rgba(184, 154, 106, 0.1) 0%, rgba(7, 7, 8, 0.8) 100%);
-      z-index: 1;
+      background: linear-gradient(90deg, rgba(7,7,8,0.85) 0%, rgba(7,7,8,0.6) 40%, rgba(7,7,8,0.3) 70%, transparent 100%);
+      z-index: 2;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
-      padding: 4rem 2rem;
-      max-width: 700px;
+      z-index: 3;
+      max-width: 600px;
+      padding: 4rem 6rem;
     }
 
     .hero-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
+      color: #B89A6A;
+      margin-bottom: 2rem;
     }
 
-    .hero h1 {
+    .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2.5rem, 6vw, 4rem);
       font-weight: 300;
       line-height: 1.15;
-      color: var(--cream);
+      color: #EAE6DF;
       margin-bottom: 1.5rem;
     }
 
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold2);
-    }
+    .hero-title em { color: #CDB28C; font-style: italic; }
 
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      color: rgba(234, 230, 223, 0.8);
+    .hero-desc {
+      color: rgba(234,230,223,0.8);
       font-size: 0.95rem;
       line-height: 1.8;
+      margin-bottom: 2.5rem;
     }
 
-    /* FORM CONTAINER */
-    .form-container {
-      position: absolute;
-      top: 56px;
-      right: 2rem;
-      width: 340px;
-      background: rgba(10, 10, 12, 0.92);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--faint);
-      border-radius: 8px;
-      padding: 2rem;
-      z-index: 50;
-    }
-
-    .form-header {
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .form-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      display: flex;
+    .hero-button {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.2rem;
-    }
-
-    .form-header h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--cream);
-      margin-bottom: 0.25rem;
-    }
-
-    .form-header p {
+      gap: 0.75rem;
+      padding: 0.85rem 1.75rem;
+      background: none;
+      border: 1px solid #B89A6A;
+      color: #B89A6A;
+      cursor: pointer;
       font-size: 0.75rem;
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.7rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-
-    .form-input,
-    .form-select {
-      width: 100%;
-      padding: 0.75rem;
-      background: rgba(20, 20, 24, 0.6);
-      border: 1px solid var(--faint);
       border-radius: 4px;
-      color: var(--cream);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
       transition: 0.2s;
     }
 
-    .form-input:focus,
-    .form-select:focus {
-      outline: none;
-      border-color: var(--gold);
-      background: rgba(20, 20, 24, 0.8);
+    .hero-button:hover {
+      background: rgba(184,154,106,0.1);
+      color: #CDB28C;
     }
 
-    .form-input::placeholder {
-      color: var(--muted);
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 6px solid currentColor;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
     }
 
-    .form-select {
-      cursor: pointer;
-    }
-
-    .form-select option {
-      background: var(--ink2);
-      color: var(--cream);
-    }
-
-    .form-button {
-      width: 100%;
-      padding: 0.85rem;
-      background: var(--gold);
-      color: var(--ink);
-      border: none;
-      border-radius: 4px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .form-button:hover {
-      background: var(--gold2);
-    }
-
-    /* MODULES SECTION */
     .modules-section {
-      display: none;
-      padding: 4rem 2rem;
-      background: var(--ink3);
-    }
-
-    .modules-section.active {
-      display: block;
+      padding: 5rem 2rem;
+      background: #0F0F12;
     }
 
     .modules-inner {
@@ -288,157 +125,83 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       font-weight: 300;
-      color: var(--cream);
+      color: #EAE6DF;
       margin-bottom: 3rem;
       text-align: center;
     }
 
     .module-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1px;
-      background: var(--faint);
+      background: #2A2824;
     }
 
     .module-card {
-      background: var(--ink2);
-      padding: 1.5rem;
+      background: #0A0A0C;
+      padding: 1.75rem;
       cursor: pointer;
       transition: 0.2s;
       border: none;
-      text-decoration: none;
-      color: inherit;
+      text-align: left;
     }
 
-    .module-card:hover {
-      background: var(--ink4);
-    }
+    .module-card:hover { background: #141418; }
 
-    .module-num {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--gold3);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
+    .module-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: #8B7250; margin-bottom: 0.75rem; }
+    .module-title { font-size: 0.95rem; font-weight: 500; color: #EAE6DF; margin-bottom: 0.5rem; }
+    .module-desc { font-size: 0.78rem; color: #706C66; line-height: 1.6; }
 
-    .module-name {
-      color: var(--cream);
-      font-size: 0.95rem;
-      font-weight: 400;
-      margin-bottom: 0.4rem;
-    }
-
-    .module-desc {
-      color: var(--muted);
-      font-size: 0.78rem;
-      line-height: 1.6;
-    }
-
-    /* VIDEO MODAL */
-    .video-modal {
-      display: none;
+    .sidebar {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(7, 7, 8, 0.98);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      top: 80px;
+      right: 2rem;
+      width: 320px;
+      z-index: 50;
     }
 
-    .video-modal.active {
-      display: flex;
-    }
-
-    .video-container {
-      width: 100%;
-      max-width: 900px;
-      position: relative;
-    }
-
-    .video-player {
-      width: 100%;
-      height: auto;
+    .victor-card {
+      background: rgba(10,10,12,0.92);
+      border: 1px solid rgba(184,154,106,0.2);
       border-radius: 8px;
-      background: var(--ink);
+      padding: 1.75rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
-    .video-close {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      background: none;
-      border: none;
-      color: var(--cream);
-      font-size: 2rem;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
+    .victor-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #B89A6A;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: 0.2s;
+      font-size: 1.6rem;
+      margin: 0 auto 1rem;
+      color: #070708;
     }
 
-    .video-close:hover {
-      color: var(--gold);
-    }
+    .victor-name { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+    .victor-title { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #706C66; }
 
-    .video-info {
-      margin-top: 2rem;
-      text-align: center;
-    }
+    .video-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7,7,8,0.98); z-index: 200; align-items: center; justify-content: center; padding: 2rem; }
+    .video-modal.show { display: flex; }
+    .video-player { width: 100%; max-width: 900px; height: auto; background: #000; border-radius: 8px; }
+    .video-close { position: absolute; top: 2rem; right: 2rem; background: none; border: none; color: #EAE6DF; font-size: 2rem; cursor: pointer; z-index: 201; }
+    .video-close:hover { color: #B89A6A; }
 
-    .video-info h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-
-    .video-info p {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .form-container {
-        width: 100%;
-        max-width: none;
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 2rem;
-      }
+      .sidebar { position: relative; top: auto; right: auto; width: 100%; margin-top: 3rem; }
     }
 
     @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .form-container {
-        width: 100%;
-      }
-
-      .module-grid {
-        grid-template-columns: 1fr;
-      }
+      .nav-links { display: none; }
+      .hero-content { padding: 3rem 2rem; }
+      .module-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ElevenLabs Chat Widget Styling */
-    #vw-launch {
-      z-index: 99 !important;
-    }
+    #vw-launch { z-index: 99 !important; }
   </style>
 </head>
 <body>
@@ -447,225 +210,135 @@
   <div class="nav-inner">
     <div class="nav-logo">V T C · Capacitación</div>
     <ul class="nav-links">
-      <li><a onclick="scrollToModules()">Módulos</a></li>
-      <li><a href="#fundamentos">Fundamentos</a></li>
-      <li><a href="#pnl">PNL</a></li>
-      <li><a href="#objeciones">Objeciones</a></li>
-      <li><a href="#proceso">El Proceso VTC</a></li>
-      <li><a href="#vtc19">VTC 19</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#fundamentals">Fundamentos</a></li>
+      <li><a href="#psychology">Psicología</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO + FORM -->
-<section class="hero">
-  <video class="hero-bg" autoplay muted loop playsinline>
+<!-- HERO 1: BIENVENIDA -->
+<section class="hero-section">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
     <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-
   <div class="hero-content">
     <div class="hero-label">Bienvenida · Nuevos y Veteranos</div>
-    <h1>Bienvenido a tu <em>Capacitación</em></h1>
-    <p>Accede a tu entrenamiento personal · VTC</p>
-  </div>
-
-  <div class="form-container">
-    <div class="form-header">
-      <div class="form-icon">V</div>
-      <h3>Victor</h3>
-      <p>Tu entrenador personal · VTC</p>
-    </div>
-
-    <form id="accessForm">
-      <div class="form-group">
-        <label class="form-label">Nombre Completo</label>
-        <input type="text" class="form-input" id="userName" placeholder="Tu nombre" required/>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Número de Empleado</label>
-        <input type="text" class="form-input" id="employeeId" placeholder="Ej. 12345" required/>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Departamento</label>
-        <select class="form-select" id="department" required>
-          <option value="">Selecciona...</option>
-          <option value="OPC">OPC</option>
-          <option value="Liner">Liner</option>
-          <option value="Closer">Closer</option>
-          <option value="Manager">Manager</option>
-          <option value="Director">Director</option>
-          <option value="Otro">Otro</option>
-        </select>
-      </div>
-
-      <button type="submit" class="form-button">Comenzar Capacitación</button>
-    </form>
+    <h1 class="hero-title">Bienvenido a tu <em>Capacitación</em></h1>
+    <p class="hero-desc">Accede a tu entrenamiento personal · VTC</p>
+    <button class="hero-button" onclick="playModule('WEL', 'Bienvenida')"><span class="play-icon"></span>Ver Módulo</button>
   </div>
 </section>
 
-<!-- MODULES SECTION -->
-<section class="modules-section" id="modulesSection">
+<!-- HERO 2: FUNDAMENTOS -->
+<section class="hero-section" id="fundamentals">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-F.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Módulo F · Todos los Roles</div>
+    <h1 class="hero-title">Fundamentos del <em>Negocio VTC</em></h1>
+    <p class="hero-desc">Entiende qué vendes, por qué funciona, y la mentalidad que separa a los que cierran</p>
+    <button class="hero-button" onclick="playModule('F', 'Fundamentos')"><span class="play-icon"></span>Ver Módulo</button>
+  </div>
+</section>
+
+<!-- HERO 3: PSICOLOGÍA -->
+<section class="hero-section" id="psychology">
+  <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-00.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">Módulo 0 · Mentalidad</div>
+    <h1 class="hero-title">Psicología del <em>Vendedor</em></h1>
+    <p class="hero-desc">Tu estado emocional y mentalidad determinan tu closing rate antes de abrir la boca</p>
+    <button class="hero-button" onclick="playModule('00', 'Psicología del Vendedor')"><span class="play-icon"></span>Ver Módulo</button>
+  </div>
+</section>
+
+<!-- MÓDULOS GRID -->
+<section class="modules-section" id="modulos">
   <div class="modules-inner">
-    <h2 class="modules-title">Módulos de Capacitación</h2>
-
-    <div class="module-grid" id="moduleGrid">
-      <!-- Modules will be generated here -->
-    </div>
+    <h2 class="modules-title">Todos los Módulos</h2>
+    <div class="module-grid" id="moduleGrid"></div>
   </div>
 </section>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="victor-card">
+    <div class="victor-avatar">V</div>
+    <div class="victor-name">Victor</div>
+    <div class="victor-title">Entrenador Maestro VTC</div>
+  </div>
+</aside>
 
 <!-- VIDEO MODAL -->
 <div class="video-modal" id="videoModal">
-  <div class="video-container">
-    <button class="video-close" onclick="closeVideo()">✕</button>
-    <video class="video-player" id="videoPlayer" controls playsinline></video>
-    <div class="video-info">
-      <h2 id="videoTitle"></h2>
-      <p id="videoDesc"></p>
-    </div>
-  </div>
+  <button class="video-close" onclick="closeModal()">✕</button>
+  <video class="video-player" id="player" controls></video>
 </div>
 
-<!-- ElevenLabs Chat Widget -->
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<!-- ELEVENLABS CHAT -->
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
 <div id="vw-launch" data-agent-id="agent_5701kr0h5gg6eetb69tv6c5hwfj1"></div>
 
 <script>
-  const MODULES = [
-    { id: 'WEL', title: 'Bienvenida', desc: 'Introducción a la capacitación VTC' },
-    { id: '00', title: 'Fundamentos del Negocio VTC', desc: 'Base de la industria de timeshare' },
-    { id: '01', title: 'Psicología del Vendedor', desc: 'Mentalidad ganadora en ventas' },
-    { id: '02', title: 'Calificación y Prospecto Ideal', desc: 'Identifica a tus mejores prospectos' },
-    { id: '03', title: 'OPC - Captura y Abordaje', desc: 'El primer eslabón de la cadena' },
-    { id: '04', title: 'Rapport y PNL', desc: 'Crea conexiones auténticas' },
-    { id: '05', title: 'El Tour de Presentación', desc: 'Camina el resort como experto' },
-    { id: '06', title: 'La Presentación - Datos Duros', desc: 'El pitch que convence' },
-    { id: '07', title: 'El Cierre - Dos Cierres Probados', desc: 'Cierra con confianza' },
-    { id: '08', title: 'Objeciones - La Verdad Detrás', desc: 'Maneja cada objeción' },
-    { id: '09', title: 'TOC - Técnica de Objeción Confirmada', desc: 'Procedimiento probado' },
-    { id: '10', title: 'Manager Close - El Cierre del Manager', desc: 'Cierre de segunda oportunidad' },
-    { id: '11', title: 'PNL Avanzado - Anclaje Emocional', desc: 'Técnicas de persuasión profunda' },
-    { id: 'M0', title: 'Nacionalidades - Inglés', desc: 'Scripts en inglés' },
-    { id: 'M1', title: 'Nacionalidades - Francés', desc: 'Scripts en francés' },
-    { id: 'M2', title: 'Nacionalidades - Canadiense', desc: 'Scripts canadienses' },
-    { id: 'M3', title: 'Nacionalidades - Alemán', desc: 'Scripts alemanes' },
-    { id: 'M4', title: 'Nacionalidades - Italiano', desc: 'Scripts italianos' },
-    { id: 'M5', title: 'Nacionalidades - Portugués', desc: 'Scripts portugueses' },
-    { id: 'M6', title: 'Nacionalidades - Español', desc: 'Scripts españoles' },
-    { id: 'M7', title: 'Nacionalidades - Ruso', desc: 'Scripts rusos' },
-    { id: 'M8', title: 'Nacionalidades - Chino', desc: 'Scripts chinos' },
-    { id: 'M9', title: 'Nacionalidades - Árabe', desc: 'Scripts árabes' },
-    { id: 'M10', title: 'Nacionalidades - Hebreo', desc: 'Scripts hebreos' },
-    { id: 'M11', title: 'Nacionalidades - Sueco', desc: 'Scripts suecos' },
-    { id: 'M12', title: 'Nacionalidades - Holandés', desc: 'Scripts holandeses' },
-    { id: 'PV', title: 'PNL Avanzado - Visión 360°', desc: 'Perspectivas múltiples' },
-    { id: 'F', title: 'Ética, Legal y Compliance', desc: 'Marco normativo VTC' },
-    { id: 'FIN', title: 'Examen Final', desc: 'Valida tu aprendizaje' },
-  ];
+const MODULES = [
+  { id: 'WEL', name: 'Bienvenida' },
+  { id: 'F', name: 'Fundamentos' },
+  { id: '00', name: 'Psicología' },
+  { id: '01', name: 'Calificación' },
+  { id: '02', name: 'OPC' },
+  { id: '03', name: 'Rapport' },
+  { id: '04', name: 'El Tour' },
+  { id: '05', name: 'Datos Duros' },
+  { id: '06', name: 'El Cierre' },
+  { id: '07', name: 'Objeciones' },
+  { id: '08', name: 'TOC' },
+  { id: '09', name: 'Manager Close' },
+  { id: '10', name: 'PNL Avanzado' },
+  { id: 'M0', name: 'Inglés' },
+  { id: 'M1', name: 'Francés' },
+  { id: 'M2', name: 'Canadiense' },
+  { id: 'M3', name: 'Alemán' },
+  { id: 'M4', name: 'Italiano' },
+  { id: 'M5', name: 'Portugués' },
+  { id: 'M6', name: 'Español' },
+];
 
-  // Generate module grid
-  function generateModules() {
-    const grid = document.getElementById('moduleGrid');
-    grid.innerHTML = MODULES.map(module => `
-      <button class="module-card" onclick="playVideo('${module.id}', '${module.title}')">
-        <div class="module-num">Módulo · ${module.id}</div>
-        <div class="module-name">${module.title}</div>
-        <div class="module-desc">${module.desc}</div>
-      </button>
-    `).join('');
-  }
+function playModule(id, name) {
+  const player = document.getElementById('player');
+  player.src = `https://vtc-capacitacion-deploy.vercel.app/videos/modulo-${id}.mp4`;
+  document.getElementById('videoModal').classList.add('show');
+  player.play();
+}
 
-  // Form submission
-  document.getElementById('accessForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('userName').value;
-    const empId = document.getElementById('employeeId').value;
-    const dept = document.getElementById('department').value;
+function closeModal() {
+  const player = document.getElementById('player');
+  player.pause();
+  player.src = '';
+  document.getElementById('videoModal').classList.remove('show');
+}
 
-    // Store in localStorage for persistence
-    localStorage.setItem('vtcUser', JSON.stringify({ name, empId, dept }));
+function init() {
+  const grid = document.getElementById('moduleGrid');
+  grid.innerHTML = MODULES.map(m => `
+    <button class="module-card" onclick="playModule('${m.id}', '${m.name}')">
+      <div class="module-label">Módulo ${m.id}</div>
+      <div class="module-title">${m.name}</div>
+    </button>
+  `).join('');
+}
 
-    // Show modules section
-    document.getElementById('modulesSection').classList.add('active');
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
 
-    // Generate modules
-    generateModules();
-
-    // Scroll to modules
-    setTimeout(() => {
-      document.getElementById('modulesSection').scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  });
-
-  // Video playback
-  function playVideo(moduleId, moduleTitle) {
-    const videoModal = document.getElementById('videoModal');
-    const videoPlayer = document.getElementById('videoPlayer');
-    const videoTitle = document.getElementById('videoTitle');
-    const videoDesc = document.getElementById('videoDesc');
-
-    // Find module details
-    const module = MODULES.find(m => m.id === moduleId);
-
-    const videoUrl = `https://vtc-capacitacion-deploy.vercel.app/videos/modulo-${moduleId}.mp4`;
-
-    // Reset player completely before loading new video
-    videoPlayer.pause();
-    videoPlayer.removeAttribute('src');
-    videoPlayer.load();
-
-    // Set src directly on the <video> element (no <source> child — avoids browser conflicts)
-    videoPlayer.src = videoUrl;
-    videoPlayer.load();
-
-    videoTitle.textContent = moduleTitle;
-    videoDesc.textContent = module ? module.desc : '';
-
-    videoModal.classList.add('active');
-
-    // Play once canplay fires — more reliable than setTimeout
-    videoPlayer.addEventListener('canplay', function onCanPlay() {
-      videoPlayer.removeEventListener('canplay', onCanPlay);
-      videoPlayer.play().catch(e => console.log('Autoplay prevented:', e.message));
-    }, { once: true });
-  }
-
-  // Close video
-  function closeVideo() {
-    const videoModal = document.getElementById('videoModal');
-    const videoPlayer = document.getElementById('videoPlayer');
-    videoModal.classList.remove('active');
-    videoPlayer.pause();
-    videoPlayer.removeAttribute('src');
-    videoPlayer.load();
-  }
-
-  // Scroll helper
-  function scrollToModules() {
-    const section = document.getElementById('modulesSection');
-    if (section.classList.contains('active')) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  // Close modal on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideo();
-    }
-  });
-
-  // Check if user already logged in
-  window.addEventListener('load', () => {
-    const user = localStorage.getItem('vtcUser');
-    if (user) {
-      document.getElementById('modulesSection').classList.add('active');
-      generateModules();
-    }
-  });
+init();
 </script>
 
 </body>
