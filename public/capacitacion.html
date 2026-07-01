@@ -460,7 +460,7 @@
 <!-- HERO + FORM -->
 <section class="hero">
   <video class="hero-bg" autoplay muted loop playsinline>
-    <source src="/videos/modulo-WEL.mp4" type="video/mp4">
+    <source src="https://vtc-capacitacion-deploy.vercel.app/videos/modulo-WEL.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
 
@@ -610,7 +610,7 @@
     // Find module details
     const module = MODULES.find(m => m.id === moduleId);
 
-    const videoUrl = `/videos/modulo-${moduleId}.mp4`;
+    const videoUrl = `https://vtc-capacitacion-deploy.vercel.app/videos/modulo-${moduleId}.mp4`;
 
     // Reset player completely before loading new video
     videoPlayer.pause();
