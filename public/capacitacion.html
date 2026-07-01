@@ -521,9 +521,7 @@
 <div class="video-modal" id="videoModal">
   <div class="video-container">
     <button class="video-close" onclick="closeVideo()">✕</button>
-    <video class="video-player" id="videoPlayer" controls>
-      <source src="" type="video/mp4">
-    </video>
+    <video class="video-player" id="videoPlayer" controls playsinline></video>
     <div class="video-info">
       <h2 id="videoTitle"></h2>
       <p id="videoDesc"></p>
@@ -614,26 +612,25 @@
 
     const videoUrl = `/videos/modulo-${moduleId}.mp4`;
 
-    // Set both src attributes to ensure compatibility
-    videoPlayer.src = videoUrl;
-    const source = videoPlayer.querySelector('source');
-    if (source) {
-      source.src = videoUrl;
-    }
+    // Reset player completely before loading new video
+    videoPlayer.pause();
+    videoPlayer.removeAttribute('src');
+    videoPlayer.load();
 
-    // Reload and prepare video
+    // Set src directly on the <video> element (no <source> child — avoids browser conflicts)
+    videoPlayer.src = videoUrl;
     videoPlayer.load();
 
     videoTitle.textContent = moduleTitle;
-    videoDesc.textContent = module.desc;
+    videoDesc.textContent = module ? module.desc : '';
 
     videoModal.classList.add('active');
-    videoPlayer.focus();
 
-    // Auto-play after a brief delay to ensure video is loaded
-    setTimeout(() => {
-      videoPlayer.play().catch(e => console.log('Autoplay prevented'));
-    }, 300);
+    // Play once canplay fires — more reliable than setTimeout
+    videoPlayer.addEventListener('canplay', function onCanPlay() {
+      videoPlayer.removeEventListener('canplay', onCanPlay);
+      videoPlayer.play().catch(e => console.log('Autoplay prevented:', e.message));
+    }, { once: true });
   }
 
   // Close video
@@ -642,6 +639,8 @@
     const videoPlayer = document.getElementById('videoPlayer');
     videoModal.classList.remove('active');
     videoPlayer.pause();
+    videoPlayer.removeAttribute('src');
+    videoPlayer.load();
   }
 
   // Scroll helper
