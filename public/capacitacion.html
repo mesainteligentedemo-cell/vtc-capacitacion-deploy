@@ -612,12 +612,28 @@
     // Find module details
     const module = MODULES.find(m => m.id === moduleId);
 
-    videoPlayer.src = `/videos/modulo-${moduleId}.mp4`;
+    const videoUrl = `/videos/modulo-${moduleId}.mp4`;
+
+    // Set both src attributes to ensure compatibility
+    videoPlayer.src = videoUrl;
+    const source = videoPlayer.querySelector('source');
+    if (source) {
+      source.src = videoUrl;
+    }
+
+    // Reload and prepare video
+    videoPlayer.load();
+
     videoTitle.textContent = moduleTitle;
     videoDesc.textContent = module.desc;
 
     videoModal.classList.add('active');
     videoPlayer.focus();
+
+    // Auto-play after a brief delay to ensure video is loaded
+    setTimeout(() => {
+      videoPlayer.play().catch(e => console.log('Autoplay prevented'));
+    }, 300);
   }
 
   // Close video
