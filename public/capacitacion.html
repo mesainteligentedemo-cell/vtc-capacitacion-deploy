@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VTC · Capacitación Elite | Victorious Travelers Club</title>
+<meta name="description" content="El curso más completo para salas de ventas de timeshare. PNL aplicado, El Proceso VTC de 12 etapas y los 19 módulos del pitch — con scripts listos para el piso.">
+<link rel="icon" href="favicon.ico">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+:root{
+  --bg:#0b0906;--bg-2:#100d09;--panel:#14110c;--panel-2:#1a1611;
+  --line:rgba(201,169,97,.16);--line-soft:rgba(255,255,255,.06);
+  --gold:#c9a961;--gold-bright:#e4cd93;--gold-dim:#8f7a4d;
+  --ink:#f3ede1;--ink-2:#c9c2b4;--ink-3:#8c857a;--ink-4:#6a6459;
+  --green:#7fae7f;--red:#c98a86;
+  --serif:'Cormorant Garamond','Playfair Display',Georgia,serif;
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+  --maxw:1180px;--gutter:clamp(16px,4vw,40px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-dim);font-weight:500}
+.serif{font-family:var(--serif)}
+em,.it{font-style:italic}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(11,9,6,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1360px;margin:0 auto;padding:16px var(--gutter);display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:1.15rem;letter-spacing:.34em;color:var(--ink);font-weight:500}
+.nav-links{display:flex;gap:30px}
+.nav-links a{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);font-weight:500;transition:color .25s}
+.nav-links a:hover{color:var(--gold-bright)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--ink);padding:8px 11px;border-radius:4px;cursor:pointer}
+
+/* HERO */
+.hero{padding:170px var(--gutter) 90px;text-align:center;max-width:900px;margin:0 auto}
+.hero .label{display:block;margin-bottom:34px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,6.4vw,4.6rem);line-height:1.04;letter-spacing:.01em;color:var(--ink)}
+.hero h1 em{color:var(--gold);font-weight:500}
+.hero p{margin:34px auto 0;max-width:640px;color:var(--ink-3);font-size:1rem;font-weight:300;line-height:1.85}
+.hero-stats{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid var(--line-soft);padding-top:44px}
+.hero-stats .n{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1}
+.hero-stats .t{margin-top:12px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4)}
+
+/* SECTION + GRID */
+.section{padding:90px var(--gutter);max-width:var(--maxw);margin:0 auto}
+.section-head .label{display:block;margin-bottom:16px}
+.section-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4vw,2.9rem);color:var(--ink)}
+.mgrid{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+.mcard{background:var(--bg);padding:30px 28px 34px;transition:background .3s;cursor:pointer;min-height:170px;display:flex;flex-direction:column}
+.mcard:hover{background:var(--panel)}
+.mcard .mno{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:14px}
+.mcard h3{font-family:var(--serif);font-size:1.4rem;font-weight:500;color:var(--ink);margin-bottom:10px;line-height:1.2}
+.mcard p{font-size:.82rem;color:var(--ink-3);font-weight:300;flex:1}
+.tag{align-self:flex-start;margin-top:18px;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:5px 10px;border-radius:2px}
+
+/* MODULE LAYOUT */
+.module{border-top:1px solid var(--line-soft);padding:70px var(--gutter)}
+.module-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+.m-main{min-width:0}
+.crumb{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:22px}
+.m-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--ink);line-height:1.1;margin-bottom:20px}
+.m-intro{color:var(--ink-2);font-size:1rem;font-weight:300;line-height:1.85;max-width:640px;margin-bottom:34px}
+
+/* VIDEO */
+.video{position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);margin-bottom:20px}
+.video-poster{aspect-ratio:16/9;width:100%;background:linear-gradient(160deg,#1c1710,#0d0a07);display:flex;align-items:center;justify-content:center;position:relative;background-size:cover;background-position:center}
+.video-poster .vlabel{position:absolute;top:22px;right:26px;font-family:var(--serif);letter-spacing:.3em;color:rgba(228,205,147,.55);font-size:.9rem;text-align:right;line-height:1.5}
+.play{display:flex;align-items:center;gap:16px;position:absolute;left:30px;bottom:30px}
+.play .circ{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(228,205,147,.7);display:flex;align-items:center;justify-content:center;color:var(--gold-bright)}
+.play .circ svg{margin-left:3px}
+.play span{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.video-bar{display:flex;align-items:center;gap:14px;padding:11px 16px;background:#0c0a07;border-top:1px solid var(--line-soft);font-size:.72rem;color:var(--ink-3)}
+.video-bar .track{flex:1;height:3px;background:rgba(255,255,255,.1);border-radius:2px;position:relative}
+.video-bar .track i{position:absolute;left:0;top:0;height:100%;width:0%;background:var(--gold);border-radius:2px}
+.video-bar .ico{color:var(--ink-3)}
+.m-actions{display:flex;gap:12px;margin-bottom:44px;flex-wrap:wrap}
+.m-actions button{background:none;border:1px solid var(--line);color:var(--ink-2);padding:11px 18px;border-radius:4px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .25s;display:flex;gap:8px;align-items:center}
+.m-actions button:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+/* CONTENT BLOCKS */
+.block{margin-bottom:44px}
+.block>.label{display:block;margin-bottom:20px}
+.prose p{color:var(--ink-2);font-weight:300;margin-bottom:16px;line-height:1.85}
+.prose strong{color:var(--ink);font-weight:500}
+.quote{border-left:2px solid var(--gold);padding:6px 0 6px 26px;margin:8px 0 6px}
+.quote p{font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--ink);line-height:1.5}
+.quote .cite{margin-top:14px;font-size:.8rem;color:var(--ink-3);font-style:normal;font-family:var(--sans)}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.twocol .label{display:block;margin-bottom:18px}
+.li{display:flex;gap:12px;margin-bottom:14px;font-size:.9rem;color:var(--ink-2);font-weight:300}
+.li .mk{flex-shrink:0;font-weight:500}
+.li.bad .mk{color:var(--red)}
+.li.good .mk{color:var(--green)}
+.li.arr .mk{color:var(--gold);font-weight:400}
+.numlist{counter-reset:n}
+.numrow{display:flex;gap:20px;padding:20px 0;border-top:1px solid var(--line-soft)}
+.numrow:first-child{border-top:none}
+.numrow .num{counter-increment:n;flex-shrink:0;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:.9rem}
+.numrow .num::before{content:counter(n)}
+.numrow h4{font-size:.98rem;color:var(--ink);font-weight:500;margin-bottom:6px}
+.numrow p{font-size:.86rem;color:var(--ink-3);font-weight:300}
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+.cards3.four{grid-template-columns:repeat(4,1fr)}
+.ecard{background:var(--bg);padding:22px 20px}
+.ecard .k{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:12px}
+.ecard h4{font-size:1.02rem;color:var(--ink);font-weight:500;margin-bottom:9px}
+.ecard p{font-size:.8rem;color:var(--ink-3);font-weight:300;margin-bottom:8px}
+.ecard .hl{color:var(--gold);font-style:italic}
+.scriptbox{background:var(--panel);border:1px solid var(--line-soft);border-radius:6px;padding:26px 28px}
+.scriptbox p{color:var(--ink-2);font-style:italic;font-weight:300;margin-bottom:14px;line-height:1.8}
+.scriptbox .en{color:var(--ink-3)}
+.scriptbox .foot{font-style:normal;font-size:.8rem;color:var(--ink-4);margin-top:6px;margin-bottom:0}
+.callout{background:rgba(201,169,97,.05);border:1px solid var(--line);border-radius:6px;padding:22px 26px}
+.callout .k{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.callout.warn{background:rgba(201,138,134,.06);border-color:rgba(201,138,134,.25)}
+.callout.warn .k{color:var(--red)}
+.callout p{color:var(--ink-2);font-weight:300;font-size:.92rem}
+
+/* QUIZ */
+.quiz{border:1px solid var(--line-soft);border-radius:8px;padding:34px 32px;background:var(--bg-2);margin-top:12px}
+.quiz-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:30px}
+.quiz-head h3{font-family:var(--serif);font-weight:500;font-size:1.7rem;color:var(--ink)}
+.quiz-head .score{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4)}
+.q{margin-bottom:30px}
+.q>p{display:flex;gap:12px;font-size:.95rem;color:var(--ink);margin-bottom:14px;font-weight:400}
+.q>p .qn{font-family:var(--serif);color:var(--gold-dim);font-size:.85rem;flex-shrink:0}
+.opt{display:flex;align-items:center;gap:14px;padding:15px 18px;margin-bottom:9px;border:1px solid var(--line-soft);border-radius:5px;cursor:pointer;transition:all .2s;font-size:.88rem;color:var(--ink-2);font-weight:300}
+.opt:hover{border-color:var(--line);background:var(--panel)}
+.opt .radio{width:17px;height:17px;border-radius:50%;border:1.5px solid var(--ink-4);flex-shrink:0;transition:all .2s}
+.opt.sel .radio{border-color:var(--gold);background:radial-gradient(circle,var(--gold) 40%,transparent 45%)}
+.opt.correct{border-color:rgba(127,174,127,.5);background:rgba(127,174,127,.07)}
+.opt.correct .radio{border-color:var(--green);background:radial-gradient(circle,var(--green) 40%,transparent 45%)}
+.opt.wrong{border-color:rgba(201,138,134,.5);background:rgba(201,138,134,.07)}
+.opt.wrong .radio{border-color:var(--red)}
+.retry{margin-top:24px;background:none;border:1px solid var(--line);color:var(--ink-3);padding:11px 20px;border-radius:4px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+.retry:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+/* VICTOR SIDEBAR */
+.victor{position:sticky;top:96px}
+.v-card{border:1px solid var(--line);border-radius:8px;padding:34px 26px;text-align:center;background:var(--panel);margin-bottom:18px}
+.v-avatar{width:86px;height:86px;border-radius:50%;margin:0 auto 18px;background:radial-gradient(circle at 35% 30%,var(--gold-bright),var(--gold-dim));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.2rem;color:#1a1510}
+.v-card h4{font-size:1rem;color:var(--ink);font-weight:500;margin-bottom:6px}
+.v-card .role{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-4)}
+.v-chat{border:1px solid var(--line-soft);border-radius:8px;padding:22px;background:var(--bg-2)}
+.v-chat .ctx{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:8px}
+.v-chat .mname{font-size:1rem;color:var(--ink);font-family:var(--serif);margin-bottom:18px}
+.v-bubble{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:8px;padding:16px 18px;font-size:.84rem;color:var(--ink-2);font-weight:300;line-height:1.7}
+.v-bubble strong{color:var(--gold-bright);font-weight:500}
+.v-input{display:flex;gap:8px;margin-top:16px}
+.v-input input{flex:1;background:var(--bg);border:1px solid var(--line-soft);border-radius:6px;padding:12px 14px;color:var(--ink);font-family:var(--sans);font-size:.82rem}
+.v-input input::placeholder{color:var(--ink-4)}
+.v-input button{background:var(--gold);border:none;border-radius:6px;width:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#1a1510}
+
+/* VIDEO REAL */
+.video video{width:100%;display:block;background:#000;max-height:480px}
+.video-native{position:relative;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel);margin-bottom:20px}
+.video-native video{width:100%;display:block;background:#000;max-height:500px}
+.video-native .video-label{position:absolute;top:14px;right:18px;font-family:var(--serif);letter-spacing:.3em;color:rgba(228,205,147,.55);font-size:.78rem;pointer-events:none}
+
+/* FAB */
+.fab{position:fixed;right:24px;bottom:26px;width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:rgba(20,17,12,.9);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:1.3rem;cursor:pointer;z-index:150;transition:all .25s}
+.fab:hover{border-color:var(--gold);color:var(--gold-bright)}
+.totop{position:fixed;right:32px;bottom:92px;width:40px;height:40px;border-radius:50%;border:1px solid var(--line-soft);background:rgba(20,17,12,.85);color:var(--ink-3);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:150;transition:all .25s}
+.totop:hover{color:var(--gold);border-color:var(--gold)}
+
+/* CLOSING + FOOTER */
+.closing{border-top:1px solid var(--line-soft);padding:110px var(--gutter) 60px;text-align:center;max-width:820px;margin:0 auto}
+.closing .label{display:block;margin-bottom:24px}
+.closing h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.5vw,3.2rem);color:var(--ink)}
+.closing p{color:var(--ink-3);font-weight:300;margin-top:22px;max-width:560px;margin-left:auto;margin-right:auto}
+.closing .banner{margin-top:44px;aspect-ratio:16/6;border-radius:8px;border:1px solid var(--line);background:linear-gradient(160deg,#1c1710,#0b0906);display:flex;align-items:center;justify-content:center}
+.closing .banner span{font-family:var(--serif);letter-spacing:.34em;color:rgba(228,205,147,.4);font-size:.9rem;text-transform:uppercase}
+footer{border-top:1px solid var(--line-soft);padding:56px var(--gutter);text-align:center}
+footer .fbrand{font-family:var(--serif);letter-spacing:.3em;color:var(--ink-2);font-size:1.1rem}
+footer p{margin-top:14px;font-size:.68rem;letter-spacing:.1em;color:var(--ink-4)}
+
+/* RESPONSIVE */
+@media(max-width:940px){
+  .module-inner{grid-template-columns:1fr}
+  .victor{position:static;order:-1;margin-bottom:30px}
+  .v-card{display:flex;align-items:center;gap:18px;text-align:left;padding:22px}
+  .v-avatar{width:60px;height:60px;font-size:1.5rem;margin:0}
+  .mgrid{grid-template-columns:1fr 1fr}
+  .cards3,.cards3.four{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-toggle{display:inline-flex}
+  .hero-stats{grid-template-columns:1fr 1fr;gap:34px 20px}
+  .twocol{grid-template-columns:1fr;gap:30px}
+  .mgrid,.cards3,.cards3.four{grid-template-columns:1fr}
+  .v-card{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand">V T C · CAPACITACIÓN</div>
+    <div class="nav-links">
+      <a href="#modulos">Módulos</a>
+      <a href="#mod-f">Fundamentos</a>
+      <a href="#mod-10">PNL</a>
+      <a href="#mod-7">Objeciones</a>
+      <a href="#mod-lvc">El Proceso VTC</a>
+      <a href="#mod-19">VTC 19</a>
+      <a href="#bonus-neurociencia">Bonus</a>
+    </div>
+    <button class="nav-toggle" aria-label="menu">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="label">Victorious Travelers Club · Capacitación Elite</span>
+  <h1 class="serif">El Curso Más Completo<br>para <em>Salas de Ventas</em></h1>
+  <p>Todo lo que necesitas para dominar el proceso VTC de principio a fin. PNL aplicado, tie-downs, técnicas de urgencia, manejo de objeciones, El Proceso VTC y los 19 módulos del pitch — con scripts listos para el piso.</p>
+  <div class="hero-stats">
+    <div><div class="n">16</div><div class="t">Módulos</div></div>
+    <div><div class="n">19</div><div class="t">VTC Pitch Steps</div></div>
+    <div><div class="n">12</div><div class="t">Etapas del Proceso VTC</div></div>
+    <div><div class="n">11</div><div class="t">Principios Neurociencia</div></div>
+  </div>
+</header>
+
+<section class="module" style="border-top:none">
+  <div class="module-inner">
+    <div class="m-main">
+      <div class="video-native">
+        <video controls preload="metadata" style="width:100%;display:block;background:#000;border-radius:6px 6px 0 0" poster="">
+          <source src="/videos/bienvenida.mp4" type="video/mp4">
+          Tu navegador no soporta video HTML5.
+        </video>
+        <div class="video-label">V T C · BIENVENIDA</div>
+      </div>
+      <p class="m-intro" style="margin-top:24px">Seas de nuevo ingreso o lleves años en el piso, este curso te va a convertir en un <strong style="color:var(--ink)">closer más sharp</strong> del timeshare. Empieza por aquí.</p>
+    </div>
+    <aside class="victor">
+      <div class="v-card">
+        <div class="v-avatar serif">V</div>
+        <h4>Víctor</h4>
+        <div class="role">Entrenador Maestro VTC</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="modulos">
+  <div class="section-head">
+    <span class="label">Contenido del Curso</span>
+    <h2 class="serif">Todos los Módulos</h2>
+  </div>
+  <div class="mgrid" id="mgrid"></div>
+</section>
+
+<div id="modules"></div>
+
+<section class="closing">
+  <span class="label">Cierre del Curso · Gracias</span>
+  <h2 class="serif">Lo Lograste — Ahora Aplícalo</h2>
+  <p>Terminaste el curso más completo para salas de ventas. La capacitación no termina aquí: se aplica cada día, con seguimiento y con la IA de tu lado.</p>
+  <div class="video-native" style="margin-top:44px;text-align:left">
+    <video controls preload="metadata" style="width:100%;display:block;background:#000;border-radius:6px 6px 0 0;max-height:500px">
+      <source src="/videos/final-gracias.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <div class="video-label">V T C · CIERRE DEL CURSO</div>
+  </div>
+</section>
+
+<section id="bonus-neurociencia" style="padding:70px var(--gutter);border-top:1px solid var(--line-soft);max-width:var(--maxw);margin:0 auto">
+  <div class="section-head" style="margin-bottom:36px">
+    <span class="label">Bonus · Neurociencia del Timeshare</span>
+    <h2 class="serif" style="font-size:clamp(1.8rem,3.6vw,2.6rem)">Los 11 Principios de Neurociencia Aplicada</h2>
+  </div>
+  <div class="video-native">
+    <video controls preload="metadata" style="width:100%;display:block;background:#000;border-radius:6px 6px 0 0;max-height:500px">
+      <source src="/videos/bonus-neurociencia.mp4" type="video/mp4">
+      Tu navegador no soporta video HTML5.
+    </video>
+    <div class="video-label">V T C · BONUS NEUROCIENCIA</div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">V T C · VICTORIOUS TRAVELERS CLUB</div>
+  <p>Capacitación Elite · Material interno exclusivo para el equipo de ventas</p>
+</footer>
+
+<button class="totop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">↑</button>
+<button class="fab serif" aria-label="Víctor">V</button>
+
+<script>
+const CARDS = [
+  {no:'Módulo F',t:'Fundamentos del Negocio VTC',d:'Qué vendemos, cómo funciona el modelo y la mentalidad base',tag:'Todos los Roles',id:'mod-f'},
+  {no:'Módulo 0',t:'Psicología del Vendedor',d:'Los 4 arquetipos, mentalidad de abundancia y estado emocional',tag:'PNL',id:'mod-0'},
+  {no:'Módulo 1',t:'Calificación y Prospecto Ideal',d:'Los 5 criterios, preguntas naturales y la regla del co-decisor',tag:'Técnica',id:'mod-1'},
+  {no:'Módulo 2',t:'El OPC — Captura y Abordaje',d:'El pitch de 30 segundos, zonas de trabajo y las 5 objeciones',tag:'OPC',id:'mod-2'},
+  {no:'Módulo 3',t:'Rapport y PNL Básico',d:'Espejo, calibración, hot button y los 6 tipos de motivación',tag:'PNL',id:'mod-3'},
+  {no:'Módulo 4',t:'El Tour de Instalaciones',d:'Cada parada del tour como herramienta emocional de venta',tag:'Liner',id:'mod-4'},
+  {no:'Módulo 5',t:'La Presentación de Valor',d:'El orden sagrado de la venta y la calculadora del gasto vacacional',tag:'Liner',id:'mod-5'},
+  {no:'Módulo 6',t:'El Cierre',d:'El silencio, el cierre alternativo y la lectura de señales de compra',tag:'Cerrador',id:'mod-6'},
+  {no:'Módulo 7',t:'Manejo de Objeciones',d:'Las 5 objeciones clásicas con respuesta exacta paso a paso',tag:'Todos',id:'mod-7'},
+  {no:'Módulo 8',t:'El TOC — Today Only Close',d:'Cuándo activarlo y el script completo de la oferta del día',tag:'Cerrador',id:'mod-8'},
+  {no:'Módulo 9',t:'El Manager Close (T.O.)',d:'La estructura del cierre del gerente y el manejo del be-back',tag:'Gerente',id:'mod-9'},
+  {no:'Módulo 10',t:'PNL Avanzado',d:'Anclaje, embedding, la doble unión y patrones de lenguaje',tag:'PNL',id:'mod-10'},
+  {no:'Módulo 11',t:'Venta por Nacionalidades',d:'Americanos, canadienses, alemanes, mexicanos, colombianos, argentinos',tag:'Cultural',id:'mod-11'},
+  {no:'Módulo 12',t:'Ética, Legal y Cumplimiento',d:'PROFECO, rescisión, qué nunca prometer y cómo protegerte',tag:'Todos',id:'mod-12'},
+  {no:'Módulo LVC',t:'Las 12 Etapas del Proceso VTC',d:'El proceso completo paso a paso del hosteo al T.O. positivo',tag:'Liner · F2B',id:'mod-lvc'},
+  {no:'Módulo VTC 19',t:'Los 19 Módulos del Pitch VTC',d:'Meet & Greet hasta No Comes at a Price — neurociencia de cada paso',tag:'Neurociencia',id:'mod-19'},
+];
+
+const MODULES = [
+{
+  id:'mod-f',crumb:'Módulo F · Todos los Roles · Prerrequisito: Ninguno',
+  title:'Fundamentos del Negocio VTC',
+  intro:'Antes de vender cualquier cosa, tienes que entender qué estás vendiendo, por qué funciona el modelo, y cuál es la mentalidad que separa a los que cierran de los que solo presentan.',
+  dur:'1:35', ctx:'Módulo F', mname:'Fundamentos', videoSrc:'/videos/formacion-F.mp4',
+  poster:'linear-gradient(150deg,#16324a,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo F: Fundamentos</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'Por qué este módulo existe',html:'<p>El 60% de los vendedores nuevos pierden cierres porque no entienden <strong>qué venden realmente</strong>. No venden puntos ni semanas. No venden habitaciones. Venden el derecho a que una familia tenga vacaciones de calidad garantizada, año tras año, sin la ruleta de la plataforma de rentas ni las cuotas crecientes del timeshare clásico. El vendedor que no entiende esto, presenta features. El que lo entiende, vende <strong>transformación de estilo de vida</strong>.</p>'},
+    {type:'quote',text:'VTC es una membresía vacacional de lujo que te da acceso garantizado a más de 60 propiedades premium y 4,300 destinos en 100 países — con una cuota anual de solo $155 USD, sin los problemas del timeshare clásico ni los costos ocultos de las rentas temporales.'},
+    {type:'numlist',label:'El modelo de negocio — quién gana qué',intro:'Entender cómo fluye el dinero te da autoridad en sala. Cuando el prospecto pregunta "¿y ustedes cómo ganan?", tienes respuesta honesta y confiable.',items:[
+      {h:'El resort / VTC',p:'Ingresa por la venta inicial de la membresía ($15K–$350K según el nivel). Ingresa también por cuotas de mantenimiento anuales ($155/año) y por los servicios que el miembro consume en las propiedades.'},
+      {h:'El vendedor',p:'Comisión del 8–15% sobre el precio de cierre + bonos de producción por VPG, closing rate y volumen mensual. Sin sueldo base en la mayoría de los floors — 100% comisión. El que domina el proceso, gana bien. El que improvisa, no.'},
+      {h:'El miembro',p:'Acceso vacacional garantizado por X años, precio fijo contra la inflación hotelera, red de intercambio global y herencia de membresía según contrato.'},
+    ]},
+    {type:'quote',label:'El propósito del vendedor VTC',text:'No vendo puntos. No vendo habitaciones. Vendo la certeza de que esta familia va a tener vacaciones de calidad garantizada, año tras año, en cualquier parte del mundo — sin sorpresas, sin inflación, sin la ruleta de lo que encuentren en internet.',cite:'Regla de oro: La persona que más emociones positivas genere en la presentación, cierra más. Siempre.'},
+    {type:'glossary',label:'Glosario base del piso — memorízalo',items:[
+      ['OPC','Outside Public Contact — quien captura al prospecto fuera del resort e invita al tour.'],
+      ['Liner','Vendedor que da el tour y construye el deseo. No cierra precio.'],
+      ['TOC (Today Only Close)','Oferta especial válida únicamente durante la presentación.'],
+      ['T.O. (Take Over)','El gerente toma el control cuando el liner no cerró.'],
+      ['Be-Back','Prospecto que se fue sin comprar y prometió regresar. Solo 2–8% regresan y compran.'],
+      ['Hot Button','La motivación emocional profunda del prospecto. Encontrarla = tener el cierre.'],
+      ['F2B (Front to Back)','Vendedor que hace todo el proceso de principio a fin.'],
+      ['Selfgen','Vendedor que genera sus propios prospectos sin depender del OPC.'],
+      ['In-House','Prospecto que ya está hospedado en el resort.'],
+      ['Rescisión','Derecho legal del cliente a cancelar dentro del plazo (5 días hábiles en México).'],
+    ]},
+    {type:'twocol',label:'Los 3 errores que destruyen carreras en timeshare',left:{k:'Errores fatales',cls:'bad',mk:'✕',items:['Mentirle al cliente sobre los beneficios del programa','Saltarse la calificación por presión de números de tours','No seguir la estructura de presentación e improvisar']},right:{k:'Lo que hace el vendedor exitoso',cls:'good',mk:'✓',items:['Transparencia total — el contrato respaldado lo dicho','Califica genuinamente aunque cueste el show del día','Sigue el proceso sin excepciones, turno tras turno']}},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'¿Qué vende realmente un representante VTC?',o:['Puntos y semanas vacacionales','Habitaciones de hotel con descuento','La certeza de vacaciones de calidad garantizada año tras año','Una inversión con plusvalía'],a:2},
+    {q:'¿Qué significa T.O. en el piso?',o:['El gerente toma el control del cierre','El prospecto que se fue sin comprar y prometió regresar','El reembolso durante la rescisión','La segunda cita de un selfgen'],a:0},
+    {q:'¿Cuál de estos errores destruye carreras en timeshare?',o:['Calificar genuinamente al prospecto','Seguir la estructura de presentación','Prometer beneficios que no están en el contrato','Entregar el regalo al final'],a:2},
+    {q:'La rescisión en México es...',o:['El derecho del cliente a cancelar dentro de 5 días hábiles','La comisión del vendedor','Un tipo de cierre alternativo','El bono de producción mensual'],a:0},
+    {q:'La regla de oro de la presentación dice que...',o:['Quien da más features cierra más','Quien más emociones positivas genere en la presentación cierra más','El precio bajo siempre gana','El silencio nunca funciona'],a:1},
+  ]}
+},
+{
+  id:'mod-0',crumb:'Módulo 0 · Todos los Roles · Prerrequisito: Módulo F',
+  title:'Psicología del Vendedor',
+  intro:'Antes de dominar al prospecto, tienes que dominar tu propia mentalidad. Este módulo identifica tu arquetipo natural y te da el estado emocional que separa a los cerradores de los presentadores.',
+  dur:'1:24', ctx:'Módulo 0', mname:'Psicología', videoSrc:'/videos/formacion-M0.mp4',
+  poster:'linear-gradient(150deg,#2a2118,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 0: Psicología</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'El estado emocional es la venta',html:'<p>El prospecto no compra la lógica de tu presentación. Compra el <strong>estado emocional</strong> que le transmites. Un vendedor ansioso genera un cliente ansioso. Un vendedor en abundancia genera un cliente que confía. Tu estado interno es contagioso — y el prospecto lo siente en los primeros 30 segundos.</p>'},
+    {type:'cards4',label:'Los 4 arquetipos del vendedor de timeshare',intro:'Cada vendedor tiende naturalmente hacia uno de estos arquetipos. Identificar el tuyo es el primer paso para corregirlo o potenciarlo.',items:[
+      {k:'Arquetipo 1 · Más común',h:'El Informador',p:'Recita los beneficios como un folleto. El cliente decide solo, sin guía emocional.',hl:'Cierre promedio: 8–10%'},
+      {k:'Arquetipo 2 · Popular',h:'El Relacionador',p:'Excelente rapport, se queda en la amistad. Miedo al cierre, no quiere "presionar".',hl:'Cierre promedio: 12–14%'},
+      {k:'Arquetipo 3 · El que gana más',h:'El Challenger',p:'Educa al prospecto, reencuadra sus creencias. Toma control sin dominar.',hl:'Cierre promedio: 20–28%'},
+      {k:'Arquetipo 4 · Alta rescisión',h:'El Cerrador Puro',p:'Directo al dinero, sin relación. Alta presión, quema miembros.',hl:'Cierre: 18–22% pero rescisión alta'},
+    ]},
+    {type:'twocol',label:'La mentalidad de abundancia vs la mentalidad de escasez',left:{k:'Mentalidad de escasez',cls:'bad',mk:'✕',items:['"Necesito cerrar este tour o mi gerente me presiona"','"Si no cierro hoy, no tengo para la renta"','"Este prospecto tiene que comprar"','Presión visible → prospecto lo siente → se cierra']},right:{k:'Mentalidad de abundancia',cls:'good',mk:'✓',items:['"Si esto les sirve, van a comprar. Si no, el siguiente sí."','"Mi trabajo es descubrir si VTC les sirve, no convencerlos"','"Cada no me acerca al sí — el proceso funciona"','Postura visible → prospecto confía → abre la decisión']}},
+    {type:'prose',label:'Manejar la presión del floor',html:'<p>Los gerentes presionan. Los números presionan. El cliente presiona. La única respuesta efectiva es: <strong>sistema + proceso</strong>. El vendedor que tiene un proceso claro no necesita improvisar bajo presión — ejecuta el siguiente paso y confía en el resultado.</p>'},
+    {type:'callout',variant:'warn',k:'⚠ Anti-patrón crítico',p:'El vendedor que improvisa cuando está bajo presión de cierre usualmente hace una de estas tres cosas: baja el precio sin autorización, promete algo fuera del contrato, o presiona más fuerte al cliente. Las tres destruyen la venta y tu carrera.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El arquetipo que más cierra sin quemar miembros es...',o:['El Informador','El Relacionador','El Challenger','El Cerrador Puro'],a:2},
+    {q:'La mentalidad de abundancia se expresa como...',o:['"Este prospecto tiene que comprar hoy"','"Si no cierro hoy no tengo para la renta"','"Mi trabajo es descubrir si VTC les sirve, no convencerlos"','"Necesito cerrar o el gerente me presiona"'],a:2},
+    {q:'El estado emocional del vendedor...',o:['No influye en la venta','Es contagioso y el cliente lo siente en segundos','Solo importa al cerrar el precio','Debe ser de presión para cerrar más'],a:1},
+    {q:'Bajo presión del floor, el vendedor debe apoyarse en...',o:['Bajar el precio sin autorización','Sistema y proceso','Promesas fuera del contrato','Presionar más fuerte al cliente'],a:1},
+    {q:'El Cerrador Puro tiene un problema principal:',o:['No cierra nada','Genera alta rescisión por presión','Nunca habla de dinero','Da demasiado rapport'],a:1},
+  ]}
+},
+{
+  id:'mod-1',crumb:'Módulo 1 · Liner · Prerrequisito: Módulo 0',
+  title:'Calificación y Prospecto Ideal',
+  intro:'No todos los prospectos son iguales. La calificación temprana te dice a quién invertirle energía y con quién estás perdiendo el turno. Aquí están los 5 criterios y las preguntas que califican sin interrogar.',
+  dur:'1:41', ctx:'Módulo 1', mname:'Calificación', videoSrc:'/videos/formacion-M1.mp4',
+  poster:'linear-gradient(150deg,#241d15,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 1: Calificación</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'Los 5 criterios de calificación',intro:'Un prospecto ideal cumple los cinco. Uno que falla varios probablemente no es tu cierre del día — pero califícalo con respeto, porque hoy no es su día no significa que nunca.',items:[
+      {h:'Ingreso comprobable',p:'Capacidad real de pago: tarjeta, línea de crédito o flujo mensual que sostenga las mensualidades. No asumas — obsérvalo en el rapport.'},
+      {h:'Edad y perfil vacacional',p:'25–65 años que ya vacacionan y gastan en viajes. El que no viaja no siente el dolor que VTC resuelve.'},
+      {h:'Ambos decisores presentes',p:'La regla del co-decisor: si falta la pareja que decide, el cierre baja drásticamente. Nunca presentes precio a medio matrimonio.'},
+      {h:'Referencia de calidad',p:'Ya conocen hoteles buenos, ya gastaron en vacaciones premium. Tienen con qué comparar el valor.'},
+      {h:'Apertura genuina',p:'No vienen solo por el regalo. Hay curiosidad real por mejorar cómo vacacionan.'},
+    ]},
+    {type:'twocol',label:'Preguntas naturales que califican (sin interrogar)',left:{k:'Sobre estilo de vida',cls:'arr',mk:'→',items:['"¿Adónde fue su último viaje juntos?"','"¿Prefieren playa o ciudad cuando escapan?"','"¿Viajan con los niños o hacen escapadas de pareja?"']},right:{k:'Sobre capacidad y decisión',cls:'arr',mk:'→',items:['"¿Suelen reservar con anticipación o de último minuto?"','"¿Cómo dividen las decisiones grandes en casa?"','"¿Qué es lo que más valoran de unas buenas vacaciones?"']}},
+    {type:'callout',k:'La regla del co-decisor',p:'Si el prospecto dice "tengo que consultarlo con mi esposa/o", la venta ya se perdió — a menos que ambos estuvieran presentes desde el inicio. Confirma en la calificación que ambos decisores están en la mesa antes de invertir el tour completo.'},
+    {type:'prose',label:'El regalo no es el prospecto',html:'<p>El prospecto que solo vino por el regalo no está descalificado — pero cambia tu estrategia. En la calificación detectas su verdadera motivación: si <strong>solo</strong> quiere el regalo, das un tour eficiente y cortés; si hay apertura real detrás del regalo, inviertes todo tu proceso.</p>'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'La regla del co-decisor dice que...',o:['Siempre presentes precio aunque falte la pareja','Nunca presentes precio a medio matrimonio','El regalo califica al prospecto','La edad no importa'],a:1},
+    {q:'¿Cuál NO es uno de los 5 criterios de calificación?',o:['Ingreso comprobable','Ambos decisores presentes','Que odie viajar','Referencia de calidad'],a:2},
+    {q:'Una pregunta natural que califica el estilo de vida es...',o:['"¿Cuánto gana al mes?"','"¿Adónde fue su último viaje juntos?"','"¿Va a comprar hoy?"','"¿Trae tarjeta de crédito?"'],a:1},
+    {q:'El prospecto que solo vino por el regalo...',o:['Se descalifica y se ignora','Cambia tu estrategia: tour eficiente y cortés','Recibe la presentación más agresiva','Nunca debe recibir el regalo'],a:1},
+    {q:'La calificación temprana sirve para...',o:['Presionar más rápido','Saber a quién invertirle energía','Saltarse el rapport','Subir el precio'],a:1},
+  ]}
+},
+{
+  id:'mod-2',crumb:'Módulo 2 · OPC · Prerrequisito: Módulo 1',
+  title:'El OPC — Captura y Abordaje',
+  intro:'El OPC es el primer eslabón de toda la venta. Sin prospectos en la sala, no hay cierres. Aquí está el pitch de 30 segundos, las zonas de trabajo y las 5 objeciones del OPC con respuesta memorizada.',
+  dur:'1:52', ctx:'Módulo 2', mname:'El OPC', videoSrc:'/videos/formacion-M2.mp4',
+  poster:'linear-gradient(150deg,#1e2a1a,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 2: El OPC</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'El pitch de 30 segundos',html:'<p>El OPC tiene ventana de segundos para capturar. La estructura ganadora es: <strong>sonrisa + gancho de valor + pregunta que compromete tiempo</strong>. No vendas la membresía — vende el desayuno gratis, el preview y el regalo. La venta la hace el liner adentro.</p>'},
+    {type:'scriptbox',label:'Script del abordaje',es:'"¡Buenos días! ¿Cómo va disfrutando su estadía? Mi nombre es [nombre], trabajo aquí en el resort. Tenemos un programa especial esta semana para huéspedes seleccionados — estamos invitando a algunas parejas a conocer nuestras nuevas amenidades mañana por la mañana. Dura aproximadamente 90 minutos y por su tiempo les damos [regalo]. ¿Ustedes dos están disponibles mañana antes de las 10?"',en:'"Good morning! How are you enjoying your stay? My name is [name], I work here at the resort. We have a special program this week for selected guests — we\'re inviting a few couples to preview our new amenities tomorrow morning. It takes about 90 minutes of your time, and for that we give you [gift]. Are you two available tomorrow before 10?"'},
+    {type:'twocol',label:'Las 5 objeciones del OPC — con respuesta exacta',left:{k:'Respuestas reflejas — memorizar',cls:'arr',mk:'→',items:['<strong>"No tenemos tiempo"</strong> → "Precisamente por eso lo diseñamos en 90 minutos. ¿A qué hora tienen su primera actividad del día?"','<strong>"No nos interesan esas cosas"</strong> → "No es una venta, es un preview. Si no les gusta nada, se van con su regalo y listo — sin compromiso."','<strong>"Ya compramos timeshare"</strong> → "Entonces ya saben el valor — esto podría complementar lo que ya tienen. Vale la pena echar un vistazo, ¿no?"']},right:{k:'',cls:'arr',mk:'→',items:['<strong>"¿Es una presentación de ventas?"</strong> → "Es una presentación informativa. Habrá una oferta al final — pero somos un resort de reputación, cero presión. El regalo es suyo pase lo que pase."','<strong>"Déjenos pensarlo"</strong> → "Claro. La disponibilidad de mañana es limitada — les aparto el horario de las 9 y si cambian de opinión me avisan. ¿Les parece?"']}},
+    {type:'numlist',label:'Zonas de trabajo del OPC',intro:'Dónde te paras determina a quién capturas. Cada zona tiene su perfil.',items:[
+      {h:'Lobby y check-in',p:'Prospecto recién llegado, con energía y planes abiertos. Mejor momento para agendar el tour del día siguiente.'},
+      {h:'Alberca y áreas comunes',p:'Prospecto relajado, receptivo. Aborda cuando estén descansando, no comiendo ni con niños llorando.'},
+      {h:'Booth / stand en zona turística',p:'Volumen alto, calificación menor. Filtra rápido por perfil vacacional y capacidad.'},
+    ]},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'La estructura del pitch de 30 segundos es...',o:['Precio + presión + cierre','Sonrisa + gancho de valor + pregunta que compromete tiempo','Solo el regalo','Historia larga del resort'],a:1},
+    {q:'Ante "No tenemos tiempo", el OPC responde...',o:['"Lástima, que tengan buen día"','"Precisamente por eso lo diseñamos en 90 minutos"','"Es obligatorio asistir"','"Bajamos el precio"'],a:1},
+    {q:'¿Qué vende realmente el OPC?',o:['La membresía completa','El desayuno, el preview y el regalo','El precio final','La rescisión'],a:1},
+    {q:'Ante "¿Es una presentación de ventas?", la mejor respuesta menciona...',o:['Que sí y que deben comprar','Que es informativa, sin presión, y el regalo es suyo pase lo que pase','Que no hay ninguna oferta','Que se vayan si no van a comprar'],a:1},
+    {q:'La zona de alberca es ideal porque el prospecto...',o:['Está apurado','Está relajado y receptivo','Nunca compra','No trae dinero'],a:1},
+  ]}
+},
+{
+  id:'mod-3',crumb:'Módulo 3 · Liner · Prerrequisito: Módulo 2',
+  title:'Rapport y PNL Básico',
+  intro:'La gente compra de quien le cae bien y en quien confía. El rapport no es charla casual — es una técnica. Aquí están el espejo, la calibración, el hot button y los 6 tipos de motivación de compra.',
+  dur:'1:38', ctx:'Módulo 3', mname:'Rapport', videoSrc:'/videos/formacion-M3.mp4',
+  poster:'linear-gradient(150deg,#2a2016,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 3: Rapport</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'Las herramientas de rapport',items:[
+      {h:'Espejo (mirroring)',p:'Refleja sutilmente postura, ritmo de habla y energía del prospecto. No imites — sincroniza. Cuando el ritmo coincide, el subconsciente registra "esta persona es como yo".'},
+      {h:'Calibración',p:'Lee las microreacciones: ¿se inclinó al frente o se cruzó de brazos? ¿brillaron los ojos con la playa o con el ahorro? Cada reacción te dice dónde está el hot button.'},
+      {h:'Escucha activa con eco',p:'Repite la última frase clave del prospecto con ligera variación. Le confirma que lo escuchaste y te da tiempo para dirigir la conversación.'},
+    ]},
+    {type:'prose',label:'El hot button — la llave del cierre',html:'<p>El hot button es la motivación emocional más profunda del prospecto. No es lo que dicen que quieren — es lo que realmente los mueve a decidir. Identificarlo en los primeros 20 minutos determina cómo enmarcar todo el resto de la presentación.</p>'},
+    {type:'cards3',label:'Los 6 hot buttons de compra en timeshare',items:[
+      {k:'Hot Button 1',h:'Familia',p:'Señal: hablan de sus hijos con emoción visible, mencionan "llevar a los niños".',hl:'→ "Imaginen que sus hijos recuerden estas vacaciones toda su vida"'},
+      {k:'Hot Button 2',h:'Estatus',p:'Señal: mencionan lugares exclusivos, comparan calidad de hoteles, ropa de marca.',hl:'→ "Nuestros miembros son exactamente ese tipo de persona"'},
+      {k:'Hot Button 3',h:'Seguridad',p:'Señal: preguntan por garantías, contratos, condiciones de cancelación.',hl:'→ "Esto es un contrato escriturado — tan sólido como un bien raíz"'},
+      {k:'Hot Button 4',h:'Ahorro',p:'Señal: calculan todo, comparan precios, preguntan el ROI.',hl:'→ "En 5 años recuperan el 100% de la inversión en valor vacacional"'},
+      {k:'Hot Button 5',h:'Aventura',p:'Señal: mencionan destinos que quieren conocer, tienen bucket list.',hl:'→ "Con VTC pueden ir a 4,300 destinos en 100 países"'},
+      {k:'Hot Button 6',h:'Romance',p:'Señal: la pareja se ve muy unida, hablan de celebraciones juntos.',hl:'→ "¿Cuándo fue la última vez que tuvieron vacaciones solo para ustedes dos?"'},
+    ]},
+    {type:'callout',k:'La transición del rapport al tour',p:'Cuando ya identificaste el hot button y hay confianza, haces el puente: "Con lo que me cuentan, creo que les va a encantar lo que les voy a mostrar. Vengan conmigo." Nunca saltes al tour sin haber encontrado el hot button primero.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El hot button es...',o:['El regalo del tour','La motivación emocional más profunda que mueve a decidir','El precio final','El nombre del gerente'],a:1},
+    {q:'El espejo (mirroring) consiste en...',o:['Imitar exageradamente al prospecto','Sincronizar sutilmente postura, ritmo y energía','Hablar más fuerte que el cliente','Ignorar el lenguaje corporal'],a:1},
+    {q:'Un prospecto que pregunta por garantías y contratos tiene el hot button de...',o:['Aventura','Romance','Seguridad','Ahorro'],a:2},
+    {q:'La calibración sirve para...',o:['Bajar el precio','Leer microreacciones y ubicar el hot button','Memorizar el script','Cerrar sin rapport'],a:1},
+    {q:'Antes de pasar al tour, el liner debe...',o:['Dar el precio','Haber encontrado el hot button','Presionar el cierre','Consultar al gerente'],a:1},
+  ]}
+},
+{
+  id:'mod-4',crumb:'Módulo 4 · Liner · Prerrequisito: Módulo 3',
+  title:'El Tour de Instalaciones',
+  intro:'El tour no es un paseo — es una secuencia emocional diseñada. Cada parada activa una emoción específica y construye el deseo antes de llegar al precio. El orden importa y no es negociable.',
+  dur:'1:47', ctx:'Módulo 4', mname:'El Tour', videoSrc:'/videos/formacion-M4.mp4',
+  poster:'linear-gradient(150deg,#1a2630,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 4: El Tour</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'La secuencia del tour — cada parada, una emoción',items:[
+      {h:'Amenidades premium (Wow inicial)',p:'Empieza fuerte: spa, restaurantes, club de playa. Activa el deseo aspiracional. "Esto es lo que van a disfrutar como miembros."'},
+      {h:'La villa o suite modelo (Proyección)',p:'La primera parada de impacto. Aquí el prospecto se imagina viviendo la experiencia. NUNCA hables de precio ni cuotas aquí — solo emoción y proyección.'},
+      {h:'Áreas familiares o de pareja (Hot button)',p:'Dirige según el hot button detectado: kids club para familia, rooftop romántico para pareja. Personaliza la parada.'},
+      {h:'El intercambio global (Expansión del deseo)',p:'El mapa de 4,300 destinos. "No solo es aquí — es el mundo entero, garantizado." Rompe la objeción de "¿y si me aburro del mismo lugar?"'},
+      {h:'Regreso a sala (Transición al valor)',p:'Cierras el tour con el deseo en su punto máximo. Ahí es donde el liner entrega a la presentación de valor.'},
+    ]},
+    {type:'prose',label:'La neurociencia del tour',html:'<p>El tour activa <strong>oxitocina</strong> (conexión y confianza) y <strong>dopamina</strong> (anticipación del placer). Un prospecto que sintió emoción física en el tour compra 3x más que uno que solo escuchó datos. Por eso el tour va antes del precio — construyes el deseo primero, justificas con lógica después.</p>'},
+    {type:'callout',variant:'warn',k:'⚠ En la villa modelo, NUNCA se debe',p:'Preguntar por los hijos de forma invasiva, mencionar precio o cuotas, ni romper el silencio cuando el prospecto está proyectándose. El silencio en la villa modelo vende — deja que se imaginen viviendo ahí.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El tour activa principalmente dos neurotransmisores:',o:['Cortisol y adrenalina','Oxitocina y dopamina','Serotonina y cortisol','Solo dopamina'],a:1},
+    {q:'La primera parada del tour debe ser...',o:['El restaurante','La villa o suite modelo','La sala de ventas','El estacionamiento'],a:1},
+    {q:'En la villa modelo, NUNCA se debe...',o:['Preguntar por los hijos de forma invasiva','Dejar que se proyecten','Usar el silencio','Mostrar la vista'],a:0},
+    {q:'El propósito del mapa de intercambio global es...',o:['Confundir al prospecto','Expandir el deseo y romper la objeción de aburrimiento','Dar el precio','Terminar el tour rápido'],a:1},
+    {q:'El tour va antes del precio porque...',o:['Es tradición','Construyes el deseo primero y justificas con lógica después','El precio es secreto','Ahorra tiempo'],a:1},
+  ]}
+},
+{
+  id:'mod-5',crumb:'Módulo 5 · Liner · Prerrequisito: Módulo 4',
+  title:'La Presentación de Valor',
+  intro:'Aquí traduces el deseo emocional del tour en una decisión lógica. El orden de la venta es sagrado y la calculadora del gasto vacacional es tu herramienta más poderosa para justificar la inversión.',
+  dur:'1:44', ctx:'Módulo 5', mname:'Presentación', videoSrc:'/videos/formacion-M5.mp4',
+  poster:'linear-gradient(150deg,#252015,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 5: Presentación</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'El orden sagrado de la venta',html:'<p>La secuencia nunca cambia: <strong>Rapport → Tour → Presentación → Precio</strong>. Cada etapa prepara la siguiente. Dar el precio antes de construir valor mata la venta. El precio solo tiene sentido cuando el deseo ya está en su punto máximo.</p>'},
+    {type:'numlist',label:'La calculadora del gasto vacacional',intro:'La herramienta que convierte "es caro" en "es una inversión". Se construye en vivo con el prospecto, usando sus propios números.',items:[
+      {h:'Gasto actual anual',p:'"¿Cuánto gastan al año en vacaciones? Hotel, comidas, vuelos..." Anótalo. Ese es su número, no el tuyo.'},
+      {h:'Proyección a 20 años con inflación',p:'Multiplica su gasto anual por 20 años + inflación hotelera del 5-7% anual. El número asusta — y es real.'},
+      {h:'El costo VTC fijo',p:'Compara ese gasto proyectado contra la membresía + cuota anual fija. La brecha es el valor. "Están pagando lo mismo — pero con VTC el precio nunca sube."'},
+    ]},
+    {type:'quote',label:'El reencuadre del precio',text:'No les estoy pidiendo que gasten dinero nuevo. Les estoy mostrando cómo tomar el dinero que YA van a gastar en vacaciones los próximos 20 años y convertirlo en vacaciones de lujo con precio congelado.'},
+    {type:'callout',k:'La calculadora del gasto vacacional activa...',p:'Aversión a la pérdida — el sesgo psicológico más poderoso en ventas. Cuando el prospecto ve cuánto va a "tirar" en hoteles sobrevalorados los próximos 20 años, VTC deja de ser un gasto y se convierte en la forma de evitar esa pérdida.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El orden sagrado de la venta es...',o:['Precio → Tour → Rapport','Rapport → Tour → Presentación → Precio','Tour → Precio → Rapport','Presentación → Precio → Tour'],a:1},
+    {q:'La calculadora del gasto vacacional activa...',o:['Aversión a la pérdida','Miedo a la autoridad','Neuronas espejo','Romance'],a:0},
+    {q:'La calculadora se construye...',o:['Con números inventados','En vivo, con los propios números del prospecto','Solo con el precio VTC','Después del cierre'],a:1},
+    {q:'El reencuadre del precio dice que el prospecto...',o:['Debe gastar dinero nuevo','Convierte el dinero que YA va a gastar en vacaciones de lujo con precio fijo','Debe endeudarse','No necesita vacaciones'],a:1},
+    {q:'Dar el precio antes de construir valor...',o:['Acelera el cierre','Mata la venta','No tiene efecto','Es lo recomendado'],a:1},
+  ]}
+},
+{
+  id:'mod-6',crumb:'Módulo 6 · Cerrador · Prerrequisito: Módulo 5',
+  title:'El Cierre',
+  intro:'El cierre no es un evento — es la consecuencia natural de un proceso bien hecho. Aquí dominas el silencio después del precio, el cierre alternativo y la lectura de señales de compra.',
+  dur:'1:29', ctx:'Módulo 6', mname:'El Cierre', videoSrc:'/videos/formacion-M6.mp4',
+  poster:'linear-gradient(150deg,#221a12,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 6: El Cierre</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'El silencio después del precio',html:'<p>La regla más importante del cierre: <strong>después de dar el precio, cállate</strong>. Silencio total de 10 a 15 segundos. Quien habla primero, pierde. El prospecto necesita procesar — si tú llenas el silencio con justificaciones, comunicas inseguridad y bajas tu propio precio en su mente.</p>'},
+    {type:'twocol',label:'El cierre alternativo',left:{k:'✕ No preguntes',cls:'bad',mk:'✕',items:['"¿Les interesa?"','"¿Qué piensan?"','"¿Lo quieren pensar?"','Cualquier pregunta que invite a un "no"']},right:{k:'✓ Pregunta cierre asumido',cls:'good',mk:'✓',items:['"¿Prefieren el plan de 3 o el de 5 años?"','"¿A nombre de quién ponemos el contrato?"','"¿Pago con tarjeta o transferencia?"','Da dos opciones donde ambas son un "sí"']}},
+    {type:'numlist',label:'Señales de compra — lee el momento',items:[
+      {h:'Señales verbales',p:'"¿Y si quiero cancelar?", "¿Cuánto sería al mes?", "¿Los niños entran en el plan?". Preguntas de detalle = ya compraron mentalmente.'},
+      {h:'Señales físicas',p:'Se inclinan al frente, toman el folleto, se voltean a ver entre pareja, relajan los hombros. El cuerpo dice sí antes que la boca.'},
+      {h:'La pregunta de posesión',p:'Cuando preguntan "¿podemos usarlo en diciembre?" ya se ven como miembros. Cierra ahí, no sigas presentando.'},
+    ]},
+    {type:'callout',variant:'warn',k:'⚠ El error del sobre-cierre',p:'El vendedor ansioso sigue hablando después de que el prospecto ya dijo sí mentalmente. Cada palabra extra después de la señal de compra es una oportunidad de que reconsideren. Detecta el sí y ejecuta el papeleo — deja de vender.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'Justo después de dar el precio, lo correcto es...',o:['Seguir hablando para justificar','Silencio de 10–15 seg; quien habla primero pierde','Bajar el precio','Preguntar "¿qué les parece?"'],a:1},
+    {q:'El cierre alternativo es...',o:['"¿Les interesa?"','"¿Qué les parece?"','"¿Prefieren el plan de 3 o el de 5 años?"','"¿Lo quieren pensar?"'],a:2},
+    {q:'Una señal de compra verbal es...',o:['"Déjenme pensarlo"','"¿Cuánto sería al mes?"','"No tenemos tiempo"','"No nos interesa"'],a:1},
+    {q:'El error del sobre-cierre consiste en...',o:['Dar el precio muy pronto','Seguir vendiendo después de la señal de compra','Usar el silencio','Cerrar con dos opciones'],a:1},
+    {q:'Cuando el prospecto pregunta "¿podemos usarlo en diciembre?" significa que...',o:['No compró','Ya se ve como miembro — cierra ahí','Hay que bajar el precio','Está molesto'],a:1},
+  ]}
+},
+{
+  id:'mod-7',crumb:'Módulo 7 · Todos los Roles · Prerrequisito: Módulo 6',
+  title:'Manejo de Objeciones',
+  intro:'Las objeciones no son un no — son una petición de más información o seguridad. Aquí están las 5 objeciones clásicas del cierre con la respuesta exacta paso a paso.',
+  dur:'1:56', ctx:'Módulo 7', mname:'Objeciones', videoSrc:'/videos/formacion-M7.mp4',
+  poster:'linear-gradient(150deg,#2a1e18,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 7: Objeciones</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'El método universal ante toda objeción',html:'<p>Ante cualquier objeción, sigue tres pasos: <strong>1) Valida</strong> ("Entiendo perfectamente"), <strong>2) Reencuadra</strong> (cambia el marco de la objeción), <strong>3) Cierra de nuevo</strong> (regresa a la pregunta de cierre). Nunca discutas — valida, reencuadra, cierra.</p>'},
+    {type:'scriptbox',label:'Objeción 1 — "Necesito pensarlo"',es:'"Lo entiendo, es una decisión importante. Déjenme preguntarles: ¿qué es específicamente lo que necesitan pensar — el valor del programa, el presupuesto, o algo que no les quedó claro? [Escuchar]. Porque si es el valor, con gusto se los muestro otra vez. Si es presupuesto, tenemos planes desde $[X] al mes. ¿Cuál de los dos es?"'},
+    {type:'scriptbox',label:'Objeción 2 — "Está muy caro"',es:'"Comparado con qué, si me permiten preguntar. Porque si lo comparan con una semana de hotel, sí — pero acabamos de ver que en 20 años van a gastar $[X] en vacaciones de todos modos. La pregunta real no es si es caro, es si prefieren pagar precio de hotel que sube cada año, o precio VTC congelado. ¿Cuál tiene más sentido para su familia?"'},
+    {type:'scriptbox',label:'Objeción 3 — "Tengo que consultarlo con..."',es:'"Perfecto, ¿y qué cree que él/ella diría? [Escuchar]. Lo que pasa es que esta oferta especial es válida solo hoy durante la presentación — mañana el precio regresa al de lista. ¿Habría forma de consultarlo ahora por teléfono para que no pierdan este precio?"',foot:'Nota: esta objeción se previene en la calificación asegurando que AMBOS decisores estén presentes.'},
+    {type:'scriptbox',label:'Objeción 4 — "Ya tuvimos una mala experiencia con timeshare"',es:'"Lamento escuchar eso. [Genuino, sin minimizar] ¿Me pueden contar qué fue exactamente lo que pasó? [Escuchar con atención completa]. Entiendo por qué tienen esa prevención — lo que describen es real y pasó. Lo que me describen es [X problema específico]. En VTC eso funciona diferente porque [razón concreta]. Y está en el contrato — no en palabras. ¿Les puedo mostrar específicamente el punto del contrato donde esto está garantizado?"',foot:'El tercer paso convierte el contrato en aliado. El prospecto que verificó algo en el contrato confía 3x más en el producto.'},
+    {type:'scriptbox',label:'Objeción 5 — "No es el momento / situación económica difícil"',es:'"Aprecio su honestidad. Déjenme preguntarles algo: ¿la situación va a cambiar en los próximos 6 meses? [Escuchar]. Si va a mejorar, entonces el mejor momento para asegurar este precio es hoy — los precios suben cada año. Si no va a cambiar pronto, tenemos planes de financiamiento desde $[X] al mes. ¿Cuánto estarían cómodos pagando mensualmente?"'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El método universal ante toda objeción es...',o:['Discutir hasta ganar','Validar → Reencuadrar → Cerrar de nuevo','Bajar el precio','Ignorar la objeción'],a:1},
+    {q:'Ante "Está muy caro", la mejor primera respuesta es...',o:['"Sí, lo es"','"¿Comparado con qué, si me permiten preguntar?"','"Le bajo el precio"','"Entonces no es para usted"'],a:1},
+    {q:'La objeción "Tengo que consultarlo con..." se previene...',o:['Presionando más','En la calificación, asegurando ambos decisores presentes','Dando el precio primero','Ignorándola'],a:1},
+    {q:'Ante una mala experiencia previa con timeshare, el vendedor debe...',o:['Minimizar el problema','Escuchar genuinamente y mostrar el punto del contrato que lo garantiza','Cambiar de tema','Bajar el precio de inmediato'],a:1},
+    {q:'Una objeción, en realidad, suele ser...',o:['Un no definitivo','Una petición de más información o seguridad','Una señal de irse','Una mentira'],a:1},
+  ]}
+},
+{
+  id:'mod-8',crumb:'Módulo 8 · Cerrador · Prerrequisito: Módulo 7',
+  title:'El TOC — Today Only Close',
+  intro:'El TOC es la oferta especial válida solo durante la presentación. Bien usado, crea urgencia legítima. Mal usado, quema tu credibilidad. Aquí están las condiciones para activarlo y el script completo.',
+  dur:'1:33', ctx:'Módulo 8', mname:'TOC', videoSrc:'/videos/formacion-M8.mp4',
+  poster:'linear-gradient(150deg,#241c14,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 8: TOC</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'twocol',label:'Condiciones para activar el TOC',left:{k:'Cuándo SÍ activarlo',cls:'arr',mk:'→',items:['El prospecto pasó el Cierre 1 sin comprar — pero mostró interés genuino','La objeción principal es precio, no desconfianza ni desinterés','El gerente dio autorización (real o protocolo interno)']},right:{k:'Cuándo NO usarlo',cls:'bad',mk:'✕',items:['El prospecto no está calificado económicamente','Hay desconfianza real sin resolver','Solo vino por el regalo — el TOC no salva un prospecto frío']}},
+    {type:'scriptbox',label:'La entrega del TOC — script completo',es:'"[Nombre], voy a ser honesto con ustedes porque me caen bien y porque sé que esto les sirve. Tengo autorización de hablar con mi gerente para hacer algo especial que normalmente no hacemos — no es para todos, pero basándome en su perfil y en que están aquí hoy, creo que podemos hacer que funcione. ¿Me dan un momento? [Sales a consultar]. Okay. Mi gerente autorizó lo siguiente, solo para hoy: [precio reducido + beneficio adicional]. Esta autorización no aplica para mañana ni si lo piensan — es hoy o regresa al precio de lista. ¿Aprovechamos?"'},
+    {type:'callout',variant:'warn',k:'⚠ La urgencia debe ser real',p:'El TOC solo funciona si el prospecto CREE que es genuino. Si prometes "solo hoy" y luego lo llamas al día siguiente con el mismo precio, destruyes tu credibilidad y la del resort. La urgencia falsa que se descubre convierte una venta en una rescisión.'},
+    {type:'prose',label:'Después del TOC',html:'<p>Si el prospecto acepta, ejecuta el papeleo <strong>inmediatamente</strong> — no dejes espacio para que reconsideren. Si aún no cierra después del TOC, es momento del Take Over: el gerente entra con una perspectiva fresca y autoridad superior.</p>'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El TOC significa...',o:['Take Over Close','Today Only Close','Total Order Contract','Tour of Closing'],a:1},
+    {q:'Se debe activar el TOC cuando...',o:['El prospecto no está calificado','El prospecto mostró interés genuino y la objeción es precio','Solo vino por el regalo','Hay desconfianza sin resolver'],a:1},
+    {q:'Si prometes "solo hoy" y luego lo llamas con el mismo precio...',o:['Ganas su confianza','Destruyes tu credibilidad y puede terminar en rescisión','No pasa nada','Cierras más'],a:1},
+    {q:'Si el prospecto acepta el TOC, lo correcto es...',o:['Seguir presentando','Ejecutar el papeleo inmediatamente','Llamarlo mañana','Bajar más el precio'],a:1},
+    {q:'Si no cierra después del TOC, sigue...',o:['El regalo','El Take Over del gerente','La rescisión','El OPC de nuevo'],a:1},
+  ]}
+},
+{
+  id:'mod-9',crumb:'Módulo 9 · Gerente · Prerrequisito: Módulo 8',
+  title:'El Manager Close (T.O.)',
+  intro:'Cuando el liner no cerró, entra el gerente. El Take Over no es repetir el pitch más fuerte — es una nueva autoridad, una perspectiva fresca y un cierre con dignidad. Aquí está la estructura completa.',
+  dur:'1:39', ctx:'Módulo 9', mname:'Manager Close', videoSrc:'/videos/formacion-M9.mp4',
+  poster:'linear-gradient(150deg,#1e1a14,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 9: Manager Close</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'El Manager Close — estructura',items:[
+      {h:'Presentación breve sin exagerar el rol',p:'"Hola, soy [nombre], el gerente del equipo. Me han dicho que estuvieron viendo el programa — cuéntenme, ¿qué fue lo que más les gustó?" [No: "¿cuál es el problema?"]'},
+      {h:'Escuchar sin argumentar',p:'El manager deja hablar al prospecto completamente antes de responder. Interrumpir en este momento destruye la confianza que el vendedor tardó 2 horas en construir.'},
+      {h:'Reencuadrar desde autoridad',p:'El manager no repite lo que dijo el vendedor — ofrece una perspectiva nueva con su autoridad de gerente. Mismo mensaje, diferente ángulo.'},
+      {h:'Hace la oferta final o libera con dignidad',p:'Si puede cerrar, cierra con la última bala disponible. Si el prospecto está genuinamente no preparado hoy, libera con dignidad: "Los respeto, y sé que cuando estén listos van a tomar la mejor decisión para su familia."'},
+    ]},
+    {type:'prose',label:'El be-back — maximizar el 2–8% que regresa',html:'<p>Solo el 2–8% de los be-backs regresan y compran. La razón: el estado emocional del tour no se reproduce en casa — la oxitocina y la dopamina bajan, la lógica fría regresa. Por eso el manager close intenta cerrar HOY. Un be-back mal gestionado es una venta perdida en el 92% de los casos.</p>'},
+    {type:'callout',k:'Liberar con dignidad NO es rendirse',p:'Un prospecto liberado con respeto puede regresar o referir. Un prospecto presionado hasta el final se va molesto y habla mal del resort. El manager profesional sabe cuándo el cierre ya no está — y protege la reputación cerrando la interacción con clase.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El Take Over (T.O.) del gerente consiste en...',o:['Repetir el pitch más fuerte','Nueva autoridad, perspectiva fresca y cierre con dignidad','Bajar el precio de inmediato','Echar al prospecto'],a:1},
+    {q:'La primera acción del manager al entrar es...',o:['Preguntar "¿cuál es el problema?"','Preguntar qué fue lo que más les gustó y escuchar','Dar el precio final','Presionar el cierre'],a:1},
+    {q:'¿Qué porcentaje de be-backs regresa y compra?',o:['50–60%','2–8%','30%','90%'],a:1},
+    {q:'El be-back tiene baja conversión porque...',o:['El precio sube','El estado emocional del tour no se reproduce en casa','El gerente no llama','El contrato caduca'],a:1},
+    {q:'Liberar con dignidad sirve para...',o:['Rendirse rápido','Proteger la reputación y permitir regreso o referidos','Perder tiempo','Molestar al prospecto'],a:1},
+  ]}
+},
+{
+  id:'mod-10',crumb:'Módulo 10 · PNL · Prerrequisito: Módulo 3',
+  title:'PNL Avanzado',
+  intro:'La programación neurolingüística avanzada opera en el subconsciente del prospecto. Anclaje, embedding de comandos y la doble unión — patrones de lenguaje que dirigen la decisión sin que el prospecto los detecte.',
+  dur:'1:51', ctx:'Módulo 10', mname:'PNL Avanzado', videoSrc:'/videos/formacion-M10.mp4',
+  poster:'linear-gradient(150deg,#221c26,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 10: PNL Avanzado</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'prose',label:'Estructura 1 — Anclaje',html:'<p>El anclaje asocia una emoción positiva con un gesto, tono o palabra. Cuando el prospecto siente algo bueno (la villa modelo, imaginar a sus hijos felices), fijas un ancla — tocas la mesa, cambias el tono. Después, en el cierre, repites el ancla para reactivar la emoción. El subconsciente vuelve al estado positivo.</p>'},
+    {type:'scriptbox',label:'Estructura 2 — Embedding (incrustación de comandos)',es:'"No sé si en este momento ya están LISTOS PARA DECIDIR, pero lo que sí sé es que sus hijos van a disfrutar esto toda la vida."',foot:'El comando real está incrustado dentro de una oración más larga. El consciente procesa la oración completa. El subconsciente registra el comando incrustado "LISTOS PARA DECIDIR" — está en una negación aparente. El subconsciente lo registra como instrucción, no como cuestionamiento.'},
+    {type:'prose',label:'Estructura 3 — La doble unión',html:'<p>La doble unión ofrece dos opciones donde ambas llevan al sí. "¿Prefieren empezar a disfrutar en verano o en invierno?" — no hay opción de "no empezar". El prospecto elige entre dos síes creyendo que tiene el control. Es el cierre alternativo aplicado en cada micro-decisión del proceso.</p>'},
+    {type:'cards3',label:'Patrones de lenguaje que dirigen',items:[
+      {k:'Presuposición',h:'Asumir el sí',p:'"Cuando disfruten su primera estancia como miembros..."',hl:'→ Presupone que ya son miembros'},
+      {k:'Contraste',h:'Anclar el precio alto primero',p:'Mostrar el plan más caro antes hace que los demás parezcan accesibles.',hl:'→ Efecto de contraste'},
+      {k:'Prueba social',h:'"Familias como la suya..."',p:'"Nuestros miembros son exactamente ese tipo de persona."',hl:'→ Pertenencia'},
+    ]},
+    {type:'callout',variant:'warn',k:'⚠ Ética de la PNL',p:'Estas técnicas dirigen la decisión hacia un producto que REALMENTE le sirve al prospecto. Usar PNL para vender algo que no le conviene al cliente es manipulación y termina en rescisión. La PNL ética acelera una buena decisión — no fabrica una mala.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El embedding consiste en...',o:['Gritar el comando','Incrustar un comando dentro de una oración más larga','Repetir el precio','Ignorar al prospecto'],a:1},
+    {q:'La doble unión ofrece...',o:['Una sola opción','Dos opciones donde ambas llevan al sí','La opción de irse','Un descuento'],a:1},
+    {q:'El anclaje sirve para...',o:['Bajar el precio','Asociar una emoción positiva y reactivarla en el cierre','Confundir al cliente','Terminar el tour'],a:1},
+    {q:'Mostrar el plan más caro primero usa el patrón de...',o:['Presuposición','Contraste','Prueba social','Anclaje'],a:1},
+    {q:'La ética de la PNL exige que...',o:['Se venda cualquier cosa','Se dirija hacia un producto que realmente le sirve al prospecto','Se manipule al cliente','Se oculte el contrato'],a:1},
+  ]}
+},
+{
+  id:'mod-11',crumb:'Módulo 11 · Todos los Roles · Prerrequisito: Módulo 3',
+  title:'Venta por Nacionalidades',
+  intro:'Diferentes culturas tienen diferentes estructuras de toma de decisiones. El vendedor que no adapta su estilo pierde ventas con cada perfil cultural diferente. El que adapta, cierra en cualquier idioma.',
+  dur:'1:58', ctx:'Módulo 11', mname:'Nacionalidades', videoSrc:'/videos/formacion-M11.mp4',
+  poster:'linear-gradient(150deg,#26201a,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  isHeroPoster:true, heroTitle:'VENTA POR<br>NACIONALIDADES', heroSub:'Módulo 11 · Formación · Cultura',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 11: Nacionalidades</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'cards3',label:'Perfiles culturales — cómo cierra cada uno',items:[
+      {k:'Estados Unidos',h:'Americano',p:'Directo, orientado al ROI y a la conveniencia. Valora el ahorro y la eficiencia. Decisión rápida si el valor está claro.',hl:'→ Enfatiza números, garantías y facilidad de uso'},
+      {k:'Canadá',h:'Canadiense',p:'Más conservador y cauteloso que el americano. Prioriza seguridad y no le gusta la presión.',hl:'→ Enfatiza estabilidad, sin presión, con datos sólidos'},
+      {k:'Alemania',h:'Alemán',p:'Extremadamente racional, quiere ver todo por escrito. Desconfía de la emoción, confía en la ingeniería del contrato.',hl:'→ Muestra el contrato, cifras exactas, cero exageración'},
+      {k:'México',h:'Mexicano',p:'La emoción y la familia mandan. La mujer suele generar la emoción; el hombre suele anunciar la decisión final.',hl:'→ Emociona a la mujer, cierra respetando la dinámica de pareja'},
+      {k:'Colombia',h:'Colombiano',p:'Cálido, relacional, valora la confianza personal con el vendedor. El rapport pesa más que los números.',hl:'→ Invierte en relación antes de los datos'},
+      {k:'Argentina',h:'Argentino',p:'Analítico y escéptico, cuestiona todo. No le gusta sentirse convencido — quiere llegar él a la conclusión.',hl:'→ Devuélvele el control; deja que él concluya solo'},
+    ]},
+    {type:'prose',label:'La dinámica de cierre por pareja',html:'<p>En la pareja mexicana, la emoción la genera frecuentemente la mujer, pero el anuncio o la decisión final la comunica el hombre. Dirige la emoción a ambos, pero respeta que el "sí" público suele salir por el hombre. Con el argentino escéptico, nunca lo convenzas con presión — dale la información y deja que él llegue a la conclusión, devolviéndole el control.</p>'},
+    {type:'callout',k:'Regla universal de nacionalidades',p:'No es un estereotipo rígido — es un punto de partida. Calibra en tiempo real. La cultura te da la hipótesis inicial; el rapport te confirma o corrige el estilo real de ESTA pareja específica.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'Con el prospecto alemán conviene...',o:['Usar mucha emoción','Mostrar el contrato, cifras exactas y cero exageración','Apurar la decisión','Usar términos vagos'],a:1},
+    {q:'Con la pareja mexicana, la dinámica de cierre es...',o:['Cerrar solo con la mujer','Emoción por la mujer; el anuncio/decisión por el hombre','Ignorar a los hijos','Hablar en inglés'],a:1},
+    {q:'Con el argentino escéptico conviene...',o:['Convencerlo con presión','Dejar que llegue a la conclusión solo (devolverle el control)','Bajar el precio','Apurarlo'],a:1},
+    {q:'El americano típicamente valora...',o:['El rapport lento','El ROI, la conveniencia y la eficiencia','La emoción pura','El escepticismo'],a:1},
+    {q:'La regla universal de nacionalidades dice que la cultura es...',o:['Un estereotipo rígido','Un punto de partida que se calibra en tiempo real','Irrelevante','Solo para americanos'],a:1},
+  ]}
+},
+{
+  id:'mod-12',crumb:'Módulo 12 · Todos los Roles · Prerrequisito: Módulo F',
+  title:'Ética, Legal y Cumplimiento',
+  intro:'Vender bien no basta — hay que vender legal. PROFECO, la rescisión, y lo que NUNCA debes prometer. Este módulo protege al cliente, al resort y a tu carrera de la rescisión y las demandas.',
+  dur:'1:36', ctx:'Módulo 12', mname:'Ética & Legal', videoSrc:'/videos/formacion-M12.mp4',
+  poster:'linear-gradient(150deg,#1a1a1a,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo 12: Ética & Legal</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'El marco legal en México',items:[
+      {h:'PROFECO',p:'La Procuraduría Federal del Consumidor regula el timeshare. El contrato debe estar registrado y cumplir la NOM-029. Prácticas engañosas generan multas y cancelación de registro.'},
+      {h:'La rescisión (5 días hábiles)',p:'Derecho legal del cliente a cancelar sin penalización dentro de 5 días hábiles. Se cuenta desde la firma. No se puede renunciar a este derecho — y ocultarlo es ilegal.'},
+      {h:'El contrato manda',p:'Todo lo prometido verbalmente debe estar en el contrato. Lo que no está escrito, no existe legalmente. Nunca prometas fuera del papel.'},
+    ]},
+    {type:'twocol',label:'Lo que NUNCA debes prometer',left:{k:'Prohibido — genera rescisión y demandas',cls:'bad',mk:'✕',items:['Que la membresía es una "inversión con plusvalía" o que "sube de valor"','Que pueden rentarla y recuperar el dinero','Rendimientos o retornos financieros garantizados','Beneficios que no están escritos en el contrato']},right:{k:'Correcto — transparencia total',cls:'good',mk:'✓',items:['Presentarlo como un producto de consumo vacacional','Mostrar cada beneficio dentro del contrato','Explicar el derecho de rescisión abiertamente','Confirmar que lo dicho está respaldado por escrito']}},
+    {type:'callout',variant:'warn',k:'⚠ La rescisión es tu enemigo #1',p:'Una venta que se rescinde no cuenta — y peor, mancha tu reputación y la del resort. La causa #1 de rescisión es el remordimiento por presión o por promesas falsas. El vendedor ético con proceso limpio tiene la rescisión más baja del floor y las comisiones más estables.'},
+    {type:'prose',label:'Por qué la ética es negocio',html:'<p>El vendedor que miente cierra más rápido pero rescinde más y quema su reputación. El vendedor ético construye una <strong>base de miembros satisfechos que refieren</strong> — y los referidos son el prospecto de mayor conversión y menor rescisión. La ética no es lo opuesto a vender: es la forma más rentable de vender a largo plazo.</p>'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'La rescisión en México permite cancelar dentro de...',o:['24 horas','5 días hábiles sin penalización','30 días','No se puede cancelar'],a:1},
+    {q:'¿Qué NUNCA debes prometer?',o:['Que el beneficio está en el contrato','Que la membresía es una inversión con plusvalía','Que hay derecho de rescisión','Que es un producto vacacional'],a:1},
+    {q:'PROFECO es...',o:['Un tipo de cierre','La procuraduría que regula el timeshare en México','Un bono de comisión','Un destino vacacional'],a:1},
+    {q:'La causa #1 de rescisión es...',o:['El buen servicio','El remordimiento por presión o promesas falsas','El precio fijo','La transparencia'],a:1},
+    {q:'La ética en ventas es...',o:['Lo opuesto a vender','La forma más rentable de vender a largo plazo','Innecesaria','Solo para gerentes'],a:1},
+  ]}
+},
+{
+  id:'mod-lvc',crumb:'El Proceso VTC · Liner, F2M, F2B, SFB · Prerrequisito: Módulos F, 0, 1, 3',
+  title:'Las 12 Etapas del Proceso VTC',
+  intro:'El Proceso VTC es el sistema propietario de VTC — 12 etapas físicas a través del resort, diseñadas para construir relación, deseo y urgencia antes de llegar al precio. El orden no es negociable.',
+  dur:'2:10', ctx:'Módulo LVC', mname:'Proceso VTC', videoSrc:'/videos/proceso-vtc.mp4',
+  poster:'linear-gradient(150deg,#16241f,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  isHeroPoster:true, heroTitle:'EL PROCESO VTC', heroSub:'El Proceso VTC · 12 Etapas',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo LVC: Proceso VTC</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'numlist',label:'Las 12 etapas físicas',items:[
+      {h:'Meet & Greet',p:'Recepción cálida, primer rapport, romper el hielo antes de sentarse.'},
+      {h:'Desayuno / Warm-up',p:'Rapport profundo mientras comen. Aquí se detecta el hot button sin que lo noten.'},
+      {h:'Descubrimiento (discovery)',p:'Calificación conversacional: estilo de vida, gasto vacacional, decisores.'},
+      {h:'Historia del resort',p:'Credibilidad y confianza. Por qué VTC existe y a quién sirve.'},
+      {h:'Amenidades (tour parte 1)',p:'Wow inicial: spa, restaurantes, club de playa. Deseo aspiracional.'},
+      {h:'Villa / suite modelo',p:'Proyección. El prospecto se imagina viviendo la experiencia. Silencio que vende.'},
+      {h:'El intercambio global',p:'El mapa de 4,300 destinos. Expande el deseo más allá de este resort.'},
+      {h:'Regreso a sala',p:'Con el deseo en su punto. Transición del liner a la presentación.'},
+      {h:'Presentación de valor',p:'La calculadora del gasto vacacional. El reencuadre del precio.'},
+      {h:'El precio y el primer cierre',p:'Precio + silencio + cierre alternativo. Lectura de señales.'},
+      {h:'Objeciones y TOC',p:'Manejo de las 5 objeciones. Activación del Today Only Close si aplica.'},
+      {h:'T.O. positivo y papeleo',p:'Take over del gerente, cierre final y ejecución inmediata del contrato.'},
+    ]},
+    {type:'callout',k:'Por qué el orden es sagrado',p:'Cada etapa carga emocionalmente la siguiente. Saltarte una etapa (dar precio antes del tour, cerrar sin rapport) rompe la cadena emocional. El Proceso VTC funciona como sistema completo — no como piezas sueltas.'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'En el Proceso VTC, el representante...',o:['Da el precio al final','NUNCA da precios — transfiere el deseo al cerrador','Cierra él mismo','Solo hace el survey'],a:1},
+    {q:'¿Cuántas etapas tiene el Proceso VTC?',o:['19','12','7','5'],a:1},
+    {q:'El hot button se detecta principalmente en la etapa de...',o:['El precio','El desayuno / warm-up','El papeleo','Las objeciones'],a:1},
+    {q:'El orden de las etapas es...',o:['Flexible','Sagrado, porque cada etapa carga la siguiente','Opcional','Definido por el cliente'],a:1},
+    {q:'La villa modelo activa...',o:['El precio','La proyección: el prospecto se imagina viviendo ahí','El cierre','El regalo'],a:1},
+  ]}
+},
+{
+  id:'mod-19',crumb:'VTC 19 · Neurociencia · Prerrequisito: Módulo LVC',
+  title:'Los 19 Módulos del Pitch VTC',
+  intro:'El pitch VTC de 19 fases combina el proceso físico con la neurociencia de la persuasión. Cada fase activa un circuito cerebral específico — de la oxitocina del Meet & Greet al anclaje de precio del Victory Grand.',
+  dur:'2:18', ctx:'Módulo VTC 19', mname:'Los 19 Módulos', videoSrc:'/videos/vtc-00.mp4',
+  poster:'linear-gradient(150deg,#1f1a14,#0b0906)', posterLabel:'VTC · CAPACITACIÓN ELITE',
+  bubble:'¡Hola! Soy Víctor. Estamos en el <strong>Módulo VTC19: Los 19 Módulos</strong>.<br><br>Mira el video y luego pregúntame lo que quieras. ¿Necesitas que repita algo, profundice en una técnica, o te ayude con un cliente real?',
+  blocks:[
+    {type:'submodule',crumb:'Módulo 03 · Fase 1 · Conexión',title:'EL DESAYUNO',poster:'linear-gradient(150deg,#2a2418,#0b0906)',dur:'1:33',videoSrc:'/videos/vtc-03.mp4',
+      why:'La ansiedad de no saber qué viene bloquea la apertura emocional. La agenda elimina esa ansiedad y establece control del proceso.',
+      how:'Explicar qué van a hacer, cuánto tiempo dura cada parte, y confirmar que el regalo se entrega al final compren o no.',
+      script:'Vamos a desayunar juntos, les haré algunas preguntas para entender cómo vacacionan, recorreremos instalaciones, vemos la suite de miembros, pasamos a sala y les explico las opciones. Todo en unos 90 minutos. ¿Me apoyan para hacerlo ágil?',
+      neuro:'Activa: Oxitocina · Dopamina'},
+    {type:'submodule',crumb:'Módulo 08 · Fase 2 · Valor',title:'LA DECLARACIÓN PUENTE',poster:'linear-gradient(150deg,#1a2226,#0b0906)',dur:'0:56',videoSrc:'/videos/vtc-08.mp4',
+      why:'Este programa activa 3 circuitos de dopamina diferentes. La declaración puente conecta el deseo del tour con la lógica del valor sin ruptura.',
+      how:'Nombrar las 3 formas de uso VTC como puente entre lo que vieron y lo que sigue.',
+      script:'Las 3 formas de uso VTC: 1. Regresar a los destinos VTC año tras año con calidad garantizada. 2. La red global: 4,300 destinos en 100 países — Santorini, Tokio, Bali. 3. Regalar experiencias: invitar a familiares o amigos a beneficiarse de la membresía.',
+      neuro:'Activa: Consistencia cognitiva'},
+    {type:'submodule',crumb:'Módulo 13 · Fase 3 · Experiencia',title:'LA RESIDENCIA',poster:'linear-gradient(150deg,#20201a,#0b0906)',dur:'1:19',videoSrc:'/videos/vtc-13.mp4',
+      why:'El Programa Residencia activa el deseo de seguridad y permanencia — no tener que preocuparse por encontrar hospedaje de calidad nunca más.',
+      how:'Presentar el nivel Residencia solo a perfiles de estatus alto, ejecutivos, personas cerca de la jubilación.',
+      script:'El Programa Residencia VTC es para quienes quieren eliminar la incertidumbre vacacional completamente. Acceso 365 días al año, sin impuestos de propiedad, sin mantenimiento. Como vivir en un resort de lujo sin los costos de poseer la propiedad.',
+      neuro:'Para quién: perfiles de estatus alto y jubilación'},
+    {type:'submodule',crumb:'Módulo 18 · Fase 4 · Cierre',title:'VICTORY GRAND',poster:'linear-gradient(150deg,#241f16,#0b0906)',dur:'1:12',videoSrc:'/videos/vtc-18.mp4',
+      why:'Presentar el precio más alto primero (Victory Grand: $349,900 USD) ancla la percepción de los planes inferiores como accesibles por contraste.',
+      how:'Mostrar Victory Grand como el tope de la línea antes de revelar los planes reales que vas a cerrar.',
+      script:'El nivel Victory Grand es nuestro programa insignia — acceso ilimitado, las mejores villas, prioridad total. La inversión es de $349,900 USD. Ahora bien, la mayoría de nuestros miembros entran en un nivel diseñado para su estilo de vida... [Aquí revelas el plan real, que ahora parece accesible]',
+      neuro:'Activa: Anclaje de precio final'},
+    {type:'prose',label:'La neurociencia de las 4 fases',html:'<p>Cada fase del pitch VTC 19 activa un circuito distinto: <strong>Conexión</strong> (oxitocina, confianza), <strong>Valor</strong> (dopamina, anticipación), <strong>Experiencia</strong> (seguridad, permanencia) y <strong>Cierre</strong> (anclaje de contraste). El pitch completo es una secuencia neurológica — no una lista de argumentos. Ejecutado en orden, lleva al cerebro del prospecto del "no sé" al "cómo firmo".</p>'},
+  ],
+  quiz:{title:'Quiz · Evalúa este módulo',qs:[
+    {q:'El Victory Grand se presenta primero para...',o:['Cerrar ese plan siempre','Anclar el precio: hace que los planes inferiores parezcan accesibles','Asustar al cliente','Cumplir un requisito legal'],a:1},
+    {q:'El Desayuno (Fase 1 · Conexión) activa...',o:['Cortisol','Oxitocina y dopamina','Solo lógica','Aversión a la pérdida'],a:1},
+    {q:'El Programa Residencia se dirige a...',o:['Estudiantes','Perfiles de estatus alto y cercanos a la jubilación','Solo mexicanos','Quienes solo quieren el regalo'],a:1},
+    {q:'El pitch VTC 19 es, en esencia...',o:['Una lista de argumentos sueltos','Una secuencia neurológica que activa circuitos en orden','Un descuento','Un contrato'],a:1},
+    {q:'En el Proceso VTC, el representante...',o:['Da el precio al cierre','Nunca da precios: transfiere el deseo al cerrador','Cierra él mismo','Solo entrega el regalo'],a:1},
+  ]}
+},
+];
+
+function renderCards(){
+  document.getElementById('mgrid').innerHTML = CARDS.map(c=>`
+    <a class="mcard" href="#${c.id}">
+      <div class="mno">${c.no}</div>
+      <h3 class="serif">${c.t}</h3>
+      <p>${c.d}</p>
+      <span class="tag">${c.tag}</span>
+    </a>`).join('');
+}
+
+function block(b){
+  if(b.type==='prose') return `<div class="block">${b.label?`<span class="label">${b.label}</span>`:''}<div class="prose">${b.html}</div></div>`;
+  if(b.type==='quote') return `<div class="block">${b.label?`<span class="label">${b.label}</span>`:''}<div class="quote"><p>${b.text}</p>${b.cite?`<div class="cite">${b.cite}</div>`:''}</div></div>`;
+  if(b.type==='numlist') return `<div class="block"><span class="label">${b.label}</span>${b.intro?`<p class="m-intro" style="margin-bottom:24px">${b.intro}</p>`:''}<div class="numlist">${b.items.map(i=>`<div class="numrow"><div class="num"></div><div><h4>${i.h}</h4><p>${i.p}</p></div></div>`).join('')}</div></div>`;
+  if(b.type==='twocol') return `<div class="block"><span class="label">${b.label}</span><div class="twocol"><div>${b.left.k?`<span class="label">${b.left.k}</span>`:''}${b.left.items.map(x=>`<div class="li ${b.left.cls}"><span class="mk">${b.left.mk}</span><span>${x}</span></div>`).join('')}</div><div>${b.right.k?`<span class="label">${b.right.k}</span>`:''}${b.right.items.map(x=>`<div class="li ${b.right.cls}"><span class="mk">${b.right.mk}</span><span>${x}</span></div>`).join('')}</div></div></div>`;
+  if(b.type==='glossary') return `<div class="block"><span class="label">${b.label}</span>${b.items.map(g=>`<div class="li arr"><span class="mk">→</span><span><strong style="color:var(--ink)">${g[0]}</strong> — ${g[1]}</span></div>`).join('')}</div>`;
+  if(b.type==='cards3'||b.type==='cards4') return `<div class="block"><span class="label">${b.label}</span>${b.intro?`<p class="m-intro" style="margin-bottom:24px">${b.intro}</p>`:''}<div class="cards3${b.type==='cards4'?' four':''}">${b.items.map(c=>`<div class="ecard"><div class="k">${c.k}</div><h4>${c.h}</h4><p>${c.p}</p>${c.hl?`<p class="hl">${c.hl}</p>`:''}</div>`).join('')}</div></div>`;
+  if(b.type==='scriptbox') return `<div class="block"><span class="label">${b.label}</span><div class="scriptbox"><p>${b.es}</p>${b.en?`<p class="en"><span class="label" style="display:block;margin-bottom:8px">Script en inglés</span>${b.en}</p>`:''}${b.foot?`<p class="foot">${b.foot}</p>`:''}</div></div>`;
+  if(b.type==='callout') return `<div class="block"><div class="callout ${b.variant==='warn'?'warn':''}"><div class="k">${b.k}</div><p>${b.p}</p></div></div>`;
+  if(b.type==='submodule'){
+    const vblock = b.videoSrc
+      ? `<div class="video-native" style="margin-bottom:16px"><video controls preload="metadata" style="width:100%;display:block;background:#000;max-height:420px"><source src="${b.videoSrc}" type="video/mp4">Tu navegador no soporta video HTML5.</video><div class="video-label">V T C · ${b.crumb.split('·')[0].trim()}</div></div>`
+      : `<div class="video"><div class="video-poster" style="background:${b.poster}"><div class="vlabel">V T C</div><div style="text-align:center"><div class="label" style="color:rgba(228,205,147,.6);margin-bottom:12px">${b.crumb}</div><div class="serif" style="font-size:clamp(1.6rem,4vw,2.8rem);color:#f3ede1;letter-spacing:.02em">${b.title}</div></div><div class="play"><span class="circ"><svg width="13" height="15" viewBox="0 0 13 15"><path d="M0 0l13 7.5L0 15z" fill="currentColor"/></svg></span><span>Ver Módulo</span></div></div><div class="video-bar"><span class="ico">▶</span><span>0:00 / ${b.dur}</span><div class="track"><i></i></div><span class="ico">🔊</span><span class="ico">⛶</span></div></div>`;
+    return `<div class="block" style="padding-top:20px;border-top:1px solid var(--line-soft)">
+      <div class="crumb" style="margin-bottom:12px">${b.crumb}</div>
+      <h3 class="serif" style="font-size:clamp(1.4rem,3vw,2rem);color:var(--ink);margin-bottom:20px">${b.title}</h3>
+      ${vblock}
+      <div class="prose" style="margin-top:20px"><p><strong>Por qué:</strong> ${b.why}</p><p><strong>Cómo:</strong> ${b.how}</p><p><strong>Script:</strong> <em>"${b.script}"</em></p></div>
+      <div class="callout" style="margin-top:14px"><div class="k">${b.neuro}</div></div>
+    </div>`;
+  }
+  return '';
+}
+
+function videoBlock(m){
+  if(m.videoSrc){
+    return `<div class="video-native">
+      <video controls preload="metadata" style="width:100%;display:block;background:#000;border-radius:6px 6px 0 0;max-height:500px">
+        <source src="${m.videoSrc}" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+      <div class="video-label">V T C · ${m.ctx}</div>
+    </div>`;
+  }
+  const poster = m.isHeroPoster
+    ? `<div class="video-poster" style="aspect-ratio:16/8;background:${m.poster}"><div class="vlabel">V T C<br><span style="font-size:.55rem;letter-spacing:.28em">${m.posterLabel}</span></div><div style="text-align:center"><div class="label" style="color:rgba(228,205,147,.6);margin-bottom:14px">${m.heroSub}</div><div class="serif" style="font-size:clamp(1.9rem,4.6vw,3.2rem);color:#f3ede1;letter-spacing:.02em;line-height:1.05">${m.heroTitle}</div></div><div class="play"><span class="circ"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8L0 16z" fill="currentColor"/></svg></span><span>Ver Módulo</span></div></div>`
+    : `<div class="video-poster" style="background:${m.poster}"><div class="vlabel">V T C<br><span style="font-size:.55rem;letter-spacing:.28em">${m.posterLabel}</span></div><div class="play"><span class="circ"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8L0 16z" fill="currentColor"/></svg></span><span>Ver Módulo</span></div></div>`;
+  return `<div class="video">${poster}<div class="video-bar"><span class="ico">▶</span><span>0:00 / ${m.dur}</span><div class="track"><i></i></div><span class="ico">🔊</span><span class="ico">⛶</span><span class="ico">⋮</span></div></div>`;
+}
+
+function quizBlock(q){
+  return `<div class="quiz"><div class="quiz-head"><h3 class="serif">${q.title}</h3><span class="score"><span class="scn">0</span> / ${q.qs.length} correctas</span></div>
+    ${q.qs.map((item,qi)=>`<div class="q"><p><span class="qn">${qi+1}.</span><span>${item.q}</span></p>${item.o.map((opt,oi)=>`<div class="opt" data-a="${item.a}" data-o="${oi}"><span class="radio"></span><span>${opt}</span></div>`).join('')}</div>`).join('')}
+    <button class="retry">↻ Reintentar</button></div>`;
+}
+
+function renderModules(){
+  document.getElementById('modules').innerHTML = MODULES.map(m=>`
+    <section class="module" id="${m.id}">
+      <div class="module-inner">
+        <div class="m-main">
+          <div class="crumb">${m.crumb}</div>
+          <h2 class="m-title serif">${m.title}</h2>
+          <p class="m-intro">${m.intro}</p>
+          ${videoBlock(m)}
+          <div class="m-actions">
+            <button>◈ Compartir</button>
+            <button>▤ Notas</button>
+            <button>❖ Guardar</button>
+          </div>
+          ${m.blocks.map(block).join('')}
+          ${quizBlock(m.quiz)}
+        </div>
+        <aside class="victor">
+          <div class="v-card"><div class="v-avatar serif">V</div><h4>Víctor</h4><div class="role">Entrenador Maestro VTC</div></div>
+          <div class="v-chat">
+            <div class="ctx">${m.ctx}</div>
+            <div class="mname">${m.mname}</div>
+            <div class="v-bubble">${m.bubble}</div>
+            <div class="v-input"><input placeholder="Pregúntale a Víctor..."><button aria-label="enviar">➤</button></div>
+          </div>
+        </aside>
+      </div>
+    </section>`).join('');
+}
+
+function wireQuiz(){
+  document.querySelectorAll('.q').forEach(q=>{
+    q.querySelectorAll('.opt').forEach(opt=>{
+      opt.addEventListener('click',()=>{
+        if(q.dataset.answered) return;
+        q.dataset.answered='1';
+        const correct=parseInt(opt.dataset.a), chosen=parseInt(opt.dataset.o);
+        q.querySelectorAll('.opt').forEach(o=>{
+          if(parseInt(o.dataset.o)===correct) o.classList.add('correct');
+          o.style.pointerEvents='none';
+        });
+        if(chosen!==correct){opt.classList.remove('correct');opt.classList.add('wrong');}
+        const quiz=q.closest('.quiz');
+        const correctCount=[...quiz.querySelectorAll('.q[data-answered]')].filter(qq=>!qq.querySelector('.opt.wrong')).length;
+        quiz.querySelector('.scn').textContent=correctCount;
+      });
+    });
+  });
+  document.querySelectorAll('.retry').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const quiz=btn.closest('.quiz');
+      quiz.querySelectorAll('.q').forEach(q=>{delete q.dataset.answered;});
+      quiz.querySelectorAll('.opt').forEach(o=>{o.className='opt';o.style.pointerEvents='';});
+      quiz.querySelector('.scn').textContent='0';
+    });
+  });
+}
+
+function wireVideos(){
+  document.querySelectorAll('.video-poster').forEach(p=>{
+    p.style.cursor='pointer';
+    p.addEventListener('click',()=>{
+      const bar=p.closest('.video').querySelector('.track i');
+      if(!bar) return;
+      let w=0; clearInterval(p._iv);
+      p._iv=setInterval(()=>{w+=1.2; if(w>=100){w=100;clearInterval(p._iv);} bar.style.width=w+'%';},120);
+    });
+  });
+}
+
+document.querySelector('.nav-toggle').addEventListener('click',()=>{
+  const l=document.querySelector('.nav-links');
+  const open=l.style.display==='flex';
+  l.style.display=open?'none':'flex';
+  if(!open){l.style.flexDirection='column';l.style.position='absolute';l.style.top='100%';l.style.right='var(--gutter)';l.style.background='var(--panel)';l.style.padding='20px';l.style.border='1px solid var(--line)';l.style.borderRadius='6px';l.style.gap='16px';}
+});
+
+renderCards();
+renderModules();
+wireQuiz();
+wireVideos();
+</script>
+</body>
+</html>
