@@ -19,8 +19,11 @@
 //   competencias? { rapport, pnl, postura, objeciones, lectura, cierre } (0-10)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const chromium = require('@sparticuz/chromium');
-const puppeteer = require('puppeteer-core');
+// Navegador Chromium compartido/concurrency-safe (ver comentario detallado en _browser.js):
+// lanzar puppeteer.launch()+chromium.executablePath() por request aquí causaba "spawn ETXTBSY"
+// cuando dos requests a ESTE MISMO endpoint caían casi a la vez en el mismo contenedor cálido
+// (Vercel Fluid Compute) y ambas intentaban extraer /tmp/chromium en paralelo.
+const { withPage } = require('./_browser');
 
 /* ── Paleta premium (spec de la misión) ── */
 const C = {
@@ -429,15 +432,8 @@ function buildHtml(p) {
    mayor densidad de píxeles para que gráficos y texto se vean nítidos, no borrosos. */
 const PAGE_WIDTH_PX = 640, OUTER_PAD_PX = 32, SAFETY_PX = 8;
 async function renderPremiumPdf(html) {
-  let browser = null;
-  try {
-    browser = await puppeteer.launch({
-      args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox', '--force-color-profile=srgb', '--font-render-hinting=none'],
-      defaultViewport: { width: PAGE_WIDTH_PX + OUTER_PAD_PX * 2, height: 1200, deviceScaleFactor: 3 },
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-    });
-    const page = await browser.newPage();
+  return withPage(async (page) => {
+    await page.setViewport({ width: PAGE_WIDTH_PX + OUTER_PAD_PX * 2, height: 1200, deviceScaleFactor: 3 });
     await page.setContent(html, { waitUntil: 'networkidle0', timeout: 45000 });
     try { await page.evaluateHandle('document.fonts.ready'); } catch (_) {}
     await page.addStyleTag({ content: `
@@ -456,9 +452,7 @@ async function renderPremiumPdf(html) {
       margin: { top: '0', bottom: '0', left: '0', right: '0' },
     });
     return Buffer.from(pdf);
-  } finally {
-    if (browser) { try { await browser.close(); } catch (_) {} }
-  }
+  });
 }
 
 /* ── Handler ── */

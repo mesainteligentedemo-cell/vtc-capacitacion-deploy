@@ -1,8 +1,11 @@
 // GET /api/heatmap-png?site=vtc-capacitacion&user=Pablo&session=s_xxx
 // Genera PNG del heatmap de comportamiento de un usuario usando Puppeteer (ya instalado).
 // Devuelve la imagen PNG directamente, o URL de data: para adjuntar en emails.
-const chromium = require('@sparticuz/chromium');
-const puppeteer = require('puppeteer-core');
+// Navegador Chromium compartido/concurrency-safe (ver comentario detallado en _browser.js):
+// lanzar puppeteer.launch()+chromium.executablePath() por request aquí causaba "spawn ETXTBSY"
+// cuando dos requests a ESTE MISMO endpoint caían casi a la vez en el mismo contenedor cálido
+// (Vercel Fluid Compute) y ambas intentaban extraer /tmp/chromium en paralelo.
+const { withPage } = require('./_browser');
 
 const ANALYTICS = 'https://n8n.srv1013903.hstgr.cloud/webhook/analytics';
 const SHOT_BASE  = 'https://victor-ia-brain-tracker.vercel.app/heatmaps';
@@ -111,28 +114,21 @@ module.exports = async (req, res) => {
   </script></body></html>`;
 
   // 6. Puppeteer: screenshot del HTML
-  let browser;
   try {
-    browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: { width: 1440, height: 900 },
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-    });
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: 'networkidle0', timeout: 25000 });
-    await new Promise(r => setTimeout(r, 1500)); // esperar heatmap.js render
+    const png = await withPage(async (page) => {
+      await page.setViewport({ width: 1440, height: 900 });
+      await page.setContent(html, { waitUntil: 'networkidle0', timeout: 25000 });
+      await new Promise(r => setTimeout(r, 1500)); // esperar heatmap.js render
 
-    // capturar toda la página (stats + heatmap + videos)
-    const png = await page.screenshot({ fullPage: true, type: 'png' });
-    await browser.close();
+      // capturar toda la página (stats + heatmap + videos)
+      return page.screenshot({ fullPage: true, type: 'png' });
+    });
 
     res.setHeader('Content-Type', 'image/png');
     res.setHeader('Content-Disposition', `inline; filename="heatmap-${sanitize(userName)}.png"`);
     res.setHeader('Cache-Control', 'no-store');
     res.send(Buffer.from(png));
   } catch(e) {
-    if (browser) try { await browser.close(); } catch(_){}
     res.status(500).send('render error: '+e.message);
   }
 };
