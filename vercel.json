@@ -5,7 +5,8 @@
     "api/audio.js": { "maxDuration": 30 },
     "api/transcript.js": { "maxDuration": 30 },
     "api/history.js": { "maxDuration": 15 },
-    "api/report.js": { "maxDuration": 60, "memory": 1536 }
+    "api/report.js": { "maxDuration": 60, "memory": 1536 },
+    "api/premium-report.js": { "maxDuration": 60, "memory": 1536 }
   },
   "headers": [
     {
