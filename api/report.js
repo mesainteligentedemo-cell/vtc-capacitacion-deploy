@@ -8,8 +8,9 @@ const {
   esc, clean, fmtDec, has, buildChatTable, radarSvg, neuroBars, timeline,
   metricsRow, analyticsRow, speakingTime, activitySection, courseReportSection, trainerNoteSection,
   countInterventions, buildQuizData, quizSection,
-  kpiRow, pieChart, heatmapBars, chartsSection,
+  kpiRow, pieChart, heatmapBars, chartsSection, progressSection,
 } = require('./_chat');
+const { historyAgg } = require('./_history_agg');
 const { analyze } = require('./_analyze');
 const { t, translations } = require('./_i18n');
 
@@ -179,6 +180,18 @@ async function buildReport(conv, lang) {
     : [];
   const chartsHtml = chartsSection(pieSvg, heatmapBars(freq));
 
+  // Progreso histórico: compara esta sesión con el promedio de sesiones anteriores
+  // del mismo empleado (best-effort; si falla o es la 1ª sesión, muestra estado inicial).
+  const empNum = dcv(dc, 'employee_number') || dv.employee_number || '';
+  let progresoHtml = '';
+  try {
+    const hist = await historyAgg(empNum, id, process.env.ELEVENLABS_API_KEY);
+    progresoHtml = progressSection(
+      { score: hasScore ? Math.round(score * 10) / 10 : null, compAvg: Math.round(compAvg * 10) / 10, durSecs, sentimiento },
+      hist
+    );
+  } catch (_) { progresoHtml = ''; }
+
   const sessionLine = lang.indexOf('en') === 0
     ? `Coaching session for <strong style="color:#e0e0e0;">${esc(name)}</strong> with Victor · ${esc(catTranslated)} · ${duracionStr}`
     : `Sesión de <strong style="color:#e0e0e0;">${esc(name)}</strong> con Víctor · ${esc(cat)} · ${duracionStr}`;
@@ -209,7 +222,7 @@ async function buildReport(conv, lang) {
     PLAN_ACCION: planList(ai.plan_accion),
     KPI_ROW: kpiRowHtml,
     CHARTS_SECTION: chartsHtml,
-    PROGRESO: '',
+    PROGRESO: progresoHtml,
     CTA_URL: 'https://victor-ia-training.vercel.app/',
     AUDIO_URL: SITE + '/api/audio?conv=' + encodeURIComponent(id),
     TRANSCRIPT_CHAT: buildChatTable(turns, lang),
