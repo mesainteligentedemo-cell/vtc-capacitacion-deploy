@@ -37,7 +37,7 @@ function buildChatTable(turns, lang) {
     const text = clean(tn.message);
     if (!text) return '';
     const who = isAgent ? t('VÍCTOR', lang) : t('ASESOR', lang);
-    const color = isAgent ? '#d4af37' : '#9b8cff';
+    const color = isAgent ? '#EAB308' : '#9b8cff';
     const bg = isAgent ? '#161410' : '#14131a';
     const bd = isAgent ? '#2a2620' : '#2a2740';
     const align = isAgent ? 'left' : 'right';
@@ -45,27 +45,27 @@ function buildChatTable(turns, lang) {
       <table role="presentation" width="82%" align="${align}" cellpadding="0" cellspacing="0" border="0" style="background:${bg};border:1px solid ${bd};border-radius:14px;">
         <tr><td style="padding:13px 17px;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-            <td style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;color:${color};font-weight:700;">${who}</td>
-            <td align="right" style="font-family:Helvetica,Arial,sans-serif;font-size:10px;color:#5a5a62;letter-spacing:0.5px;">${fmtTime(tn.time_in_call_secs)}</td>
+            <td style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:2px;color:${color};font-weight:700;">${who}</td>
+            <td align="right" style="font-family:Inter,sans-serif;font-size:10px;color:#5a5a62;letter-spacing:0.5px;">${fmtTime(tn.time_in_call_secs)}</td>
           </tr></table>
           <div style="height:6px;font-size:0;">&nbsp;</div>
-          <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#dcdce2;">${esc(text)}</div>
+          <div style="font-family:Inter,sans-serif;font-size:14px;line-height:22px;color:#dcdce2;">${esc(text)}</div>
         </td></tr>
       </table>
       <div style="clear:both;font-size:0;line-height:0;">&nbsp;</div>
     </td></tr>`;
   }).join('');
-  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows || `<tr><td style="color:#8a8a92;font-family:Helvetica,Arial,sans-serif;">${t('Sin transcripción disponible.', lang)}</td></tr>`}</table>`;
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows || `<tr><td style="color:#8a8a8a;font-family:Inter,sans-serif;">${t('Sin transcripción disponible.', lang)}</td></tr>`}</table>`;
 }
 
 // Radar de competencias (QuickChart, dark). Se mantiene por compatibilidad, ya no se usa en el template.
 function radarUrl(labels, values) {
   const chart = { type: 'radar', data: { labels, datasets: [{ data: values,
     backgroundColor: 'rgba(201,170,117,0.18)', borderColor: 'rgba(201,170,117,1)', borderWidth: 2,
-    pointBackgroundColor: '#d4af37', pointRadius: 3 }] },
+    pointBackgroundColor: '#EAB308', pointRadius: 3 }] },
     options: { legend: { display: false }, scale: { ticks: { display: false, beginAtZero: true, max: 10, stepSize: 2 },
       gridLines: { color: 'rgba(255,255,255,0.08)' }, angleLines: { color: 'rgba(255,255,255,0.08)' },
-      pointLabels: { fontColor: '#d4af37', fontSize: 13 } } } };
+      pointLabels: { fontColor: '#EAB308', fontSize: 13 } } } };
   return 'https://quickchart.io/chart?bkg=transparent&w=360&h=360&c=' + encodeURIComponent(JSON.stringify(chart));
 }
 
@@ -105,7 +105,7 @@ function radarSvg(labels, values, opts) {
     return [fx(cx + r * Math.cos(a)), fx(cy + r * Math.sin(a))];
   });
   const dataPolyStr = dataPts.map((p) => p[0] + ',' + p[1]).join(' ');
-  const dots = dataPts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#D4AF37"/>`).join('');
+  const dots = dataPts.map((p) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="#EAB308"/>`).join('');
 
   let labelsSvg = '';
   for (let i = 0; i < n; i++) {
@@ -114,33 +114,33 @@ function radarSvg(labels, values, opts) {
     let anchor = 'middle';
     if (Math.cos(a) > 0.28) anchor = 'start';
     else if (Math.cos(a) < -0.28) anchor = 'end';
-    labelsSvg += `<text x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle" fill="#d4af37" font-family="Helvetica Neue,Arial,sans-serif" font-size="13" letter-spacing="0.3">${esc(labels[i])}</text>`;
+    labelsSvg += `<text x="${x}" y="${y}" text-anchor="${anchor}" dominant-baseline="middle" fill="#EAB308" font-family="Inter,sans-serif" font-size="13" letter-spacing="0.3">${esc(labels[i])}</text>`;
   }
 
-  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${t('Radar de competencias', opts.lang)}" style="display:block;margin:0 auto;width:100%;height:auto;max-width:${size}px;overflow:visible;">${gridSvg}${axisSvg}<polygon points="${dataPolyStr}" fill="rgba(212,175,55,0.30)" stroke="#D4AF37" stroke-width="2"/>${dots}${labelsSvg}</svg>`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${t('Radar de competencias', opts.lang)}" style="display:block;margin:0 auto;width:100%;height:auto;max-width:${size}px;overflow:visible;">${gridSvg}${axisSvg}<polygon points="${dataPolyStr}" fill="rgba(234,179,8,0.20)" stroke="#EAB308" stroke-width="2"/>${dots}${labelsSvg}</svg>`;
 }
 
 // Barras de principios neurocientificos. pairs: [[name,pct],...]
 function neuroBars(pairs) {
-  if (!pairs || !pairs.length) return '<tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#8a8a92;">No registrado en esta sesión.</td></tr>';
+  if (!pairs || !pairs.length) return '<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#8a8a8a;">No registrado en esta sesión.</td></tr>';
   return pairs.map(([name, pct]) => {
     pct = Math.max(0, Math.min(100, parseInt(pct || 0, 10)));
     return `<tr><td style="padding:0 0 4px 0;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#cfcfd6;letter-spacing:0.3px;">${esc(name)}</td>
-      <td align="right" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#d4af37;">${pct}%</td></tr></table></td></tr>
-      <tr><td style="padding:0 0 13px 0;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1e1e22;border-radius:99px;"><tr>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;letter-spacing:0.3px;">${esc(name)}</td>
+      <td align="right" style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;">${pct}%</td></tr></table></td></tr>
+      <tr><td style="padding:0 0 13px 0;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#262626;border-radius:99px;"><tr>
       <td style="font-size:0;line-height:0;"><table width="${pct}%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td height="6" style="background:#d4af37;border-radius:99px;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr></table></td></tr>`;
+      <td height="6" style="background:#EAB308;border-radius:99px;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr></table></td></tr>`;
   }).join('');
 }
 
 // Linea de tiempo. items: [[t,label],...]
 function timeline(items) {
-  if (!items || !items.length) return '<tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#8a8a92;">No registrada.</td></tr>';
+  if (!items || !items.length) return '<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#8a8a8a;">No registrada.</td></tr>';
   return items.map(([t, label]) =>
-    `<tr><td width="66" valign="top" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#d4af37;letter-spacing:1px;padding:0 0 16px 0;">${esc(t)}</td>
-     <td valign="top" style="padding:0 0 16px 14px;border-left:2px solid #2a2620;">
-     <span style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#cfcfd6;">${esc(label)}</span></td></tr>`
+    `<tr><td width="66" valign="top" style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;letter-spacing:1px;padding:0 0 16px 0;">${esc(t)}</td>
+     <td valign="top" style="padding:0 0 16px 14px;border-left:2px solid #3a3020;">
+     <span style="font-family:Inter,sans-serif;font-size:14px;line-height:20px;color:#E5E5E5;">${esc(label)}</span></td></tr>`
   ).join('');
 }
 
@@ -149,19 +149,19 @@ function metricsRow(m, lang) {
   const hasModulos = has(m.modulos) && m.modulos !== '—';
   const escenarioCard = `
     <td class="stack stack-pad" width="${hasModulos ? '50%' : '100%'}" valign="top" style="padding:8px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#202020;border:1px solid #2c2c2c;border-radius:12px;"><tr><td style="padding:18px 20px;">
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7c7c84;text-transform:uppercase;">${t('Escenario', lang)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:12px;"><tr><td style="padding:18px 20px;">
+        <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:2.5px;color:#A3A3A3;text-transform:uppercase;">${t('Escenario', lang)}</div>
         <div style="height:7px;font-size:0;">&nbsp;</div>
-        <div class="metric-num" style="font-family:Georgia,serif;font-size:19px;color:#f5f5f5;line-height:24px;">${esc(m.escenario || '—')}</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#8a8a92;line-height:17px;margin-top:3px;">${esc(m.tipoCliente || '')}${m.tipoCliente ? ' · ' : ''}${esc(m.idioma || '')}</div>
+        <div class="metric-num" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:19px;color:#FFFFFF;line-height:24px;">${esc(m.escenario || '—')}</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;color:#8a8a8a;line-height:17px;margin-top:3px;">${esc(m.tipoCliente || '')}${m.tipoCliente ? ' · ' : ''}${esc(m.idioma || '')}</div>
       </td></tr></table></td>`;
   const modulosCard = hasModulos ? `
     <td class="stack stack-pad" width="50%" valign="top" style="padding:8px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#202020;border:1px solid #2c2c2c;border-radius:12px;"><tr><td style="padding:18px 20px;">
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7c7c84;text-transform:uppercase;">${t('Módulos practicados', lang)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:12px;"><tr><td style="padding:18px 20px;">
+        <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:2.5px;color:#A3A3A3;text-transform:uppercase;">${t('Módulos practicados', lang)}</div>
         <div style="height:7px;font-size:0;">&nbsp;</div>
-        <div class="metric-num" style="font-family:Georgia,serif;font-size:19px;color:#f5f5f5;line-height:24px;">${esc(m.modulos)}</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#8a8a92;line-height:17px;margin-top:3px;">${esc(m.tipoActividad || '')}</div>
+        <div class="metric-num" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:19px;color:#FFFFFF;line-height:24px;">${esc(m.modulos)}</div>
+        <div style="font-family:Inter,sans-serif;font-size:12px;color:#8a8a8a;line-height:17px;margin-top:3px;">${esc(m.tipoActividad || '')}</div>
       </td></tr></table></td>` : '';
   return `<tr><td class="px" style="padding:16px 36px 8px 36px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>${escenarioCard}${modulosCard}</tr></table>
@@ -193,9 +193,9 @@ function speakingTime(turns, totalSecs) {
 function analyticsRow(m, lang) {
   const cell = (label, value) => `
     <td class="stack" width="25%" valign="top" style="padding:6px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#161618;border:1px solid #262626;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
-        <div style="font-family:Georgia,serif;font-size:20px;color:#f5f5f5;line-height:24px;">${esc(value == null || value === '' ? '—' : value)}</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">${esc(label)}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+        <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:20px;color:#FFFFFF;line-height:24px;">${esc(value == null || value === '' ? '—' : value)}</div>
+        <div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:1.5px;color:#A3A3A3;text-transform:uppercase;margin-top:4px;">${esc(label)}</div>
       </td></tr></table></td>`;
   const chips = [
     m.duracionExacta ? [t('Duración', lang), m.duracionExacta + ' min'] : null,
@@ -203,7 +203,7 @@ function analyticsRow(m, lang) {
     (m.dificultad && m.dificultad !== '—') ? [t('Dificultad', lang), m.dificultad] : null,
     (m.horaInicio && m.horaFin) ? [t('Horario', lang), m.horaInicio + '–' + m.horaFin] : null,
   ].filter(Boolean).map(([k, v]) =>
-    `<span style="display:inline-block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#9a9a9a;background:#181818;border:1px solid #262626;border-radius:99px;padding:5px 12px;margin:0 5px 6px 0;letter-spacing:0.3px;"><span style="color:#7c7c84;text-transform:uppercase;font-size:9px;letter-spacing:1px;">${esc(k)}</span>&nbsp;&nbsp;${esc(v)}</span>`
+    `<span style="display:inline-block;font-family:Inter,sans-serif;font-size:11px;color:#9a9a9a;background:#171717;border:1px solid #262626;border-radius:99px;padding:5px 12px;margin:0 5px 6px 0;letter-spacing:0.3px;"><span style="color:#A3A3A3;text-transform:uppercase;font-size:9px;letter-spacing:1px;">${esc(k)}</span>&nbsp;&nbsp;${esc(v)}</span>`
   ).join('');
   return `<tr><td class="px" style="padding:10px 40px 4px 40px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
@@ -264,15 +264,15 @@ function activitySection(turns, lang) {
   const a = extractActivity(turns, lang);
   const rows = a.items.length
     ? a.items.map(([tt, label]) =>
-        `<tr><td width="60" valign="top" style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#d4af37;letter-spacing:1px;padding:0 0 13px 0;">${esc(tt)}</td>
-         <td valign="top" style="padding:0 0 13px 14px;border-left:2px solid #2a2620;">
-         <span style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#dcdce2;">${esc(label)}</span></td></tr>`).join('')
-    : `<tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#8a8a92;">${t('Sesión de conversación libre (sin recorrido de módulos).', lang)}</td></tr>`;
-  const chip = a.resumen ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#d4af37;letter-spacing:0.5px;margin:2px 0 16px;">${esc(a.resumen)}</div>` : '<div style="height:10px;font-size:0;">&nbsp;</div>';
-  return `<tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #1c1c20;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">${t('Actividad de la sesión', lang)}</div>
+        `<tr><td width="60" valign="top" style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;letter-spacing:1px;padding:0 0 13px 0;">${esc(tt)}</td>
+         <td valign="top" style="padding:0 0 13px 14px;border-left:2px solid #3a3020;">
+         <span style="font-family:Inter,sans-serif;font-size:14px;line-height:20px;color:#dcdce2;">${esc(label)}</span></td></tr>`).join('')
+    : `<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#8a8a8a;">${t('Sesión de conversación libre (sin recorrido de módulos).', lang)}</td></tr>`;
+  const chip = a.resumen ? `<div style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;letter-spacing:0.5px;margin:2px 0 16px;">${esc(a.resumen)}</div>` : '<div style="height:10px;font-size:0;">&nbsp;</div>';
+  return `<tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #262626;">
+    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#A3A3A3;text-transform:uppercase;">${t('Actividad de la sesión', lang)}</div>
     <div style="height:6px;font-size:0;">&nbsp;</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;letter-spacing:0.2px;">Lo que ${esc('el asesor')} hizo paso a paso durante la sesión.</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;letter-spacing:0.2px;">Lo que ${esc('el asesor')} hizo paso a paso durante la sesión.</div>
     <div style="height:14px;font-size:0;">&nbsp;</div>
     ${chip}
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table>
@@ -310,34 +310,34 @@ function courseReportSection(turns, ai, name, lang) {
   // ── Barra de progreso del curso ──
   const totalMods = 14; // F + 0-12 + proceso + vtc19
   const pct = Math.round((act.modulos.size / totalMods) * 100);
-  const progressBar = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1e1e22;border-radius:99px;margin:8px 0 0;"><tr>
+  const progressBar = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#262626;border-radius:99px;margin:8px 0 0;"><tr>
     <td style="font-size:0;line-height:0;"><table width="${pct}%" cellpadding="0" cellspacing="0" border="0"><tr>
-    <td height="8" style="background:linear-gradient(90deg,#d4af37,#e6c65c);border-radius:99px;font-size:0;">&nbsp;</td></tr></table></td></tr></table>`;
+    <td height="8" style="background:linear-gradient(90deg,#EAB308,#EAB308);border-radius:99px;font-size:0;">&nbsp;</td></tr></table></td></tr></table>`;
 
   // ── Módulos cubiertos chips ──
   const modChips = act.modulos.size
     ? Array.from(act.modulos).map(m =>
-        `<span style="display:inline-block;background:#1a1812;border:1px solid #3a3326;border-radius:4px;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#d4af37;padding:3px 9px;margin:0 4px 6px 0;">${esc(m)}</span>`
+        `<span style="display:inline-block;background:#1a1410;border:1px solid #262626;border-radius:4px;font-family:Inter,sans-serif;font-size:11px;color:#EAB308;padding:3px 9px;margin:0 4px 6px 0;">${esc(m)}</span>`
       ).join('')
-    : '<span style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#5a5a62;">—</span>';
+    : '<span style="font-family:Inter,sans-serif;font-size:13px;color:#5a5a62;">—</span>';
 
   // ── Quiz por módulo ──
   const quizRows = Object.keys(modScores).length
     ? Object.entries(modScores).map(([mod, s]) => {
         const pctQ = Math.round((s.ok / s.total) * 100);
-        const color = pctQ >= 80 ? '#5cc08a' : pctQ >= 60 ? '#d4af37' : '#e89a92';
+        const color = pctQ >= 80 ? '#5cc08a' : pctQ >= 60 ? '#EAB308' : '#e0836f';
         return `<tr>
-          <td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#cfcfd6;padding:0 0 10px 0;">${esc(modLabel(mod.replace('modulo-', ''), lang))}</td>
-          <td align="right" style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:${color};font-weight:700;padding:0 0 10px 12px;">${s.ok}/${s.total} · ${pctQ}%</td>
+          <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;padding:0 0 10px 0;">${esc(modLabel(mod.replace('modulo-', ''), lang))}</td>
+          <td align="right" style="font-family:Inter,sans-serif;font-size:13px;color:${color};font-weight:700;padding:0 0 10px 12px;">${s.ok}/${s.total} · ${pctQ}%</td>
         </tr>`;
       }).join('')
-    : `<tr><td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#5a5a62;" colspan="2">${t('Sin quizzes registrados en esta sesión.', lang)}</td></tr>`;
+    : `<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#5a5a62;" colspan="2">${t('Sin quizzes registrados en esta sesión.', lang)}</td></tr>`;
 
   // ── Detalle de preguntas incorrectas ──
   const wrongRows = results.filter(r => !r.ok).slice(0, 8).map(r =>
     `<tr><td style="padding:0 0 10px 0;">
-      <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#e89a92;margin-bottom:3px;">✗ ${esc(r.pregunta.slice(0, 80))}</div>
-      <div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#8a8a92;">Respondió: ${esc(r.respuesta)}</div>
+      <div style="font-family:Inter,sans-serif;font-size:13px;color:#e0836f;margin-bottom:3px;">✗ ${esc(r.pregunta.slice(0, 80))}</div>
+      <div style="font-family:Inter,sans-serif;font-size:12px;color:#8a8a8a;">Respondió: ${esc(r.respuesta)}</div>
     </td></tr>`
   ).join('');
 
@@ -345,54 +345,54 @@ function courseReportSection(turns, ai, name, lang) {
   const badge = tipoSesion === 'curso_guiado' ? '#5a7fbf' : tipoSesion === 'roleplay' ? '#7a5fbf' : '#5a8a72';
 
   return `
-  <tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #1c1c20;">
+  <tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #262626;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td><div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">${t('Análisis del Aprendizaje', lang)}</div></td>
-      <td align="right"><span style="background:${badge};color:#fff;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;">${label}</span></td>
+      <td><div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#A3A3A3;text-transform:uppercase;">${t('Análisis del Aprendizaje', lang)}</div></td>
+      <td align="right"><span style="background:${badge};color:#fff;font-family:Inter,sans-serif;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:4px;">${label}</span></td>
     </tr></table>
     <div style="height:16px;font-size:0;">&nbsp;</div>
 
     ${isCourse ? `
     <!-- Progreso del curso -->
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#7c7c84;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Cobertura del curso', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;color:#A3A3A3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Cobertura del curso', lang)}</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#d4af37;">${act.modulos.size}</td>
-      <td style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#8a8a92;padding-left:8px;">de ${totalMods} módulos<br>· ${act.videos} video${act.videos !== 1 ? 's' : ''} · ${Object.keys(modScores).length} quiz${Object.keys(modScores).length !== 1 ? 'zes' : ''}</td>
-      <td align="right" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:${pct >= 80 ? '#5cc08a' : '#d4af37'};">${pct}%</td>
+      <td style="font-family:Montserrat,sans-serif;font-weight:700;font-size:2rem;color:#EAB308;">${act.modulos.size}</td>
+      <td style="font-family:Inter,sans-serif;font-size:12px;color:#8a8a8a;padding-left:8px;">de ${totalMods} módulos<br>· ${act.videos} video${act.videos !== 1 ? 's' : ''} · ${Object.keys(modScores).length} quiz${Object.keys(modScores).length !== 1 ? 'zes' : ''}</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:1.6rem;color:${pct >= 80 ? '#5cc08a' : '#EAB308'};">${pct}%</td>
     </tr></table>
     ${progressBar}
     <div style="height:18px;font-size:0;">&nbsp;</div>
 
     <!-- Módulos cubiertos -->
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#7c7c84;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Módulos recorridos', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#A3A3A3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Módulos recorridos', lang)}</div>
     <div style="margin-bottom:18px;">${modChips}</div>
     ` : ''}
 
     ${curso.comprension_general != null ? `
     <!-- Comprensión general -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;"><tr>
-      <td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#cfcfd6;">${t('Comprensión general', lang)}</td>
-      <td align="right" style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:${curso.comprension_general >= 8 ? '#5cc08a' : curso.comprension_general >= 6 ? '#d4af37' : '#e89a92'};">${fmtDec(curso.comprension_general)}/10</td>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;">${t('Comprensión general', lang)}</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:1.4rem;color:${curso.comprension_general >= 8 ? '#5cc08a' : curso.comprension_general >= 6 ? '#EAB308' : '#e0836f'};">${fmtDec(curso.comprension_general)}/10</td>
     </tr></table>
     ` : ''}
 
     ${curso.puntos_fuertes ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#5cc08a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Puntos fuertes', lang)}</div>
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#cfcfd6;margin-bottom:16px;">${esc(curso.puntos_fuertes)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#5cc08a;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Puntos fuertes', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:14px;line-height:21px;color:#E5E5E5;margin-bottom:16px;">${esc(curso.puntos_fuertes)}</div>
     ` : ''}
 
     ${curso.brechas_aprendizaje ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#e89a92;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Brechas de aprendizaje', lang)}</div>
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#cfcfd6;margin-bottom:16px;">${esc(curso.brechas_aprendizaje)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#e0836f;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Brechas de aprendizaje', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:14px;line-height:21px;color:#E5E5E5;margin-bottom:16px;">${esc(curso.brechas_aprendizaje)}</div>
     ` : ''}
 
     ${curso.participacion ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#7c7c84;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Participación</div>
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#cfcfd6;margin-bottom:${curso.participacion_score != null ? '6' : '16'}px;">${esc(curso.participacion)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#A3A3A3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">Participación</div>
+    <div style="font-family:Inter,sans-serif;font-size:14px;line-height:21px;color:#E5E5E5;margin-bottom:${curso.participacion_score != null ? '6' : '16'}px;">${esc(curso.participacion)}</div>
     ${curso.participacion_score != null ? `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;"><tr>
-      <td style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#7c7c84;">${t('Puntaje de participación', lang)}</td>
-      <td align="right" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:${curso.participacion_score >= 8 ? '#5cc08a' : curso.participacion_score >= 6 ? '#d4af37' : '#e89a92'};">${fmtDec(curso.participacion_score)}/10</td>
+      <td style="font-family:Inter,sans-serif;font-size:12px;color:#A3A3A3;">${t('Puntaje de participación', lang)}</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:1.2rem;color:${curso.participacion_score >= 8 ? '#5cc08a' : curso.participacion_score >= 6 ? '#EAB308' : '#e0836f'};">${fmtDec(curso.participacion_score)}/10</td>
     </tr></table>
     ` : ''}
     ` : ''}
@@ -400,32 +400,32 @@ function courseReportSection(turns, ai, name, lang) {
     ${curso.seguimiento != null ? `
     <!-- Seguimiento -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;"><tr>
-      <td style="font-family:Helvetica,Arial,sans-serif;font-size:13px;color:#cfcfd6;">${t('Seguimiento', lang)}</td>
-      <td align="right" style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:${curso.seguimiento >= 8 ? '#5cc08a' : curso.seguimiento >= 6 ? '#d4af37' : '#e89a92'};">${fmtDec(curso.seguimiento)}/10</td>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;">${t('Seguimiento', lang)}</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:1.4rem;color:${curso.seguimiento >= 8 ? '#5cc08a' : curso.seguimiento >= 6 ? '#EAB308' : '#e0836f'};">${fmtDec(curso.seguimiento)}/10</td>
     </tr></table>
     ` : ''}
 
     ${Object.keys(modScores).length ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#7c7c84;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Quizzes por módulo', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#A3A3A3;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Quizzes por módulo', lang)}</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;">${quizRows}</table>
     ` : ''}
 
     ${wrongRows ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#e89a92;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Preguntas incorrectas a repasar', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#e0836f;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;">${t('Preguntas incorrectas a repasar', lang)}</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:16px;">${wrongRows}</table>
     ` : ''}
 
     ${curso.recomendacion_estudio ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:11px;color:#d4af37;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Siguiente paso de estudio', lang)}</div>
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:14px;line-height:21px;color:#cfcfd6;margin-bottom:16px;">${esc(curso.recomendacion_estudio)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:11px;color:#EAB308;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">${t('Siguiente paso de estudio', lang)}</div>
+    <div style="font-family:Inter,sans-serif;font-size:14px;line-height:21px;color:#E5E5E5;margin-bottom:16px;">${esc(curso.recomendacion_estudio)}</div>
     ` : ''}
 
     ${ai && ai.deep_learning ? `
-    <div style="background:#0f0f12;border:1px solid #2a2620;border-radius:8px;padding:16px 18px;margin-top:8px;">
-      <div style="font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:2px;color:#5a5a62;text-transform:uppercase;margin-bottom:10px;">${t('🧠 Nota Deep Learning — mejoras para Víctor', lang)}</div>
-      ${ai.deep_learning.que_salio_bien ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#5cc08a;margin-bottom:4px;">✓ ${esc(ai.deep_learning.que_salio_bien)}</div>` : ''}
-      ${ai.deep_learning.que_mejorar ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#e89a92;margin-bottom:4px;">△ ${esc(ai.deep_learning.que_mejorar)}</div>` : ''}
-      ${ai.deep_learning.config_sugerida ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#d4af37;margin-bottom:0;">⚙ ${esc(ai.deep_learning.config_sugerida)}</div>` : ''}
+    <div style="background:#0A0A0A;border:1px solid #2a2620;border-radius:8px;padding:16px 18px;margin-top:8px;">
+      <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:2px;color:#5a5a62;text-transform:uppercase;margin-bottom:10px;">${t('🧠 Nota Deep Learning — mejoras para Víctor', lang)}</div>
+      ${ai.deep_learning.que_salio_bien ? `<div style="font-family:Inter,sans-serif;font-size:12px;color:#5cc08a;margin-bottom:4px;">✓ ${esc(ai.deep_learning.que_salio_bien)}</div>` : ''}
+      ${ai.deep_learning.que_mejorar ? `<div style="font-family:Inter,sans-serif;font-size:12px;color:#e0836f;margin-bottom:4px;">△ ${esc(ai.deep_learning.que_mejorar)}</div>` : ''}
+      ${ai.deep_learning.config_sugerida ? `<div style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;margin-bottom:0;">⚙ ${esc(ai.deep_learning.config_sugerida)}</div>` : ''}
     </div>
     ` : ''}
   </td></tr>`;
@@ -470,29 +470,29 @@ function buildQuizData(ai, turns) {
 
 // Tarjeta de una pregunta del quiz (correcta o incorrecta).
 function quizItem(q, ok, lang) {
-  const bd = ok ? '#5cc08a' : '#e89a92';
+  const bd = ok ? '#5cc08a' : '#e0836f';
   const badge = ok ? t('✅ Correcto', lang) : t('❌ Incorrecto', lang);
   const userMark = ok ? ' ✅' : ' ❌';
   let correctLine = '';
   if (!ok && q.correct_answer) {
-    correctLine = `<div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#cfcfd6;margin-bottom:8px;"><span style="color:#5cc08a;font-weight:700;">${t('Respuesta correcta:', lang)}</span> ${esc(q.correct_answer)} ✅</div>`;
+    correctLine = `<div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#E5E5E5;margin-bottom:8px;"><span style="color:#5cc08a;font-weight:700;">${t('Respuesta correcta:', lang)}</span> ${esc(q.correct_answer)} ✅</div>`;
   } else if (ok && q.correct_answer && q.correct_answer !== q.user_answer) {
-    correctLine = `<div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#cfcfd6;margin-bottom:8px;"><span style="color:#5cc08a;font-weight:700;">${t('Respuesta esperada:', lang)}</span> ${esc(q.correct_answer)} ✅</div>`;
+    correctLine = `<div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#E5E5E5;margin-bottom:8px;"><span style="color:#5cc08a;font-weight:700;">${t('Respuesta esperada:', lang)}</span> ${esc(q.correct_answer)} ✅</div>`;
   }
   const explanation = q.explanation
-    ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#a9a9b0;background:#0d0d0f;border-radius:6px;padding:9px 11px;">${esc(q.explanation)}</div>`
+    ? `<div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#A3A3A3;background:#0A0A0A;border-radius:6px;padding:9px 11px;">${esc(q.explanation)}</div>`
     : '';
   const tip = q.learning_tip
-    ? `<div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#d4af37;background:rgba(212,175,55,0.10);border-radius:6px;padding:10px 12px;margin-top:8px;">📚 <strong>${t('Consejo de aprendizaje:', lang)}</strong> ${esc(q.learning_tip)}</div>`
+    ? `<div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#EAB308;background:rgba(234,179,8,0.12);border-radius:6px;padding:10px 12px;margin-top:8px;">📚 <strong>${t('Consejo de aprendizaje:', lang)}</strong> ${esc(q.learning_tip)}</div>`
     : '';
   return `<tr><td style="padding:0 0 14px 0;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#161618;border:1px solid #262626;border-left:3px solid ${bd};border-radius:10px;"><tr><td style="padding:15px 17px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-left:3px solid ${bd};border-radius:10px;"><tr><td style="padding:15px 17px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td valign="top" style="font-family:Georgia,serif;font-size:14px;line-height:20px;color:#f5f5f5;">${esc(String(q.id))}. ${esc(q.question)}</td>
-        <td align="right" valign="top" style="font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.5px;color:${bd};white-space:nowrap;padding-left:12px;">${badge}</td>
+        <td valign="top" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;line-height:20px;color:#FFFFFF;">${esc(String(q.id))}. ${esc(q.question)}</td>
+        <td align="right" valign="top" style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.5px;color:${bd};white-space:nowrap;padding-left:12px;">${badge}</td>
       </tr></table>
       <div style="height:9px;font-size:0;">&nbsp;</div>
-      <div style="font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:20px;color:#cfcfd6;margin-bottom:${correctLine ? '6' : '8'}px;"><span style="color:#8a8a92;">Tu respuesta:</span> ${esc(q.user_answer)}${userMark}</div>
+      <div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#E5E5E5;margin-bottom:${correctLine ? '6' : '8'}px;"><span style="color:#8a8a8a;">Tu respuesta:</span> ${esc(q.user_answer)}${userMark}</div>
       ${correctLine}
       ${explanation}
       ${tip}
@@ -504,7 +504,7 @@ function quizItem(q, ok, lang) {
 function quizSection(quizData, lang) {
   if (!quizData || !quizData.total) return '';
   const { questions, total, correct, incorrect, score10, pct } = quizData;
-  const scoreColor = pct >= 80 ? '#5cc08a' : pct >= 60 ? '#d4af37' : '#e89a92';
+  const scoreColor = pct >= 80 ? '#5cc08a' : pct >= 60 ? '#EAB308' : '#e0836f';
   const scoreStr = String(score10).replace('.', ',');
   const correctQs = questions.filter((q) => q.is_correct);
   const incorrectQs = questions.filter((q) => !q.is_correct);
@@ -513,40 +513,40 @@ function quizSection(quizData, lang) {
 
   const statCell = (label, value, color) => `
     <td class="stack" width="33%" valign="top" style="padding:6px;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#161618;border:1px solid #262626;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
-        <div style="font-family:Georgia,serif;font-size:22px;color:${color};line-height:26px;">${esc(String(value))}</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">${label}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+        <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:22px;color:${color};line-height:26px;">${esc(String(value))}</div>
+        <div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:1.5px;color:#A3A3A3;text-transform:uppercase;margin-top:4px;">${label}</div>
       </td></tr></table></td>`;
 
-  return `<tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #1c1c20;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">${t('Evaluación de comprensión — Quiz', lang)}</div>
+  return `<tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #262626;">
+    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#A3A3A3;text-transform:uppercase;">${t('Evaluación de comprensión — Quiz', lang)}</div>
     <div style="height:6px;font-size:0;">&nbsp;</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">Mini-evaluación de lo que aprendiste en esta sesión.</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">Mini-evaluación de lo que aprendiste en esta sesión.</div>
     <div style="height:16px;font-size:0;">&nbsp;</div>
 
     <!-- Puntuación del quiz -->
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#181818;border:1px solid #2c2c2c;border-radius:12px;"><tr><td align="center" style="padding:22px 20px;">
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7c7c84;text-transform:uppercase;">${t('Puntuación del quiz', lang)}</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:12px;"><tr><td align="center" style="padding:22px 20px;">
+      <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:2.5px;color:#A3A3A3;text-transform:uppercase;">${t('Puntuación del quiz', lang)}</div>
       <div style="height:8px;font-size:0;">&nbsp;</div>
-      <div style="font-family:Georgia,serif;font-size:42px;line-height:46px;color:${scoreColor};letter-spacing:-1px;">${scoreStr}<span style="font-size:18px;color:#6a6a6a;">/10</span> <span style="font-size:20px;color:#8a8a92;">(${pct}%)</span></div>
+      <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:42px;line-height:46px;color:${scoreColor};letter-spacing:-1px;">${scoreStr}<span style="font-size:18px;color:#6a6a6a;">/10</span> <span style="font-size:20px;color:#8a8a8a;">(${pct}%)</span></div>
     </td></tr></table>
     <div style="height:12px;font-size:0;">&nbsp;</div>
 
     <!-- Estadísticas -->
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      ${statCell(t('Total preguntas', lang), total, '#f5f5f5')}
+      ${statCell(t('Total preguntas', lang), total, '#FFFFFF')}
       ${statCell(t('Correctas', lang), correct, '#5cc08a')}
-      ${statCell(t('Incorrectas', lang), incorrect, '#e89a92')}
+      ${statCell(t('Incorrectas', lang), incorrect, '#e0836f')}
     </tr></table>
     <div style="height:22px;font-size:0;">&nbsp;</div>
 
     ${correctQs.length ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#5cc08a;text-transform:uppercase;letter-spacing:1.5px;border-bottom:2px solid #223528;padding-bottom:8px;margin-bottom:14px;">${correctHdr}</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;color:#5cc08a;text-transform:uppercase;letter-spacing:1.5px;border-bottom:2px solid #223528;padding-bottom:8px;margin-bottom:14px;">${correctHdr}</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${correctQs.map((q) => quizItem(q, true, lang)).join('')}</table>
     ` : ''}
 
     ${incorrectQs.length ? `
-    <div style="font-family:Helvetica,Arial,sans-serif;font-size:12px;color:#e89a92;text-transform:uppercase;letter-spacing:1.5px;border-bottom:2px solid #3a2624;padding-bottom:8px;margin:${correctQs.length ? '18' : '0'}px 0 14px;">${incorrectHdr}</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;color:#e0836f;text-transform:uppercase;letter-spacing:1.5px;border-bottom:2px solid #3a2624;padding-bottom:8px;margin:${correctQs.length ? '18' : '0'}px 0 14px;">${incorrectHdr}</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${incorrectQs.map((q) => quizItem(q, false, lang)).join('')}</table>
     ` : ''}
   </td></tr>`;
@@ -557,34 +557,34 @@ function quizSection(quizData, lang) {
 function neuroscienceSection(n4) {
   if (!n4 || typeof n4 !== 'object') return '';
   const items = [
-    ['dopamina',  'Dopamina',  'Anticipación de recompensa', '#d4af37'],
+    ['dopamina',  'Dopamina',  'Anticipación de recompensa', '#EAB308'],
     ['oxitocina', 'Oxitocina', 'Confianza y vínculo',        '#5cc08a'],
     ['cortisol',  'Cortisol',  'Estrés ante objeciones',     '#e0a13a'],
-    ['amigdala',  'Amígdala',  'Miedo y percepción de riesgo','#e89a92'],
+    ['amigdala',  'Amígdala',  'Miedo y percepción de riesgo','#e0836f'],
   ];
   const cells = items.map(([k, label, sub, color]) => {
     const o = n4[k] || {};
     const nivel = Math.max(0, Math.min(100, parseInt(o.nivel != null ? o.nivel : 0, 10)));
     const txt = esc(o.texto || '—');
     return `<tr><td style="padding:0 0 14px 0;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:12px;"><tr><td style="padding:16px 18px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0A0A0A;border:1px solid #262626;border-radius:12px;"><tr><td style="padding:16px 18px;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-          <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;color:${color};font-weight:700;letter-spacing:0.4px;">${label}</td>
-          <td align="right" style="font-family:Georgia,serif;font-size:18px;color:${color};">${nivel}<span style="font-size:11px;color:#5a5a62;">%</span></td>
+          <td style="font-family:Inter,sans-serif;font-size:14px;color:${color};font-weight:700;letter-spacing:0.4px;">${label}</td>
+          <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:18px;color:${color};">${nivel}<span style="font-size:11px;color:#5a5a62;">%</span></td>
         </tr></table>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin:2px 0 8px;">${sub}</div>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1e1e22;border-radius:99px;"><tr>
+        <div style="font-family:Inter,sans-serif;font-size:10px;letter-spacing:1.5px;color:#A3A3A3;text-transform:uppercase;margin:2px 0 8px;">${sub}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#262626;border-radius:99px;"><tr>
           <td style="font-size:0;line-height:0;"><table width="${nivel}%" cellpadding="0" cellspacing="0" border="0"><tr>
           <td height="6" style="background:${color};border-radius:99px;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr></table>
         <div style="height:9px;font-size:0;">&nbsp;</div>
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:20px;color:#cfcfd6;">${txt}</div>
+        <div style="font-family:Inter,sans-serif;font-size:13px;line-height:20px;color:#E5E5E5;">${txt}</div>
       </td></tr></table>
     </td></tr>`;
   }).join('');
-  return `<tr><td class="px" style="padding:26px 44px 6px 44px;border-top:1px solid #1c1c20;">
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">🧠 Análisis Neurociencia</div>
+  return `<tr><td class="px" style="padding:26px 44px 6px 44px;border-top:1px solid #262626;">
+    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#A3A3A3;text-transform:uppercase;">🧠 Análisis Neurociencia</div>
     <div style="height:6px;font-size:0;">&nbsp;</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">Neurotransmisores que el asesor activó en el cliente durante la sesión.</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">Neurotransmisores que el asesor activó en el cliente durante la sesión.</div>
     <div style="height:16px;font-size:0;">&nbsp;</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${cells}</table>
   </td></tr>`;
@@ -594,16 +594,16 @@ function neuroscienceSection(n4) {
 function goldenMomentSection(gm) {
   if (!gm || !gm.cita) return '';
   return `<tr><td class="px" style="padding:26px 44px 6px 44px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#15140f;border:1px solid #3a3326;border-radius:14px;"><tr><td style="padding:24px 26px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#15140f;border:1px solid #262626;border-radius:14px;"><tr><td style="padding:24px 26px;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-        <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#d4af37;text-transform:uppercase;font-weight:600;">✨ Momento de Oro</td>
-        <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#d4af37;letter-spacing:1px;">${esc(gm.t || '')}</td>
+        <td style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#EAB308;text-transform:uppercase;font-weight:600;">✨ Momento de Oro</td>
+        <td align="right" style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;letter-spacing:1px;">${esc(gm.t || '')}</td>
       </tr></table>
       <div style="height:12px;font-size:0;">&nbsp;</div>
-      <div style="font-family:Georgia,serif;font-size:18px;line-height:28px;color:#f5f5f5;font-style:italic;border-left:2px solid #d4af37;padding-left:16px;">“${esc(gm.cita)}”</div>
+      <div style="font-family:Montserrat,sans-serif;font-weight:700;font-size:18px;line-height:28px;color:#FFFFFF;font-style:italic;border-left:2px solid #EAB308;padding-left:16px;">“${esc(gm.cita)}”</div>
       <div style="height:14px;font-size:0;">&nbsp;</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2px;color:#7c7c84;text-transform:uppercase;margin-bottom:5px;">Por qué fue efectiva</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;color:#cfcfd6;">${esc(gm.analisis || '')}</div>
+      <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:2px;color:#A3A3A3;text-transform:uppercase;margin-bottom:5px;">Por qué fue efectiva</div>
+      <div style="font-family:Inter,sans-serif;font-size:14px;line-height:22px;color:#E5E5E5;">${esc(gm.analisis || '')}</div>
     </td></tr></table>
   </td></tr>`;
 }
@@ -612,10 +612,10 @@ function goldenMomentSection(gm) {
 function trainerNoteSection(nota, lang) {
   if (!has(nota)) return '';
   return `<tr><td class="px" style="padding:22px 44px 0 44px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#1c1c1c;border:1px solid #3a3326;border-radius:12px;"><tr><td style="padding:20px 22px;">
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2.5px;color:#d4af37;text-transform:uppercase;font-weight:600;">${t('📋 Nota para entrenador', lang)}</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:12px;"><tr><td style="padding:20px 22px;">
+      <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:2.5px;color:#EAB308;text-transform:uppercase;font-weight:600;">${t('📋 Nota para entrenador', lang)}</div>
       <div style="height:8px;font-size:0;">&nbsp;</div>
-      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;color:#cfcfd6;letter-spacing:0.1px;">${esc(nota)}</div>
+      <div style="font-family:Inter,sans-serif;font-size:14px;line-height:22px;color:#E5E5E5;letter-spacing:0.1px;">${esc(nota)}</div>
     </td></tr></table>
   </td></tr>`;
 }
@@ -637,8 +637,8 @@ function sparklineSvg(values, opts) {
   const path = pts.map((p, i) => (i ? 'L' : 'M') + p[0] + ' ' + p[1]).join(' ');
   const last = pts[pts.length - 1];
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;">
-    <path d="${path}" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="${last[0]}" cy="${last[1]}" r="3" fill="#d4af37"/></svg>`;
+    <path d="${path}" fill="none" stroke="#EAB308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="${last[0]}" cy="${last[1]}" r="3" fill="#EAB308"/></svg>`;
 }
 
 // ── Índice de Progreso: sesión actual vs histórico ──
@@ -646,42 +646,129 @@ function sparklineSvg(values, opts) {
 function progressSection(cur, hist) {
   hist = hist || {};
   const arrow = (now, prev, inv) => {
-    if (prev == null || !isFinite(prev) || now == null || !isFinite(now)) return '<span style="color:#7c7c84;">—</span>';
+    if (prev == null || !isFinite(prev) || now == null || !isFinite(now)) return '<span style="color:#A3A3A3;">—</span>';
     const d = now - prev, up = inv ? d < 0 : d > 0;
-    if (Math.abs(d) < 0.05) return '<span style="color:#7c7c84;">→ estable</span>';
+    if (Math.abs(d) < 0.05) return '<span style="color:#A3A3A3;">→ estable</span>';
     const pct = prev ? Math.round((d / Math.abs(prev)) * 100) : 0;
-    return `<span style="color:${up ? '#5cc08a' : '#e89a92'};font-weight:700;">${up ? '↑' : '↓'} ${Math.abs(pct)}%</span>`;
+    return `<span style="color:${up ? '#5cc08a' : '#e0836f'};font-weight:700;">${up ? '↑' : '↓'} ${Math.abs(pct)}%</span>`;
   };
   const fmtD = (s) => { s = parseInt(s || 0, 10); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
   const spark = sparklineSvg((hist.scores || []).concat(cur && cur.score != null ? [cur.score] : []));
   const isFirst = !hist.count;
   const rows = isFirst
-    ? `<tr><td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:22px;color:#cfcfd6;">Primera sesión registrada de este asesor. A partir de aquí se medirá su evolución sesión a sesión.</td></tr>`
+    ? `<tr><td style="font-family:Inter,sans-serif;font-size:14px;line-height:22px;color:#E5E5E5;">Primera sesión registrada de este asesor. A partir de aquí se medirá su evolución sesión a sesión.</td></tr>`
     : `
     <tr>
-      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#cfcfd6;padding:0 0 12px 0;">Desempeño</td>
-      <td align="right" style="font-family:Georgia,serif;font-size:16px;color:#f5f5f5;padding:0 0 12px 8px;">${cur.score != null ? cur.score : '—'} <span style="font-size:12px;color:#5a5a62;">vs ${hist.avgScore != null ? Math.round(hist.avgScore * 10) / 10 : '—'}</span></td>
-      <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;padding:0 0 12px 10px;">${arrow(cur.score, hist.avgScore)}</td>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;padding:0 0 12px 0;">Desempeño</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#FFFFFF;padding:0 0 12px 8px;">${cur.score != null ? cur.score : '—'} <span style="font-size:12px;color:#5a5a62;">vs ${hist.avgScore != null ? Math.round(hist.avgScore * 10) / 10 : '—'}</span></td>
+      <td align="right" style="font-family:Inter,sans-serif;font-size:13px;padding:0 0 12px 10px;">${arrow(cur.score, hist.avgScore)}</td>
     </tr>
     <tr>
-      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#cfcfd6;padding:0 0 12px 0;">Competencias (prom.)</td>
-      <td align="right" style="font-family:Georgia,serif;font-size:16px;color:#f5f5f5;padding:0 0 12px 8px;">${cur.compAvg != null ? Math.round(cur.compAvg * 10) / 10 : '—'} <span style="font-size:12px;color:#5a5a62;">vs ${hist.avgCompAvg != null ? Math.round(hist.avgCompAvg * 10) / 10 : '—'}</span></td>
-      <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;padding:0 0 12px 10px;">${arrow(cur.compAvg, hist.avgCompAvg)}</td>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;padding:0 0 12px 0;">Competencias (prom.)</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#FFFFFF;padding:0 0 12px 8px;">${cur.compAvg != null ? Math.round(cur.compAvg * 10) / 10 : '—'} <span style="font-size:12px;color:#5a5a62;">vs ${hist.avgCompAvg != null ? Math.round(hist.avgCompAvg * 10) / 10 : '—'}</span></td>
+      <td align="right" style="font-family:Inter,sans-serif;font-size:13px;padding:0 0 12px 10px;">${arrow(cur.compAvg, hist.avgCompAvg)}</td>
     </tr>
     <tr>
-      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#cfcfd6;padding:0;">Duración</td>
-      <td align="right" style="font-family:Georgia,serif;font-size:16px;color:#f5f5f5;padding:0 0 0 8px;">${fmtD(cur.durSecs)} <span style="font-size:12px;color:#5a5a62;">vs ${fmtD(hist.avgDurSecs)}</span></td>
-      <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;padding:0 0 0 10px;">${arrow(cur.durSecs, hist.avgDurSecs)}</td>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;padding:0;">Duración</td>
+      <td align="right" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;color:#FFFFFF;padding:0 0 0 8px;">${fmtD(cur.durSecs)} <span style="font-size:12px;color:#5a5a62;">vs ${fmtD(hist.avgDurSecs)}</span></td>
+      <td align="right" style="font-family:Inter,sans-serif;font-size:13px;padding:0 0 0 10px;">${arrow(cur.durSecs, hist.avgDurSecs)}</td>
     </tr>`;
-  return `<tr><td class="px" style="padding:26px 44px 6px 44px;border-top:1px solid #1c1c20;">
+  return `<tr><td class="px" style="padding:26px 44px 6px 44px;border-top:1px solid #262626;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
-      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">📈 Índice de Progreso</td>
+      <td style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#A3A3A3;text-transform:uppercase;">📈 Índice de Progreso</td>
       <td align="right">${spark}</td>
     </tr></table>
     <div style="height:6px;font-size:0;">&nbsp;</div>
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">${isFirst ? 'Sin historial previo.' : 'Comparado con el promedio de ' + hist.count + ' sesión' + (hist.count === 1 ? '' : 'es') + ' anterior' + (hist.count === 1 ? '' : 'es') + '.'}</div>
+    <div style="font-family:Inter,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;">${isFirst ? 'Sin historial previo.' : 'Comparado con el promedio de ' + hist.count + ' sesión' + (hist.count === 1 ? '' : 'es') + ' anterior' + (hist.count === 1 ? '' : 'es') + '.'}</div>
     <div style="height:14px;font-size:0;">&nbsp;</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${rows}</table>
+  </td></tr>`;
+}
+
+// ── Fila de 4 KPIs (Tiempo · Módulos · Score · Potencial) ──
+// cells: [{value, label, color}] — se pinta con la paleta del rediseño.
+function kpiRow(cells) {
+  const list = (cells || []).slice(0, 4);
+  if (!list.length) return '';
+  const cell = (c) => `
+    <td class="stack" width="25%" valign="top" style="padding:6px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#171717;border:1px solid #262626;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+        <div class="metric-num" style="font-family:Montserrat,sans-serif;font-weight:700;font-size:20px;color:${c.color || '#FFFFFF'};line-height:24px;">${esc(c.value == null || c.value === '' ? '—' : c.value)}</div>
+        <div style="font-family:Inter,sans-serif;font-size:9px;letter-spacing:1.5px;color:#A3A3A3;text-transform:uppercase;margin-top:4px;">${esc(c.label || '')}</div>
+      </td></tr></table></td>`;
+  return `<tr><td class="px" style="padding:10px 40px 4px 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>${list.map(cell).join('')}</tr></table>
+  </td></tr>`;
+}
+
+// ── Donut (pie) SVG inline — distribución de tiempo. ──
+// slices: [{label, pct, sub, color}] (pct 0-100). centerTop/centerBot: texto del centro.
+function pieChart(slices, centerTop, centerBot) {
+  const data = (slices || []).filter(s => (parseFloat(s.pct) || 0) > 0);
+  if (!data.length) return '';
+  const cx = 120, cy = 95, r = 62, C = 2 * Math.PI * r; // circunferencia ≈ 389.557
+  let off = 0; const arcs = []; const legend = [];
+  const total = data.reduce((a, s) => a + (parseFloat(s.pct) || 0), 0) || 100;
+  data.forEach((s) => {
+    const pct = (parseFloat(s.pct) || 0);
+    const frac = pct / total;
+    const dash = frac * C;
+    arcs.push(`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="20" stroke-dasharray="${dash.toFixed(3)} ${(C - dash).toFixed(3)}" stroke-dashoffset="${(-off).toFixed(3)}" transform="rotate(-90 ${cx} ${cy})"/>`);
+    off += dash;
+  });
+  data.forEach((s, i) => {
+    const y = 192 + i * 16;
+    legend.push(`<circle cx="12" cy="${y - 4}" r="4" fill="${s.color}"/><text x="24" y="${y}" font-family="Inter,sans-serif" font-size="11" fill="#E5E5E5">${esc(s.label)} <tspan fill="#737373">— ${Math.round((parseFloat(s.pct) || 0))}%${s.sub ? ' (' + esc(s.sub) + ')' : ''}</tspan></text>`);
+  });
+  const legendH = 176 + data.length * 16;
+  return `<svg width="240" height="${legendH + 8}" viewBox="0 0 240 ${legendH + 8}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Distribución de tiempo por actividad" style="display:block;margin:0 auto;">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#262626" stroke-width="20"/>${arcs.join('')}
+    <text x="${cx}" y="${cy - 4}" text-anchor="middle" fill="#FFFFFF" font-family="Montserrat,sans-serif" font-weight="700" font-size="22">${esc(centerTop || '')}</text>
+    <text x="${cx}" y="${cy + 12}" text-anchor="middle" fill="#737373" font-family="Inter,sans-serif" font-size="9" letter-spacing="2">${esc(centerBot || 'TOTAL')}</text>
+    ${legend.join('')}</svg>`;
+}
+
+// ── Barras "Frecuencia de temas" (heatmap). items: [{label, score10, color?}] score 0-10. ──
+function heatmapBars(items) {
+  const list = (items || []).filter(x => x && x.label);
+  if (!list.length) return '';
+  return list.map((x) => {
+    const s = Math.max(0, Math.min(10, parseFloat(x.score10) || 0));
+    const pct = Math.round(s * 10);
+    const color = x.color || (s >= 7 ? '#EAB308' : s >= 5 ? '#b8860b' : '#6b5518');
+    return `<tr><td style="padding:0 0 4px 0;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-family:Inter,sans-serif;font-size:13px;color:#E5E5E5;letter-spacing:0.3px;">${esc(x.label)}</td>
+      <td align="right" style="font-family:Inter,sans-serif;font-size:12px;color:#EAB308;font-weight:600;">${s % 1 === 0 ? s : s.toFixed(1)}/10</td></tr></table></td></tr>
+      <tr><td style="padding:0 0 13px 0;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#262626;border-radius:99px;"><tr>
+      <td style="font-size:0;line-height:0;"><table width="${pct}%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td height="6" style="background:${color};border-radius:99px;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr></table></td></tr>`;
+  }).join('');
+}
+
+// ── Sección de gráficos (pie + heatmap lado a lado). Se omite si no hay pie. ──
+function chartsSection(pieSvg, heatRowsHtml) {
+  if (!pieSvg) return '';
+  const hasHeat = !!heatRowsHtml;
+  const pieCard = `
+    <td class="chart-half" style="width:${hasHeat ? '50%' : '100%'};padding:0 ${hasHeat ? '14px' : '0'} 0 0;vertical-align:top;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="card card-shadow" style="min-height:380px;background:#171717;border:1px solid #262626;border-radius:12px;">
+        <tr><td align="center" style="padding:20px 16px;">
+          <div class="heading body-text" style="font-size:10px;letter-spacing:2px;color:#A3A3A3;font-weight:600;margin-bottom:12px;">DISTRIBUCIÓN DE TIEMPO</div>
+          <div style="width:240px;max-width:100%;margin:0 auto;">${pieSvg}</div>
+        </td></tr>
+      </table></td>`;
+  const heatCard = hasHeat ? `
+    <td class="chart-half" style="width:50%;padding:0 0 0 14px;vertical-align:top;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="card card-shadow" style="min-height:380px;background:#171717;border:1px solid #262626;border-radius:12px;">
+        <tr><td style="padding:20px 16px;">
+          <div class="heading body-text" style="font-size:10px;letter-spacing:2px;color:#A3A3A3;font-weight:600;margin-bottom:12px;">FRECUENCIA DE TEMAS</div>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${heatRowsHtml}</table>
+        </td></tr>
+      </table></td>` : '';
+  return `<tr><td class="px" style="padding:26px 44px 8px 44px;">
+    <div class="heading" style="font-size:11px;letter-spacing:3px;color:#A3A3A3;font-weight:600;">Distribución de actividades y frecuencia de temas</div>
+    <div style="height:16px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>${pieCard}${heatCard}</tr></table>
   </td></tr>`;
 }
 
@@ -695,4 +782,4 @@ function countInterventions(turns) {
   return { asesor, agente, total: asesor + agente };
 }
 
-module.exports = { esc, clean, has, fmtTime, fmtDec, buildChatTable, radarUrl, radarSvg, neuroBars, timeline, metricsRow, analyticsRow, speakingTime, extractActivity, activitySection, extractQuizResults, buildQuizData, quizItem, quizSection, courseReportSection, neuroscienceSection, goldenMomentSection, trainerNoteSection, sparklineSvg, progressSection, countInterventions };
+module.exports = { esc, clean, has, fmtTime, fmtDec, buildChatTable, radarUrl, radarSvg, neuroBars, timeline, metricsRow, analyticsRow, speakingTime, extractActivity, activitySection, extractQuizResults, buildQuizData, quizItem, quizSection, courseReportSection, neuroscienceSection, goldenMomentSection, trainerNoteSection, sparklineSvg, progressSection, countInterventions, kpiRow, pieChart, heatmapBars, chartsSection };
