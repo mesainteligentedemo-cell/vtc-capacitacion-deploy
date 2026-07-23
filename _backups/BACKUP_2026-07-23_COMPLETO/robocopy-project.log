@@ -1,0 +1,36 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Herramienta para copia eficaz de archivos         
+-------------------------------------------------------------------------------
+
+  Iniciado : jueves, 23 de julio de 2026 11:35:28 a. m.
+   Origen : C:\Users\inbou\vtc-capacitacion-deploy\
+     Destino : C:\Users\inbou\vtc-capacitacion-deploy\_backups\BACKUP_2026-07-23_COMPLETO\project-vtc-capacitacion\
+
+    Archivos: *.*
+	    
+ Dirs. de ejecutables: node_modules
+	    .next
+	    .git
+	    __pycache__
+	    .pytest_cache
+	    _backups
+	    
+  Opciones: *.* /NDL /NFL /S /E /DCOPY:DA /COPY:DAT /NP /MT:16 /R:1 /W:1 
+
+------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------
+
+               Total   Copiado   OmitidoNo coincidencia     ERROR    Extras
+Director.:        37        30         8         0         0         0
+ Archivos:       477       477         0         0         0         0
+    Bytes:   1.413 g   1.413 g         0         0         0         0
+   Tiempo:   0:00:24   0:00:01                       0:00:00   0:00:00
+
+
+Velocidad:           1,039,199,180 Bytes/s
+Velocidad:              59,463.453 Megabytes/min
+   Finalizado: jueves, 23 de julio de 2026 11:35:29 a. m.
+

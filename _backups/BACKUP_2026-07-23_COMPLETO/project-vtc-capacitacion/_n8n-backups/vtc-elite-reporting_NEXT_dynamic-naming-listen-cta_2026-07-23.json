@@ -1,0 +1,553 @@
+{
+  "updatedAt": "2026-07-22T17:19:21.385Z",
+  "createdAt": "2026-07-20T07:41:51.438Z",
+  "id": "WEkyHL4lJPEytNoF",
+  "name": "VTC Elite Reporting",
+  "description": null,
+  "active": true,
+  "isArchived": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/vtc-report",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -928,
+        -528
+      ],
+      "id": "fe44e71f-2487-4337-858c-d53f3b7d746b",
+      "name": "Webhook",
+      "webhookId": "526edb82-400f-4560-ae8c-29eed2664e76"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build Attachments - VTC Elite Reporting\n// SOLO 2 adjuntos: MP3 (audio ElevenLabs) + PDF (reporte pixel-perfect Vercel,\n// con la TRANSCRIPCION COMPLETA incluida dentro del propio PDF). El adjunto TXT\n// fue eliminado a proposito: la transcripcion ya no viaja como archivo aparte.\n// \"Send an Email\" adjunta por nombre de propiedad binaria via attach_list.\nconst P = $('Preparar Datos').first().json;\nconst empId = String(P.empleado_id || '0000').replace(/[^A-Za-z0-9_-]+/g, '_');\nconst fecha = String(P.fecha_formato || 'sesion').replace(/[^A-Za-z0-9_-]+/g, '_');\n// Nombre dinámico {nombre-slug}_{YYYYMMDD}_{HHMM} (hora de Cancún) calculado en\n// \"Preparar Datos\"; si faltara (workflow viejo), se reconstruye como red de seguridad.\nconst fileBase = String(P.file_base || (empId + '_' + fecha)).replace(/[^A-Za-z0-9_-]+/g, '_');\nconst binary = {}; const present = []; const notes = [];\n\nfunction bytesOf(fs) { if (!fs) return 0; const m = String(fs).match(/([\\d.]+)\\s*(GB|MB|kB|KB|B)/i); if (!m) return 0; const v = parseFloat(m[1]); const u = m[2].toUpperCase(); return u === 'GB' ? v * 1e9 : (u === 'MB' ? v * 1e6 : (u === 'KB' ? v * 1e3 : v)); }\n\n// 1) MP3 - solo si <= 24 MB (evita rebote SMTP; entrega el PDF igualmente)\ntry {\n  const ab = $('Fetch Audio HTTP').first().binary;\n  if (ab && ab.data) {\n    const sz = bytesOf(ab.data.fileSize);\n    if (sz > 0 && sz > 24 * 1e6) { notes.push('audio_omitido_por_tamano:' + ab.data.fileSize); }\n    else { binary.data = Object.assign({}, ab.data, { fileName: `${fileBase}.mp3` }); present.push('data'); }\n  } else { notes.push('audio_no_disponible'); }\n} catch (e) { notes.push('audio_err:' + String(e.message).slice(0, 80)); }\n\n// 2) PDF - reporte visual con transcripcion completa embebida\ntry {\n  const pb = $('Fetch PDF').first().binary;\n  if (pb && pb.pdf) { binary.pdf = Object.assign({}, pb.pdf, { fileName: `${fileBase}.pdf` }); present.push('pdf'); }\n  else { notes.push('pdf_no_disponible'); }\n} catch (e) { notes.push('pdf_err:' + String(e.message).slice(0, 80)); }\n\nreturn [{ json: { success: true, has_attachment: present.length > 0, attach_list: present.join(','), files: { audio: binary.data ? binary.data.fileName : null, pdf: binary.pdf ? binary.pdf.fileName : null }, notes }, binary: binary }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -16,
+        -512
+      ],
+      "id": "c2582048-0465-433f-a780-ef63a8b2a860",
+      "name": "Build Attachments"
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@victor-ia.com.mx",
+        "toEmail": "=eldudemateos@gmail.com, mesainteligentedemo@gmail.com, chrisoria16@gmail.com",
+        "subject": "=Reporte de entrenamiento — {{ $node[\"Preparar Datos\"].json.employee_name }} — {{ $node[\"Preparar Datos\"].json.fecha_formato }}",
+        "options": {
+          "attachments": "={{ $node[\"Build Attachments\"].json.attach_list }}",
+          "ccEmail": "",
+          "appendAttribution": false
+        },
+        "emailFormat": "text",
+        "text": "={{ $node[\"Generar HTML Email\"].json.text }}"
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        144,
+        -288
+      ],
+      "id": "057d3fec-54f5-4947-bcad-cc7d0b952f4f",
+      "name": "Send an Email",
+      "webhookId": "1c39d9bf-6d1c-4147-9d49-3e057321e44b",
+      "credentials": {
+        "smtp": {
+          "id": "MmzqSvtvMqAzB0T8",
+          "name": "Hostinger SMTP VTC"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        352,
+        -288
+      ],
+      "id": "21d63616-5169-4aad-92e8-e2f45cca3f11",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first();\n// BUG ORIGINAL: \"const data = $input.first(); ... data.body\" leia el wrapper\n// del item (que NO tiene .body), nunca el payload real -> todo caia en los\n// valores por defecto (incluido conversation_id -> \"AUTO_...\") sin importar\n// lo que mandara el webhook de ElevenLabs. El payload real vive en item.json.body.\nconst rawBody = (item.json && item.json.body !== undefined) ? item.json.body : item.json;\nconst payload = typeof rawBody === \"string\" ? JSON.parse(rawBody) : rawBody;\n\n// Soporta el webhook post-call REAL de ElevenLabs (analysis.data_collection_results\n// + metadata + transcript) ademas del payload plano simple (test / integracion\n// directa). Nunca se inventan datos: si un campo no llega, se usa un fallback\n// generico marcado como tal via los valores por defecto de mas abajo.\nconst analysis = payload.analysis || {};\nconst dc = analysis.data_collection_results || {};\nconst meta = payload.metadata || {};\n\nfunction dcv(k) {\n  const o = dc[k] != null ? dc[k] : (dc[k + \"  \"] != null ? dc[k + \"  \"] : dc[k + \" \"]);\n  if (o == null) return undefined;\n  return (typeof o === \"object\" && \"value\" in o) ? o.value : o;\n}\nfunction pick() {\n  for (let i = 0; i < arguments.length; i++) {\n    const v = arguments[i];\n    if (v !== undefined && v !== null && v !== \"\") return v;\n  }\n  return undefined;\n}\n\n// ── Zona horaria: America/Cancun (UTC-5, sin horario de verano) ────────────\n// ElevenLabs entrega start_time_unix_secs / accepted_time_unix_secs en UTC.\n// n8n expone Luxon global en los Code nodes (DateTime, Duration, Interval) ->\n// no hace falta ninguna librería extra para esta conversión.\nconst startUnix = meta.start_time_unix_secs || meta.accepted_time_unix_secs || null;\nconst cancunNow = DateTime.now().setZone(\"America/Cancun\");\nconst cancunStart = startUnix\n  ? DateTime.fromSeconds(Number(startUnix), { zone: \"utc\" }).setZone(\"America/Cancun\")\n  : cancunNow;\nconst durSecsForEnd = meta.call_duration_secs || (payload.duracion_minutos ? payload.duracion_minutos * 60 : 0);\nconst cancunEnd = startUnix ? cancunStart.plus({ seconds: durSecsForEnd }) : cancunNow;\n\nconst dia = cancunStart.toFormat(\"dd\");\nconst mes = cancunStart.toFormat(\"MM\");\nconst anio = cancunStart.toFormat(\"yyyy\");\n\nconsole.log(\"DEBUG - Webhook payload:\", JSON.stringify(payload, null, 2));\n\n// --- Identidad (FIX: antes solo se calculaba employee_name; nombre/empleado_id/\n// puesto no existian en la salida, por lo que \"Generar HTML Email\" SIEMPRE\n// mostraba los valores de ejemplo fijos de su plantilla, sin importar el payload) ---\nconst nombre = pick(payload.nombre, dcv(\"user_name\"), payload.employee_name) || \"Usuario\";\nconst empleadoId = pick(payload.empleado_id, payload.employee_number, dcv(\"employee_number\"), payload.emp_id) || \"0000\";\nconst puesto = pick(payload.puesto, dcv(\"user_role\"), payload.role) || \"Asesor de Ventas\";\nconst departamento = pick(payload.departamento, payload.dept) || \"Dirección de Ventas\";\nfunction normalizaIdioma(v) {\n  const s = String(v || \"\").toLowerCase();\n  if (!s) return undefined;\n  if (s.indexOf(\"esp\") === 0 || s === \"es\") return \"Español\";\n  if (s.indexOf(\"ing\") === 0 || s.indexOf(\"en\") === 0) return \"Inglés\";\n  return v;\n}\nconst idioma = normalizaIdioma(pick(payload.idioma, dcv(\"idioma\"))) ||\n  ((meta.main_language || \"\").toLowerCase().indexOf(\"en\") === 0 ? \"Inglés\" : \"Español\");\n\nconst durSecsFromMeta = meta.call_duration_secs;\nconst duracionMinutos = payload.duracion_minutos || (durSecsFromMeta ? Math.round(durSecsFromMeta / 60) : 28);\nconst durSecs = durSecsFromMeta || (payload.duracion_minutos ? payload.duracion_minutos * 60 : duracionMinutos * 60);\nconst duracionTexto = payload.duracion_texto || (durSecs ? (Math.floor(durSecs / 60) + \":\" + String(Math.round(durSecs % 60)).padStart(2, \"0\")) : \"28:00\");\n\nconst scoreTotal = Number(pick(payload.scoreTotal, payload.score, dcv(\"desempeno_score\"))) || 8.7;\nconst potencialMejora = payload.potencial_mejora != null ? payload.potencial_mejora : Math.max(0, Math.round((10 - scoreTotal) * 13));\n\n// --- Nombre de archivo dinámico (PDF/MP3): {nombre-slug}_{YYYYMMDD}_{HHMM}, SIEMPRE en\n// hora de Cancún — mismo algoritmo que api/_naming.js (slugName) para que ambos lados\n// (Vercel y n8n) generen el mismo nombre si algún día se comparan. ---\nfunction slugName(s) {\n  const base = String(s == null ? \"\" : s).normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase().trim();\n  const slug = base.replace(/[^a-z0-9]+/g, \"-\").replace(/^-+|-+$/g, \"\");\n  return slug || \"asesor\";\n}\nconst nombreSlug = slugName(nombre);\nconst fechaYYYYMMDD = cancunStart.toFormat(\"yyyyMMdd\");\nconst horaHHMMCompact = cancunStart.toFormat(\"HHmm\");\nconst fileBase = `${nombreSlug}_${fechaYYYYMMDD}_${horaHHMMCompact}`;\n\nreturn {\n    success: true,\n    conversation_id: payload.conversation_id || \"AUTO_\" + Date.now(),\n\n    // Identidad\n    employee_name: nombre,\n    nombre: nombre,\n    empleado_id: empleadoId,\n    puesto: puesto,\n    departamento: departamento,\n    idioma: idioma,\n\n    // Nombre de archivo dinámico (PDF/MP3) — hora de Cancún.\n    nombre_slug: nombreSlug,\n    fecha_yyyymmdd: fechaYYYYMMDD,\n    hora_hhmm_compact: horaHHMMCompact,\n    file_base: fileBase,\n\n    // Métricas (0-10)\n    score: payload.scoreTotal || payload.score || 0,\n    scoreTotal: scoreTotal,\n    rapport: Number(payload.rapport) || 8.5,\n    pnl: Number(payload.pnl) || 8.7,\n    postura: Number(payload.postura) || 7.7,\n    objeciones: Number(payload.objeciones) || 8.2,\n    cierre: Number(payload.cierre) || 7.0,\n    escucha: Number(payload.escucha) || 9.0,\n    potencial_mejora: potencialMejora,\n\n    // Narrativa\n    resumen: pick(payload.resumen, analysis.transcript_summary, dcv(\"recomendacion_siguiente\")) || \"Sesión completada.\",\n    fortalezas: pick(payload.fortalezas, dcv(\"fortalezas\")) || \"Buena disposición y actitud durante la práctica.\",\n    areas_mejora: pick(payload.areas_mejora, dcv(\"areas_mejora\")) || \"Reforzar los fundamentos del módulo practicado.\",\n    analisis_pnl: payload.analisis_pnl || \"Sin patrones PNL destacados en esta sesión.\",\n    recomendacion_siguiente: pick(payload.recomendacion_siguiente, dcv(\"recomendacion_siguiente\")) || \"Repasar el módulo con menor puntaje.\",\n\n    // Escenario / módulos\n    escenario: pick(payload.escenario, dcv(\"escenario_roleplay\"), dcv(\"tipo_actividad\")) || \"Sesión de coaching\",\n    tipo_actividad: pick(payload.tipo_actividad, dcv(\"tipo_actividad\")) || \"Roleplay\",\n    modulos_practicados: pick(payload.modulos_practicados, dcv(\"modulos_practicados\")) || \"\",\n\n    // Fecha / hora / duración — SIEMPRE hora de Cancún (America/Cancun, UTC-5).\n    fecha_formato: payload.fecha_formato || `${dia}-${mes}-${anio}`,\n    hora_inicio: payload.hora_inicio || cancunStart.toFormat(\"HH:mm\"),\n    hora_fin: payload.hora_fin || cancunEnd.toFormat(\"HH:mm\"),\n    duracion_minutos: duracionMinutos,\n    duracion_texto: duracionTexto,\n    sesion_numero: payload.sesion_numero || 1,\n\n    // Plan de acción (gerente)\n    accion1: payload.accion1 || \"Reducir Interrupciones\",\n    accion1_desc: payload.accion1_desc || \"Pausas prolongadas entre argumentos.\",\n    accion2: payload.accion2 || \"Memorizar el Pitch\",\n    accion2_desc: payload.accion2_desc || \"Dudar en el pitch resta credibilidad.\",\n    accion3: payload.accion3 || \"Dominar el Cierre\",\n    accion3_desc: payload.accion3_desc || \"Falta de confianza al cerrar.\",\n\n    // Frecuencia de temas (escala 0-10)\n    precio: payload.precio != null ? payload.precio : 8,\n    incentivos: payload.incentivos != null ? payload.incentivos : 6,\n    tiempo: payload.tiempo != null ? payload.tiempo : 10,\n    indecision: payload.indecision != null ? payload.indecision : 4,\n\n    // Distribución de tiempo por actividad (%, deben sumar ~100)\n    pct_pitch: payload.pct_pitch != null ? payload.pct_pitch : 50,\n    pct_warmup: payload.pct_warmup != null ? payload.pct_warmup : 20,\n    pct_objeciones: payload.pct_objeciones != null ? payload.pct_objeciones : 15,\n    pct_cierre: payload.pct_cierre != null ? payload.pct_cierre : 15,\n\n    // Principios neurocientíficos (%)\n    pct_patrones: payload.pct_patrones != null ? payload.pct_patrones : 50,\n    pct_fraseologia: payload.pct_fraseologia != null ? payload.pct_fraseologia : 50,\n    pct_contexto: payload.pct_contexto != null ? payload.pct_contexto : 50,\n\n    // Datos ricos OPCIONALES — solo se muestran en el reporte si vienen reales\n    // (nunca se inventa contenido de ejemplo para una sesión real).\n    transcript: Array.isArray(payload.transcript) ? payload.transcript : null,\n    historial: Array.isArray(payload.historial) ? payload.historial : null,\n    quiz: Array.isArray(payload.quiz) ? payload.quiz : null,\n    objeciones_detalle: Array.isArray(payload.objeciones_detalle) ? payload.objeciones_detalle : null,\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -720,
+        -176
+      ],
+      "id": "bb843f73-144d-44db-a96a-3fc25b2da37e",
+      "name": "Preparar Datos"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Generar Email — VTC Elite Reporting\n// CAMBIO: cuerpo del correo = SOLO texto profesional (no HTML visual).\n// El reporte visual va como PDF adjunto; audio (MP3) y transcripcion (TXT)\n// tambien adjuntos. Recibe UN item de \"Preparar Datos\".\nconst d = $input.first().json;\n\nfunction v(x, def){ return (x == null || x === \"\") ? (def || \"\") : String(x); }\n\nconst nombre         = v(d.nombre || d.employee_name, \"Asesor\");\nconst fecha          = v(d.fecha_formato, \"-\");\nconst hora           = v(d.hora_inicio, \"-\");\nconst duracion       = d.duracion_texto ? v(d.duracion_texto) : (v(d.duracion_minutos, \"-\") + \" minutos\");\nconst modulo         = v(d.modulos_practicados || d.escenario, \"-\");\nconst score          = v(d.scoreTotal, \"-\");\nconst idioma         = v(d.idioma, \"-\");\nconst resumen        = v(d.resumen, \"-\");\nconst fortalezas     = v(d.fortalezas, \"-\");\nconst areas          = v(d.areas_mejora, \"-\");\nconst recomendaciones= v(d.recomendacion_siguiente, \"-\");\n\nconst linea = \"------------------------------------------------------------\";\n\nconst text =\n\"Estimado \" + nombre + \",\\n\\n\" +\n\"Le enviamos el resumen de su sesion de entrenamiento del \" + fecha + \" a las \" + hora + \".\\n\\n\" +\n\"RESUMEN DE LA SESION\\n\" +\n\"Duracion: \" + duracion + \"\\n\" +\n\"Modulo: \" + modulo + \"\\n\" +\n\"Desempeno general: \" + score + \"/10\\n\" +\n\"Idioma: \" + idioma + \"\\n\\n\" +\n\"ANALISIS:\\n\" + resumen + \"\\n\\n\" +\n\"FORTALEZAS IDENTIFICADAS:\\n\" + fortalezas + \"\\n\\n\" +\n\"AREAS A MEJORAR:\\n\" + areas + \"\\n\\n\" +\n\"RECOMENDACION DEL COACH:\\n\" + recomendaciones + \"\\n\\n\" +\nlinea + \"\\n\\n\" +\n\"PROXIMOS PASOS\\n\\n\" +\n\"Para acceder al reporte completo con graficos, analisis detallado de competencias y plan de accion personalizado, descargue el archivo PDF adjunto.\\n\\n\" +\n\"Para revisar la transcripcion completa de la sesion, descargue el archivo de audio (MP3) y la transcripcion de texto (TXT) adjuntos.\\n\\n\" +\nlinea + \"\\n\\n\" +\n\"Quedo atento a cualquier pregunta.\\n\\n\" +\n\"Saludos cordiales,\\n\\n\" +\n\"El equipo de Victor-IA\\n\" +\n\"Entrenamiento VTC Capacitacion\\n\" +\n\"victor-ia.com.mx\\n\";\n\n// Se conserva la llave \"html\" apuntando al mismo texto por compatibilidad,\n// pero el nodo \"Send an Email\" usa emailFormat=text -> se envia como texto plano.\nreturn { text: text, html: text };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -512,
+        -512
+      ],
+      "id": "b856d72d-265f-4ee0-87bb-dda82c914b89",
+      "name": "Generar HTML Email"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.elevenlabs.io/v1/convai/conversations/{{ $node[\"Preparar Datos\"].json.conversation_id }}/audio",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "xi-api-key",
+              "value": "sk_87d5a7899d6c489c94232248c4880a0c4fe317adb3701e67"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          },
+          "timeout": 90000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -496,
+        -160
+      ],
+      "id": "d3f1a001-e11a-4a2b-9a0e-fetch0audio01",
+      "name": "Fetch Audio HTTP",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "url": "=https://vtc-capacitacion-deploy.vercel.app/api/report?conv={{ $node[\"Preparar Datos\"].json.conversation_id }}&pdf=1&name={{ $node[\"Preparar Datos\"].json.file_base }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "pdf"
+            }
+          },
+          "timeout": 90000
+        }
+      },
+      "name": "Fetch PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -304,
+        -320
+      ],
+      "id": "5591f6ba-d2e8-4916-8f9d-1d9024f27581",
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Preparar Datos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar Datos": {
+      "main": [
+        [
+          {
+            "node": "Generar HTML Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar HTML Email": {
+      "main": [
+        [
+          {
+            "node": "Fetch Audio HTTP",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Audio HTTP": {
+      "main": [
+        [
+          {
+            "node": "Fetch PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch PDF": {
+      "main": [
+        [
+          {
+            "node": "Build Attachments",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Attachments": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send an Email": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "nodeGroups": [],
+  "pinData": {
+    "Preparar Datos": [
+      {
+        "json": {
+          "body": "{\"nombre\":\"Carlos López\",\"empleado_id\":\"2847\",\"puesto\":\"Dirección\",\"fecha_formato\":\"21-07-2026\",\"hora_inicio\":\"14:35\",\"hora_fin\":\"15:03\",\"duracion_minutos\":28,\"session_numero\":5,\"scoreTotal\":8.7,\"potencial_mejora\":13,\"rapport\":8.5,\"objeciones\":8.2,\"postura\":7.7,\"cierre\":7.0,\"pnl\":8.7,\"escucha\":9.0,\"resumen\":\"Test de email\",\"accion1\":\"Reducir Interrupciones\",\"accion1_desc\":\"Pausas prolongadas\",\"accion2\":\"Memorizar el Pitch\",\"accion2_desc\":\"Dudar en pitch\",\"accion3\":\"Dominar el Cierre\",\"accion3_desc\":\"Falta de confianza\"}"
+        }
+      }
+    ]
+  },
+  "versionId": "8375df7a-2c48-41a3-942f-c172207310d0",
+  "activeVersionId": "8375df7a-2c48-41a3-942f-c172207310d0",
+  "versionCounter": 144,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "shared": [
+    {
+      "updatedAt": "2026-07-20T07:41:51.442Z",
+      "createdAt": "2026-07-20T07:41:51.442Z",
+      "role": "workflow:owner",
+      "workflowId": "WEkyHL4lJPEytNoF",
+      "projectId": "IOsZ8ZXEyd3NkPsE",
+      "project": {
+        "updatedAt": "2026-07-14T18:11:53.227Z",
+        "createdAt": "2026-07-14T17:40:14.782Z",
+        "id": "IOsZ8ZXEyd3NkPsE",
+        "name": "Pablo Solar   <mesainteligentedemo@gmail.com>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "e0e172e7-fc36-4782-aafb-9d039ab7986a"
+      }
+    }
+  ],
+  "tags": [],
+  "activeVersion": {
+    "updatedAt": "2026-07-22T17:19:21.386Z",
+    "createdAt": "2026-07-22T17:19:21.386Z",
+    "versionId": "8375df7a-2c48-41a3-942f-c172207310d0",
+    "workflowId": "WEkyHL4lJPEytNoF",
+    "nodes": [
+      {
+        "parameters": {
+          "httpMethod": "POST",
+          "path": "/vtc-report",
+          "responseMode": "responseNode",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2.1,
+        "position": [
+          -928,
+          -528
+        ],
+        "id": "fe44e71f-2487-4337-858c-d53f3b7d746b",
+        "name": "Webhook",
+        "webhookId": "526edb82-400f-4560-ae8c-29eed2664e76"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Build Attachments - VTC Elite Reporting\n// SOLO 2 adjuntos: MP3 (audio ElevenLabs) + PDF (reporte pixel-perfect Vercel,\n// con la TRANSCRIPCION COMPLETA incluida dentro del propio PDF). El adjunto TXT\n// fue eliminado a proposito: la transcripcion ya no viaja como archivo aparte.\n// \"Send an Email\" adjunta por nombre de propiedad binaria via attach_list.\nconst P = $('Preparar Datos').first().json;\nconst empId = String(P.empleado_id || '0000').replace(/[^A-Za-z0-9_-]+/g, '_');\nconst fecha = String(P.fecha_formato || 'sesion').replace(/[^A-Za-z0-9_-]+/g, '_');\n// Nombre dinámico {nombre-slug}_{YYYYMMDD}_{HHMM} (hora de Cancún) calculado en\n// \"Preparar Datos\"; si faltara (workflow viejo), se reconstruye como red de seguridad.\nconst fileBase = String(P.file_base || (empId + '_' + fecha)).replace(/[^A-Za-z0-9_-]+/g, '_');\nconst binary = {}; const present = []; const notes = [];\n\nfunction bytesOf(fs) { if (!fs) return 0; const m = String(fs).match(/([\\d.]+)\\s*(GB|MB|kB|KB|B)/i); if (!m) return 0; const v = parseFloat(m[1]); const u = m[2].toUpperCase(); return u === 'GB' ? v * 1e9 : (u === 'MB' ? v * 1e6 : (u === 'KB' ? v * 1e3 : v)); }\n\n// 1) MP3 - solo si <= 24 MB (evita rebote SMTP; entrega el PDF igualmente)\ntry {\n  const ab = $('Fetch Audio HTTP').first().binary;\n  if (ab && ab.data) {\n    const sz = bytesOf(ab.data.fileSize);\n    if (sz > 0 && sz > 24 * 1e6) { notes.push('audio_omitido_por_tamano:' + ab.data.fileSize); }\n    else { binary.data = Object.assign({}, ab.data, { fileName: `${fileBase}.mp3` }); present.push('data'); }\n  } else { notes.push('audio_no_disponible'); }\n} catch (e) { notes.push('audio_err:' + String(e.message).slice(0, 80)); }\n\n// 2) PDF - reporte visual con transcripcion completa embebida\ntry {\n  const pb = $('Fetch PDF').first().binary;\n  if (pb && pb.pdf) { binary.pdf = Object.assign({}, pb.pdf, { fileName: `${fileBase}.pdf` }); present.push('pdf'); }\n  else { notes.push('pdf_no_disponible'); }\n} catch (e) { notes.push('pdf_err:' + String(e.message).slice(0, 80)); }\n\nreturn [{ json: { success: true, has_attachment: present.length > 0, attach_list: present.join(','), files: { audio: binary.data ? binary.data.fileName : null, pdf: binary.pdf ? binary.pdf.fileName : null }, notes }, binary: binary }];\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -16,
+          -512
+        ],
+        "id": "c2582048-0465-433f-a780-ef63a8b2a860",
+        "name": "Build Attachments"
+      },
+      {
+        "parameters": {
+          "fromEmail": "info@victor-ia.com.mx",
+          "toEmail": "=eldudemateos@gmail.com, mesainteligentedemo@gmail.com, chrisoria16@gmail.com",
+          "subject": "=Reporte de entrenamiento — {{ $node[\"Preparar Datos\"].json.employee_name }} — {{ $node[\"Preparar Datos\"].json.fecha_formato }}",
+          "options": {
+            "attachments": "={{ $node[\"Build Attachments\"].json.attach_list }}",
+            "ccEmail": "",
+            "appendAttribution": false
+          },
+          "emailFormat": "text",
+          "text": "={{ $node[\"Generar HTML Email\"].json.text }}"
+        },
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
+        "position": [
+          144,
+          -288
+        ],
+        "id": "057d3fec-54f5-4947-bcad-cc7d0b952f4f",
+        "name": "Send an Email",
+        "webhookId": "1c39d9bf-6d1c-4147-9d49-3e057321e44b",
+        "credentials": {
+          "smtp": {
+            "id": "MmzqSvtvMqAzB0T8",
+            "name": "Hostinger SMTP VTC"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "options": {
+            "responseCode": 200
+          }
+        },
+        "type": "n8n-nodes-base.respondToWebhook",
+        "typeVersion": 1.5,
+        "position": [
+          352,
+          -288
+        ],
+        "id": "21d63616-5169-4aad-92e8-e2f45cca3f11",
+        "name": "Respond to Webhook"
+      },
+      {
+        "parameters": {
+          "jsCode": "const item = $input.first();\n// BUG ORIGINAL: \"const data = $input.first(); ... data.body\" leia el wrapper\n// del item (que NO tiene .body), nunca el payload real -> todo caia en los\n// valores por defecto (incluido conversation_id -> \"AUTO_...\") sin importar\n// lo que mandara el webhook de ElevenLabs. El payload real vive en item.json.body.\nconst rawBody = (item.json && item.json.body !== undefined) ? item.json.body : item.json;\nconst payload = typeof rawBody === \"string\" ? JSON.parse(rawBody) : rawBody;\n\n// Soporta el webhook post-call REAL de ElevenLabs (analysis.data_collection_results\n// + metadata + transcript) ademas del payload plano simple (test / integracion\n// directa). Nunca se inventan datos: si un campo no llega, se usa un fallback\n// generico marcado como tal via los valores por defecto de mas abajo.\nconst analysis = payload.analysis || {};\nconst dc = analysis.data_collection_results || {};\nconst meta = payload.metadata || {};\n\nfunction dcv(k) {\n  const o = dc[k] != null ? dc[k] : (dc[k + \"  \"] != null ? dc[k + \"  \"] : dc[k + \" \"]);\n  if (o == null) return undefined;\n  return (typeof o === \"object\" && \"value\" in o) ? o.value : o;\n}\nfunction pick() {\n  for (let i = 0; i < arguments.length; i++) {\n    const v = arguments[i];\n    if (v !== undefined && v !== null && v !== \"\") return v;\n  }\n  return undefined;\n}\n\n// ── Zona horaria: America/Cancun (UTC-5, sin horario de verano) ────────────\n// ElevenLabs entrega start_time_unix_secs / accepted_time_unix_secs en UTC.\n// n8n expone Luxon global en los Code nodes (DateTime, Duration, Interval) ->\n// no hace falta ninguna librería extra para esta conversión.\nconst startUnix = meta.start_time_unix_secs || meta.accepted_time_unix_secs || null;\nconst cancunNow = DateTime.now().setZone(\"America/Cancun\");\nconst cancunStart = startUnix\n  ? DateTime.fromSeconds(Number(startUnix), { zone: \"utc\" }).setZone(\"America/Cancun\")\n  : cancunNow;\nconst durSecsForEnd = meta.call_duration_secs || (payload.duracion_minutos ? payload.duracion_minutos * 60 : 0);\nconst cancunEnd = startUnix ? cancunStart.plus({ seconds: durSecsForEnd }) : cancunNow;\n\nconst dia = cancunStart.toFormat(\"dd\");\nconst mes = cancunStart.toFormat(\"MM\");\nconst anio = cancunStart.toFormat(\"yyyy\");\n\nconsole.log(\"DEBUG - Webhook payload:\", JSON.stringify(payload, null, 2));\n\n// --- Identidad (FIX: antes solo se calculaba employee_name; nombre/empleado_id/\n// puesto no existian en la salida, por lo que \"Generar HTML Email\" SIEMPRE\n// mostraba los valores de ejemplo fijos de su plantilla, sin importar el payload) ---\nconst nombre = pick(payload.nombre, dcv(\"user_name\"), payload.employee_name) || \"Usuario\";\nconst empleadoId = pick(payload.empleado_id, payload.employee_number, dcv(\"employee_number\"), payload.emp_id) || \"0000\";\nconst puesto = pick(payload.puesto, dcv(\"user_role\"), payload.role) || \"Asesor de Ventas\";\nconst departamento = pick(payload.departamento, payload.dept) || \"Dirección de Ventas\";\nfunction normalizaIdioma(v) {\n  const s = String(v || \"\").toLowerCase();\n  if (!s) return undefined;\n  if (s.indexOf(\"esp\") === 0 || s === \"es\") return \"Español\";\n  if (s.indexOf(\"ing\") === 0 || s.indexOf(\"en\") === 0) return \"Inglés\";\n  return v;\n}\nconst idioma = normalizaIdioma(pick(payload.idioma, dcv(\"idioma\"))) ||\n  ((meta.main_language || \"\").toLowerCase().indexOf(\"en\") === 0 ? \"Inglés\" : \"Español\");\n\nconst durSecsFromMeta = meta.call_duration_secs;\nconst duracionMinutos = payload.duracion_minutos || (durSecsFromMeta ? Math.round(durSecsFromMeta / 60) : 28);\nconst durSecs = durSecsFromMeta || (payload.duracion_minutos ? payload.duracion_minutos * 60 : duracionMinutos * 60);\nconst duracionTexto = payload.duracion_texto || (durSecs ? (Math.floor(durSecs / 60) + \":\" + String(Math.round(durSecs % 60)).padStart(2, \"0\")) : \"28:00\");\n\nconst scoreTotal = Number(pick(payload.scoreTotal, payload.score, dcv(\"desempeno_score\"))) || 8.7;\nconst potencialMejora = payload.potencial_mejora != null ? payload.potencial_mejora : Math.max(0, Math.round((10 - scoreTotal) * 13));\n\n// --- Nombre de archivo dinámico (PDF/MP3): {nombre-slug}_{YYYYMMDD}_{HHMM}, SIEMPRE en\n// hora de Cancún — mismo algoritmo que api/_naming.js (slugName) para que ambos lados\n// (Vercel y n8n) generen el mismo nombre si algún día se comparan. ---\nfunction slugName(s) {\n  const base = String(s == null ? \"\" : s).normalize(\"NFD\").replace(/[\\u0300-\\u036f]/g, \"\").toLowerCase().trim();\n  const slug = base.replace(/[^a-z0-9]+/g, \"-\").replace(/^-+|-+$/g, \"\");\n  return slug || \"asesor\";\n}\nconst nombreSlug = slugName(nombre);\nconst fechaYYYYMMDD = cancunStart.toFormat(\"yyyyMMdd\");\nconst horaHHMMCompact = cancunStart.toFormat(\"HHmm\");\nconst fileBase = `${nombreSlug}_${fechaYYYYMMDD}_${horaHHMMCompact}`;\n\nreturn {\n    success: true,\n    conversation_id: payload.conversation_id || \"AUTO_\" + Date.now(),\n\n    // Identidad\n    employee_name: nombre,\n    nombre: nombre,\n    empleado_id: empleadoId,\n    puesto: puesto,\n    departamento: departamento,\n    idioma: idioma,\n\n    // Nombre de archivo dinámico (PDF/MP3) — hora de Cancún.\n    nombre_slug: nombreSlug,\n    fecha_yyyymmdd: fechaYYYYMMDD,\n    hora_hhmm_compact: horaHHMMCompact,\n    file_base: fileBase,\n\n    // Métricas (0-10)\n    score: payload.scoreTotal || payload.score || 0,\n    scoreTotal: scoreTotal,\n    rapport: Number(payload.rapport) || 8.5,\n    pnl: Number(payload.pnl) || 8.7,\n    postura: Number(payload.postura) || 7.7,\n    objeciones: Number(payload.objeciones) || 8.2,\n    cierre: Number(payload.cierre) || 7.0,\n    escucha: Number(payload.escucha) || 9.0,\n    potencial_mejora: potencialMejora,\n\n    // Narrativa\n    resumen: pick(payload.resumen, analysis.transcript_summary, dcv(\"recomendacion_siguiente\")) || \"Sesión completada.\",\n    fortalezas: pick(payload.fortalezas, dcv(\"fortalezas\")) || \"Buena disposición y actitud durante la práctica.\",\n    areas_mejora: pick(payload.areas_mejora, dcv(\"areas_mejora\")) || \"Reforzar los fundamentos del módulo practicado.\",\n    analisis_pnl: payload.analisis_pnl || \"Sin patrones PNL destacados en esta sesión.\",\n    recomendacion_siguiente: pick(payload.recomendacion_siguiente, dcv(\"recomendacion_siguiente\")) || \"Repasar el módulo con menor puntaje.\",\n\n    // Escenario / módulos\n    escenario: pick(payload.escenario, dcv(\"escenario_roleplay\"), dcv(\"tipo_actividad\")) || \"Sesión de coaching\",\n    tipo_actividad: pick(payload.tipo_actividad, dcv(\"tipo_actividad\")) || \"Roleplay\",\n    modulos_practicados: pick(payload.modulos_practicados, dcv(\"modulos_practicados\")) || \"\",\n\n    // Fecha / hora / duración — SIEMPRE hora de Cancún (America/Cancun, UTC-5).\n    fecha_formato: payload.fecha_formato || `${dia}-${mes}-${anio}`,\n    hora_inicio: payload.hora_inicio || cancunStart.toFormat(\"HH:mm\"),\n    hora_fin: payload.hora_fin || cancunEnd.toFormat(\"HH:mm\"),\n    duracion_minutos: duracionMinutos,\n    duracion_texto: duracionTexto,\n    sesion_numero: payload.sesion_numero || 1,\n\n    // Plan de acción (gerente)\n    accion1: payload.accion1 || \"Reducir Interrupciones\",\n    accion1_desc: payload.accion1_desc || \"Pausas prolongadas entre argumentos.\",\n    accion2: payload.accion2 || \"Memorizar el Pitch\",\n    accion2_desc: payload.accion2_desc || \"Dudar en el pitch resta credibilidad.\",\n    accion3: payload.accion3 || \"Dominar el Cierre\",\n    accion3_desc: payload.accion3_desc || \"Falta de confianza al cerrar.\",\n\n    // Frecuencia de temas (escala 0-10)\n    precio: payload.precio != null ? payload.precio : 8,\n    incentivos: payload.incentivos != null ? payload.incentivos : 6,\n    tiempo: payload.tiempo != null ? payload.tiempo : 10,\n    indecision: payload.indecision != null ? payload.indecision : 4,\n\n    // Distribución de tiempo por actividad (%, deben sumar ~100)\n    pct_pitch: payload.pct_pitch != null ? payload.pct_pitch : 50,\n    pct_warmup: payload.pct_warmup != null ? payload.pct_warmup : 20,\n    pct_objeciones: payload.pct_objeciones != null ? payload.pct_objeciones : 15,\n    pct_cierre: payload.pct_cierre != null ? payload.pct_cierre : 15,\n\n    // Principios neurocientíficos (%)\n    pct_patrones: payload.pct_patrones != null ? payload.pct_patrones : 50,\n    pct_fraseologia: payload.pct_fraseologia != null ? payload.pct_fraseologia : 50,\n    pct_contexto: payload.pct_contexto != null ? payload.pct_contexto : 50,\n\n    // Datos ricos OPCIONALES — solo se muestran en el reporte si vienen reales\n    // (nunca se inventa contenido de ejemplo para una sesión real).\n    transcript: Array.isArray(payload.transcript) ? payload.transcript : null,\n    historial: Array.isArray(payload.historial) ? payload.historial : null,\n    quiz: Array.isArray(payload.quiz) ? payload.quiz : null,\n    objeciones_detalle: Array.isArray(payload.objeciones_detalle) ? payload.objeciones_detalle : null,\n};\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -720,
+          -176
+        ],
+        "id": "bb843f73-144d-44db-a96a-3fc25b2da37e",
+        "name": "Preparar Datos"
+      },
+      {
+        "parameters": {
+          "jsCode": "// Generar Email — VTC Elite Reporting\n// CAMBIO: cuerpo del correo = SOLO texto profesional (no HTML visual).\n// El reporte visual va como PDF adjunto; audio (MP3) y transcripcion (TXT)\n// tambien adjuntos. Recibe UN item de \"Preparar Datos\".\nconst d = $input.first().json;\n\nfunction v(x, def){ return (x == null || x === \"\") ? (def || \"\") : String(x); }\n\nconst nombre         = v(d.nombre || d.employee_name, \"Asesor\");\nconst fecha          = v(d.fecha_formato, \"-\");\nconst hora           = v(d.hora_inicio, \"-\");\nconst duracion       = d.duracion_texto ? v(d.duracion_texto) : (v(d.duracion_minutos, \"-\") + \" minutos\");\nconst modulo         = v(d.modulos_practicados || d.escenario, \"-\");\nconst score          = v(d.scoreTotal, \"-\");\nconst idioma         = v(d.idioma, \"-\");\nconst resumen        = v(d.resumen, \"-\");\nconst fortalezas     = v(d.fortalezas, \"-\");\nconst areas          = v(d.areas_mejora, \"-\");\nconst recomendaciones= v(d.recomendacion_siguiente, \"-\");\n\nconst linea = \"------------------------------------------------------------\";\n\nconst text =\n\"Estimado \" + nombre + \",\\n\\n\" +\n\"Le enviamos el resumen de su sesion de entrenamiento del \" + fecha + \" a las \" + hora + \".\\n\\n\" +\n\"RESUMEN DE LA SESION\\n\" +\n\"Duracion: \" + duracion + \"\\n\" +\n\"Modulo: \" + modulo + \"\\n\" +\n\"Desempeno general: \" + score + \"/10\\n\" +\n\"Idioma: \" + idioma + \"\\n\\n\" +\n\"ANALISIS:\\n\" + resumen + \"\\n\\n\" +\n\"FORTALEZAS IDENTIFICADAS:\\n\" + fortalezas + \"\\n\\n\" +\n\"AREAS A MEJORAR:\\n\" + areas + \"\\n\\n\" +\n\"RECOMENDACION DEL COACH:\\n\" + recomendaciones + \"\\n\\n\" +\nlinea + \"\\n\\n\" +\n\"PROXIMOS PASOS\\n\\n\" +\n\"Para acceder al reporte completo con graficos, analisis detallado de competencias y plan de accion personalizado, descargue el archivo PDF adjunto.\\n\\n\" +\n\"Para revisar la transcripcion completa de la sesion, descargue el archivo de audio (MP3) y la transcripcion de texto (TXT) adjuntos.\\n\\n\" +\nlinea + \"\\n\\n\" +\n\"Quedo atento a cualquier pregunta.\\n\\n\" +\n\"Saludos cordiales,\\n\\n\" +\n\"El equipo de Victor-IA\\n\" +\n\"Entrenamiento VTC Capacitacion\\n\" +\n\"victor-ia.com.mx\\n\";\n\n// Se conserva la llave \"html\" apuntando al mismo texto por compatibilidad,\n// pero el nodo \"Send an Email\" usa emailFormat=text -> se envia como texto plano.\nreturn { text: text, html: text };\n"
+        },
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [
+          -512,
+          -512
+        ],
+        "id": "b856d72d-265f-4ee0-87bb-dda82c914b89",
+        "name": "Generar HTML Email"
+      },
+      {
+        "parameters": {
+          "url": "=https://api.elevenlabs.io/v1/convai/conversations/{{ $node[\"Preparar Datos\"].json.conversation_id }}/audio",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "xi-api-key",
+                "value": "sk_87d5a7899d6c489c94232248c4880a0c4fe317adb3701e67"
+              }
+            ]
+          },
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file"
+              }
+            },
+            "timeout": 90000
+          }
+        },
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -496,
+          -160
+        ],
+        "id": "d3f1a001-e11a-4a2b-9a0e-fetch0audio01",
+        "name": "Fetch Audio HTTP",
+        "onError": "continueRegularOutput"
+      },
+      {
+        "parameters": {
+          "url": "=https://vtc-capacitacion-deploy.vercel.app/api/report?conv={{ $node[\"Preparar Datos\"].json.conversation_id }}&pdf=1&name={{ $node[\"Preparar Datos\"].json.file_base }}",
+          "options": {
+            "response": {
+              "response": {
+                "responseFormat": "file",
+                "outputPropertyName": "pdf"
+              }
+            },
+            "timeout": 90000
+          }
+        },
+        "name": "Fetch PDF",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          -304,
+          -320
+        ],
+        "id": "5591f6ba-d2e8-4916-8f9d-1d9024f27581",
+        "onError": "continueRegularOutput"
+      }
+    ],
+    "connections": {
+      "Webhook": {
+        "main": [
+          [
+            {
+              "node": "Preparar Datos",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Preparar Datos": {
+        "main": [
+          [
+            {
+              "node": "Generar HTML Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Generar HTML Email": {
+        "main": [
+          [
+            {
+              "node": "Fetch Audio HTTP",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Fetch Audio HTTP": {
+        "main": [
+          [
+            {
+              "node": "Fetch PDF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Fetch PDF": {
+        "main": [
+          [
+            {
+              "node": "Build Attachments",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Build Attachments": {
+        "main": [
+          [
+            {
+              "node": "Send an Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send an Email": {
+        "main": [
+          [
+            {
+              "node": "Respond to Webhook",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "nodeGroups": [],
+    "authors": "Pablo Solar  ",
+    "name": null,
+    "description": null,
+    "autosaved": false,
+    "workflowPublishHistory": [
+      {
+        "createdAt": "2026-07-22T17:19:21.454Z",
+        "id": 331,
+        "workflowId": "WEkyHL4lJPEytNoF",
+        "versionId": "8375df7a-2c48-41a3-942f-c172207310d0",
+        "event": "activated",
+        "userId": "e0e172e7-fc36-4782-aafb-9d039ab7986a"
+      },
+      {
+        "createdAt": "2026-07-22T17:19:21.438Z",
+        "id": 330,
+        "workflowId": "WEkyHL4lJPEytNoF",
+        "versionId": "8375df7a-2c48-41a3-942f-c172207310d0",
+        "event": "deactivated",
+        "userId": "e0e172e7-fc36-4782-aafb-9d039ab7986a"
+      }
+    ]
+  }
+}

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Reporte Técnico de Capacitación · Andrés Mateos · VTC ELITE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#F5F5F0;color:#2A2824;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10.5pt;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  a{color:#8C7343;text-decoration:none}
+  .sheet{max-width:820px;margin:0 auto;background:#FCFCF9;position:relative;}
+  .pad{padding:26px 40px;}
+  h1,h2,h3{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;margin:0;color:#070708;font-weight:700}
+  .mono{font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace}
+  /* Marca de agua sutil, solo impresión */
+  .wm{display:none}
+  @media print{
+    .wm{display:block;position:fixed;top:42%;left:0;right:0;text-align:center;transform:rotate(-24deg);
+        font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:52px;letter-spacing:8px;color:#B89A6A;opacity:0.05;font-weight:700;
+        z-index:0;pointer-events:none;white-space:nowrap;}
+    .sheet{max-width:none;box-shadow:none;background:#FCFCF9}
+    .no-print{display:none!important}
+    section,.card,.audit,.gauge,.svg-wrap,.momento{break-inside:avoid;page-break-inside:avoid}
+    p,li{orphans:3;widows:3}
+  }
+  /* Portada */
+  .cover{background:#070708;color:#fff;padding:40px 40px 34px;position:relative;overflow:hidden}
+  .cover:before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border:1px solid #B89A6A;opacity:.18;border-radius:50%}
+  .cover:after{content:'';position:absolute;bottom:-60px;left:-30px;width:180px;height:180px;border:1px solid #B89A6A;opacity:.10;border-radius:50%}
+  .eyebrow{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#B89A6A;font-weight:600}
+  .cover h1{font-size:34px;line-height:1.08;color:#fff;margin:14px 0 4px;letter-spacing:.2px}
+  .cover .sub{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:12px;color:#B9B6AE;letter-spacing:.3px}
+  .cover-meta{margin-top:24px;display:flex;flex-wrap:wrap;gap:18px 34px;font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace;font-size:10.5px;color:#CFCCC4}
+  .cover-meta b{display:block;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:#B89A6A;margin-bottom:3px;font-weight:600}
+  .conf{position:absolute;top:18px;right:40px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8px;letter-spacing:2.5px;color:#B89A6A;border:1px solid #8C7343;border-radius:3px;padding:4px 9px}
+  /* Franja metadatos (repetida visualmente arriba en email) */
+  .metabar{display:flex;justify-content:space-between;align-items:center;background:#EFEDE6;border-bottom:1px solid #D4D4D0;padding:8px 40px;font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace;font-size:9px;color:#6B6862;letter-spacing:.3px}
+  .metabar .gold{color:#8C7343;font-weight:700}
+  /* Secciones */
+  section{padding:24px 40px;border-top:1px solid #D4D4D0;position:relative;z-index:1}
+  .sec-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
+  .sec-num{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-size:26px;font-weight:700;color:#B89A6A;line-height:1;min-width:34px}
+  .sec-title{font-size:19px;letter-spacing:.2px}
+  .sec-sub{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10px;color:#9A968E;letter-spacing:.3px;margin-top:3px}
+  /* Score hero */
+  .hero{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .hero-score{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-size:76px;font-weight:700;color:#B89A6A;line-height:.9}
+  .hero-score small{font-size:26px;color:#9A968E}
+  .hero-txt{flex:1;min-width:220px}
+  .hero-verdict{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-size:19px;color:#070708;font-style:italic;line-height:1.35}
+  .hero-bar{height:7px;background:#E7E4DC;border-radius:99px;margin-top:12px;overflow:hidden}
+  .hero-bar i{display:block;height:100%;background:linear-gradient(90deg,#8C7343,#B89A6A);border-radius:99px}
+  .lead{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:11.5px;line-height:1.7;color:#2A2824}
+  /* Tablas auditoría */
+  .audit{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace;font-size:10px;margin:2px 0 4px}
+  .audit caption{caption-side:top;text-align:left;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:#8C7343;font-weight:700;padding-bottom:8px}
+  .audit th,.audit td{border:1px solid #D4D4D0;padding:7px 11px;text-align:left;vertical-align:top}
+  .audit thead th{background:#0F0F12;color:#B89A6A;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8.5px;letter-spacing:1px;text-transform:uppercase;font-weight:600;border-color:#0F0F12}
+  .audit .kvk{background:#F1EFE8;color:#6B6862;width:210px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9px;letter-spacing:.4px;text-transform:uppercase;font-weight:600}
+  .audit .kvv{color:#070708;font-weight:500}
+  .audit tbody tr:nth-child(even) td{background:#FBFAF6}
+  .tcell-ok{color:#27AE60;font-weight:700}.tcell-risk{color:#C0392B;font-weight:700}.tcell-soft{color:#6B6862}
+  /* Grids */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .card{background:#FFFFFF;border:1px solid #D4D4D0;border-radius:10px;padding:16px 18px}
+  .card-k{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:#9A968E;font-weight:600}
+  .card-v{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-size:22px;color:#070708;margin-top:5px;line-height:1.1}
+  .card-d{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9.5px;color:#6B6862;margin-top:3px}
+  .svg-wrap{background:#FFFFFF;border:1px solid #D4D4D0;border-radius:10px;padding:16px 18px;margin-top:6px}
+  .svg-cap{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:#8C7343;font-weight:700;margin-bottom:10px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9px;color:#6B6862}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  /* Gauges */
+  .gauges{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .gauge{background:#FFFFFF;border:1px solid #D4D4D0;border-radius:10px;padding:12px 8px 10px;text-align:center}
+  .gauge .gsub{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:8px;color:#9A968E;letter-spacing:.5px;margin-top:2px;line-height:1.3;padding:0 4px}
+  /* Barras principios */
+  .prow{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+  .plabel{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10.5px;color:#2A2824;width:180px;flex-shrink:0}
+  .ptrack{flex:1;height:6px;background:#E7E4DC;border-radius:99px;overflow:hidden}
+  .pfill{height:100%;background:#B89A6A;border-radius:99px}
+  .ppct{font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace;font-size:10px;color:#8C7343;width:38px;text-align:right;font-weight:700}
+  /* Bloques narrativos */
+  .block{margin-top:14px}
+  .block-k{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  ul.ticks{list-style:none;margin:0;padding:0}
+  ul.ticks li{position:relative;padding:0 0 7px 18px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:11px;line-height:1.55;color:#2A2824}
+  ul.ticks li:before{content:'';position:absolute;left:2px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--mk,#B89A6A)}
+  ol.plan{list-style:none;margin:0;padding:0;counter-reset:p}
+  ol.plan li{position:relative;padding:0 0 10px 34px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:11px;line-height:1.55;color:#2A2824}
+  .pl-n{position:absolute;left:0;top:-1px;width:22px;height:22px;border-radius:50%;background:#070708;color:#B89A6A;font-family:'IBM Plex Mono', 'Courier New', ui-monospace, monospace;font-size:10px;font-weight:700;display:inline-flex;align-items:center;justify-content:center}
+  /* Momento de oro */
+  .momento{background:#FBF7EE;border:1px solid #B89A6A;border-left:4px solid #B89A6A;border-radius:10px;padding:20px 24px}
+  .momento .q{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-size:19px;font-style:italic;color:#070708;line-height:1.4;margin:8px 0 12px}
+  .momento .a{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:11px;color:#2A2824;line-height:1.6}
+  /* PNL / Neuro texto */
+  .neuro-txt{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .nt{background:#FBFAF6;border:1px solid #D4D4D0;border-radius:8px;padding:11px 13px}
+  .nt-h{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .nt-b{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10px;color:#2A2824;line-height:1.5}
+  /* CTAs */
+  .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .btn{display:inline-block;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.6px;padding:12px 20px;border-radius:99px;border:1px solid #070708}
+  .btn-gold{background:#B89A6A;color:#070708;border-color:#B89A6A}
+  .btn-ghost{background:transparent;color:#070708}
+  /* Deep learning */
+  .dl{background:#F1EFE8;border:1px solid #D4D4D0;border-radius:10px;padding:18px 20px;margin-top:6px}
+  .dl-row{font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:10.5px;line-height:1.55;margin-bottom:8px;padding-left:20px;position:relative}
+  .dl-row:before{position:absolute;left:0;top:0;font-size:11px}
+  /* Footer del documento */
+  .docfoot{background:#070708;color:#8C897F;padding:22px 40px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9px;display:flex;justify-content:space-between;align-items:center;letter-spacing:.3px}
+  .docfoot .gold{color:#B89A6A;font-weight:700;letter-spacing:1px}
+  @page{size:A4;margin:24mm 16mm 18mm 16mm}
+  </style></head>
+<body>
+<div class="wm">DOCUMENTO TÉCNICO CONFIDENCIAL</div>
+<div class="sheet">
+
+  <!-- Franja metadatos (visible en email; en PDF se repite vía header/footer del render) -->
+  <div class="metabar">
+    <span><span class="gold">Andrés Mateos</span> · Emp Nº VTC-0417 · Ventas Piso</span>
+    <span>2026-07-15 · 14:02:11 → 14:06:19</span>
+  </div>
+
+  <!-- ══ 01 · PORTADA + METADATOS ══ -->
+  <div class="cover">
+    <div class="conf">CONFIDENCIAL</div>
+    <div class="eyebrow">Victorious Travelers Club · Coach VÍCTOR</div>
+    <h1>Reporte Técnico<br>de Capacitación</h1>
+    <div class="sub">Análisis de desempeño asistido por IA · Sesión Roleplay</div>
+    <div class="cover-meta">
+      <div><b>Empleado</b>Andrés Mateos</div>
+      <div><b>Nº / Depto.</b>VTC-0417 · Ventas Piso</div>
+      <div><b>Fecha sesión</b>2026-07-15</div>
+      <div><b>Horario</b>14:02:11 – 14:06:19</div>
+      <div><b>Duración</b>00:04:08</div>
+      <div><b>Generado</b>2026-07-15T22:28:05-06:00</div>
+    </div>
+  </div>
+
+  <!-- ══ 02 · RESUMEN EJECUTIVO + SCORE ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">02</span>
+    <div><h2 class="sec-title">Resumen ejecutivo</h2><div class="sec-sub">Síntesis del desempeño y veredicto de la sesión</div></div>
+  </div>
+    <div class="hero">
+      <div class="hero-score">7.8<small>/10</small></div>
+      <div class="hero-txt">
+        <div class="hero-verdict">“Buen nivel. Pulir el manejo de la objeción final.”</div>
+        <div class="hero-bar"><i style="width:78%"></i></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:16px">El asesor condujo una simulación de cierre con un cliente tipo Driver. Estableció rapport rápido, calificó presupuesto y familia, y presentó el producto con anclaje de valor. Enfrentó dos objeciones de precio; resolvió la primera con comparación de ROI y manejó parcialmente la segunda. El cierre fue firme aunque tardío. Oportunidad clara en anclar urgencia antes de la objeción.</p>
+  </section>
+
+  <!-- ══ 03 · TABLA RESUMEN DE SESIÓN ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">03</span>
+    <div><h2 class="sec-title">Información de sesión</h2><div class="sec-sub">Tabla 1 · Datos de trazabilidad</div></div>
+  </div>
+    <table class="audit"><caption>Tabla 1 — Resumen de sesión</caption><tbody><tr><th class="kvk">Empleado</th><td class="kvv ">Andrés Mateos</td></tr><tr><th class="kvk">Número de empleado</th><td class="kvv ">VTC-0417</td></tr><tr><th class="kvk">Departamento</th><td class="kvv ">Ventas Piso</td></tr><tr><th class="kvk">Rol</th><td class="kvv ">Liner</td></tr><tr><th class="kvk">Fecha (ISO 8601)</th><td class="kvv ">2026-07-15</td></tr><tr><th class="kvk">Hora inicio</th><td class="kvv ">14:02:11</td></tr><tr><th class="kvk">Hora cierre</th><td class="kvv ">14:06:19</td></tr><tr><th class="kvk">Duración total</th><td class="kvv ">00:04:08</td></tr><tr><th class="kvk">Agente</th><td class="kvv ">Coach VÍCTOR · <span class="mono" style="color:#6B6862">agent_2201kxes45mbfmsvpn8k7b9z3fnm</span></td></tr><tr><th class="kvk">Idioma</th><td class="kvv ">Español</td></tr><tr><th class="kvk">Escenario practicado</th><td class="kvv ">Roleplay · Cierre con objeción de precio</td></tr><tr><th class="kvk">Tipo de cliente</th><td class="kvv ">Driver</td></tr></tbody></table>
+  </section>
+
+  <!-- ══ 04 · DASHBOARD VISUAL (SVG) ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">04</span>
+    <div><h2 class="sec-title">Dashboard visual</h2><div class="sec-sub">Mapa de calor · sparkline · gauges · timeline · tendencias</div></div>
+  </div>
+
+    <div class="svg-wrap">
+      <div class="svg-cap">A · Mapa de calor de competencias (escala 1–10)</div>
+      <svg viewBox="0 0 520 192" width="100%" style="max-width:520px;display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de calor de competencias"><g>
+      <text x="0" y="22" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">Rapport</text>
+      <rect x="150" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="175" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="200" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="225" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="250" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="275" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="300" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="325" y="12" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="350" y="12" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="12" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="22" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#27AE60">8/10</text>
+    </g><g>
+      <text x="0" y="52" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">Postura</text>
+      <rect x="150" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="175" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="200" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="225" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="250" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="275" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="300" y="42" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="325" y="42" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="350" y="42" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="42" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="52" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#27AE60">7/10</text>
+    </g><g>
+      <text x="0" y="82" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">Objeciones</text>
+      <rect x="150" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="175" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="200" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="225" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="250" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="275" y="72" width="22" height="13" rx="2" fill="#F39C12" stroke="none" stroke-width="0.6"/><rect x="300" y="72" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="325" y="72" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="350" y="72" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="72" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="82" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#F39C12">6/10</text>
+    </g><g>
+      <text x="0" y="112" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">Leer la sala</text>
+      <rect x="150" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="175" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="200" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="225" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="250" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="275" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="300" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="325" y="102" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="350" y="102" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="102" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="112" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#27AE60">8/10</text>
+    </g><g>
+      <text x="0" y="142" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">Cierre</text>
+      <rect x="150" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="175" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="200" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="225" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="250" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="275" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="300" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="325" y="132" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="350" y="132" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="132" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="142" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#27AE60">8/10</text>
+    </g><g>
+      <text x="0" y="172" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="12" font-weight="500" fill="#2A2824">PNL</text>
+      <rect x="150" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="175" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="200" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="225" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="250" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="275" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="300" y="162" width="22" height="13" rx="2" fill="#27AE60" stroke="none" stroke-width="0.6"/><rect x="325" y="162" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="350" y="162" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/><rect x="375" y="162" width="22" height="13" rx="2" fill="#EDEBE4" stroke="#D4D4D0" stroke-width="0.6"/>
+      <text x="414" y="172" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="12" font-weight="700" fill="#27AE60">7/10</text>
+    </g></svg>
+      <div class="legend">
+        <span><i style="background:#C0392B"></i>Crítico 1–3</span>
+        <span><i style="background:#F39C12"></i>En desarrollo 4–6</span>
+        <span><i style="background:#27AE60"></i>Dominio 7–10</span>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:14px">
+      <div class="svg-wrap" style="margin-top:0">
+        <div class="svg-cap">B · Histórico de desempeño (últimas sesiones)</div>
+        <svg viewBox="0 0 520 150" width="100%" style="max-width:520px;display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sparkline histórico">
+    <line x1="34" y1="124" x2="504" y2="124" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="127" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">0</text><line x1="34" y1="96.5" x2="504" y2="96.5" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="99.5" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">25</text><line x1="34" y1="69" x2="504" y2="69" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="72" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">50</text><line x1="34" y1="41.5" x2="504" y2="41.5" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="44.5" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">75</text><line x1="34" y1="14" x2="504" y2="14" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="17" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">100</text>
+    <path d="M 34 124 L 34 52.5 L 151.5 47 L 269 44.8 L 386.5 40.4 L 504 38.2 L 504 124 Z" fill="#B89A6A" fill-opacity="0.10"/>
+    <path d="M34 52.5 L151.5 47 L269 44.8 L386.5 40.4 L504 38.2" fill="none" stroke="#B89A6A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="34" cy="52.5" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="34" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S1</text><circle cx="151.5" cy="47" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="151.5" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S2</text><circle cx="269" cy="44.8" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="269" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S3</text><circle cx="386.5" cy="40.4" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="386.5" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S4</text><circle cx="504" cy="38.2" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="504" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S5</text></svg>
+      </div>
+      <div class="svg-wrap" style="margin-top:0">
+        <div class="svg-cap">C · Indicadores de tendencia</div>
+        <div style="font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:11px;line-height:2.1;color:#2A2824">
+          <div>Desempeño: <b>7.8/10</b> <span style="color:#27AE60;font-weight:700">(+10% ↑)</span> <span style="color:#9A968E">vs histórico</span></div>
+          <div>Competencias: <b>7.3/10</b> <span style="color:#27AE60;font-weight:700">(+3% ↑)</span></div>
+          <div>Duración: <b>4:08</b> <span style="color:#27AE60;font-weight:700">(+5% ↑)</span></div>
+          <div>Ratio de éxito: <b>78%</b> <span style="color:#27AE60;font-weight:700">(+10% ↑)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svg-wrap">
+      <div class="svg-cap">D · Neurociencia — 4 medidores de activación</div>
+      <div class="gauges">
+        <div class="gauge"><svg viewBox="0 0 150 108" width="100%" style="max-width:150px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dopamina 78%">
+    <polyline points="17,92 17.18,87.45 17.71,82.93 18.6,78.46 19.84,74.08 21.41,69.8 23.32,65.67 25.55,61.7 28.08,57.91 30.9,54.33 33.99,50.99 37.33,47.9 40.91,45.08 44.7,42.55 48.67,40.32 52.8,38.41 57.08,36.84" fill="none" stroke="#C0392B" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="57.08,36.84 59.26,36.18 61.46,35.6 63.68,35.11 65.93,34.71 68.18,34.4 70.45,34.18 72.72,34.04 75,34 77.28,34.04 79.55,34.18 81.82,34.4 84.07,34.71 86.32,35.11 88.54,35.6 90.74,36.18 92.92,36.84" fill="none" stroke="#F39C12" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="92.92,36.84 97.2,38.41 101.33,40.32 105.3,42.55 109.09,45.08 112.67,47.9 116.01,50.99 119.1,54.33 121.92,57.91 124.45,61.7 126.68,65.67 128.59,69.8 130.16,74.08 131.4,78.46 132.29,82.93 132.82,87.45 133,92" fill="none" stroke="#27AE60" stroke-width="9" stroke-linecap="butt" opacity="0.30"/>
+    <line x1="75" y1="92" x2="115.07" y2="58.85" stroke="#070708" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="75" cy="92" r="4.5" fill="#070708"/>
+    <text x="75" y="72" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#27AE60">78<tspan font-size="12" fill="#9A968E">%</tspan></text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="600" fill="#2A2824" letter-spacing="0.4">Dopamina</text>
+  </svg><div class="gsub">Anticipación de recompensa</div></div>
+        <div class="gauge"><svg viewBox="0 0 150 108" width="100%" style="max-width:150px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Oxitocina 82%">
+    <polyline points="17,92 17.18,87.45 17.71,82.93 18.6,78.46 19.84,74.08 21.41,69.8 23.32,65.67 25.55,61.7 28.08,57.91 30.9,54.33 33.99,50.99 37.33,47.9 40.91,45.08 44.7,42.55 48.67,40.32 52.8,38.41 57.08,36.84" fill="none" stroke="#C0392B" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="57.08,36.84 59.26,36.18 61.46,35.6 63.68,35.11 65.93,34.71 68.18,34.4 70.45,34.18 72.72,34.04 75,34 77.28,34.04 79.55,34.18 81.82,34.4 84.07,34.71 86.32,35.11 88.54,35.6 90.74,36.18 92.92,36.84" fill="none" stroke="#F39C12" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="92.92,36.84 97.2,38.41 101.33,40.32 105.3,42.55 109.09,45.08 112.67,47.9 116.01,50.99 119.1,54.33 121.92,57.91 124.45,61.7 126.68,65.67 128.59,69.8 130.16,74.08 131.4,78.46 132.29,82.93 132.82,87.45 133,92" fill="none" stroke="#27AE60" stroke-width="9" stroke-linecap="butt" opacity="0.30"/>
+    <line x1="75" y1="92" x2="118.91" y2="64.14" stroke="#070708" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="75" cy="92" r="4.5" fill="#070708"/>
+    <text x="75" y="72" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#27AE60">82<tspan font-size="12" fill="#9A968E">%</tspan></text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="600" fill="#2A2824" letter-spacing="0.4">Oxitocina</text>
+  </svg><div class="gsub">Confianza y vínculo</div></div>
+        <div class="gauge"><svg viewBox="0 0 150 108" width="100%" style="max-width:150px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cortisol 38%">
+    <polyline points="17,92 17.18,87.45 17.71,82.93 18.6,78.46 19.84,74.08 21.41,69.8 23.32,65.67 25.55,61.7 28.08,57.91 30.9,54.33 33.99,50.99 37.33,47.9 40.91,45.08 44.7,42.55 48.67,40.32 52.8,38.41 57.08,36.84" fill="none" stroke="#27AE60" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="57.08,36.84 59.26,36.18 61.46,35.6 63.68,35.11 65.93,34.71 68.18,34.4 70.45,34.18 72.72,34.04 75,34 77.28,34.04 79.55,34.18 81.82,34.4 84.07,34.71 86.32,35.11 88.54,35.6 90.74,36.18 92.92,36.84" fill="none" stroke="#F39C12" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="92.92,36.84 97.2,38.41 101.33,40.32 105.3,42.55 109.09,45.08 112.67,47.9 116.01,50.99 119.1,54.33 121.92,57.91 124.45,61.7 126.68,65.67 128.59,69.8 130.16,74.08 131.4,78.46 132.29,82.93 132.82,87.45 133,92" fill="none" stroke="#C0392B" stroke-width="9" stroke-linecap="butt" opacity="0.30"/>
+    <line x1="75" y1="92" x2="55.86" y2="43.65" stroke="#070708" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="75" cy="92" r="4.5" fill="#070708"/>
+    <text x="75" y="72" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#27AE60">38<tspan font-size="12" fill="#9A968E">%</tspan></text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="600" fill="#2A2824" letter-spacing="0.4">Cortisol</text>
+  </svg><div class="gsub">Estrés ante objeciones</div></div>
+        <div class="gauge"><svg viewBox="0 0 150 108" width="100%" style="max-width:150px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Amígdala 29%">
+    <polyline points="17,92 17.18,87.45 17.71,82.93 18.6,78.46 19.84,74.08 21.41,69.8 23.32,65.67 25.55,61.7 28.08,57.91 30.9,54.33 33.99,50.99 37.33,47.9 40.91,45.08 44.7,42.55 48.67,40.32 52.8,38.41 57.08,36.84" fill="none" stroke="#27AE60" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="57.08,36.84 59.26,36.18 61.46,35.6 63.68,35.11 65.93,34.71 68.18,34.4 70.45,34.18 72.72,34.04 75,34 77.28,34.04 79.55,34.18 81.82,34.4 84.07,34.71 86.32,35.11 88.54,35.6 90.74,36.18 92.92,36.84" fill="none" stroke="#F39C12" stroke-width="9" stroke-linecap="butt" opacity="0.30"/><polyline points="92.92,36.84 97.2,38.41 101.33,40.32 105.3,42.55 109.09,45.08 112.67,47.9 116.01,50.99 119.1,54.33 121.92,57.91 124.45,61.7 126.68,65.67 128.59,69.8 130.16,74.08 131.4,78.46 132.29,82.93 132.82,87.45 133,92" fill="none" stroke="#C0392B" stroke-width="9" stroke-linecap="butt" opacity="0.30"/>
+    <line x1="75" y1="92" x2="43.13" y2="50.91" stroke="#070708" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="75" cy="92" r="4.5" fill="#070708"/>
+    <text x="75" y="72" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#27AE60">29<tspan font-size="12" fill="#9A968E">%</tspan></text>
+    <text x="75" y="106" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="600" fill="#2A2824" letter-spacing="0.4">Amígdala</text>
+  </svg><div class="gsub">Percepción de riesgo</div></div>
+      </div>
+    </div>
+
+    <div class="svg-wrap">
+      <div class="svg-cap">E · Línea de tiempo de la conversación</div>
+      <svg viewBox="0 0 520 118" width="100%" style="max-width:520px;display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Línea de tiempo de la conversación">
+    <line x1="30" y1="40" x2="496" y2="40" stroke="#D4D4D0" stroke-width="2"/>
+    <text x="30" y="43" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">▏</text>
+    <text x="496" y="43" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">▕</text>
+    <text x="30" y="114" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">0:00</text>
+    <text x="496" y="114" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">4:08</text>
+    <line x1="114.56" y1="40" x2="114.56" y2="26" stroke="#27AE60" stroke-width="1" opacity="0.5"/>
+      <circle cx="114.56" cy="40" r="5" fill="#27AE60" stroke="#fff" stroke-width="1.5"/>
+      <text x="114.56" y="22" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" font-weight="700" fill="#27AE60">0:45</text>
+      <text x="114.56" y="12" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#6B6862">Calificación OK</text><line x1="283.67" y1="40" x2="283.67" y2="60" stroke="#C0392B" stroke-width="1" opacity="0.5"/>
+      <circle cx="283.67" cy="40" r="5" fill="#C0392B" stroke="#fff" stroke-width="1.5"/>
+      <text x="283.67" y="74" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" font-weight="700" fill="#C0392B">2:15</text>
+      <text x="283.67" y="85" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#6B6862">Objeción de precio 1</text><line x1="377.62" y1="40" x2="377.62" y2="26" stroke="#B89A6A" stroke-width="1" opacity="0.5"/>
+      <circle cx="377.62" cy="40" r="5" fill="#B89A6A" stroke="#fff" stroke-width="1.5"/>
+      <text x="377.62" y="22" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" font-weight="700" fill="#B89A6A">3:05</text>
+      <text x="377.62" y="12" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#6B6862">Anclaje ROI</text><line x1="424.6" y1="40" x2="424.6" y2="60" stroke="#C0392B" stroke-width="1" opacity="0.5"/>
+      <circle cx="424.6" cy="40" r="5" fill="#C0392B" stroke="#fff" stroke-width="1.5"/>
+      <text x="424.6" y="74" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" font-weight="700" fill="#C0392B">3:30</text>
+      <text x="424.6" y="85" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#6B6862">Objeción 2</text><line x1="490.36" y1="40" x2="490.36" y2="26" stroke="#27AE60" stroke-width="1" opacity="0.5"/>
+      <circle cx="490.36" cy="40" r="5" fill="#27AE60" stroke="#fff" stroke-width="1.5"/>
+      <text x="490.36" y="22" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" font-weight="700" fill="#27AE60">4:05</text>
+      <text x="490.36" y="12" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="8" fill="#6B6862">Cierre</text></svg>
+      <div class="legend">
+        <span><i style="background:#27AE60"></i>Éxito</span>
+        <span><i style="background:#B89A6A"></i>Neutro</span>
+        <span><i style="background:#C0392B"></i>Dificultad</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 05 · MÉTRICAS CLAVE (KPIs) ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">05</span>
+    <div><h2 class="sec-title">Métricas clave</h2><div class="sec-sub">Tabla 2 · KPIs con variación histórica</div></div>
+  </div>
+    <table class="audit"><caption>Tabla 2 — Métricas clave (KPIs)</caption>
+      <thead><tr><th>Métrica</th><th>Actual</th><th>Histórico</th><th>Variación</th></tr></thead>
+      <tbody>
+        <tr><td>Duración (min)</td><td>4.1</td><td>3.9</td><td style="color:#27AE60;font-weight:700">+5% ↑</td></tr>
+        <tr><td>Competencias (prom.)</td><td>7.3</td><td>7.1</td><td style="color:#27AE60;font-weight:700">+3% ↑</td></tr>
+        <tr><td>Desempeño global</td><td>7.8</td><td>7.1</td><td style="color:#27AE60;font-weight:700">+10% ↑</td></tr>
+        <tr><td>Sentimiento</td><td>Positivo</td><td>—</td><td class="tcell-soft">Positivo</td></tr>
+        <tr><td>Intervenciones</td><td>26</td><td>—</td><td class="tcell-soft">12 asesor · 14 Víctor</td></tr>
+        <tr><td>Ratio de éxito</td><td>78%</td><td>71%</td><td style="color:#27AE60;font-weight:700">+10% ↑</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ 06 · ANÁLISIS DE PERFORMANCE ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">06</span>
+    <div><h2 class="sec-title">Análisis de performance</h2><div class="sec-sub">Tabla 3 · Competencias detalladas + intervenciones</div></div>
+  </div>
+    <table class="audit"><caption>Tabla 3 — Competencias detalladas</caption>
+      <thead><tr><th>Competencia</th><th>Score</th><th>Histórico</th><th>Tendencia</th></tr></thead>
+      <tbody>
+        <tr><td>Rapport</td><td style="color:#27AE60;font-weight:700">8/10</td><td class="tcell-soft">7.1/10</td><td style="color:#27AE60;font-weight:700">↑ +13%</td></tr><tr><td>Postura</td><td style="color:#27AE60;font-weight:700">7/10</td><td class="tcell-soft">7.1/10</td><td style="color:#C0392B;font-weight:700">↓ -1%</td></tr><tr><td>Objeciones</td><td style="color:#F39C12;font-weight:700">6/10</td><td class="tcell-soft">7.1/10</td><td style="color:#C0392B;font-weight:700">↓ -15%</td></tr><tr><td>Leer la sala</td><td style="color:#27AE60;font-weight:700">8/10</td><td class="tcell-soft">7.1/10</td><td style="color:#27AE60;font-weight:700">↑ +13%</td></tr><tr><td>Cierre</td><td style="color:#27AE60;font-weight:700">8/10</td><td class="tcell-soft">7.1/10</td><td style="color:#27AE60;font-weight:700">↑ +13%</td></tr><tr><td>PNL</td><td style="color:#27AE60;font-weight:700">7/10</td><td class="tcell-soft">7.1/10</td><td style="color:#C0392B;font-weight:700">↓ -1%</td></tr>
+      </tbody>
+    </table>
+    <div class="grid4" style="margin-top:14px">
+      <div class="card"><div class="card-k">Tiempo hablado</div><div class="card-v">4:08</div><div class="card-d">min:seg</div></div>
+      <div class="card"><div class="card-k">Sentimiento</div><div class="card-v">Positivo</div><div class="card-d">tono global</div></div>
+      <div class="card"><div class="card-k">Intervenciones</div><div class="card-v">26</div><div class="card-d">12 · 14</div></div>
+      <div class="card"><div class="card-k">Idioma</div><div class="card-v" style="font-size:18px">Español</div><div class="card-d">detectado</div></div>
+    </div>
+  </section>
+
+  <!-- ══ 07 · ANÁLISIS PNL ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">07</span>
+    <div><h2 class="sec-title">Análisis PNL</h2><div class="sec-sub">Rapport, patrones lingüísticos y anclajes</div></div>
+  </div>
+    <p class="lead">Usó lenguaje espejo y ritmo pausado que generó confianza. Empleó anclaje de valor efectivo. Faltó un patrón de urgencia y una presuposición de cierre más temprana.</p>
+    <div class="block">
+      <div class="block-k" style="color:#8C7343">Principios neurocientíficos activados</div>
+      <div class="prow"><div class="plabel">Reciprocidad</div>
+        <div class="ptrack"><div class="pfill" style="width:72%"></div></div>
+        <div class="ppct">72%</div></div><div class="prow"><div class="plabel">Escasez</div>
+        <div class="ptrack"><div class="pfill" style="width:64%"></div></div>
+        <div class="ppct">64%</div></div><div class="prow"><div class="plabel">Prueba social</div>
+        <div class="ptrack"><div class="pfill" style="width:58%"></div></div>
+        <div class="ppct">58%</div></div><div class="prow"><div class="plabel">Anclaje</div>
+        <div class="ptrack"><div class="pfill" style="width:80%"></div></div>
+        <div class="ppct">80%</div></div><div class="prow"><div class="plabel">Autoridad</div>
+        <div class="ptrack"><div class="pfill" style="width:55%"></div></div>
+        <div class="ppct">55%</div></div>
+    </div>
+  </section>
+
+  <!-- ══ 08 · ANÁLISIS NEUROCIENCIA ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">08</span>
+    <div><h2 class="sec-title">Insights de neurociencia</h2><div class="sec-sub">Dopamina · Cortisol · Oxitocina · Amígdala</div></div>
+  </div>
+    <div class="neuro-txt">
+      <div class="nt"><div class="nt-h" style="color:#8C7343">Dopamina · 78%</div><div class="nt-b">Activó anticipación con upgrades y exclusividad del club.</div></div>
+      <div class="nt"><div class="nt-h" style="color:#27AE60">Oxitocina · 82%</div><div class="nt-b">Rapport sólido, escucha activa y validación emocional.</div></div>
+      <div class="nt"><div class="nt-h" style="color:#F39C12">Cortisol · 38%</div><div class="nt-b">Mantuvo calma ante la presión de precio.</div></div>
+      <div class="nt"><div class="nt-h" style="color:#C0392B">Amígdala · 29%</div><div class="nt-b">Desactivó el miedo al compromiso con garantía.</div></div>
+    </div>
+  </section>
+
+  <!-- ══ 09 · TIMELINE + OBJECIONES ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">09</span>
+    <div><h2 class="sec-title">Objeciones enfrentadas</h2><div class="sec-sub">Tabla 4 · Cómo se manejaron y su efectividad</div></div>
+  </div>
+    <table class="audit"><caption>Tabla 4 — Análisis de objeciones enfrentadas</caption>
+      <thead><tr><th>Objeción</th><th>Cómo se manejó</th><th>Efectividad</th></tr></thead>
+      <tbody>
+        <tr><td>Es muy caro </td><td>comparó con ROI de dos viajes resuelta.</td><td style="color:#27AE60;font-weight:700">✅ Resuelta</td></tr><tr><td>Necesito pensarlo </td><td>ancló urgencia con disponibilidad parcial.</td><td style="color:#F39C12;font-weight:700">⚠ Parcial</td></tr><tr><td>Prefiero esperar </td><td>no logró justificar el plazo.</td><td style="color:#27AE60;font-weight:700">✅ Resuelta</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ 10 · FORTALEZAS + OPORTUNIDADES + ACCIONES ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">10</span>
+    <div><h2 class="sec-title">Fortalezas y oportunidades</h2><div class="sec-sub">Lo que funcionó, lo que hay que pulir y acciones de alto impacto</div></div>
+  </div>
+    <div class="grid2">
+      <div class="block" style="margin-top:0">
+        <div class="block-k" style="color:#27AE60">✓ Fortalezas</div>
+        <ul class="ticks"><li style="--mk:#27AE60">Rapport inmediato con lenguaje espejo.</li><li style="--mk:#27AE60">Calificó presupuesto sin fricción.</li><li style="--mk:#27AE60">Cierre con pregunta de compromiso.</li></ul>
+      </div>
+      <div class="block" style="margin-top:0">
+        <div class="block-k" style="color:#F39C12">△ Oportunidades de mejora</div>
+        <ul class="ticks"><li style="--mk:#F39C12">Ancló urgencia demasiado tarde.</li><li style="--mk:#F39C12">La segunda objeción quedó parcialmente resuelta.</li><li style="--mk:#F39C12">Ritmo lento en la transición al cierre.</li></ul>
+      </div>
+    </div>
+    <div class="block">
+      <div class="block-k" style="color:#8C7343">◆ Acciones de alto impacto</div>
+      <ol class="plan"><li><span class="pl-n">1</span>Drill de 10 reps de anclaje de urgencia antes de presentar precio.</li><li><span class="pl-n">2</span>Role-play específico de la objeción "prefiero esperar".</li><li><span class="pl-n">3</span>Grabar y revisar 3 cierres propios esta semana.</li></ol>
+    </div>
+  </section>
+
+  <!-- ══ 11 · MOMENTO DE ORO ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">11</span>
+    <div><h2 class="sec-title">Momento de oro</h2><div class="sec-sub">La mejor intervención del asesor</div></div>
+  </div>
+    <div class="momento">
+      <div class="block-k" style="color:#8C7343">✨ 3:05 · Mejor intervención</div>
+      <div class="q">“Si te muestro cómo esto se paga solo en dos viajes, ¿tendría sentido revisarlo?”</div>
+      <div class="a"><b>Por qué fue efectiva:</b> Reencuadró el precio como inversión usando anclaje de ROI y una pregunta de compromiso suave.</div>
+    </div>
+  </section>
+
+  <!-- ══ 12 · ÍNDICE DE PROGRESO ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">12</span>
+    <div><h2 class="sec-title">Índice de progreso</h2><div class="sec-sub">Evolución del asesor sesión a sesión</div></div>
+  </div>
+    <div class="svg-wrap" style="margin-top:0">
+      <div class="svg-cap">Curva de desempeño histórico · 4 sesión(es) previa(s)</div>
+      <svg viewBox="0 0 520 150" width="100%" style="max-width:520px;display:block;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sparkline histórico">
+    <line x1="34" y1="124" x2="504" y2="124" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="127" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">0</text><line x1="34" y1="96.5" x2="504" y2="96.5" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="99.5" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">25</text><line x1="34" y1="69" x2="504" y2="69" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="72" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">50</text><line x1="34" y1="41.5" x2="504" y2="41.5" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="44.5" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">75</text><line x1="34" y1="14" x2="504" y2="14" stroke="#D4D4D0" stroke-width="0.6"/><text x="28" y="17" text-anchor="end" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#9A968E">100</text>
+    <path d="M 34 124 L 34 52.5 L 151.5 47 L 269 44.8 L 386.5 40.4 L 504 38.2 L 504 124 Z" fill="#B89A6A" fill-opacity="0.10"/>
+    <path d="M34 52.5 L151.5 47 L269 44.8 L386.5 40.4 L504 38.2" fill="none" stroke="#B89A6A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="34" cy="52.5" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="34" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S1</text><circle cx="151.5" cy="47" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="151.5" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S2</text><circle cx="269" cy="44.8" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="269" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S3</text><circle cx="386.5" cy="40.4" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="386.5" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S4</text><circle cx="504" cy="38.2" r="3.5" fill="#27AE60" stroke="#fff" stroke-width="1"/>
+     <text x="504" y="142" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', ui-monospace, monospace" font-size="8" fill="#6B6862">S5</text></svg>
+    </div>
+    <table class="audit" style="margin-top:14px"><caption>Comparativo vs promedio histórico</caption>
+      <thead><tr><th>Indicador</th><th>Sesión actual</th><th>Promedio histórico</th><th>Variación</th></tr></thead>
+      <tbody>
+        <tr><td>Desempeño</td><td>7.8</td><td>7.1</td><td style="color:#27AE60;font-weight:700">+10% ↑</td></tr>
+        <tr><td>Competencias (prom.)</td><td>7.3</td><td>7.1</td><td style="color:#27AE60;font-weight:700">+3% ↑</td></tr>
+        <tr><td>Duración</td><td>4:08</td><td>3:55</td><td style="color:#27AE60;font-weight:700">+5% ↑</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ══ 13 · PLAN PARA EL GERENTE ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">13</span>
+    <div><h2 class="sec-title">Plan para el gerente</h2><div class="sec-sub">Pasos concretos para llevar a este asesor a la excelencia</div></div>
+  </div>
+    <ol class="plan"><li><span class="pl-n">1</span>Drill de 10 reps de anclaje de urgencia antes de presentar precio.</li><li><span class="pl-n">2</span>Role-play específico de la objeción "prefiero esperar".</li><li><span class="pl-n">3</span>Grabar y revisar 3 cierres propios esta semana.</li><li><span class="pl-n">4</span>Sesión de shadowing con un Closer senior.</li></ol>
+    <div class="card" style="margin-top:14px;background:#FBF7EE;border-color:#B89A6A">
+      <div class="card-k" style="color:#8C7343">▶ Próximo drill recomendado</div>
+      <div class="card-v" style="font-size:19px">7 · Objeciones</div>
+      <div class="ctas no-print" style="margin-top:12px">
+        <a class="btn btn-gold" href="https://vtc-capacitacion-deploy.vercel.app/?modulo=7%20%C2%B7%20Objeciones">📚 Ir al módulo siguiente</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 14 · TRANSCRIPCIÓN ABREVIADA ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">14</span>
+    <div><h2 class="sec-title">Transcripción abreviada</h2><div class="sec-sub">Tabla 5 · Primeras intervenciones + cierre</div></div>
+  </div>
+    <table class="audit"><caption>Tabla 5 — Transcripción abreviada</caption>
+      <thead><tr><th style="width:52px">Time</th><th style="width:120px">Speaker</th><th>Excerpt</th></tr></thead>
+      <tbody><tr>
+        <td class="mono tr-t">0:15</td>
+        <td class="mono tr-s" style="color:#2A2824">Andrés Mateos</td>
+        <td class="tr-x">Hola, buenos días, gracias por recibirme.</td>
+      </tr><tr>
+        <td class="mono tr-t">0:22</td>
+        <td class="mono tr-s" style="color:#8C7343">Coach VÍCTOR</td>
+        <td class="tr-x">Bienvenido. Hoy vamos a practicar un cierre con un cliente exigente.</td>
+      </tr><tr>
+        <td class="mono tr-t">0:45</td>
+        <td class="mono tr-s" style="color:#2A2824">Andrés Mateos</td>
+        <td class="tr-x">Perfecto, cuénteme un poco sobre su próximo viaje familiar.</td>
+      </tr><tr><td colspan="3" class="mono tr-ell">··· 2 intervenciones intermedias ···</td></tr><tr>
+        <td class="mono tr-t">4:05</td>
+        <td class="mono tr-s" style="color:#8C7343">Coach VÍCTOR</td>
+        <td class="tr-x">Excelente, cierre firme. Trabaja la urgencia antes de la objeción.</td>
+      </tr></tbody>
+    </table>
+    <div class="no-print" style="margin-top:10px;font-family:'Inter', 'Helvetica Neue', Arial, sans-serif;font-size:9.5px;color:#9A968E">
+      Transcripción completa disponible en el reporte interactivo.
+    </div>
+  </section>
+
+  <!-- ══ 15 · DEEP LEARNING DEL AGENTE ══ -->
+  <section>
+    <div class="sec-head">
+    <span class="sec-num">15</span>
+    <div><h2 class="sec-title">Deep Learning — optimización del agente</h2><div class="sec-sub">Aprendizaje continuo del Coach VÍCTOR</div></div>
+  </div>
+    <div class="dl">
+      <div class="dl-row" style="color:#2A2824"><span style="color:#27AE60;position:absolute;left:0">✓</span>Víctor dio feedback específico por timestamp.</div>
+      <div class="dl-row"><span style="color:#F39C12;position:absolute;left:0">△</span>Debió cortar antes la divagación del asesor.</div>
+      <div class="dl-row"><span style="color:#8C7343;position:absolute;left:0">⚙</span>Reducir latencia de respuesta a 400ms para mantener ritmo.</div>
+      
+    </div>
+  </section>
+
+  <!-- ══ 16 · CTAs FINALES ══ -->
+  <section class="no-print">
+    <div class="sec-head">
+    <span class="sec-num">16</span>
+    <div><h2 class="sec-title">Acciones</h2><div class="sec-sub">Recursos de la sesión</div></div>
+  </div>
+    <div class="ctas">
+      <a class="btn btn-gold" href="https://vtc-capacitacion-deploy.vercel.app/api/report?conv=conv_8701kxaffbvte3tb0vqqerevw37y">📊 Ver reporte interactivo</a>
+      <a class="btn btn-ghost" href="https://vtc-capacitacion-deploy.vercel.app/api/report?conv=conv_8701kxaffbvte3tb0vqqerevw37y&pdf=1">📥 Descargar PDF</a>
+      <a class="btn btn-ghost" href="https://vtc-capacitacion-deploy.vercel.app/api/audio?conv=conv_8701kxaffbvte3tb0vqqerevw37y">🎙️ Escuchar grabación</a>
+      <a class="btn btn-ghost" href="https://vtc-capacitacion-deploy.vercel.app/?modulo=7%20%C2%B7%20Objeciones">📚 Módulo siguiente</a>
+    </div>
+  </section>
+
+  <!-- Footer documento -->
+  <div class="docfoot">
+    <div><span class="gold">VÍCTOR</span> · Coach de IA del piso · Generado por Victor IA</div>
+    <div class="mono">2026-07-15T22:28:05-06:00 · Sesión conv_8701kxaffbvte3tb0vqqerevw37y</div>
+  </div>
+
+</div>
+</body></html>

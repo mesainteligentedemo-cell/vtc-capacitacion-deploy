@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Capacitación v2 — Editorial Luxury LMS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-tertiary: #1a1a1a;
+    --accent: #FFD60A;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border-color: #2a2a2a;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.cta-btn {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 214, 10, 0.2);
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(10,10,10,1) 100%);
+    border-bottom: 1px solid var(--border-color);
+    scroll-snap-align: start;
+}
+
+.hero-content {
+    max-width: 900px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+.hero-cta a {
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-cta .primary {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.hero-cta .primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(255, 214, 10, 0.3);
+}
+
+.hero-cta .secondary {
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.hero-cta .secondary:hover {
+    border-color: var(--accent);
+    background-color: rgba(255, 214, 10, 0.05);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    min-height: 100vh;
+}
+
+.courses-header {
+    margin-bottom: 3rem;
+}
+
+.courses-header h2 {
+    margin-bottom: 0.5rem;
+}
+
+.courses-header p {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.module-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.module-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.module-card:hover::before {
+    opacity: 1;
+}
+
+.module-number {
+    display: inline-block;
+    background: rgba(255, 214, 10, 0.1);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.module-card h3 {
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.module-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent) 0%, rgba(255, 214, 10, 0.6) 100%);
+    width: var(--progress, 0%);
+    transition: width 0.3s ease;
+}
+
+.module-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.sidebar {
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+}
+
+.sidebar-title {
+    font-family: 'Georgia', serif;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.sidebar-nav {
+    list-style: none;
+}
+
+.sidebar-nav li {
+    margin-bottom: 0.75rem;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    border-left: 2px solid transparent;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    color: var(--accent);
+    background: rgba(255, 214, 10, 0.05);
+    border-left-color: var(--accent);
+    padding-left: 1.25rem;
+}
+
+.lesson-player {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    scroll-snap-align: start;
+}
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.lesson-info {
+    padding: 2rem;
+}
+
+.lesson-title {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.lesson-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.meta-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.meta-value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.lesson-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.lesson-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.lesson-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.lesson-btn.primary {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
+}
+
+.lesson-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 4rem 2rem;
+    margin-top: 6rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h4 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.footer-section a {
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-copyright {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-social a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.footer-social a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 768px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        position: static;
+    }
+    .nav-links {
+        display: none;
+    }
+    h1 { font-size: 3rem; }
+    .hero h1 { font-size: 3rem; }
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">VTC</div>
+            <ul class="nav-links">
+                <li><a href="#cursos">Cursos</a></li>
+                <li><a href="#instructores">Instructores</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><button class="cta-btn">Iniciar sesión</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Domina las herramientas del futuro</h1>
+            <p class="hero-subtitle">Capacitación especializada en IA, diseño y producción digital</p>
+            <div class="hero-cta">
+                <a href="#cursos" class="primary">Explorar cursos</a>
+                <a href="#contacto" class="secondary">Ver testimonios</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="layout">
+            <div class="main-content">
+                <div class="courses-header" id="cursos">
+                    <h2>Programa de Capacitación</h2>
+                    <p>Cursos diseñados para profesionales que quieren dominar las últimas herramientas de IA y diseño digital</p>
+                </div>
+
+                <div class="modules-grid">
+                    <div class="module-card" onclick="selectModule(1)">
+                        <div class="module-number">Módulo 1</div>
+                        <h3>Fundamentos de IA Generativa</h3>
+                        <p>Introducción a modelos de lenguaje, prompting avanzado y casos de uso en producción</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 0%"></div></div>
+                        <div class="module-meta"><div>📚 5 lecciones</div><div>⏱️ 3h 20m</div></div>
+                    </div>
+
+                    <div class="module-card" onclick="selectModule(2)">
+                        <div class="module-number">Módulo 2</div>
+                        <h3>Producción de Video con IA</h3>
+                        <p>Kling AI, Runway y técnicas de síntesis de contenido visual de alta calidad</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 40%"></div></div>
+                        <div class="module-meta"><div>📚 6 lecciones</div><div>⏱️ 4h 15m</div></div>
+                    </div>
+
+                    <div class="module-card" onclick="selectModule(3)">
+                        <div class="module-number">Módulo 3</div>
+                        <h3>Audio Sintético y Voz IA</h3>
+                        <p>ElevenLabs, voces clonadas y producción de audio narrativo profesional</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 70%"></div></div>
+                        <div class="module-meta"><div>📚 4 lecciones</div><div>⏱️ 2h 50m</div></div>
+                    </div>
+
+                    <div class="module-card" onclick="selectModule(4)">
+                        <div class="module-number">Módulo 4</div>
+                        <h3>Automatización con n8n</h3>
+                        <p>Workflows avanzados, integración de APIs y orquestación de procesos</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 30%"></div></div>
+                        <div class="module-meta"><div>📚 7 lecciones</div><div>⏱️ 5h 10m</div></div>
+                    </div>
+
+                    <div class="module-card" onclick="selectModule(5)">
+                        <div class="module-number">Módulo 5</div>
+                        <h3>Diseño Web Moderno</h3>
+                        <p>React, Tailwind CSS y patrones de diseño editorial luxury</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 60%"></div></div>
+                        <div class="module-meta"><div>📚 8 lecciones</div><div>⏱️ 6h 20m</div></div>
+                    </div>
+
+                    <div class="module-card" onclick="selectModule(6)">
+                        <div class="module-number">Módulo 6</div>
+                        <h3>Gestión de Proyectos IA</h3>
+                        <p>Workflows, cliente management y escalabilidad de servicios</p>
+                        <div class="progress-bar"><div class="progress-fill" style="--progress: 15%"></div></div>
+                        <div class="module-meta"><div>📚 5 lecciones</div><div>⏱️ 3h 45m</div></div>
+                    </div>
+                </div>
+
+                <div id="lesson-container" style="display: none;">
+                    <div class="lesson-player">
+                        <div class="video-container"><iframe id="lesson-video" src="" allowfullscreen></iframe></div>
+                        <div class="lesson-info">
+                            <h2 class="lesson-title" id="lesson-title">Selecciona una lección</h2>
+                            <div class="lesson-meta">
+                                <div class="meta-item"><span class="meta-label">Módulo</span><span class="meta-value" id="lesson-module">—</span></div>
+                                <div class="meta-item"><span class="meta-label">Duración</span><span class="meta-value" id="lesson-duration">—</span></div>
+                                <div class="meta-item"><span class="meta-label">Nivel</span><span class="meta-value" id="lesson-level">Intermedio</span></div>
+                            </div>
+                            <p class="lesson-description" id="lesson-description">Contenido de la lección aparecerá aquí</p>
+                            <div class="lesson-actions">
+                                <button class="lesson-btn primary">Marcar como completada</button>
+                                <button class="lesson-btn">Descargar recursos</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <h4 class="sidebar-title">Navegación</h4>
+                <ul class="sidebar-nav">
+                    <li><a href="#" onclick="goToModule(1); return false;" class="active">Módulo 1: IA Generativa</a></li>
+                    <li><a href="#" onclick="goToModule(2); return false;">Módulo 2: Video IA</a></li>
+                    <li><a href="#" onclick="goToModule(3); return false;">Módulo 3: Audio IA</a></li>
+                    <li><a href="#" onclick="goToModule(4); return false;">Módulo 4: n8n</a></li>
+                    <li><a href="#" onclick="goToModule(5); return false;">Módulo 5: Diseño Web</a></li>
+                    <li><a href="#" onclick="goToModule(6); return false;">Módulo 6: Gestión Proyectos</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VTC Capacitación</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Plataforma de aprendizaje especializada en IA y diseño digital</p>
+            </div>
+            <div class="footer-section">
+                <h4>Cursos</h4>
+                <a href="#cursos">Ver todos los cursos</a>
+                <a href="#precios">Planes y precios</a>
+                <a href="#certificados">Certificaciones</a>
+                <a href="#instructores">Instructores</a>
+            </div>
+            <div class="footer-section">
+                <h4>Comunidad</h4>
+                <a href="#discord">Discord</a>
+                <a href="#foros">Foros</a>
+                <a href="#eventos">Eventos</a>
+                <a href="#networking">Networking</a>
+            </div>
+            <div class="footer-section">
+                <h4>Soporte</h4>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#politica">Política de privacidad</a>
+                <a href="#terminos">Términos de servicio</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copyright">&copy; 2026 VTC Capacitación. Todos los derechos reservados.</span>
+            <div class="footer-social">
+                <a href="#twitter">Twitter</a>
+                <a href="#linkedin">LinkedIn</a>
+                <a href="#instagram">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.module-card').forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: { trigger: card, start: 'top 80%', toggleActions: 'play none none none' },
+                opacity: 0, y: 30, duration: 0.8, delay: index * 0.1
+            });
+        });
+
+        const modulesData = {
+            1: { title: 'Introducción a los Modelos de Lenguaje', module: 'Módulo 1: Fundamentos de IA Generativa', duration: '1h 20m', description: 'En esta lección exploraremos cómo funcionan los modelos de lenguaje grandes, desde arquitectura transformers hasta fine-tuning avanzado. Aprenderás a utilizar APIs como Claude, GPT-4 y a escribir prompts que generen outputs de calidad profesional.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            2: { title: 'Kling AI: Síntesis de Video desde Prompts', module: 'Módulo 2: Producción de Video con IA', duration: '1h 45m', description: 'Domina Kling AI para generar videos de alta calidad desde descripciones en lenguaje natural. Cubriremos técnicas de prompting, control de duración, efectos de cámara y post-procesamiento.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            3: { title: 'ElevenLabs: Voz Sintética y Clonación', module: 'Módulo 3: Audio Sintético y Voz IA', duration: '1h 15m', description: 'Crea voces realistas con ElevenLabs. Aprenderás a clonar voces, ajustar tonalidad, sincronizar con video y producir narraciones profesionales en múltiples idiomas.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            4: { title: 'n8n: Automatización de Workflows Complejos', module: 'Módulo 4: Automatización con n8n', duration: '2h 10m', description: 'Construye workflows que integren APIs, automaticen tareas repetitivas y escalen tu producción. Desde webhooks hasta triggers basados en eventos, dominarás la orquestación de procesos.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            5: { title: 'React + Tailwind: Patrones Editorial Luxury', module: 'Módulo 5: Diseño Web Moderno', duration: '1h 50m', description: 'Diseña interfaces minimalistas y luxury usando React y Tailwind CSS. Cubriremos animaciones suaves, tipografía editorial, paletas de color restringidas y componentes reutilizables.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+            6: { title: 'Escalabilidad y Gestión de Proyectos IA', module: 'Módulo 6: Gestión de Proyectos IA', duration: '1h 35m', description: 'Aprende a estructurar equipos, delegar tareas en agentes IA especializados, trackear tiempo y documentar workflows. Estrategias probadas para escalar desde freelancer a agencia.', video: 'https://www.youtube.com/embed/dQw4w9WgXcQ' }
+        };
+
+        function selectModule(moduleNum) {
+            const data = modulesData[moduleNum];
+            document.getElementById('lesson-title').textContent = data.title;
+            document.getElementById('lesson-module').textContent = data.module;
+            document.getElementById('lesson-duration').textContent = data.duration;
+            document.getElementById('lesson-description').textContent = data.description;
+            document.getElementById('lesson-video').src = data.video;
+            document.getElementById('lesson-container').style.display = 'block';
+            document.getElementById('lesson-container').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goToModule(moduleNum) {
+            selectModule(moduleNum);
+            document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+            document.querySelectorAll('.sidebar-nav a')[moduleNum - 1].classList.add('active');
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                const next = document.querySelector('.sidebar-nav a.active')?.parentElement?.nextElementSibling?.querySelector('a');
+                if (next) next.click();
+            }
+            if (e.key === 'ArrowLeft') {
+                const prev = document.querySelector('.sidebar-nav a.active')?.parentElement?.previousElementSibling?.querySelector('a');
+                if (prev) prev.click();
+            }
+        });
+    </script>
+</body>
+</html>

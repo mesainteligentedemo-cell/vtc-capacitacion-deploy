@@ -1,0 +1,49 @@
+import { NextRequest, NextResponse } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Public routes (no auth required)
+  const publicRoutes = ['/landing', '/auth/login', '/auth/signup', '/auth/forgot-password'];
+  const isPublicRoute = publicRoutes.some(route => pathname.startsWith(route));
+
+  if (isPublicRoute) {
+    return NextResponse.next();
+  }
+
+  // Protected routes (auth required)
+  const protectedRoutes = ['/dashboard', '/api/crm', '/api/documents', '/api/training'];
+  const isProtectedRoute = protectedRoutes.some(route => pathname.startsWith(route));
+
+  if (isProtectedRoute) {
+    // TODO: Implement:
+    // 1. Get JWT token from cookies or Authorization header
+    // 2. Verify token signature and expiry
+    // 3. If invalid/expired, redirect to /auth/login
+    // 4. If valid, attach user info to request headers for use in API routes
+
+    const token = request.cookies.get('token')?.value;
+
+    if (!token) {
+      // Redirect to login
+      return NextResponse.redirect(new URL('/auth/login', request.url));
+    }
+
+    // Token exists, continue to protected route
+    return NextResponse.next();
+  }
+
+  // Root path redirects
+  if (pathname === '/') {
+    // TODO: Check if user is authenticated
+    // If yes → redirect to /dashboard
+    // If no → redirect to /landing
+    return NextResponse.redirect(new URL('/landing', request.url));
+  }
+
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|public).*)']
+};

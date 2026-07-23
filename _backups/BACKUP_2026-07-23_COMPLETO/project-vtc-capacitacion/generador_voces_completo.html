@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Voces Adultas - ElevenLabs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .instrucciones {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .instrucciones h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .instrucciones ol {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .advertencia {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .advertencia strong {
+            color: #2e7d32;
+        }
+
+        .botones {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primario {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primario:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secundario {
+            background: #f0f4ff;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secundario:hover {
+            background: #e8ecff;
+        }
+
+        .voces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .voz-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .voz-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .voz-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+
+        .voz-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .voz-categoria {
+            display: inline-block;
+            background: #e8ecff;
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .voz-settings {
+            background: #f9f9f9;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+
+        .setting-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .setting-value {
+            color: #667eea;
+            font-weight: 700;
+        }
+
+        .prompt-preview {
+            background: #f0f4ff;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+            margin: 10px 0;
+            max-height: 60px;
+            overflow-y: auto;
+            border-left: 3px solid #667eea;
+        }
+
+        .btn-copiar {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn-copiar:hover {
+            background: #764ba2;
+        }
+
+        .btn-copiar.copiado {
+            background: #4caf50;
+        }
+
+        .filtros {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filtro-btn {
+            padding: 8px 16px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filtro-btn:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .filtro-btn.activo {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .estatus {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f4ff;
+            border-radius: 8px;
+        }
+
+        .estatus h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .lista-estatus {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .lista-estatus li {
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+
+        .lista-estatus li.completada {
+            border-left-color: #4caf50;
+            background: #f1f8f4;
+        }
+
+        .lista-estatus .check {
+            width: 20px;
+            height: 20px;
+            background: #4caf50;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .lista-estatus .pending {
+            width: 20px;
+            height: 20px;
+            background: #ddd;
+            color: #999;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .footer {
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .estadisticas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎵 Generador de Voces Adultas</h1>
+            <p>ElevenLabs Voice Design - 14 Voces Únicas</p>
+        </div>
+
+        <div class="content">
+            <div class="advertencia">
+                <strong>✓ 100% Legal:</strong> Solo voces de adultos (18+). Cumple todas las políticas de ElevenLabs. Diversidad de géneros y características vocales.
+            </div>
+
+            <div class="instrucciones">
+                <h3>📋 Instrucciones:</h3>
+                <ol>
+                    <li>Abre <a href="https://elevenlabs.io/voice-library?action=create&creationType=voiceDesign" target="_blank" style="color: #667eea; font-weight: 600;">ElevenLabs Voice Design</a> en otra pestaña</li>
+                    <li>Para cada voz: haz clic en <strong>"Copiar Prompt"</strong></li>
+                    <li>Pega en ElevenLabs y ajusta los sliders a los % indicados</li>
+                    <li>Haz clic en <strong>"Generate voice"</strong> y escucha la preview</li>
+                    <li>Si te gusta → <strong>"Save"</strong> con el nombre indicado</li>
+                    <li>Repite para las 14 voces (~35 minutos total)</li>
+                </ol>
+            </div>
+
+            <div class="estadisticas">
+                <div class="stat-card">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Voces Totales</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Hombres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Mujeres</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">~4.9k</div>
+                    <div class="stat-label">Créditos</div>
+                </div>
+            </div>
+
+            <div class="botones">
+                <button class="btn-primario" onclick="abrirElevenLabs()">🔗 Abrir ElevenLabs Voice Design</button>
+                <button class="btn-secundario" onclick="descargarJSON()">💾 Descargar JSON Completo</button>
+            </div>
+
+            <div class="filtros">
+                <button class="filtro-btn activo" onclick="filtrar('todas')">Todas (14)</button>
+                <button class="filtro-btn" onclick="filtrar('hombres')">👨 Hombres (7)</button>
+                <button class="filtro-btn" onclick="filtrar('mujeres')">👩 Mujeres (7)</button>
+                <button class="filtro-btn" onclick="filtrar('jovenes')">Jóvenes 20s-40s (6)</button>
+                <button class="filtro-btn" onclick="filtrar('mayores')">Mayores 60+ (2)</button>
+            </div>
+
+            <div class="voces-grid" id="vocesGrid"></div>
+
+            <div class="estatus">
+                <h3>✓ Seguimiento de Voces Generadas</h3>
+                <ul class="lista-estatus" id="listaEstatus"></ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 Costo: ~350 créditos por voz × 14 voces = ~4,900 créditos</p>
+            <p>⏱️ Tiempo: 30-35 minutos | 🎯 Todas voces adultas (cumple políticas)</p>
+        </div>
+    </div>
+
+    <script>
+        const VOCES = [
+            {
+                nombre: "HOMBRE_20_AÑOS",
+                categoria: "Joven Profesional",
+                tipo: "hombres,jovenes",
+                prompt: "Friendly, approachable young professional man. Male, 20 years old. Spanish (Mexican). Clear, warm voice with youthful brightness and energy. Natural conversational pace with genuine friendliness and approachability. Engaging and warm.",
+                loudness: 60,
+                guidance_scale: 70
+            },
+            {
+                nombre: "MUJER_24_AÑOS",
+                categoria: "Joven Profesional",
+                tipo: "mujeres,jovenes",
+                prompt: "Smart, empathetic professional woman. Female, 24 years old. Spanish (Mexican). Clear and warm voice with professional maturity and intelligence. Engaging delivery with empathy and warmth. Natural conversational pace.",
+                loudness: 60,
+                guidance_scale: 70
+            },
+            {
+                nombre: "HOMBRE_40_AÑOS_EJECUTIVO",
+                categoria: "Ejecutivo",
+                tipo: "hombres,jovenes",
+                prompt: "Authoritative executive, decisive leader. Male, 40 years old. Spanish (Mexican). Deep, authoritative voice with professional strength. Powerful, confident, commanding tone. Controlled, assertive pace with executive presence.",
+                loudness: 72,
+                guidance_scale: 72
+            },
+            {
+                nombre: "HOMBRE_40_AÑOS_CÁLIDO",
+                categoria: "Mentor",
+                tipo: "hombres,jovenes",
+                prompt: "Supportive mentor, warm coach. Male, 40 years old. Spanish (Mexican). Deep, warm voice with approachable strength and intelligence. Caring, friendly, encouraging tone. Natural conversational pace with genuine support.",
+                loudness: 55,
+                guidance_scale: 70
+            },
+            {
+                nombre: "HOMBRE_50_AÑOS_SEGURO",
+                categoria: "Profesional Senior",
+                tipo: "hombres,jovenes",
+                prompt: "Confident, self-assured professional man. Male, 50 years old. Spanish (Mexican). Deep, clear voice with quiet confidence and presence. Warm yet authoritative tone. Natural pace with intelligence and poise.",
+                loudness: 65,
+                guidance_scale: 71
+            },
+            {
+                nombre: "HOMBRE_80_AÑOS",
+                categoria: "Adulto Mayor",
+                tipo: "hombres,mayores",
+                prompt: "Wise, warm grandfather voice. Male, 80 years old. Spanish (Mexican). Deep, warm voice with life wisdom and experience. Calm, trustworthy, experienced tone. Deliberate, slower pace with grandfatherly warmth and strength.",
+                loudness: 48,
+                guidance_scale: 70
+            },
+            {
+                nombre: "HOMBRE_65_AÑOS",
+                categoria: "Adulto Mayor",
+                tipo: "hombres,mayores",
+                prompt: "Authoritative, wise mentor. Male, 65 years old. Spanish (Mexican). Deep, warm voice with wisdom and life experience. Calm, trustworthy, intelligent tone. Natural pace with authority and warmth.",
+                loudness: 52,
+                guidance_scale: 70
+            },
+            {
+                nombre: "MUJER_40_AÑOS_EJECUTIVA",
+                categoria: "Ejecutiva",
+                tipo: "mujeres,jovenes",
+                prompt: "Strong executive, confident leader. Female, 40 years old. Spanish (Mexican). Clear, strong voice with professional authority and intelligence. Powerful, decisive, commanding tone. Controlled, assertive pace with presence.",
+                loudness: 70,
+                guidance_scale: 72
+            },
+            {
+                nombre: "MUJER_40_AÑOS_CÁLIDA",
+                categoria: "Mentor",
+                tipo: "mujeres,jovenes",
+                prompt: "Empathetic coach, warm connector. Female, 40 years old. Spanish (Mexican). Clear, warm voice with intelligence and kindness. Caring, supportive, relatable tone. Natural conversational pace with genuine connection.",
+                loudness: 58,
+                guidance_scale: 70
+            },
+            {
+                nombre: "MUJER_45_AÑOS_DINAMICA",
+                categoria: "Profesional Senior",
+                tipo: "mujeres,jovenes",
+                prompt: "Dynamic, energetic professional woman. Female, 45 years old. Spanish (Mexican). Clear, engaging voice with vitality and intelligence. Warm yet commanding tone. Natural pace with enthusiasm and strength.",
+                loudness: 63,
+                guidance_scale: 71
+            },
+            {
+                nombre: "MUJER_75_AÑOS",
+                categoria: "Adulto Mayor",
+                tipo: "mujeres,mayores",
+                prompt: "Wise, nurturing grandmother voice. Female, 75 years old. Spanish (Mexican). Warm, mature voice with gentle strength and wisdom. Loving, protective, experienced tone. Natural pace with maternal warmth.",
+                loudness: 50,
+                guidance_scale: 70
+            },
+            {
+                nombre: "MUJER_60_AÑOS",
+                categoria: "Adulto Mayor",
+                tipo: "mujeres,mayores",
+                prompt: "Warm, intelligent older woman voice. Female, 60 years old. Spanish (Mexican). Clear, warm voice with wisdom and strength. Caring, experienced, authoritative tone. Natural pace with warmth and intelligence.",
+                loudness: 55,
+                guidance_scale: 70
+            },
+            {
+                nombre: "HOMBRE_45_AÑOS_ASSERTIVO",
+                categoria: "Profesional Senior",
+                tipo: "hombres,jovenes",
+                prompt: "Assertive, confident professional man. Male, 45 years old. Spanish (Mexican). Deep, clear voice with quiet strength and confidence. Warm yet direct tone. Natural pace with presence and intelligence.",
+                loudness: 68,
+                guidance_scale: 71
+            },
+            {
+                nombre: "MUJER_50_AÑOS_SEGURA",
+                categoria: "Profesional Senior",
+                tipo: "mujeres,jovenes",
+                prompt: "Self-assured, confident professional woman. Female, 50 years old. Spanish (Mexican). Clear, strong voice with quiet confidence. Warm yet assertive tone. Natural pace with presence and expertise.",
+                loudness: 62,
+                guidance_scale: 71
+            }
+        ];
+
+        let vocesCompletadas = {};
+        let filtroActual = 'todas';
+
+        function inicializar() {
+            renderVoces();
+            renderEstatus();
+            cargarProgreso();
+        }
+
+        function renderVoces() {
+            const grid = document.getElementById('vocesGrid');
+            const vocesFiltradas = VOCES.filter(v => {
+                if (filtroActual === 'todas') return true;
+                return v.tipo.includes(filtroActual);
+            });
+
+            grid.innerHTML = vocesFiltradas.map((voz, idx) => `
+                <div class="voz-card">
+                    <div class="voz-number">${VOCES.indexOf(voz) + 1}</div>
+                    <h3>${voz.nombre}</h3>
+                    <div class="voz-categoria">${voz.categoria}</div>
+                    <div class="voz-settings">
+                        <div class="setting-item">
+                            <span class="setting-label">Loudness:</span>
+                            <span class="setting-value">${voz.loudness}%</span>
+                        </div>
+                        <div class="setting-item">
+                            <span class="setting-label">Guidance Scale:</span>
+                            <span class="setting-value">${voz.guidance_scale}%</span>
+                        </div>
+                    </div>
+                    <div class="prompt-preview" title="${voz.prompt}">
+                        📝 ${voz.prompt.substring(0, 75)}...
+                    </div>
+                    <button class="btn-copiar" onclick="copiarPrompt('${voz.nombre}', this)">
+                        📋 Copiar Prompt
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function renderEstatus() {
+            const lista = document.getElementById('listaEstatus');
+            lista.innerHTML = VOCES.map((voz) => {
+                const completada = vocesCompletadas[voz.nombre] || false;
+                return `
+                    <li ${completada ? 'class="completada"' : ''}>
+                        ${completada ?
+                            `<span class="check">✓</span>` :
+                            `<span class="pending">○</span>`
+                        }
+                        <span>${voz.nombre}</span>
+                    </li>
+                `;
+            }).join('');
+        }
+
+        function copiarPrompt(nombre, btn) {
+            const voz = VOCES.find(v => v.nombre === nombre);
+            if (!voz) return;
+
+            navigator.clipboard.writeText(voz.prompt).then(() => {
+                btn.textContent = '✓ Copiado';
+                btn.classList.add('copiado');
+                setTimeout(() => {
+                    btn.textContent = '📋 Copiar Prompt';
+                    btn.classList.remove('copiado');
+                }, 1500);
+
+                setTimeout(() => {
+                    vocesCompletadas[nombre] = true;
+                    guardarProgreso();
+                    renderEstatus();
+                }, 2000);
+            });
+        }
+
+        function filtrar(tipo) {
+            filtroActual = tipo;
+            document.querySelectorAll('.filtro-btn').forEach(btn => btn.classList.remove('activo'));
+            event.target.classList.add('activo');
+            renderVoces();
+        }
+
+        function descargarJSON() {
+            const data = {
+                timestamp: new Date().toISOString(),
+                total_voces: VOCES.length,
+                descripcion: "14 voces adultas - Cumple políticas de ElevenLabs",
+                voces: VOCES
+            };
+
+            const json = JSON.stringify(data, null, 2);
+            const blob = new Blob([json], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `voces_adultas_14_${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function abrirElevenLabs() {
+            window.open('https://elevenlabs.io/voice-library?action=create&creationType=voiceDesign', '_blank');
+        }
+
+        function guardarProgreso() {
+            localStorage.setItem('vocesCompletadas', JSON.stringify(vocesCompletadas));
+        }
+
+        function cargarProgreso() {
+            const guardado = localStorage.getItem('vocesCompletadas');
+            if (guardado) {
+                vocesCompletadas = JSON.parse(guardado);
+            }
+        }
+
+        window.addEventListener('load', inicializar);
+    </script>
+</body>
+</html>

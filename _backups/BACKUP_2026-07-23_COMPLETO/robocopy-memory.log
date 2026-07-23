@@ -1,0 +1,29 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Herramienta para copia eficaz de archivos         
+-------------------------------------------------------------------------------
+
+  Iniciado : jueves, 23 de julio de 2026 11:35:38 a. m.
+   Origen : C:\Users\inbou\.claude\projects\c--Users-inbou\memory\
+     Destino : C:\Users\inbou\vtc-capacitacion-deploy\_backups\BACKUP_2026-07-23_COMPLETO\memory-files\
+
+    Archivos: *.*
+	    
+  Opciones: *.* /NDL /NFL /S /E /DCOPY:DA /COPY:DAT /NP /MT:8 /R:1 /W:1 
+
+------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------
+
+               Total   Copiado   OmitidoNo coincidencia     ERROR    Extras
+Director.:         6         6         1         0         0         0
+ Archivos:       270       270         0         0         0         0
+    Bytes:    4.26 m    4.26 m         0         0         0         0
+   Tiempo:   0:00:01   0:00:00                       0:00:00   0:00:00
+
+
+Velocidad:           30,876,751 Bytes/s
+Velocidad:            1,766.782 Megabytes/min
+   Finalizado: jueves, 23 de julio de 2026 11:35:38 a. m.
+

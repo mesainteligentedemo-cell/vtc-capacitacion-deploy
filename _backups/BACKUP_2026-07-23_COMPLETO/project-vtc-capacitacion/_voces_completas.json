@@ -1,0 +1,73 @@
+{
+  "VICTOR": {
+    "voz_espanol": {
+      "name": "Enrique M. Nieto",
+      "voice_id": "gbTn1bmCvNgk0QEAVyfM",
+      "accent": "mexican",
+      "lang": "es",
+      "descriptive": "gentle, calm, professional",
+      "uso": "Victor en español (empleado/gerente/coach)"
+    },
+    "voz_ingles": {
+      "name": "Enrique M. Nieto",
+      "voice_id": "gbTn1bmCvNgk0QEAVyfM",
+      "accent": "mexican",
+      "lang": "en",
+      "descriptive": "gentle, calm, professional",
+      "uso": "Victor en inglés (empleado/gerente/coach — MISMA voz)"
+    }
+  },
+
+  "CLIENTE_ESPANOL": {
+    "hombre": {
+      "name": "Miguel - Clear, Calm and Measured",
+      "voice_id": "JX8y9ihlYvbtVC4XWmCY",
+      "descriptive": "casual, conversational",
+      "nationality": "mexican"
+    },
+    "mujer": {
+      "name": "Yuana - Brisk, Crisp and Authoritative",
+      "voice_id": "2KE5YlulAC1GU4TEBlQF",
+      "descriptive": "casual, conversational",
+      "nationality": "mexican"
+    }
+  },
+
+  "CLIENTE_INGLES": {
+    "hombre": {
+      "name": "Burt Reynolds",
+      "voice_id": "JBFqnCBsd6RB2NXwIHly",
+      "descriptive": "deep, authoritative, conversational",
+      "nationality": "american"
+    },
+    "mujer": {
+      "name": "Hope - Your conversational bestie",
+      "voice_id": "uYXf8XasLslADfZ2MB4u",
+      "descriptive": "casual, conversational, warm",
+      "nationality": "american"
+    }
+  },
+
+  "VOCES_BRITANICAS": {
+    "hombre": {
+      "name": "Brian - British English, warm and articulate",
+      "voice_id": "V3Tz9Hm2pQ7nKx5rJ8wL",
+      "descriptive": "conversational, natural British accent",
+      "nationality": "british"
+    },
+    "mujer": {
+      "name": "Isabella - British English, sophisticated and engaging",
+      "voice_id": "C2pM4nR6jK9sT1xW5vB",
+      "descriptive": "conversational, natural British accent",
+      "nationality": "british"
+    }
+  },
+
+  "REGLAS_CRITICAS": {
+    "1_victor": "Victor SIEMPRE usa Enrique M. Nieto (ES e INGLÉS — MISMA voz) cuando es empleado/gerente/coach",
+    "2_cliente_espanol": "Clientes en español = voces mexicanas diferentes (Miguel = hombre, Yuana = mujer)",
+    "3_cliente_ingles": "Clientes en inglés = Burt Reynolds (hombre) + Hope (mujer/esposa)",
+    "4_britanicos": "Voces británicas para roleplay especial (Brian = hombre, Isabella = mujer)",
+    "5_naturalidad": "Conversación fluida, rápida, sin meta-comentarios, como si fuera real"
+  }
+}

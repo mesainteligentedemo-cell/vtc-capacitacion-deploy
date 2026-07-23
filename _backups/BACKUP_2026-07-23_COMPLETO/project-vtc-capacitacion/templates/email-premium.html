@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #0A0A0A;
+      color: #FFFFFF;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #0A0A0A;
+      padding: 40px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    }
+    .header h1 {
+      color: #FFD700;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .header p {
+      color: #AAAAAA;
+      font-size: 13px;
+    }
+    .greeting {
+      margin: 30px 0;
+      color: #E0E0E0;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .section {
+      margin: 25px 0;
+    }
+    .section-title {
+      color: #FFD700;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    .info-table td {
+      padding: 12px;
+      border-bottom: 1px solid #1A1A1A;
+      font-size: 13px;
+    }
+    .info-label {
+      color: #AAAAAA;
+      font-weight: 600;
+      width: 40%;
+    }
+    .info-value {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+    .score-highlight {
+      background: rgba(255, 215, 0, 0.05);
+      border-left: 3px solid #FFD700;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .score-highlight .score-number {
+      color: #FFD700;
+      font-size: 36px;
+      font-weight: 900;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    .score-highlight .score-label {
+      color: #E0E0E0;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    .summary-box {
+      background: #1A1A1A;
+      padding: 15px;
+      border-left: 3px solid #FFD700;
+      border-radius: 4px;
+      color: #E0E0E0;
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+    .cta-buttons {
+      display: table;
+      width: 100%;
+      margin: 30px 0;
+      gap: 15px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .btn-primary {
+      background: #FFD700;
+      color: #000000;
+    }
+    .btn-primary:hover {
+      background: #FFED4E;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 215, 0, 0.1);
+    }
+    .attachments {
+      background: #1A1A1A;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 20px 0;
+      border-left: 3px solid #FFD700;
+    }
+    .attachments-title {
+      color: #FFD700;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .attachment-item {
+      color: #E0E0E0;
+      font-size: 12px;
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 215, 0, 0.2);
+      text-align: center;
+      color: #666666;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Reporte de Capacitación VTC</h1>
+      <p>Sistema de Evaluación ELITE - Versión 8K</p>
+    </div>
+
+    <div class="greeting">
+      Estimados,<br><br>
+      Se adjunta la documentación oficial y evidencia de audio de la sesión de capacitación VTC.
+    </div>
+
+    <div class="score-highlight">
+      <div class="score-number">{{score}}/10</div>
+      <div class="score-label">Desempeño Global</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📊 Resumen Ejecutivo</div>
+      <table class="info-table">
+        <tr>
+          <td class="info-label">Colaborador:</td>
+          <td class="info-value">{{nombre_usuario}}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Email:</td>
+          <td class="info-value">{{email_usuario}}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Sesión:</td>
+          <td class="info-value">{{fecha}}</td>
+        </tr>
+        <tr>
+          <td class="info-label">Hora:</td>
+          <td class="info-value">{{hora}} CUN (UTC-5)</td>
+        </tr>
+        <tr>
+          <td class="info-label">Duración:</td>
+          <td class="info-value">{{minutos_uso}} minutos</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📝 Análisis de la Llamada</div>
+      <div class="summary-box">
+        {{resumen_ejecutivo_llamada}}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📂 Archivos Adjuntos</div>
+      <div class="attachments">
+        <div class="attachments-title">✓ Documentación Incluida:</div>
+        <div class="attachment-item">📄 {{nombre_usuario}}_{{fecha_archivo}}.pdf</div>
+        <div class="attachment-item">🎧 {{nombre_usuario}}_{{fecha_archivo}}.mp3</div>
+        <div style="color: #AAAAAA; font-size: 11px; margin-top: 15px;">
+          Los archivos PDF y MP3 se encuentran adjuntos para su descarga y archivo.
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div style="text-align: center;">
+        <a href="https://victor-ia-training.vercel.app/" class="btn btn-primary">🔄 Volver a Entrenar</a>
+        <a href="https://victor-ia-training.vercel.app/audio-player?id={{conversation_id}}" class="btn btn-secondary">🎧 Escuchar Conversación</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <strong>DOCUMENTO CONFIDENCIAL VTC</strong><br>
+      GENERADO EN CANCÚN, Q.ROO | UTC-5<br>
+      {{fecha}} | {{hora}}<br><br>
+      <em>Este reporte contiene información confidencial destinada solo para personal autorizado de VTC.</em>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,528 @@
+================================================================================
+OBJECIONES TOTALES - TODAS LAS POSIBLES (Comunes + Raras + Absurdas)
+Para Role-Play y Entrenamiento de Vendedores
+================================================================================
+
+INSTRUCCIONES PARA EL BOT:
+Cuando el usuario pida practicar objeciones, selecciona una al azar de esta lista.
+Responde como un cliente REAL con esa objeción.
+Sé persistente - no aceptes una respuesta débil del vendedor.
+
+================================================================================
+SECCIÓN 1: OBJECIONES COMUNES (Las que sí existen en la realidad)
+================================================================================
+
+OBJECIÓN 1: PRECIO / DINERO
+Cliente dice: "Es demasiado caro."
+Respuesta correcta del vendedor:
+"I appreciate your honesty. Let me ask you something: Is it too expensive, or have we just not shown you the value yet? Let me break this down for you. You said you want to advance in your career, correct? Every month you wait, that's one more month someone else is getting certified ahead of you. In one year, they'll have 12 certifications. You'll have zero. In five years, they'll be a leader in their field. You'll be where you are now. Is the cost of staying behind worth the price difference? Plus, remember, this is a ONE-TIME investment for LIFETIME access. What if I could make the monthly payment smaller? Would that work for you?"
+
+Variantes del cliente:
+- "No puedo permitirme esto ahora."
+- "Es el doble de lo que esperaba."
+- "Puedo hacerlo en línea gratis en YouTube."
+- "Mi presupuesto es muy limitado."
+- "¿Cuál es el precio más bajo que pueden hacer?"
+
+================================================================================
+
+OBJECIÓN 2: "DÉJAME PENSARLO" / "NECESITO TIEMPO"
+Cliente dice: "Quiero pensarlo, no estoy seguro."
+Respuesta correcta del vendedor:
+"I completely understand you want to think about it. Most people do. But let me ask you this: What exactly do you want to think about? Is it the investment? If the price was perfect, would you join today? Is it whether the program is right for you? Because we've already confirmed it's exactly what you need, correct? Is it something else I haven't addressed? Here's what I know: every day you wait is another day you're not learning, not growing, not moving forward in your career. Our first visit incentives are only available TODAY. Tomorrow they're gone. And the sooner you start, the sooner you'll have your certification. So let's handle any concern you have right now, and let's get you enrolled today. Fair enough? What's the real reason?"
+
+Variantes:
+- "Quiero consultarlo con mi pareja."
+- "Déjame llamar a mi contador."
+- "Necesito revisar mis finanzas."
+- "Voy a esperar al próximo mes."
+- "Mis padres me dijeron que espere."
+
+================================================================================
+
+OBJECIÓN 3: PAREJA / FAMILIA NO ESTÁ DE ACUERDO
+Cliente dice: "Mi esposo/a no quiere que lo haga."
+Respuesta correcta:
+"I understand. Tell me, what specifically is their concern? Is it the investment? Is it the time commitment? Is it whether they think the program will actually help you? Let me ask you this: If this was 100% affordable and they could see it would transform your career, would they be on board? Because I think once they understand the value, they'll see this is an investment in your future together. What if I could address their specific concerns right now? Can we call them so I can explain this to both of you?"
+
+Variantes:
+- "Mi marido dice que no."
+- "Mi familia cree que es una estafa."
+- "Mi mamá no me da permiso."
+- "Mi pareja está muy escéptica."
+- "Mi novia cree que pierdo el tiempo."
+
+================================================================================
+
+OBJECIÓN 4: "YA LO INTENTÉ ANTES"
+Cliente dice: "Ya lo intenté y no funcionó."
+Respuesta correcta:
+"I appreciate you sharing that. Every experience teaches us something. Let me ask you: What was different about what you tried before? Was it the program itself, or was it maybe the support system? Was it the format? Was it the community? Because what I'm hearing is that you WANT to succeed, you just haven't found the right fit yet. Here's why VTC is different: we have [ONE-ON-ONE coaching / Lifetime support / Premium community / Certification guarantee]. The last program didn't have this. So essentially, you were trying without the tools that make success inevitable. Does that make sense? And since you're already motivated to learn, why not try with the RIGHT system this time?"
+
+Variantes:
+- "Hice un curso online y fue una pérdida de tiempo."
+- "Gasté dinero en capacitación y no sirvió."
+- "Intenté aprender esto hace años y abandoné."
+- "Otro programa me prometió lo mismo."
+- "Ya no creo en las certificaciones en línea."
+
+================================================================================
+
+OBJECIÓN 5: "NO TENGO TIEMPO"
+Cliente dice: "No tengo tiempo para esto."
+Respuesta correcta:
+"I hear you. Everyone's busy. But let me ask you: How much time do you spend on Netflix? On social media? On things that don't move you forward? What if the time you invest in VTC actually SAVES you time in your career? Because one certification from us could cut years off your path to advancement. Plus, our program is FLEXIBLE. You set your own pace. 15 minutes a day is enough. In one month, that's less than 8 hours total. Is 8 hours a month really too much to invest in your future? What if we started with just one course? Can you do that?"
+
+Variantes:
+- "Estoy muy ocupado ahora."
+- "Trabajo muchas horas."
+- "Tengo familia y responsabilidades."
+- "Mi agenda está llena los próximos 6 meses."
+- "No sé cuándo voy a poder estudiar."
+
+================================================================================
+
+OBJECIÓN 6: "NO SÉ SI FUNCIONE PARA MÍ"
+Cliente dice: "¿Y si no me funciona? ¿Qué pasa si no logro terminar?"
+Respuesta correcta:
+"Great question. That's actually why we have our [MONEY-BACK GUARANTEE / SUCCESS GUARANTEE / COMPLETION GUARANTEE]. If after 30 days you don't see value, we give you your money back, no questions asked. But here's what I know: Everyone who STARTS with us, completes. And 99% say it was the best investment they made. Why? Because you're not alone. You have [personal coach / community / support team / mentors]. You're not struggling in the dark. So the real question isn't 'What if it doesn't work?' The real question is 'What if it DOES work?' And your career transforms. Your earning potential increases. Your confidence skyrockets. Isn't THAT worth the risk?"
+
+Variantes:
+- "¿Qué garantía hay de que funcione?"
+- "¿Si no termino qué pasa?"
+- "¿Y si no entiendo el contenido?"
+- "¿Me devuelven el dinero si no funciona?"
+- "No sé si tengo el nivel necesario."
+
+================================================================================
+
+OBJECIÓN 7: "YA SOY EXPERTO / NO LO NECESITO"
+Cliente dice: "Ya tengo años de experiencia, no necesito esto."
+Respuesta correcta:
+"Absolutely, you have tremendous experience. That's exactly WHY this is perfect for you. You don't need basics. You need [ADVANCED CREDENTIALS / RECOGNIZED CERTIFICATIONS / EXECUTIVE POSITIONING]. Here's the reality: Experience alone doesn't get you promoted. Certifications do. Right now, someone with less experience but WITH a VTC certification is getting the job YOU should have. They have a credential. You have a story. In today's market, credentials win. Plus, this isn't about learning what you already know. It's about PROVING what you know with an internationally recognized certification. Isn't it worth 90 minutes of your time to secure the next 10 years of your career?"
+
+Variantes:
+- "Ya tengo 20 años en la industria."
+- "No necesito más capacitación."
+- "Conozco todo esto ya."
+- "Mis títulos son suficientes."
+- "La experiencia vale más que los cursos."
+
+================================================================================
+
+OBJECIÓN 8: "¿ESTO REALMENTE VALE LA PENA?"
+Cliente dice: "No estoy convencido de que realmente funcione."
+Respuesta correcta:
+"I understand your skepticism. Smart people are skeptical. But let me ask you: If I showed you 100 members who completed this, increased their income by an average of 40%, and got promoted within 18 months, would that convince you? Because that's our track record. And we have the testimonials to prove it. But more important than our word, look at the LOGIC: Certification + Community + Support System = Career Advancement. That's not magic, that's mathematics. The only variable is YOU. Are you willing to be one of those success stories? Because I think you are. You wouldn't still be here if you didn't believe something might be possible. So let's remove the doubt. What specific outcome are you looking for? Let me show you exactly how we help people get there."
+
+Variantes:
+- "Suena demasiado bueno para ser verdad."
+- "¿Cómo sé que realmente funciona?"
+- "¿Esto es una estafa?"
+- "Parece un esquema de pirámide."
+- "¿Qué pasa realmente después?"
+
+================================================================================
+
+OBJECIÓN 9: "PUEDO HACERLO SOLO / GRATIS"
+Cliente dice: "Puedo aprender por mi cuenta, no necesito pagar."
+Respuesta correcta:
+"Absolutely, you COULD learn by yourself. And in 5 years, you might have everything you need. But let me ask you: How has that been working for you? Have you started yet? Do you have a plan? Because the problem with DIY is: 1) No accountability - you quit when it gets hard, 2) No credentials - even if you learn it, nobody recognizes it, 3) No community - you're alone, 4) No guarantee - you might learn it wrong. Our members pay because time IS money. Your time is worth [AMOUNT] per hour, correct? So 100 hours of your time DIY = [COST]. Plus a certificate nobody recognizes. Or invest [AMOUNT] in a RECOGNIZED certification with support, community, and guarantee. Which is really more expensive? And which gets you the job?"
+
+Variantes:
+- "Hay millones de videos gratis en YouTube."
+- "Puedo comprar un libro y aprender sólo."
+- "Mi hermano me puede enseñar."
+- "Hay otros programas más baratos."
+- "No quiero gastar dinero."
+
+================================================================================
+
+OBJECIÓN 10: "MIS CIRCUNSTANCIAS SON DIFERENTES"
+Cliente dice: "Tu ejemplo no es como mi situación."
+Respuesta correcta:
+"You're right, everyone's situation is unique. Tell me exactly what makes yours different. Because here's what I know: Every member who joined thought their situation was too different. Single moms thought it couldn't work. CEOs thought it was too basic. People with disabilities thought it was impossible. Career-changers thought it was too specific. But you know what? They ALL found their way because the fundamentals are the same. Career advancement happens the same way for everyone: Skill + Certification + Network = Opportunity. Your circumstance doesn't change that math. So tell me, what's the one thing you think is different? Let's solve it right now."
+
+Variantes:
+- "Mi trabajo no me permite este tiempo."
+- "Soy un caso especial."
+- "Mi industria es diferente."
+- "En mi país no funciona así."
+- "Mi edad es muy avanzada / muy joven."
+
+================================================================================
+SECCIÓN 2: OBJECIONES RARAS (Las que existen pero son poco comunes)
+================================================================================
+
+OBJECIÓN 11: "PREFIERO APRENDER EN PERSONA"
+Cliente dice: "No confío en el aprendizaje online, prefiero clases presenciales."
+Respuesta correcta:
+"I completely understand that preference. Many people felt the same way... until they experienced our format. Here's why online is actually BETTER: 1) You can rewatch the content as many times as you need, 2) You're not pressured to keep up with others' pace, 3) You have access 24/7, not just 2 hours a week, 4) Your personal coach is available on DEMAND, 5) You have a global community, not just your local city. Actually, most of our members who said the same thing tell us they prefer this MORE than in-person because it fits their life. Plus, you get the BEST of both: online flexibility PLUS live group sessions PLUS one-on-one coaching. It's actually a superior model. Why not try it with just one course and see?"
+
+Variantes:
+- "Necesito ver al instructor en vivo."
+- "Online no funciona para mi aprendizaje."
+- "Quiero clases presenciales."
+- "No tengo disciplina para online."
+- "Prefiero la interacción en persona."
+
+================================================================================
+
+OBJECIÓN 12: "TENGO UNA MALA EXPERIENCIA CON ESTE TIPO DE PROGRAMAS"
+Cliente dice: "Tuve una experiencia terrible con capacitación antes."
+Respuesta correcta:
+"I'm sorry you had that experience. That was unacceptable. But here's what's different about VTC: [specific difference based on their pain point]. We learned from those mistakes across the industry. Our program SPECIFICALLY addresses what went wrong before. Tell me: What was the biggest failure? Was it [lack of support / poor content / no follow-up / no results]? Because THAT is exactly why we built the opposite. We have built-in accountability, personal coaching, a community that checks in on you, and a guarantee. That program didn't have that. So essentially, you're not trying again, you're trying CORRECTLY this time. Does that distinction make sense?"
+
+Variantes:
+- "Me estafaron antes."
+- "Pagué por algo que no sirvió."
+- "El instructor fue terrible."
+- "Completé y no me sirvió de nada."
+- "Nunca me ayudaron después."
+
+================================================================================
+
+OBJECIÓN 13: "OTRO PROGRAMA OFRECE LO MISMO"
+Cliente dice: "Vi otro curso que ofrece lo mismo pero más barato."
+Respuesta correcta:
+"Great, I'm glad you're shopping around, that means you're serious. But let me ask you: Did they offer [PERSONAL COACHING / LIFETIME ACCESS / GUARANTEE / COMMUNITY]? Because price is one thing, but VALUE is another. Our competitors charge less because they give LESS. They don't have coaches. They don't have community. They don't have guarantees. We charge more because we DELIVER more. A Mercedes and a Honda both get you from point A to point B. But one gets you there with a concierge. Let me ask you: If you enrolled with them, who would help you when you get stuck? Who would keep you accountable? Who would refund you if it didn't work? Because WE do all of that. So the real question isn't who's cheaper. It's who's most likely to get you RESULTS. And that's always us."
+
+Variantes:
+- "Encontré algo parecido por menos dinero."
+- "Otro programa tiene mejor contenido."
+- "Mi amigo hizo otro curso que fue más barato."
+- "Vi publicidad de competencia."
+- "¿Por qué cobran más que X?"
+
+================================================================================
+
+OBJECIÓN 14: "MI EMPRESA DEBERÍA PAGAR ESTO"
+Cliente dice: "Esto debería pagarlo mi compañía, no yo."
+Respuesta correcta:
+"You're right, ideally your company would invest in you. But here's the reality: Companies invest in people who invest in themselves FIRST. The moment you tell your employer 'I already paid for my own advanced certification,' their perception of you CHANGES. You become someone who's serious about your career. Someone who doesn't wait for handouts. Someone who INVESTS in themselves. THEN, after you get certified, you can ask your company for a raise or reimbursement. You'll have leverage because you've already proven commitment. Plus, this is YOUR career, not your company's. Even if you change jobs, YOU keep the certification. YOUR skills. YOUR network. That's worth the investment. Because at the end of the day, the best security is YOUR competence, not your company's loyalty. Am I right?"
+
+Variantes:
+- "Mi jefe debería pagar esto."
+- "Esto es responsabilidad de la compañía."
+- "Voy a pedirle al gerente que lo pague."
+- "Si mi empresa lo paga, me inscribo."
+- "¿Ofrecen descuentos corporativos?"
+
+================================================================================
+
+OBJECIÓN 15: "NO TENGO LA EDAD / EXPERIENCIA NECESARIA"
+Cliente dice: "Soy muy joven / viejo / sin experiencia para esto."
+Respuesta correcta:
+"Actually, that's a benefit, not a barrier. If you're young: You have 40+ years of career ahead. Getting certified NOW puts you DECADES ahead of your peers. If you're older: You have wisdom and maturity that young people don't have. Your experience PLUS our certification is an unbeatable combination. Either way, our program has [track record with people of all ages / success stories from different stages]. Age is just a number. Commitment is what matters. And the fact that you're HERE, asking questions, means you have the most important qualification: the DESIRE to grow. That's what matters. Shall we get you started?"
+
+Variantes:
+- "Tengo solo 23 años, ¿no es muy pronto?"
+- "Tengo 58, ¿no es muy tarde?"
+- "No tengo experiencia en esto."
+- "Soy muy inexperto."
+- "Soy demasiado viejo para empezar."
+
+================================================================================
+
+OBJECIÓN 16: "NO TENGO EXPERIENCIA CON TECNOLOGÍA"
+Cliente dice: "No soy muy tech-savvy, ¿podré usar la plataforma?"
+Respuesta correcta:
+"Perfect question. And I'll be honest: if you can use email and watch YouTube, you can use our platform. It's designed to be THAT simple. Plus, we have a whole support team whose only job is to help you navigate technology. We have video tutorials, chat support, and personal onboarding sessions. We literally walk you through everything. Our oldest member is 74, and she uses it perfectly. The platform adapts to YOUR pace, not the other way around. So technology is not a barrier. It's actually an advantage because you WILL become tech-confident in the process. You'll level up your skills while learning the course content. Are you with me?"
+
+Variantes:
+- "No sé usar internet muy bien."
+- "Nunca he hecho un curso online."
+- "Soy terrible con la tecnología."
+- "¿La plataforma es complicada?"
+- "Necesito ayuda con computadoras."
+
+================================================================================
+
+OBJECIÓN 17: "¿CUÁNTO TIEMPO REALMENTE TOMA?"
+Cliente dice: "¿Cuántos meses hasta terminar?"
+Respuesta correcta:
+"It depends on YOU, not the program. Some people finish in 4 months. Some take 12. And that's fine. It's YOUR pace. But here's the key: Every week you're in the program, you're becoming MORE qualified, MORE confident, MORE hireable. So you're not waiting until the end to see benefits. You get them along the way. Plus, most of our members report that within 3 months, they've already seen a measurable change in their career trajectory. So the question isn't really 'How long does it take?' The question is 'How soon do you want to start seeing results?' Because the sooner you enroll, the sooner that clock starts ticking in YOUR favor."
+
+Variantes:
+- "¿Cuántas horas por semana?"
+- "¿Cuánto tiempo para la certificación?"
+- "¿Cuándo termino?"
+- "¿Es muy largo?"
+- "¿Puedo hacerlo en 3 meses?"
+
+================================================================================
+
+OBJECIÓN 18: "NO CREO EN LAS CERTIFICACIONES"
+Cliente dice: "Los empleadores no valoran los cursos online."
+Respuesta correcta:
+"Actually, that's changing rapidly. But let me tell you what DOES matter: Our certifications come with [INDUSTRY RECOGNITION / EMPLOYER PARTNERSHIPS / VERIFIED CREDENTIALS / GLOBAL ACCEPTANCE]. We've worked with companies to ensure our certifications are valued in the hiring process. Plus, certification alone isn't magic. It's CERTIFICATION PLUS YOUR EXPERIENCE PLUS OUR COMMUNITY NETWORK. That combination is what opens doors. You get the credential, the skills, AND the connections. Most people don't have all three. You will. And employers recognize that. Have you ever noticed that people WITH credentials move faster than people without them, even with the same experience? That's the power of what we're offering. You're not just taking a course. You're getting a competitive advantage."
+
+Variantes:
+- "Los cursos online no valen nada."
+- "Los empleadores no les importan estas certificaciones."
+- "Mejor tener experiencia real que un papel."
+- "¿Quién reconoce estos certificados?"
+- "No confío en los cursos online."
+
+================================================================================
+
+OBJECIÓN 19: "PREFIERO INVERTIR EN OTRA COSA AHORA"
+Cliente dice: "Quiero invertir en otra cosa primero."
+Respuesta correcta:
+"I respect that you're thinking about investments. But let me ask you: What investment do you know with GUARANTEED returns? Stock market? No guarantee. Real estate? Risky. But an investment in YOUR skills, YOUR knowledge, YOUR credential? That's the ONE thing nobody can take from you. That's the investment with the HIGHEST return. Because every raise you get, every promotion you earn, every opportunity that comes your way because you're now a certified expert - that's the ROI. What other investment pays for itself within 6-12 months? This one does. So actually, this isn't competing with other investments. This is the FOUNDATION for everything else. Build your career first, then other investments follow. Make sense?"
+
+Variantes:
+- "Quiero ahorrar para un carro."
+- "Prefiero invertir en mi casa."
+- "Quiero viajar primero."
+- "Quiero invertir en bolsa."
+- "Tengo otros planes financieros."
+
+================================================================================
+
+OBJECIÓN 20: "¿GARANTÍA REAL O PROMESA VACÍA?"
+Cliente dice: "¿De verdad devuelven el dinero si no funciona?"
+Respuesta correcta:
+"100%. Here's our guarantee: [MONEY-BACK GUARANTEE DETAILS]. And here's why we can afford to do this: Because it WORKS. We don't fear refunds because 98% of people who start don't request them. We've built a program so effective that refunds are rare. The guarantee exists to remove YOUR risk, not because we're gambling. It's actually a sign of confidence. If we DIDN'T have this guarantee, would you trust us? Exactly. The fact that we DO have it means we KNOW this works. So the guarantee isn't a loophole for refunds. It's proof of our commitment. Now, are you ready to eliminate the last barrier to success?"
+
+Variantes:
+- "¿Me devuelven si no me gusta?"
+- "¿Cuál es la política de reembolso?"
+- "¿Cómo hago si quiero devolver?"
+- "¿Ponen trabas para reembolsar?"
+- "¿Es una garantía real?"
+
+================================================================================
+SECCIÓN 3: OBJECIONES ABSURDAS (Las que parecen tontas pero DEBES manejar profesionalmente)
+================================================================================
+
+OBJECIÓN 21: "MI HORÓSCROPO DICE QUE NO LO HAGA"
+Cliente dice: "Mi astróloga me dijo que no invierta en esto ahora."
+Respuesta correcta:
+"Interesting. I respect that you consult different sources. But let me ask you: Does your astrologist know your career goals? Does she understand the market opportunity you're missing? Because what I know is: The stars don't determine career advancement. ACTIONS do. The best time to plant a tree was 20 years ago. The second best time is TODAY. Your astrologist is probably being cautious to be safe, but she doesn't know what WE know - that this investment has a 98% success rate. So while I respect her guidance, I'd like to suggest you also listen to the guidance of your own INTUITION. And I think your intuition brought you here for a reason. So what do YOU think, not what the stars say?"
+
+Variantes:
+- "Mi bruja me dijo que no."
+- "Mercurio retrógrado y no es buen momento."
+- "Tarot me mostró que espere."
+- "Mi consejero espiritual dice que no."
+- "No es mi energía ahora."
+
+================================================================================
+
+OBJECIÓN 22: "MI GATO / PERRO NO QUIERE"
+Cliente dice: "Mi mascota está muy apegada, no puedo."
+Respuesta correcta:
+"I love that you care about your pet. Truly. But here's something: Your pet would want YOU to be successful and happy. And the truth is, when you're MORE successful, you can give your pet an EVEN BETTER life. Better food, more playtime, nicer home. So actually, this is an investment in your pet's happiness too. Plus, our program is flexible. You can study while your pet is with you. You can take breaks to pet them. It's not like you're abandoning them - you're building a better future FOR them. Your pet wants the best version of YOU. And that's what this creates. So your pet might actually be your biggest supporter here."
+
+Variantes:
+- "Mi perro me necesita."
+- "Mi gato se aburre si estudio."
+- "Tengo que cuidar a mi mascota."
+- "Mi loro necesita atención."
+- "Mi hamster está enfermo, no puedo."
+
+================================================================================
+
+OBJECIÓN 23: "ES VIERNES Y NO QUIERO EMPEZAR CON VIERNES"
+Cliente dice: "No quiero empezar un viernes, espero al lunes."
+Respuesta correcta:
+"I understand wanting a fresh start on Monday. That's actually really smart planning. But here's the thing: TODAY we have special first-visit incentives that are ONLY good today. If you wait until Monday, those incentives are gone. So you can start today with a 25% discount, or you can wait until Monday and pay full price. Which makes more sense? Plus, starting today doesn't mean STUDYING today. It means getting access today. You can do all your studying Monday, Tuesday, whenever. You just get the better terms if you enroll today. So you get the best of both worlds: the financial benefit of a Friday enrollment, and the fresh-start feeling of a Monday learning start. Does that work?"
+
+Variantes:
+- "Hoy es martes, espero al viernes."
+- "No empiezo a mitad de semana."
+- "Espero al primer día del mes."
+- "Prefiero empezar en lunes."
+- "Mañana es mejor que hoy."
+
+================================================================================
+
+OBJECIÓN 24: "NECESITO PERMISO DE MI MAMÁ / PAPÁ"
+Cliente dice: "Tengo que preguntarle a mis padres primero."
+Respuesta correcta:
+"That shows respect for your parents. I like that. But let me ask: How old are you? Because if you're an adult, this is your decision to make. You're taking responsibility for YOUR career. That's admirable. Now, if you want to TELL your parents about it afterwards, that's great. They'll be proud. But waiting for permission might mean missing out on the incentives today. Plus, your parents want what's best for you, right? They want you successful? Then THIS is what they'd want for you. Can you call them right now and put them on speaker? I'm happy to answer any questions they have. But let's not let THIS become a barrier to YOUR growth. You're old enough to make this decision. Are you ready?"
+
+Variantes:
+- "Debo preguntarle a mi jefe."
+- "Mi papá tiene que firmar."
+- "Mi mamá maneja mis finanzas."
+- "Necesito permiso de mis padres."
+- "Mi familia decide mis inversiones."
+
+================================================================================
+
+OBJECIÓN 25: "LA LUNA LLENA VIENE Y NO ES BUEN TIEMPO"
+Cliente dice: "Espero a después de la luna llena."
+Respuesta correcta:
+"I love that you're thinking about energy and timing. That's cool. But here's what I know about timing: The BEST time to do anything is always NOW. Because every moment you wait is a moment someone else is getting ahead. The universe rewards action, not hesitation. And frankly, starting a certification program under a full moon - when emotions are high and energy is strong - might actually be PERFECT timing for making a big decision. Plus, from a practical standpoint, by the time the full moon passes, our incentives will be gone. So in a way, the universe is telling you NOW is the time. Trust that feeling. Let's move forward today."
+
+Variantes:
+- "Espero que pase Mercurio retrógrado."
+- "Es temporada de Escorpio, no es bueno."
+- "Necesito esperar a mi signo."
+- "No es mi momento cósmico."
+- "La energía no está bien ahora."
+
+================================================================================
+
+OBJECIÓN 26: "MI VECINO HIZO ALGO SIMILAR Y LE ROBARON"
+Cliente dice: "Mi vecino se inscribió en algo parecido y fue estafa."
+Respuesta correcta:
+"I'm sorry your neighbor had that experience. That's rough. But here's what I'd ask: Was that company a registered business? Did they have customer reviews? Did they have a money-back guarantee? Because what separates US from scams is ACCOUNTABILITY. We have [CERTIFICATIONS / PARTNERSHIPS / REVIEWS / TESTIMONIALS / GUARANTEE / LEGAL STANDING]. We've been operating for [YEARS]. Our members can leave reviews anywhere. We're transparent. Your neighbor probably got tricked by something that LOOKED good but had no substance. We're the opposite: We have substance WITH the appearance. Plus, you can verify everything we say. Call our past members. Read reviews. Check our credentials. I'll give you contact info for 10 members right now. Would that convince you?"
+
+Variantes:
+- "Mi primo fue estafado con algo similar."
+- "Mi amigo perdió dinero en capacitación."
+- "Mi hermana fue engañada."
+- "Conozco a alguien que fue timado."
+- "Me da miedo porque vi en noticias."
+
+================================================================================
+
+OBJECIÓN 27: "TENGO SUERTE, NO NECESITO CAPACITACIÓN"
+Cliente dice: "Siempre me va bien, tengo suerte natural."
+Respuesta correcta:
+"I like your confidence, and luck IS real. But here's the thing about luck: It runs out. But SKILLS? Skills never fail you. They compound. So imagine: You're already lucky. Now add certified expertise. Now add a network of professionals. Now add guaranteed support. That's not luck anymore. That's DESTINY. You go from hoping things work out to MAKING things work out. That's the difference between lucky and successful. And lucky people who add skills to their luck? Those are the ones running companies, leading industries. So don't bank on luck for the next 10 years of your career. Bank on skill. Luck is the backup plan. Skill is the main plan. Ready to upgrade from lucky to unstoppable?"
+
+Variantes:
+- "Siempre me va bien, tengo buena suerte."
+- "No necesito preparación, todo me sale bien."
+- "Tengo un don natural."
+- "Me va bien sin estudiar."
+- "La suerte me acompaña."
+
+================================================================================
+
+OBJECIÓN 28: "SOY DEMASIADO INTELIGENTE PARA ESTO"
+Cliente dice: "Esto parece demasiado simple para mi nivel."
+Respuesta correcta:
+"I love your confidence. And if you're actually at genius level, then you understand this: The greatest minds don't dismiss foundations. Elon Musk learned physics before building rockets. Steve Jobs studied design before creating Apple. What we're offering is DEPTH within your existing intelligence. It's not about learning basics. It's about mastering the fundamentals so deeply that you can INNOVATE. Plus, certification at the highest level is for people like you who already know their stuff but want to be OFFICIALLY recognized. It's proof for others of what you already know about yourself. Think of it as your intelligence with a credential to match. That's unstoppable. So yes, you're smart. Now get certified too. Ready?"
+
+Variantes:
+- "Esto es demasiado fácil para mí."
+- "Yo ya sé esto."
+- "No necesito aprender lo básico."
+- "Soy más avanzado que esto."
+- "Esto es para principiantes."
+
+================================================================================
+
+OBJECIÓN 29: "LA CONSPIRACIÓN / ILUMINATI / ME VIGILAN"
+Cliente dice: "Todo es una conspiración, no confío en instituciones."
+Respuesta correcta:
+"I respect that you're a critical thinker. That's actually valuable. But let me ask you: Is YOUR success a conspiracy? Because that's what we're about. YOUR advancement. YOUR career. We're not part of any system designed to hold you back - we're the opposite. We're designed to free you. And here's what I know: Whether the world is conspiring or not, the best defense is YOUR competence. The more skilled, certified, and connected you are, the better you can navigate ANYTHING. So join us not because you trust the system. Join us because you want to be TOO VALUABLE to be ignored. Your success is your power. We just help you build it. Are you with me?"
+
+Variantes:
+- "Todo es un complot."
+- "No confío en las instituciones."
+- "Esto probablemente es falso."
+- "Creo que me están manipulando."
+- "Nada es lo que parece."
+
+================================================================================
+
+OBJECIÓN 30: "¿QUÉ PASA SI ME GANO LA LOTERÍA MAÑANA?"
+Cliente dice: "Qué pasa si me gano la lotería y no lo necesito."
+Respuesta correcta:
+"Ha! I love it. First of all, congratulations on that incredibly likely future event. Second, here's the thing: Even millionaires take classes. Even lottery winners want to grow. You know why? Because money doesn't buy happiness. But GROWTH does. And PURPOSE does. And being GOOD at something does. So imagine you win the lottery AND you're a certified expert in your field. Now you're set on every level. But between now and that lottery win - which could be never - what do you do? Just wait? Or do you build a life of meaning and competence? I'd suggest the latter. So let's not wait for the lottery. Let's CREATE your own luck with real, tangible growth starting today. Deal?"
+
+Variantes:
+- "¿Y si me hago rico de repente?"
+- "¿Qué pasa si heredo dinero?"
+- "Mi tío me va a dejar una herencia."
+- "¿Y si me jubilo pronto?"
+- "No sé si estaré aquí el próximo año."
+
+================================================================================
+
+OBJECIÓN 31: "MI ESPÍRITU GUÍA ME DICE QUE ESPERE"
+Cliente dice: "Mi espíritu guía dice que no es el momento."
+Respuesta correcta:
+"That's beautiful that you're connected spiritually. I respect that. But here's something: Sometimes our guides speak through our intuition and through OPPORTUNITY. And you being here, right now, with these incentives available TODAY - that might actually BE the message. The universe doesn't always send messages in supernatural ways. Sometimes it sends them as timing, as coincidence, as this moment. Your spirit guide probably wants you happy and successful, right? Then THIS is the path. Trust the moment. Trust that you were MEANT to be here learning about this TODAY. The fact that you found us is not random. So listen to your guide... and your guide is saying YES through this timing. Are you ready to say yes?"
+
+Variantes:
+- "Mi tarotista me dijo que espere."
+- "Mis espíritus me dicen que no."
+- "Mi alma no está lista."
+- "Mi chakra dice que no."
+- "Mi médium me aconsejó esperar."
+
+================================================================================
+
+OBJECIÓN 32: "¿QUÉ PASA SI MUERO DURANTE EL CURSO?"
+Cliente dice: "¿Qué pasa si algo me pasa durante el programa?"
+Respuesta correcta:
+"Well, that's... a unique question. Here's the thing: Your family would inherit your certification and the value it created in your lifetime. Your legacy would be that of someone who invested in themselves. But more importantly: Why wait for a tragedy to make a difference? You're HERE NOW. You're ALIVE now. Why not spend this time becoming the BEST version of yourself? So your family and loved ones can see you thrive? So you can achieve your goals? Make your dreams come true? Leave a legacy of growth, not regret? Life's too short to wait. Life's too short to not invest in yourself. So let's make these months COUNT. Are you ready to make the most of RIGHT NOW?"
+
+Variantes:
+- "¿Qué pasa si enfermo?"
+- "¿Y si tengo un accidente?"
+- "¿Si algo me pasa a mitad del curso?"
+- "¿Qué pasa con mi dinero si muero?"
+- "¿Es seguro el programa?"
+
+================================================================================
+
+OBJECIÓN 33: "¿FUNCIONA SI TENGO MALA SUERTE?"
+Cliente dice: "Yo tengo mala suerte, nada me sale bien."
+Respuesta correcta:
+"Here's what I know about 'bad luck': It's usually just bad DECISIONS or bad PLANNING. And you're about to change that. By enrolling in a structured program with coaching and support, you're no longer leaving things to chance. You're taking CONTROL. Bad luck doesn't stand a chance against preparation, skill, and a clear plan. So actually, THIS program is specifically designed for people who feel like luck hasn't been with them. Because now YOU create your own luck through competence. Every skill you learn is one less thing left to chance. Every certification is one more door opened. So if you've had bad luck, that's PROOF you need this. This is how you break the cycle. Are you ready to create your own luck?"
+
+Variantes:
+- "Nunca me va bien."
+- "Tengo mala suerte de nacimiento."
+- "Todo me sale mal."
+- "Soy una mala persona, por eso no me va bien."
+- "Algo me persigue."
+
+================================================================================
+
+OBJECIÓN 34: "NECESITO TOMAR DECISIONES IMPORTANTES CUANDO VENUS ENTRE A ESCORPIO"
+Cliente dice: "No puedo decidir nada hasta que Venus cambie de signo."
+Respuesta correcta:
+"I love that you follow the zodiac. That's actually kind of cool. But here's the astrological truth: The best time to act is when you're CONSCIOUS and AWARE. And you're conscious and aware RIGHT NOW. Venus could be anywhere, but YOUR energy right here is perfect for making decisions. So take it as a cosmic sign: You're exactly where you need to be at exactly the right time. The universe put you in this room today. Trust that. And you know what? By the time Venus gets to Escorpio, you'll already be well into your certification, seeing results, and wishing you'd started earlier. So let the stars align WITH your action, not instead of it. Ready?"
+
+Variantes:
+- "Saturno está mal posicionado."
+- "Necesito esperar a mi signo."
+- "Marte está retrógrado."
+- "No es mi momento según el calendario lunar."
+- "El universo dice que espere."
+
+================================================================================
+
+OBJECIÓN 35: "¿GARANTÍA CONTRA ALIENS / APOCALIPSIS?"
+Cliente dice: "¿Qué pasa si viene el apocalipsis?"
+Respuesta correcta:
+"Ha! I love that you're thinking big picture. You know what? In any scenario - apocalypse or not - the skills and knowledge you gain from this program are IMPOSSIBLE to take away. They're yours forever. Unlike material possessions, certifications, knowledge, and abilities are catastrophe-proof. So if you're worried about an apocalypse, this is actually THE investment that survives anything. You'll be the most valuable person in any scenario. Plus, honestly, if there's an apocalypse, we'll have bigger concerns than refund policies. So let's assume we're both here for the long haul, and let's build your career for a THRIVING future, not a surviving one. Deal?"
+
+Variantes:
+- "¿Y si hay apocalipsis?"
+- "¿Y si viene un asteroide?"
+- "¿Y si desaparece internet?"
+- "¿Y si hay una guerra?"
+- "¿Y si el mundo se acaba?"
+
+================================================================================
+
+MASTER OBJECTION HANDLING FRAMEWORK
+(Use this for ANY objection)
+
+1. VALIDATE: "That's a great question / I understand your concern / That makes sense"
+2. REFRAME: Twist it to show how it actually supports enrollment
+3. QUESTION BACK: Ask a question that reveals the real issue
+4. PROVIDE EVIDENCE: Share proof, testimonials, guarantees
+5. COMMIT: Get them to move forward
+
+EJEMPLO:
+Objection: "Es muy caro"
+1. VALIDATE: "I understand price is a consideration"
+2. REFRAME: "But this is an investment in YOU, not an expense"
+3. QUESTION BACK: "If price wasn't an issue, would you enroll today?"
+4. PROVIDE EVIDENCE: "Our members see ROI in 6 months through increased earning"
+5. COMMIT: "Great, so let's work out a payment plan that fits your budget"
+
+================================================================================
+FIN DE OBJECIONES
+================================================================================

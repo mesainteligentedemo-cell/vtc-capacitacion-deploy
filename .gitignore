@@ -1,2 +1,9 @@
 .vercel
 node_modules
+.next
+__pycache__
+*.pyc
+
+# Memory files backup contiene credenciales reales (HubSpot PAT, Google OAuth secret, API keys)
+# Se guarda SOLO en disco local, nunca en git/GitHub (ver RESUMEN_ESTADO.md del backup)
+_backups/*/memory-files/

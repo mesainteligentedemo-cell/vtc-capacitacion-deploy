@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Capacitación — Sistema Premium de Entrenamiento</title>
+
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <link rel="stylesheet" href="css/typography.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+
+        <!-- HEADER -->
+        <header id="header" class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>🎓 VTC Capacitación</h1>
+                    <p>Sistema de Entrenamiento Premium</p>
+                </div>
+                <div class="user-info">
+                    <span id="user-name" class="user-name">Usuario</span>
+                    <span id="progress-bar" class="progress-bar">0/13 módulos</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main id="main-content" class="main-content">
+
+            <!-- LEFT SIDEBAR -->
+            <aside id="sidebar" class="sidebar">
+                <div class="sidebar-title">📚 Módulos</div>
+                <nav id="modulos-nav" class="modulos-list"></nav>
+            </aside>
+
+            <!-- CENTER -->
+            <section id="content-area" class="content-area">
+
+                <!-- HERO -->
+                <div id="inicio" class="section hero-section">
+                    <div class="hero-content">
+                        <h2>Bienvenido a VTC Capacitación</h2>
+                        <p>El programa de entrenamiento más completo para dominar el cierre VTC</p>
+                        <div class="hero-cta">
+                            <button id="btn-start-course" class="btn btn-primary btn-lg" onclick="showLoginForm()">
+                                Comenzar Capacitación
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <div id="login-container" class="section login-section" style="display:none; max-width: 400px; margin: 3rem auto; text-align: center;">
+                    <h2>Bienvenido a VTC Capacitación</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                        Inicia sesión con tu información para continuar
+                    </p>
+
+                    <form id="login-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input
+                            type="text"
+                            id="login-nombre"
+                            placeholder="Nombre completo"
+                            required
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                        <input
+                            type="email"
+                            id="login-email"
+                            placeholder="Correo electrónico"
+                            required
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                        <select
+                            id="login-rol"
+                            style="padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; font-size: 1rem;"
+                        >
+                            <option value="opc">OPC</option>
+                            <option value="liner">Liner</option>
+                            <option value="closer">Closer</option>
+                            <option value="manager">Manager</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Iniciar Capacitación
+                        </button>
+                    </form>
+                </div>
+
+                <!-- MODULE CONTENT -->
+                <div id="module-content" class="module-section" style="display:none;">
+                    <div id="module-header" class="module-header">
+                        <h2 id="module-title">Módulo</h2>
+                        <div class="module-progress">
+                            <span id="module-progress-text">0/0 bloques</span>
+                        </div>
+                    </div>
+
+                    <!-- AUDIO PLAYER -->
+                    <div id="audio-player" class="audio-player">
+                        <audio id="victor-audio" preload="auto"></audio>
+                        <div class="player-controls">
+                            <button id="btn-play" class="btn-play">▶ Reproducir</button>
+                            <button id="btn-pause" class="btn-pause" style="display:none;">⏸ Pausa</button>
+                            <span id="audio-time" class="audio-time">0:00 / 0:00</span>
+                            <input id="audio-slider" type="range" class="audio-slider" min="0" max="100" value="0">
+                        </div>
+                    </div>
+
+                    <!-- BLOQUES -->
+                    <div id="bloques-container" class="bloques-container"></div>
+
+                    <!-- RECAP -->
+                    <div id="recap-section" class="section recap-section" style="display:none;">
+                        <h3>Resumen del Módulo</h3>
+                        <div id="recap-content" class="recap-content"></div>
+                    </div>
+
+                    <!-- QUIZ -->
+                    <div id="quiz-section" class="section quiz-section" style="display:none;">
+                        <h3>Quiz de Evaluación</h3>
+                        <div id="quiz-container" class="quiz-container"></div>
+                    </div>
+
+                    <!-- NAV -->
+                    <div id="module-nav" class="module-nav" style="display:none;">
+                        <button id="btn-next-module" class="btn btn-primary">Siguiente Módulo →</button>
+                        <button id="btn-repeat-module" class="btn btn-secondary">Repetir Módulo</button>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RIGHT SIDEBAR -->
+            <aside id="victor-sidebar" class="victor-sidebar">
+                <div class="victor-info">
+                    <div class="victor-avatar">👨‍🏫</div>
+                    <h3>Víctor</h3>
+                    <p>Master Coach IA</p>
+                </div>
+                <div class="victor-tips">
+                    <p id="victor-message">Hola, bienvenido a VTC Capacitación</p>
+                </div>
+            </aside>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer id="footer" class="footer">
+            <p>© 2026 Victor IA | Plataforma de Capacitación VTC</p>
+        </footer>
+
+    </div>
+
+    <script src="js/user-state.js"></script>
+    <script src="js/timeline-player.js"></script>
+    <script src="js/module-controller.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

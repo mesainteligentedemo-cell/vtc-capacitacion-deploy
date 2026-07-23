@@ -1,0 +1,42 @@
+{
+  "functions": {
+    "api/pdf.js": { "maxDuration": 60, "memory": 1536 },
+    "api/elevenlabs-handler.js": { "maxDuration": 60 },
+    "api/audio.js": { "maxDuration": 30 },
+    "api/transcript.js": { "maxDuration": 30 },
+    "api/history.js": { "maxDuration": 15 },
+    "api/report.js": { "maxDuration": 60, "memory": 1536 },
+    "api/premium-report.js": { "maxDuration": 60, "memory": 1536 }
+  },
+  "headers": [
+    {
+      "source": "/videos/:path*.mp4",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type", "value": "video/mp4" },
+        { "key": "Accept-Ranges", "value": "bytes" }
+      ]
+    },
+    {
+      "source": "/videos/:path*.jpg",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type", "value": "image/jpeg" }
+      ]
+    },
+    {
+      "source": "/public/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ]
+}

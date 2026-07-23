@@ -1,0 +1,190 @@
+{
+  "timestamp": "2026-07-16T04:56:42.294Z",
+  "checks": [
+    {
+      "name": "T1.1 Frontend HTTP 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T1.2 Agent ID present",
+      "status": "PASS",
+      "detail": "agent_2201kxes45…"
+    },
+    {
+      "name": "T1.3 ElevenLabs session SDK present (WebRTC/startSession)",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T1.4 Video/cover assets load (no 404)",
+      "status": "PASS",
+      "detail": "30 checked, 0 failed"
+    },
+    {
+      "name": "T1.5 Pause/mute controls referenced",
+      "status": "PASS",
+      "detail": "89 refs"
+    },
+    {
+      "name": "T2.1 ElevenLabs signed-url endpoint reachable",
+      "status": "WARN",
+      "detail": false
+    },
+    {
+      "name": "T2.2 Full WebRTC voice session",
+      "status": "WARN",
+      "detail": "Requires real mic + agent turn; not executed in headless E2E (would create a real conversation & credits). Verified widget+agent+token path instead."
+    },
+    {
+      "name": "T5.1 PDF HTTP 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T5.2 Content-Type application/pdf",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T5.3 Valid PDF signature (%PDF)",
+      "status": "PASS",
+      "detail": "%PDF-1.4"
+    },
+    {
+      "name": "T5.4 PDF non-trivial size (>30KB)",
+      "status": "PASS",
+      "detail": "711KB"
+    },
+    {
+      "name": "T4.1 Report HTTP 200",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.2 No orphan {{ }} tokens",
+      "status": "PASS",
+      "detail": "0 found"
+    },
+    {
+      "name": "T4.3 Section: Resumen ejecutivo",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Competencias",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Neurociencia",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Progreso",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Momento de Oro",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: PNL / Rapport",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Fortalezas",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Oportunidades",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.3 Section: Plan / CTA módulo",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T4.4 To recipient present",
+      "status": "PASS",
+      "detail": "validated in email payload test"
+    },
+    {
+      "name": "T4.5 Minimal empty divs (no dead space)",
+      "status": "PASS",
+      "detail": "0 empty divs"
+    },
+    {
+      "name": "T6.1 Audio HTTP 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T6.2 Audio MIME type",
+      "status": "PASS",
+      "detail": "audio/mpeg"
+    },
+    {
+      "name": "T6.3 Audio non-empty (>1KB)",
+      "status": "PASS",
+      "detail": "5KB"
+    },
+    {
+      "name": "T7 CTA Ver Reporte → 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T7 CTA Descargar PDF → 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T7 CTA Escuchar audio → 200",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T7 CTA Ir a módulo siguiente → not 404",
+      "status": "PASS",
+      "detail": "status 200"
+    },
+    {
+      "name": "T9.1 No 4xx/5xx network responses on frontend",
+      "status": "FAIL",
+      "detail": "404 https://victor-ia-training.vercel.app/videos/bonus.jpg"
+    },
+    {
+      "name": "T9.2 No console.error on frontend",
+      "status": "FAIL",
+      "detail": "Failed to load resource: the server responded with a status of 404 ()"
+    },
+    {
+      "name": "T9.3 No pageerror on frontend",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "T10.1 No horizontal overflow at 375px",
+      "status": "PASS",
+      "detail": "scrollWidth 375"
+    },
+    {
+      "name": "T10.2 Load time reasonable",
+      "status": "PASS",
+      "detail": "829ms"
+    }
+  ],
+  "summary": {
+    "passed": 32,
+    "failed": 2,
+    "warnings": 2
+  }
+}

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VTC Timeshare | Sistema Completo de Automatización 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0A0E27 0%, #1a1a3e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 18px 0;
+            border-bottom: 1px solid #FFD60A;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .navbar-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #FFD60A;
+            letter-spacing: 2px;
+        }
+        .nav-btn {
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            border: none;
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,214,10,0.3);
+        }
+
+        body { padding-top: 60px; }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, rgba(255,214,10,0.1) 0%, transparent 100%);
+        }
+        .hero-inner {
+            max-width: 1100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 4.5rem;
+            color: #FFD60A;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(255,214,10,0.4);
+            line-height: 1.1;
+            font-weight: 800;
+        }
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #b0b0b0;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD60A, #00D9FF);
+            border: none;
+            color: #000;
+            padding: 18px 55px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(255,214,10,0.5);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .features-section {
+            padding: 100px 20px;
+        }
+        .features-title {
+            text-align: center;
+            font-size: 3.2rem;
+            color: #FFD60A;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255,214,10,0.1), rgba(0,217,255,0.1));
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+            padding: 40px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(255,214,10,0.3);
+            border-color: #00D9FF;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            color: #00F584;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .modules-section {
+            background: rgba(0,245,132,0.08);
+            padding: 100px 20px;
+        }
+        .modules-title {
+            text-align: center;
+            font-size: 3.2rem;
+            color: #00F584;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .module-card {
+            background: linear-gradient(135deg, rgba(0,245,132,0.15), rgba(0,217,255,0.1));
+            border: 2px solid #00F584;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,245,132,0.3);
+        }
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .module-card h4 {
+            color: #00F584;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .module-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .module-btn {
+            background: linear-gradient(135deg, #00F584, #FFD60A);
+            border: none;
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .module-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,245,132,0.4);
+        }
+
+        .results {
+            padding: 100px 20px;
+        }
+        .results-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #FFD60A;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .result-item {
+            padding: 40px;
+            background: rgba(255,214,10,0.1);
+            border: 2px solid #FFD60A;
+            border-radius: 12px;
+        }
+        .result-number {
+            font-size: 3.5rem;
+            color: #00F584;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        .result-text {
+            color: #b0b0b0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0,245,132,0.2), rgba(0,217,255,0.15));
+            border: 3px solid #00F584;
+            border-radius: 14px;
+            padding: 80px 50px;
+            text-align: center;
+            max-width: 1100px;
+            margin: 100px auto;
+        }
+        .cta-section h2 {
+            color: #00F584;
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+        .cta-section p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+            line-height: 1.9;
+        }
+        .cta-btn {
+            background: linear-gradient(135deg, #00F584, #FFD60A);
+            border: none;
+            color: #000;
+            padding: 22px 80px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .cta-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 30px 70px rgba(0,245,132,0.5);
+        }
+
+        .footer {
+            background: rgba(10, 14, 39, 0.95);
+            border-top: 1px solid #FFD60A;
+            padding: 50px 20px;
+            text-align: center;
+            color: #b0b0b0;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #FFD60A;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #FFD60A;
+            z-index: 99;
+            padding: 20px;
+            animation: slideDown 0.3s ease;
+        }
+        .mobile-menu.active {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255,214,10,0.15);
+            border: 1px solid #FFD60A;
+            border-radius: 6px;
+            color: #FFD60A;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .mobile-menu-link:hover {
+            background: #FFD60A;
+            color: #000;
+        }
+        .menu-icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero .subtitle { font-size: 1.05rem; }
+            .features-title { font-size: 2.2rem; }
+            .modules-title { font-size: 2.2rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary { width: 100%; }
+            .cta-section { padding: 40px 25px; }
+            .nav-btn { display: none; }
+            .hamburger { display: flex; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="logo">VTC TIMESHARE</div>
+            <button class="nav-btn" onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })">
+                Acceder Sistema
+            </button>
+            <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-links">
+            <a href="https://vtc-capacitacion-deploy.vercel.app/" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🎓</span>
+                Capacitación
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-opc.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🎁</span>
+                OPC
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-hosteo.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🏨</span>
+                Hosteo
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-worksheet.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">📋</span>
+                Worksheet
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-vendedores.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">👥</span>
+                Vendedores
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-admin.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">🏢</span>
+                Administración
+            </a>
+            <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-embudo-ventas.html" class="mobile-menu-link" onclick="closeMenu()">
+                <span class="menu-icon">📈</span>
+                Embudo Ventas
+            </a>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-inner">
+            <h1>Sistema Completo de Automatización<br>Para Timeshare</h1>
+            <p class="subtitle">
+                Automatiza marketing, hosteo, worksheets, contratos y follow-ups.
+                <br>
+                Capacitación IA 24/7. Dashboards ejecutivos. Control total.
+                <br>
+                <strong style="color: #FFD60A;">+40% conversión, -70% tiempo de proceso, +$250K ingresos anuales.</strong>
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('modules').scrollIntoView({ behavior: 'smooth' })">
+                    Explorar Módulos →
+                </button>
+                <button class="btn-primary" onclick="document.getElementById('cta').scrollIntoView({ behavior: 'smooth' })" style="background: linear-gradient(135deg, #00F584, #FFD60A);">
+                    Entrar Ahora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="features-section">
+        <div class="section-inner">
+            <h2 class="features-title">Qué Incluye</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Capacitación IA</h3>
+                    <p>19 etapas de pitch. 76 objeciones. Agents que entrenan 24/7. Tu equipo mejora sin parar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Procesos Automáticos</h3>
+                    <p>OPC → Hosteo → Worksheet → Contrato. Lo que tardaba semanas, ahora 2 horas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>7 Dashboards</h3>
+                    <p>Vendedores, embudo, admin, customer service. Métricas en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Calculadora VCM</h3>
+                    <p>Descuentos configurables. Membresías múltiples. Cierre garantizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">☎️</div>
+                    <h3>Follow Up Inteligente</h3>
+                    <p>Secuencias automáticas. Clientes tibios se calientan. Cancelaciones: casi cero.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Panel Configuración</h3>
+                    <p>Edita precios, descuentos, comisiones. Sin tocar código.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODULES -->
+    <div class="modules-section" id="modules">
+        <div class="section-inner">
+            <h2 class="modules-title">Acceso a Todos los Módulos</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-icon">🎓</div>
+                    <h4>Capacitación</h4>
+                    <p>Entrenamiento completo con IA. 19 etapas + 76 objeciones. Role-play en vivo.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🎁</div>
+                    <h4>OPC</h4>
+                    <p>Captura invitaciones sin errores. Registro de regalos. Datos limpios.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-opc.html" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🏨</div>
+                    <h4>Hosteo</h4>
+                    <p>Datos pre-llenados. Cliente armado. Presentación que cierra.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-hosteo.html" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">📋</div>
+                    <h4>Worksheet</h4>
+                    <p>Membresía seleccionada. Calculadora VCM. Contrato automático.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/modulo-worksheet.html" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">👥</div>
+                    <h4>Vendedores</h4>
+                    <p>Dashboard de progreso. Etapas, role-plays, conversiones por asesor.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-vendedores.html" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">🏢</div>
+                    <h4>Administración</h4>
+                    <p>KPIs ejecutivos. Ranking asesores. Pipeline management. Forecasting.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-admin.html" class="module-btn">Acceder</a>
+                </div>
+                <div class="module-card">
+                    <div class="module-icon">📈</div>
+                    <h4>Embudo Ventas</h4>
+                    <p>Conversiones OPC → Hosteo → Worksheet → Contrato → Pagado en tiempo real.</p>
+                    <a href="https://vtc-capacitacion-deploy.vercel.app/dashboard-embudo-ventas.html" class="module-btn">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results">
+        <div class="section-inner">
+            <h2 class="results-title">Resultados Inmediatos</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="result-number">+40%</div>
+                    <div class="result-text">Conversión<br><small>Primera semana</small></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">-70%</div>
+                    <div class="result-text">Tiempo proceso<br><small>Invitación a pago</small></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">-80%</div>
+                    <div class="result-text">Cancelaciones<br><small>Clientes arrepentidos</small></div>
+                </div>
+                <div class="result-item">
+                    <div class="result-number">+$250K</div>
+                    <div class="result-text">Ingresos anuales<br><small>Por sala</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div id="cta">
+        <div class="section-inner">
+            <div class="cta-section">
+                <h2>Accede al Sistema Completo</h2>
+                <p>
+                    Todos los módulos. Todas las herramientas. Todo integrado.
+                    <br>
+                    <strong style="color: #00F584;">Automatiza tu sala de ventas timeshare hoy.</strong>
+                </p>
+                <button class="cta-btn" onclick="document.getElementById('mobileMenu').classList.add('active'); document.getElementById('hamburger').classList.add('active');">
+                    Abrir Menú de Acceso
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p><strong>VTC Timeshare • Sistema Completo de Automatización</strong></p>
+        <p style="margin-top: 20px; font-size: 0.85rem;">
+            © 2026 VTC Software
+        </p>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+
+        document.addEventListener('click', function(e) {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if (!e.target.closest('.hamburger') && !e.target.closest('.mobile-menu')) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
