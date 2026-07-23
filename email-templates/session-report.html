@@ -88,61 +88,26 @@
   <!-- ░░ MÉTRICAS: ESCENARIO + MÓDULOS (si aplica) ░░ -->
   {{METRICS_ROW}}
 
+  <!-- ░░ 4 KPIs RESUMIDOS ░░ -->
+  {{KPI_ROW}}
+
   <!-- ░░ TABLA 4 COLUMNAS: DURACIÓN · IDIOMA · TONO · DIFICULTAD ░░ -->
   {{ANALYTICS_ROW}}
 
-  <!-- ░░ MAPA DE COMPETENCIAS (hexágono) ░░ -->
-  <tr><td class="px" style="padding:26px 44px 8px 44px;" align="center">
-    <div class="heading" style="font-size:11px;letter-spacing:3px;color:#A3A3A3;font-weight:600;">Mapa de competencias</div>
-    <div style="height:14px;font-size:0;">&nbsp;</div>
-    <div class="radar-img" style="width:360px;height:360px;max-width:100%;margin:0 auto;">{{RADAR_SVG}}</div>
-  </td></tr>
+  <!-- ░░ MAPA DE COMPETENCIAS (gated — solo si el webhook trae datos reales de competencias) ░░ -->
+  {{RADAR_SECTION}}
 
-  <!-- ░░ GRÁFICOS LADO A LADO: PIE + BARRAS (TAMAÑO IGUAL) ░░ -->
-  <tr><td class="px" style="padding:26px 44px 8px 44px;">
-    <div class="heading" style="font-size:11px;letter-spacing:3px;color:#A3A3A3;font-weight:600;">Distribución de actividades y frecuencia de temas</div>
-    <div style="height:16px;font-size:0;">&nbsp;</div>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
-      <tr>
-        <!-- COLUMNA IZQUIERDA: PIE CHART -->
-        <td class="chart-half" style="width:50%;padding:0 14px 0 0;vertical-align:top;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="card card-shadow" style="min-height:380px;background:#171717;border:1px solid #262626;border-radius:12px;">
-            <tr><td align="center" style="padding:20px 16px;">
-              <div class="heading body-text" style="font-size:10px;letter-spacing:2px;color:#A3A3A3;font-weight:600;margin-bottom:12px;">DISTRIBUCIÓN DE TIEMPO</div>
-              <div style="width:240px;height:240px;max-width:100%;margin:0 auto;">{{PIE_CHART}}</div>
-            </td></tr>
-          </table>
-        </td>
-        <!-- COLUMNA DERECHA: BARRAS HEATMAP -->
-        <td class="chart-half" style="width:50%;padding:0 0 0 14px;vertical-align:top;">
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="card card-shadow" style="min-height:380px;background:#171717;border:1px solid #262626;border-radius:12px;">
-            <tr><td style="padding:20px 16px;">
-              <div class="heading body-text" style="font-size:10px;letter-spacing:2px;color:#A3A3A3;font-weight:600;margin-bottom:12px;">FRECUENCIA DE TEMAS</div>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{{HEATMAP_BARS}}</table>
-            </td></tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-  </td></tr>
+  <!-- ░░ PROGRESO HISTÓRICO ░░ -->
+  {{PROGRESO}}
 
-  <!-- ░░ PRINCIPIOS NEUROCIENTÍFICOS ACTIVADOS (barras) ░░ -->
-  <tr><td class="px" style="padding:18px 44px 6px 44px;">
-    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#8a8a8a;text-transform:uppercase;">Principios neurocientíficos activados</div>
-    <div style="height:16px;font-size:0;">&nbsp;</div>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-      {{NEURO_BARS}}
-    </table>
-  </td></tr>
+  <!-- ░░ DISTRIBUCIÓN + FRECUENCIA (charts, gated) ░░ -->
+  {{CHARTS_SECTION}}
 
-  <!-- ░░ LÍNEA DE LA CONVERSACIÓN ░░ -->
-  <tr><td class="px" style="padding:24px 44px 6px 44px;">
-    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#8a8a8a;text-transform:uppercase;">Línea de la conversación</div>
-    <div style="height:16px;font-size:0;">&nbsp;</div>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-      {{TIMELINE_HTML}}
-    </table>
-  </td></tr>
+  <!-- ░░ PRINCIPIOS NEUROCIENTÍFICOS ACTIVADOS (gated) ░░ -->
+  {{NEURO_SECTION}}
+
+  <!-- ░░ LÍNEA DE LA CONVERSACIÓN (gated) ░░ -->
+  {{TIMELINE_SECTION}}
 
   <!-- ░░ LO QUE HICISTE BIEN (oro) ░░ -->
   <tr><td class="px" style="padding:24px 44px 0 44px;">
@@ -180,18 +145,11 @@
     </td></tr></table>
   </td></tr>
 
-  <!-- ░░ TU PRÓXIMO DRILL (CTA) ░░ -->
-  <tr><td class="px" style="padding:24px 44px 8px 44px;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#221d10;border:1px solid #3a3020;border-radius:12px;"><tr><td style="padding:24px 26px;">
-      <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#EAB308;text-transform:uppercase;font-weight:600;">🎯 Tu próximo drill</div>
-      <div style="height:10px;font-size:0;">&nbsp;</div>
-      <div style="font-family:Montserrat,sans-serif;font-size:18px;line-height:26px;color:#FFFFFF;letter-spacing:0.1px;">{{RECOMENDACION}}</div>
-      <div style="height:18px;font-size:0;">&nbsp;</div>
-      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{CTA_URL}}" style="height:44px;v-text-anchor:middle;width:230px;" arcsize="50%" fillcolor="#EAB308" stroke="f"><center><![endif]-->
-      <a href="{{CTA_URL}}" style="display:inline-block;background:#EAB308;color:#000000;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 30px;border-radius:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.5);">Entrenar de nuevo</a>
-      <!--[if mso]></center></v:roundrect><![endif]-->
-    </td></tr></table>
-  </td></tr>
+  <!-- ░░ TU PRÓXIMO DRILL (gated — solo si hay recomendación real) ░░ -->
+  {{DRILL_SECTION}}
+
+  <!-- ░░ EVALUACIÓN DE COMPRENSIÓN — QUIZ ░░ -->
+  {{QUIZ_SECTION}}
 
   <!-- ░░ PLAN DE ACCIÓN: PARA EL GERENTE ░░ -->
   <tr><td class="px" style="padding:28px 44px 6px 44px;">
@@ -226,8 +184,8 @@
   <tr><td class="px" style="padding:14px 44px 8px 44px;" align="center">
     <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
       <td style="padding:0 6px;">
-        <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{AUDIO_URL}}" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="50%" fillcolor="#242424" strokecolor="#3a3a3a"><center><![endif]-->
-        <a href="{{AUDIO_URL}}" style="display:inline-block;background:#242424;border:1px solid #3a3a3a;color:#EAB308;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:14px 24px;border-radius:99px;">🎧 Escuchar conversación</a>
+        <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{LISTEN_URL}}" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="50%" fillcolor="#242424" strokecolor="#3a3a3a"><center><![endif]-->
+        <a href="{{LISTEN_URL}}" style="display:inline-block;background:#242424;border:1px solid #3a3a3a;color:#EAB308;font-family:Inter,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:14px 24px;border-radius:99px;">🎧 Escuchar conversación</a>
         <!--[if mso]></center></v:roundrect><![endif]-->
       </td>
       <td style="padding:0 6px;">

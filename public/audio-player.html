@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Escuchar conversación · Víctor · VTC</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+      background: #171717;
+      border: 1px solid #262626;
+      border-radius: 12px;
+      padding: 36px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .header { text-align: center; margin-bottom: 28px; }
+
+    .header .kicker {
+      color: #EAB308;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .header h1 {
+      color: #FFFFFF;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      margin-top: 8px;
+    }
+
+    .meta {
+      text-align: center;
+      color: #A3A3A3;
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .meta strong { color: #EAB308; font-weight: 600; }
+
+    .player-box {
+      background: #0A0A0A;
+      border: 1px solid #262626;
+      border-radius: 10px;
+      padding: 22px;
+      margin-top: 24px;
+    }
+
+    audio {
+      width: 100%;
+      display: block;
+    }
+
+    .status {
+      text-align: center;
+      color: #6a6a6a;
+      font-size: 12px;
+      margin-top: 18px;
+      letter-spacing: 0.3px;
+    }
+
+    .status.error { color: #e0836f; }
+
+    .loading {
+      text-align: center;
+      color: #A3A3A3;
+      padding: 10px 0;
+      font-size: 13px;
+    }
+
+    .spinner {
+      border: 2px solid rgba(234, 179, 8, 0.15);
+      border-top: 2px solid #EAB308;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    .footer-note {
+      text-align: center;
+      color: #4a4a4a;
+      font-size: 11px;
+      margin-top: 22px;
+      letter-spacing: 0.4px;
+    }
+
+    .footer-note a { color: #8a8a8a; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="kicker">Victorious Travelers Club</div>
+      <h1>🎧 Escuchar conversación</h1>
+      <div class="meta" id="meta">Sesión con <strong>Víctor</strong></div>
+    </div>
+
+    <div class="player-box">
+      <div id="loading" class="loading"><div class="spinner"></div>Cargando audio…</div>
+      <audio id="player" controls preload="none" style="display:none;"></audio>
+      <div id="status" class="status" style="display:none;"></div>
+    </div>
+
+    <div class="footer-note">Generado por <a href="https://victor-ia.com.mx">Victor&nbsp;IA</a> · Coach de IA del piso</div>
+  </div>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      // Compatibilidad: acepta ?conv= (formato actual del reporte) o ?id= (formato legado).
+      var conv = params.get('conv') || params.get('id') || '';
+      var name = params.get('name') || '';
+      var metaEl = document.getElementById('meta');
+      var loadingEl = document.getElementById('loading');
+      var statusEl = document.getElementById('status');
+      var player = document.getElementById('player');
+
+      function showError(msg) {
+        loadingEl.style.display = 'none';
+        player.style.display = 'none';
+        statusEl.style.display = 'block';
+        statusEl.className = 'status error';
+        statusEl.textContent = msg;
+      }
+
+      if (!conv) {
+        showError('❌ Falta el identificador de la conversación (?conv=ID).');
+        return;
+      }
+
+      metaEl.innerHTML = 'Sesión con <strong>Víctor</strong> · ID ' + conv.slice(0, 18);
+
+      var src = '/api/audio?conv=' + encodeURIComponent(conv) + (name ? '&name=' + encodeURIComponent(name) : '');
+      player.src = src;
+
+      player.addEventListener('loadedmetadata', function () {
+        loadingEl.style.display = 'none';
+        player.style.display = 'block';
+      });
+      player.addEventListener('error', function () {
+        showError('❌ No se pudo cargar el audio de esta conversación.');
+      });
+      // Si en ~20s no hay metadata (audio muy grande / conexión lenta), igual mostramos
+      // el reproductor — el navegador seguirá cargando/reproduciendo en cuanto pueda.
+      setTimeout(function () {
+        if (loadingEl.style.display !== 'none') {
+          loadingEl.style.display = 'none';
+          player.style.display = 'block';
+        }
+      }, 20000);
+    })();
+  </script>
+</body>
+</html>

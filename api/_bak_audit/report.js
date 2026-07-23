@@ -5,16 +5,12 @@
 const TEMPLATE = require('./_template');
 const { htmlToPdf } = require('./_render');
 const {
-  esc, clean, fmtDec, has, buildChatTable, radarSvg, radarSection, neuroSection,
-  timelineSection, drillSection,
+  esc, clean, fmtDec, has, buildChatTable, radarSvg, neuroBars, timeline,
   metricsRow, analyticsRow, speakingTime, activitySection, courseReportSection, trainerNoteSection,
   countInterventions, buildQuizData, quizSection,
-  kpiRow, pieChart, heatmapBars, chartsSection, progressSection,
 } = require('./_chat');
-const { historyAgg } = require('./_history_agg');
 const { analyze } = require('./_analyze');
 const { t, translations } = require('./_i18n');
-const { cancunParts, cancunHHMM, sanitizeFileBase, buildFileBase } = require('./_naming');
 
 const SITE = 'https://vtc-capacitacion-deploy.vercel.app';
 const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
@@ -52,12 +48,8 @@ function categoria(tipoSesion, escenario, tipoAct) {
   if (/curso|módulo|modulo|quiz|repas|consulta/.test(s)) return 'REPASO';
   return 'SESIÓN';
 }
-// hh:mm en 24h a partir de un Date, SIEMPRE en hora de Cancún (UTC-5) — ElevenLabs entrega
-// start_time_unix_secs en UTC; el servidor (Vercel) corre en UTC, así que usar
-// dt.getHours()/getMinutes() mostraba la hora UTC disfrazada de "hora de inicio", no la
-// hora real de Cancún. cancunHHMM() convierte el instante absoluto a America/Cancún siempre,
-// sin importar la zona horaria del proceso que ejecuta este código.
-function hhmm(dt) { return dt ? cancunHHMM(dt) : '—'; }
+// hh:mm en 24h a partir de un Date (o '—').
+function hhmm(dt) { return dt ? String(dt.getHours()).padStart(2, '0') + ':' + String(dt.getMinutes()).padStart(2, '0') : '—'; }
 
 function dcv(dc, k) {
   const o = dc[k] != null ? dc[k] : (dc[k + '  '] != null ? dc[k + '  '] : dc[k + ' ']);
@@ -111,18 +103,13 @@ async function buildReport(conv, lang) {
   if (!Object.keys(compMap).length && aiComp) compMap = aiComp;
   // alias: si el modelo devolvió "empatia" en vez de "pnl", lo mapeamos.
   if (compMap.pnl == null && compMap.empatia != null) compMap.pnl = compMap.empatia;
-  // hasCompData: hay datos REALES de competencias (no el relleno sintético de abajo,
-  // que solo existe para poder seguir comparando el "Índice de Progreso" sesión a
-  // sesión aunque falte el detalle por eje). El radar solo se dibuja si esto es true.
-  const hasCompData = Object.keys(compMap).length > 0;
   const order = [['rapport', 'Rapport'], ['pnl', 'PNL'], ['postura', 'Postura'], ['objeciones', 'Objeciones'], ['cierre', 'Cierre'], ['sala', 'Leer la Sala']];
   const compValues = order.map(o => { const v = compMap[o[0]]; return v != null ? Math.round(v) : (hasScore ? Math.round(score) : 0); });
   const compAvg = compValues.length ? compValues.reduce((a, b) => a + b, 0) / compValues.length : 0;
 
   // Principios neurocientíficos: dc pipe -> si no, ai array
   let neuro = parsePairs(dcv(dc, 'principios_neuro'));
-  const aiNeuro = Array.isArray(ai.principios_neuro) ? ai.principios_neuro : ((ai.roleplay && Array.isArray(ai.roleplay.principios_neuro)) ? ai.roleplay.principios_neuro : null);
-  if (!neuro.length && aiNeuro) neuro = aiNeuro.map(p => [p.nombre || p.name, p.intensidad != null ? p.intensidad : p.intensity]);
+  if (!neuro.length && Array.isArray(ai.principios_neuro)) neuro = ai.principios_neuro.map(p => [p.nombre || p.name, p.intensidad != null ? p.intensidad : p.intensity]);
 
   // Línea de la conversación: dc -> si no, ai array
   let tl = parseTL(dcv(dc, 'momentos_clave'));
@@ -133,8 +120,7 @@ async function buildReport(conv, lang) {
   const dt = start ? new Date(start * 1000) : null;
   const dtEnd = dt ? new Date(dt.getTime() + durSecs * 1000) : null;
   const mesesArr = lang.indexOf('en') === 0 ? MESES_EN : MESES;
-  // Fecha del reporte también en hora de Cancún (mismo motivo que hhmm(), ver arriba).
-  const fecha = dt ? (() => { const p = cancunParts(dt); return `${parseInt(p.d, 10)} ${mesesArr[parseInt(p.mo, 10) - 1]} ${p.y}`; })() : '';
+  const fecha = dt ? `${dt.getDate()} ${mesesArr[dt.getMonth()]} ${dt.getFullYear()}` : '';
   const horaInicio = hhmm(dt);
   const horaFin = hhmm(dtEnd);
   const tipoAct = pick('tipo_actividad', 'Sesión') || 'Sesión';
@@ -166,57 +152,9 @@ async function buildReport(conv, lang) {
     horaFin,
   };
 
-  // KPIs resumidos (4 tarjetas): tiempo · módulos · score · potencial de mejora.
-  const modStr = String(modelForRows.modulos || '');
-  const modCount = (Array.isArray(ai.curso && ai.curso.modulos_completados) ? ai.curso.modulos_completados.length : 0)
-    || (has(modStr) && modStr !== '—' ? modStr.split(/[·|,]/).map(s => s.trim()).filter(Boolean).length : 0);
-  const potencial = hasScore ? '+' + Math.max(0, Math.round((10 - score) * 10)) + '%' : '—';
-  const kpiRowHtml = kpiRow([
-    { value: fmtMMSS(meta.call_duration_secs), label: t('Tiempo total', lang) },
-    { value: modCount ? modCount + '/6' : '—', label: t('Módulos', lang) },
-    { value: hasScore ? scoreStr + '/10' : '—', label: t('Score promedio', lang), color: '#EAB308' },
-    { value: potencial, label: t('Potencial mejora', lang), color: '#5cc08a' },
-  ]);
-
-  // Distribución de tiempo (pie real desde tiempo hablado) + frecuencia de temas (si la IA la provee).
-  const silencio = Math.max(0, durSecs - spk.asesor - spk.agente);
-  const pieSlices = [
-    { label: t('Asesor', lang), pct: durSecs ? (spk.asesor / durSecs) * 100 : 0, sub: fmtMMSS(spk.asesor), color: '#EAB308' },
-    { label: 'Víctor', pct: durSecs ? (spk.agente / durSecs) * 100 : 0, sub: fmtMMSS(spk.agente), color: '#5cc08a' },
-    { label: t('Silencio', lang), pct: durSecs ? (silencio / durSecs) * 100 : 0, sub: fmtMMSS(silencio), color: '#b8860b' },
-  ].filter((s) => s.pct >= 1);
-  const pieSvg = durSecs ? pieChart(pieSlices, fmtMMSS(durSecs), 'TOTAL') : '';
-  const freq = Array.isArray(ai.frecuencia_temas)
-    ? ai.frecuencia_temas.map((x) => ({ label: x.tema || x.label || x.nombre, score10: x.score != null ? x.score : (x.valor != null ? x.valor : x.intensidad) })).filter((x) => x.label)
-    : [];
-  const chartsHtml = chartsSection(pieSvg, heatmapBars(freq));
-
-  // Progreso histórico: compara esta sesión con el promedio de sesiones anteriores
-  // del mismo empleado (best-effort; si falla o es la 1ª sesión, muestra estado inicial).
-  const empNum = dcv(dc, 'employee_number') || dv.employee_number || '';
-  let progresoHtml = '';
-  try {
-    const hist = await historyAgg(empNum, id, process.env.ELEVENLABS_API_KEY);
-    progresoHtml = progressSection(
-      { score: hasScore ? Math.round(score * 10) / 10 : null, compAvg: Math.round(compAvg * 10) / 10, durSecs, sentimiento },
-      hist
-    );
-  } catch (_) { progresoHtml = ''; }
-
   const sessionLine = lang.indexOf('en') === 0
     ? `Coaching session for <strong style="color:#e0e0e0;">${esc(name)}</strong> with Victor · ${esc(catTranslated)} · ${duracionStr}`
     : `Sesión de <strong style="color:#e0e0e0;">${esc(name)}</strong> con Víctor · ${esc(cat)} · ${duracionStr}`;
-
-  const ctaUrl = 'https://victor-ia-training.vercel.app/';
-  // Recomendación real (si no hay, "Tu próximo drill" se oculta — ver drillSection).
-  const recomendacionText = pick('recomendacion_siguiente', ai.recomendacion) || '';
-  // Nombre base de archivo (PDF/MP3): {nombre-slug}_{YYYYMMDD}_{HHMM}, siempre en hora
-  // de Cancún — usado por el handler de abajo (PDF) y expuesto para que n8n/el link
-  // de audio puedan reusarlo sin recalcular nada.
-  const fileBase = buildFileBase(name, dt || new Date());
-  // Página con reproductor de audio inline (play/pause/volumen) — NO fuerza descarga.
-  // El botón "🎧 Escuchar conversación" del reporte apunta aquí, no directo al mp3.
-  const listenUrl = SITE + '/audio-player.html?conv=' + encodeURIComponent(id) + '&name=' + encodeURIComponent(fileBase);
 
   const tokens = {
     USER_NAME: esc(name),
@@ -233,21 +171,17 @@ async function buildReport(conv, lang) {
     SCORE: scoreStr, SCORE_PCT: scorePct,
     VEREDICTO: esc(veredicto),
     RESUMEN: esc(a.transcript_summary || dcv(dc, 'call_summary') || '(sin resumen)'),
-    RADAR_SECTION: radarSection(hasCompData, radarSvg(order.map(o => t(o[1], lang)), compValues, { lang }), lang),
-    NEURO_SECTION: neuroSection(neuro.map(([n, v]) => [t(n, lang), v]), lang),
-    TIMELINE_SECTION: timelineSection(tl, lang),
+    RADAR_SVG: radarSvg(order.map(o => t(o[1], lang)), compValues, { lang }),
+    NEURO_BARS: neuroBars(neuro.map(([n, v]) => [t(n, lang), v])),
+    TIMELINE_HTML: timeline(tl),
     FORTALEZAS: esc(pick('fortalezas', ai.fortalezas || (ai.roleplay && ai.roleplay.fortalezas)) || '—'),
     AREAS_MEJORA: esc(pick('areas_mejora', ai.areas_mejora || (ai.roleplay && ai.roleplay.areas_mejora)) || '—'),
     OBJECIONES: esc(pick('objeciones_trabajadas', ai.objeciones_trabajadas || (ai.roleplay && ai.roleplay.objeciones_trabajadas)) || '—'),
     ANALISIS_PNL: esc(pick('analisis_pnl', ai.analisis_pnl || (ai.roleplay && ai.roleplay.analisis_pnl)) || '—'),
-    DRILL_SECTION: drillSection(recomendacionText, ctaUrl, lang),
+    RECOMENDACION: esc(pick('recomendacion_siguiente', ai.recomendacion) || '—'),
     PLAN_ACCION: planList(ai.plan_accion),
-    KPI_ROW: kpiRowHtml,
-    CHARTS_SECTION: chartsHtml,
-    PROGRESO: progresoHtml,
-    CTA_URL: ctaUrl,
+    CTA_URL: SITE + '/',
     AUDIO_URL: SITE + '/api/audio?conv=' + encodeURIComponent(id),
-    LISTEN_URL: listenUrl,
     TRANSCRIPT_CHAT: buildChatTable(turns, lang),
     CONV_ID: esc(id),
     METRICS_ROW: metricsRow(modelForRows, lang),
@@ -260,7 +194,7 @@ async function buildReport(conv, lang) {
 
   let html = translateTemplate(TEMPLATE, lang);
   for (const k in tokens) html = html.split('{{' + k + '}}').join(tokens[k]);
-  return { html, name, id, fileBase };
+  return { html, name, id };
 }
 
 const handler = async (req, res) => {
@@ -273,17 +207,13 @@ const handler = async (req, res) => {
     const r = await fetch(`https://api.elevenlabs.io/v1/convai/conversations/${encodeURIComponent(conv)}`, { headers: { 'xi-api-key': key } });
     if (!r.ok) { res.status(r.status).send('No se encontró la conversación'); return; }
     const data = await r.json();
-    const { html, name, fileBase } = await buildReport(data, lang);
+    const { html, name } = await buildReport(data, lang);
 
     if (req.query && (req.query.pdf === '1' || req.query.format === 'pdf')) {
       const buf = await htmlToPdf(html);
-      // Nombre dinámico: {nombre-asesor}_{YYYYMMDD}_{HHMM} en hora de Cancún (ej.
-      // carlos-lopez_20260723_1435.pdf). Si n8n (u otro caller) manda ?name=... ya
-      // resuelto, se usa tal cual (sanitizado); si no, se usa el que ya calculó
-      // buildReport() a partir de la fecha/hora real de la conversación.
-      const base = sanitizeFileBase(req.query && req.query.name) || fileBase;
+      const safe = ('Reporte-VTC_' + (name || 'asesor') + '_' + conv).replace(/[^a-zA-Z0-9_-]/g, '_');
       res.setHeader('Content-Type', 'application/pdf');
-      res.setHeader('Content-Disposition', `attachment; filename="${base}.pdf"`);
+      res.setHeader('Content-Disposition', `attachment; filename="${safe}.pdf"`);
       res.setHeader('Content-Length', buf.length);
       res.status(200).end(buf);
       return;

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import json, urllib.request
-KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NjMxM2U4ZS01OTAyLTQ5NzAtYmNlZC01NTA1MjkzZTdjMGQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzc3ODY4ODkzfQ.mNdYIwi5FyEUpk5IBN5mCE0EDuf3kf1XCdRsHWGtkzQ'
-WF='qE8qzVlqybRA8yvg'; B='https://n8n.srv1013903.hstgr.cloud'
-AGENT='agent_9501k3vkt6svekjs6y0qe5xzcek1'
+KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMGUxNzJlNy1mYzM2LTQ3ODItYWFmYi05ZDAzOWFiNzk4NmEiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiYzMyNWNhM2YtYjNhOS00MWQxLWFjYjktODE3ZmQ4MjExZDU4IiwiaWF0IjoxNzg0NDU4OTQwfQ.n_J5__rEkQnw_dT-3CR4KWLGWBaJMUAW3dZpCBzy9ZU'
+WF='zCtqHc9Pj8ZbtVp1'; B='https://n8n.srv1013903.hstgr.cloud'
+AGENT='agent_5701kr0h5gg6eetb69tv6c5hwfj1'
 SITE='https://vtc-capacitacion-deploy.vercel.app'
 def api(m,p,d=None):
     body=json.dumps(d).encode('utf-8') if d is not None else None
@@ -57,9 +57,10 @@ N['Traer PDF'] = {
   'position':[ N['Procesar llamada']['position'][0]+440, N['Procesar llamada']['position'][1] ],
   'parameters':{ 'url':'='+base_url+'&pdf=1', 'options':{ 'response':{ 'response':{ 'responseFormat':'file' } } } } }
 
-# 3) Email -> solo eldudemateos, html del reporte, PDF adjunto
+# 3) Email -> mesainteligentedemo, cc a eldudemateos y chrisoria, html del reporte, PDF adjunto
 e=N['Email premium llamada']['parameters']
-e['toEmail']='eldudemateos@gmail.com'
+e['toEmail']='mesainteligentedemo@gmail.com'
+e['ccEmail']='eldudemateos@gmail.com,chrisoria16@gmail.com'
 e['subject']="={{ $('Procesar llamada').item.json.subject }}"
 e['html']="={{ $('Traer reporte HTML').item.json.data }}"
 e['options']={ 'appendAttribution':False, 'attachments':'data' }

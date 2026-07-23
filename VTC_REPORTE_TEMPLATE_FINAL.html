@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="color-scheme" content="dark"><meta name="supported-color-schemes" content="dark">
+<title>Reporte de sesión · Víctor</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  body,table,td,a{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+  table,td{ mso-table-lspace:0; mso-table-rspace:0; }
+  img{ -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; display:block; }
+  body{ margin:0; padding:0; width:100%!important; background:#0a0a0b; }
+  a{ color:#c9aa75; text-decoration:none; }
+  @media only screen and (max-width:620px){
+    .container{ width:100%!important; }
+    .px{ padding-left:24px!important; padding-right:24px!important; }
+    .stack{ display:block!important; width:100%!important; }
+    .stack-pad{ padding:0 0 14px 0!important; }
+    .h1{ font-size:26px!important; line-height:32px!important; }
+    .score-num{ font-size:64px!important; }
+    .metric-num{ font-size:18px!important; }
+    .radar-img{ width:280px!important; height:280px!important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#0a0a0b;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:#0a0a0b;">
+  {{USER_NAME}}, tu sesión con Víctor: {{SCORE}}/10. Análisis completo, métricas, PNL y tu próximo drill.
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0a0a0b;">
+<tr><td align="center" style="padding:32px 16px;">
+
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background:#101012;border:1px solid #1e1e22;border-radius:18px;overflow:hidden;">
+
+  <!-- ░░ HEADER ░░ -->
+  <tr><td class="px" style="padding:38px 44px 26px 44px;border-bottom:1px solid #1c1c20;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td align="left" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:3.5px;color:#c9aa75;text-transform:uppercase;font-weight:600;">VICTORIOUS&nbsp;TRAVELERS&nbsp;CLUB</td>
+      <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:1.5px;color:#5a5a62;text-transform:uppercase;">{{FECHA}}</td>
+    </tr></table>
+    <div style="height:18px;font-size:0;">&nbsp;</div>
+    <div class="h1" style="font-family:Georgia,serif;font-size:32px;line-height:38px;color:#f4f1ea;letter-spacing:-0.3px;">Reporte de entrenamiento</div>
+    <div style="height:8px;font-size:0;">&nbsp;</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:22px;color:#9a9aa2;letter-spacing:0.2px;">Sesión de <strong style="color:#d8d4ca;">{{USER_NAME}}</strong> con Víctor · {{TIPO_ACTIVIDAD}} · {{DURACION}}</div>
+    <div style="height:12px;font-size:0;">&nbsp;</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:1px;color:#c9aa75;background:#161410;border:1px solid #2a2620;border-radius:6px;padding:6px 11px;">EMPLEADO&nbsp;Nº&nbsp;{{EMP_NUM}}</td>
+      <td style="width:8px;">&nbsp;</td>
+      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:1px;color:#9a9aa2;background:#141416;border:1px solid #232328;border-radius:6px;padding:6px 11px;text-transform:uppercase;">{{DEPARTAMENTO}}</td>
+      <td style="width:8px;">&nbsp;</td>
+      <td style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:1px;color:#9a9aa2;background:#141416;border:1px solid #232328;border-radius:6px;padding:6px 11px;text-transform:uppercase;">{{USER_ROLE}}</td>
+    </tr></table>
+  </td></tr>
+
+  <!-- ░░ SCORE HERO ░░ -->
+  <tr><td class="px" style="padding:36px 44px 28px 44px;" align="center">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">Desempeño global</div>
+    <div style="height:6px;font-size:0;">&nbsp;</div>
+    <div class="score-num" style="font-family:Georgia,serif;font-size:84px;line-height:88px;color:#c9aa75;letter-spacing:-2px;">{{SCORE}}<span style="font-size:30px;color:#5a5a62;letter-spacing:0;">/10</span></div>
+    <div style="height:14px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="320" cellpadding="0" cellspacing="0" border="0" style="max-width:320px;"><tr>
+      <td style="background:#1e1e22;border-radius:99px;font-size:0;line-height:0;">
+        <table role="presentation" width="{{SCORE_PCT}}%" cellpadding="0" cellspacing="0" border="0"><tr><td height="6" style="background:#c9aa75;border-radius:99px;font-size:0;line-height:0;">&nbsp;</td></tr></table>
+      </td></tr></table>
+    <div style="height:14px;font-size:0;">&nbsp;</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:21px;color:#a8a8b0;letter-spacing:0.2px;">{{VEREDICTO}}</div>
+  </td></tr>
+
+  <!-- ░░ RESUMEN DE LA LLAMADA ░░ -->
+  <tr><td class="px" style="padding:8px 44px 6px 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:12px;"><tr><td style="padding:22px 24px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#c9aa75;text-transform:uppercase;font-weight:600;">Resumen de la llamada</div>
+      <div style="height:10px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:24px;color:#cfcfd6;letter-spacing:0.1px;">{{RESUMEN}}</div>
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ MÉTRICAS (2 col → stack) ░░ -->
+  <tr><td class="px" style="padding:16px 36px 8px 36px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td class="stack stack-pad" width="50%" valign="top" style="padding:8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#161618;border:1px solid #232328;border-radius:12px;"><tr><td style="padding:18px 20px;">
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7c7c84;text-transform:uppercase;">Escenario</div>
+          <div style="height:7px;font-size:0;">&nbsp;</div>
+          <div class="metric-num" style="font-family:Georgia,serif;font-size:19px;color:#f4f1ea;line-height:24px;">{{ESCENARIO}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#8a8a92;line-height:17px;margin-top:3px;">{{TIPO_CLIENTE}} · {{IDIOMA}}</div>
+        </td></tr></table></td>
+      <td class="stack stack-pad" width="50%" valign="top" style="padding:8px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#161618;border:1px solid #232328;border-radius:12px;"><tr><td style="padding:18px 20px;">
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:10px;letter-spacing:2.5px;color:#7c7c84;text-transform:uppercase;">Módulos practicados</div>
+          <div style="height:7px;font-size:0;">&nbsp;</div>
+          <div class="metric-num" style="font-family:Georgia,serif;font-size:19px;color:#f4f1ea;line-height:24px;">{{MODULOS}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;color:#8a8a92;line-height:17px;margin-top:3px;">{{TIPO_ACTIVIDAD}}</div>
+        </td></tr></table></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- ░░ ANALÍTICAS DE LA SESIÓN (4 stats) ░░ -->
+  <tr><td class="px" style="padding:10px 40px 4px 40px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td class="stack" width="25%" valign="top" style="padding:6px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+          <div style="font-family:Georgia,serif;font-size:20px;color:#c9aa75;line-height:24px;">{{DURACION_EXACTA}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">Tiempo hablado</div>
+        </td></tr></table></td>
+      <td class="stack" width="25%" valign="top" style="padding:6px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+          <div style="font-family:Georgia,serif;font-size:20px;color:#f4f1ea;line-height:24px;">{{IDIOMA}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">Idioma</div>
+        </td></tr></table></td>
+      <td class="stack" width="25%" valign="top" style="padding:6px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+          <div style="font-family:Georgia,serif;font-size:20px;color:#f4f1ea;line-height:24px;">{{SENTIMIENTO}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">Sentimiento</div>
+        </td></tr></table></td>
+      <td class="stack" width="25%" valign="top" style="padding:6px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0d0d0f;border:1px solid #1c1c20;border-radius:10px;"><tr><td align="center" style="padding:14px 8px;">
+          <div style="font-family:Georgia,serif;font-size:20px;color:#f4f1ea;line-height:24px;">{{NUM_TURNOS}}</div>
+          <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:9px;letter-spacing:1.5px;color:#7c7c84;text-transform:uppercase;margin-top:4px;">Intervenciones</div>
+        </td></tr></table></td>
+    </tr></table>
+  </td></tr>
+
+  <!-- ░░ RADAR · MAPA DE COMPETENCIAS ░░ -->
+  <tr><td class="px" style="padding:26px 44px 8px 44px;" align="center">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">Mapa de competencias</div>
+    <div style="height:14px;font-size:0;">&nbsp;</div>
+    <div class="radar-img" style="width:360px;height:360px;max-width:100%;margin:0 auto;">{{RADAR_SVG}}</div>
+  </td></tr>
+
+  <!-- ░░ PRINCIPIOS NEUROCIENTÍFICOS (barras CSS) ░░ -->
+  <tr><td class="px" style="padding:18px 44px 6px 44px;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">Principios neurocientíficos activados</div>
+    <div style="height:16px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      {{NEURO_BARS}}
+    </table>
+  </td></tr>
+
+  <!-- ░░ LÍNEA DE LA CONVERSACIÓN ░░ -->
+  <tr><td class="px" style="padding:24px 44px 6px 44px;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">Línea de la conversación</div>
+    <div style="height:16px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      {{TIMELINE_HTML}}
+    </table>
+  </td></tr>
+
+  <!-- ░░ FORTALEZAS ░░ -->
+  <tr><td class="px" style="padding:24px 44px 0 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:2px solid #3da06a;"><tr><td style="padding:2px 0 2px 18px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2.5px;color:#3da06a;text-transform:uppercase;font-weight:600;">✓ Lo que hiciste bien</div>
+      <div style="height:8px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:23px;color:#cfcfd6;letter-spacing:0.1px;">{{FORTALEZAS}}</div>
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ ÁREAS DE MEJORA ░░ -->
+  <tr><td class="px" style="padding:22px 44px 0 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:2px solid #c9883a;"><tr><td style="padding:2px 0 2px 18px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2.5px;color:#c9883a;text-transform:uppercase;font-weight:600;">△ A mejorar</div>
+      <div style="height:8px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:23px;color:#cfcfd6;letter-spacing:0.1px;">{{AREAS_MEJORA}}</div>
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ OBJECIONES ░░ -->
+  <tr><td class="px" style="padding:22px 44px 0 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-left:2px solid #2e2e34;"><tr><td style="padding:2px 0 2px 18px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:2.5px;color:#8a8a92;text-transform:uppercase;font-weight:600;">Objeciones que enfrentaste</div>
+      <div style="height:8px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:23px;color:#cfcfd6;letter-spacing:0.1px;">{{OBJECIONES}}</div>
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ ANÁLISIS PNL ░░ -->
+  <tr><td class="px" style="padding:28px 44px 6px 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0e0d14;border:1px solid #28243a;border-radius:14px;"><tr><td style="padding:24px 26px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#9b8cff;text-transform:uppercase;font-weight:600;">🧠 Análisis PNL</div>
+      <div style="height:10px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:24px;color:#cfcfd6;letter-spacing:0.1px;">{{ANALISIS_PNL}}</div>
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ PRÓXIMO DRILL (CTA) ░░ -->
+  <tr><td class="px" style="padding:24px 44px 8px 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#15140f;border:1px solid #3a3326;border-radius:14px;"><tr><td style="padding:24px 26px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#c9aa75;text-transform:uppercase;font-weight:600;">🎯 Tu próximo drill</div>
+      <div style="height:10px;font-size:0;">&nbsp;</div>
+      <div style="font-family:Georgia,serif;font-size:18px;line-height:26px;color:#f4f1ea;letter-spacing:0.1px;">{{RECOMENDACION}}</div>
+      <div style="height:18px;font-size:0;">&nbsp;</div>
+      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{CTA_URL}}" style="height:44px;v-text-anchor:middle;width:230px;" arcsize="50%" fillcolor="#c9aa75" stroke="f"><center><![endif]-->
+      <a href="{{CTA_URL}}" style="display:inline-block;background:#c9aa75;color:#0a0a0b;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 30px;border-radius:99px;">Entrenar de nuevo</a>
+      <!--[if mso]></center></v:roundrect><![endif]-->
+    </td></tr></table>
+  </td></tr>
+
+  <!-- ░░ FOOTER ░░ -->
+  <!-- ░░ PLAN DE ACCIÓN (gerente) ░░ -->
+  <tr><td class="px" style="padding:28px 44px 6px 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#0c100d;border:1px solid #1f3326;border-radius:14px;"><tr><td style="padding:24px 26px;">
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#5fbf86;text-transform:uppercase;font-weight:600;">📋 Plan de acción · para el gerente</div>
+      <div style="height:6px;font-size:0;">&nbsp;</div>
+      <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#6a8a76;letter-spacing:0.2px;">Pasos concretos para llevar a este asesor a la excelencia.</div>
+      <div style="height:14px;font-size:0;">&nbsp;</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{{PLAN_ACCION}}</table>
+    </td></tr></table>
+  </td></tr>
+
+  {{COURSE_ANALYSIS}}{{SESSION_ACTIVITY}}<tr><td class="px" style="padding:30px 44px 6px 44px;border-top:1px solid #1c1c20;">
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:3px;color:#7c7c84;text-transform:uppercase;">Transcripción completa</div>
+    <div style="height:6px;font-size:0;">&nbsp;</div>
+    <div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;letter-spacing:0.2px;">Conversación palabra por palabra entre Víctor y el asesor.</div>
+    <div style="height:18px;font-size:0;">&nbsp;</div>
+    {{TRANSCRIPT_CHAT}}
+  </td></tr>
+
+  <tr><td class="px" style="padding:14px 44px 8px 44px;" align="center">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="padding:0 6px;">
+        <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{AUDIO_URL}}" style="height:46px;v-text-anchor:middle;width:240px;" arcsize="50%" fillcolor="#161618" strokecolor="#3a3a42"><center><![endif]-->
+        <a href="{{AUDIO_URL}}" style="display:inline-block;background:#161618;border:1px solid #3a3a42;color:#c9aa75;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:14px 24px;border-radius:99px;">🎧 Escuchar conversación</a>
+        <!--[if mso]></center></v:roundrect><![endif]-->
+      </td>
+      <td style="padding:0 6px;">
+        <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{CTA_URL}}" style="height:46px;v-text-anchor:middle;width:210px;" arcsize="50%" fillcolor="#c9aa75" stroke="f"><center><![endif]-->
+        <a href="{{CTA_URL}}" style="display:inline-block;background:#c9aa75;color:#0a0a0b;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:14px 24px;border-radius:99px;">🔁 Volver a entrenar</a>
+        <!--[if mso]></center></v:roundrect><![endif]-->
+      </td>
+    </tr></table>
+  </td></tr>
+
+  <tr><td class="px" style="padding:30px 44px 38px 44px;border-top:1px solid #1c1c20;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td align="left" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;line-height:18px;color:#5a5a62;letter-spacing:0.3px;">
+        <span style="color:#c9aa75;font-weight:600;letter-spacing:1px;">VÍCTOR</span> · Coach de IA del piso<br>Generado por <a href="https://victor-ia.com.mx" style="color:#7c7c84;">Victor&nbsp;IA</a>
+      </td>
+      <td align="right" style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#3a3a42;letter-spacing:0.5px;">Sesión {{CONV_ID}}</td>
+    </tr></table>
+  </td></tr>
+
+</table>
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;color:#3a3a42;letter-spacing:0.5px;padding:18px 0 0 0;">Este reporte es interno del equipo VTC.</div>
+
+</td></tr></table>
+</body>
+</html>

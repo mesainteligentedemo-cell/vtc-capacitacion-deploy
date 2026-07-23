@@ -19,20 +19,30 @@ cfg = req("GET", BASE)
 agent = cfg["conversation_config"]["agent"]
 agent["prompt"]["prompt"] = new_prompt
 agent["prompt"]["temperature"] = 0.5
-agent["first_message"] = "Bienvenido. Soy Víctor, tu entrenador personal de ventas — y mi único trabajo es convertirte en el mejor closer del piso. Cada experto un día empezó justo donde estás tú hoy. Cuéntame tu nombre y tu número de empleado, y arrancamos justo donde lo necesitas."
+# V10 · Saludo contextual: NUNCA pide nombre/numero/departamento (los recibe por dynamic-variables)
+FIRST_MESSAGE = "¡Hola {{user_name}}! Soy Víctor, tu entrenador personal de ventas, y mi único trabajo es convertirte en el mejor closer del piso. Qué gusto entrenar contigo hoy. ¿List@ para empezar?"
+agent["first_message"] = FIRST_MESSAGE
 
-# memoria: defaults para que las variables no truenen si la sesión no las pasa
-agent.setdefault("dynamic_variables", {})
-agent["dynamic_variables"]["dynamic_variable_placeholders"] = {
+# V10: defaults para TODAS las variables que usa el saludo contextual
+# (evita 'missing dynamic variable' si la sesión no pasa alguna)
+PLACEHOLDERS = {
     "user_name": "",
+    "employee_number": "",
+    "departamento": "",
+    "is_first_time": "true",
+    "last_module": "",
+    "last_quiz": "",
+    "session_timestamp": "",
     "historial_usuario": ""
 }
+agent.setdefault("dynamic_variables", {})
+agent["dynamic_variables"]["dynamic_variable_placeholders"] = PLACEHOLDERS
 
 # patch MÍNIMO (merge profundo) — no reenviar tools/tool_ids para evitar conflicto 400
 patch = {"conversation_config": {"agent": {
     "prompt": {"prompt": new_prompt, "temperature": 0.4},
-    "first_message": agent["first_message"],
-    "dynamic_variables": {"dynamic_variable_placeholders": {"user_name": "", "historial_usuario": ""}},
+    "first_message": FIRST_MESSAGE,
+    "dynamic_variables": {"dynamic_variable_placeholders": PLACEHOLDERS},
 }}}
 out = req("PATCH", BASE, patch)
 a = out["conversation_config"]["agent"]

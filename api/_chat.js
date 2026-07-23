@@ -120,6 +120,19 @@ function radarSvg(labels, values, opts) {
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${vb} ${vb}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${t('Radar de competencias', opts.lang)}" style="display:block;margin:0 auto;width:100%;height:auto;max-width:${size}px;overflow:visible;">${gridSvg}${axisSvg}<polygon points="${dataPolyStr}" fill="rgba(234,179,8,0.20)" stroke="#EAB308" stroke-width="2"/>${dots}${labelsSvg}</svg>`;
 }
 
+// ── Sección "Mapa de competencias" (gated) ──────────────────────────────────
+// Solo se renderiza si el webhook trajo datos REALES de competencias (rapport/
+// pnl/postura/objeciones/cierre/sala), no el relleno sintético a partir del
+// score general. hasData la calcula report.js ANTES de aplicar ese fallback.
+function radarSection(hasData, svgHtml, lang) {
+  if (!hasData || !svgHtml) return '';
+  return `<tr><td class="px" style="padding:26px 44px 8px 44px;" align="center">
+    <div class="heading" style="font-size:11px;letter-spacing:3px;color:#A3A3A3;font-weight:600;">${t('Mapa de competencias', lang)}</div>
+    <div style="height:14px;font-size:0;">&nbsp;</div>
+    <div class="radar-img" style="width:360px;height:360px;max-width:100%;margin:0 auto;">${svgHtml}</div>
+  </td></tr>`;
+}
+
 // Barras de principios neurocientificos. pairs: [[name,pct],...]
 function neuroBars(pairs) {
   if (!pairs || !pairs.length) return '<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#8a8a8a;">No registrado en esta sesión.</td></tr>';
@@ -134,6 +147,20 @@ function neuroBars(pairs) {
   }).join('');
 }
 
+// ── Sección "Principios neurocientíficos activados" (gated) ────────────────
+// Solo se renderiza si hay al menos un principio registrado (dc pipe o IA).
+// Antes se mostraba siempre con el texto "No registrado en esta sesión.".
+function neuroSection(pairs, lang) {
+  if (!pairs || !pairs.length) return '';
+  return `<tr><td class="px" style="padding:18px 44px 6px 44px;">
+    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#8a8a8a;text-transform:uppercase;">${t('Principios neurocientíficos activados', lang)}</div>
+    <div style="height:16px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      ${neuroBars(pairs)}
+    </table>
+  </td></tr>`;
+}
+
 // Linea de tiempo. items: [[t,label],...]
 function timeline(items) {
   if (!items || !items.length) return '<tr><td style="font-family:Inter,sans-serif;font-size:13px;color:#8a8a8a;">No registrada.</td></tr>';
@@ -142,6 +169,20 @@ function timeline(items) {
      <td valign="top" style="padding:0 0 16px 14px;border-left:2px solid #3a3020;">
      <span style="font-family:Inter,sans-serif;font-size:14px;line-height:20px;color:#E5E5E5;">${esc(label)}</span></td></tr>`
   ).join('');
+}
+
+// ── Sección "Línea de la conversación" (gated) ──────────────────────────────
+// Solo se renderiza si hay al menos un momento clave (dc pipe o IA). Antes se
+// mostraba siempre con el texto "No registrada.".
+function timelineSection(items, lang) {
+  if (!items || !items.length) return '';
+  return `<tr><td class="px" style="padding:24px 44px 6px 44px;">
+    <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#8a8a8a;text-transform:uppercase;">${t('Línea de la conversación', lang)}</div>
+    <div style="height:16px;font-size:0;">&nbsp;</div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      ${timeline(items)}
+    </table>
+  </td></tr>`;
 }
 
 // ── Fila de métricas (Escenario + Módulos practicados). Módulos solo "si aplica". ──
@@ -306,6 +347,14 @@ function courseReportSection(turns, ai, name, lang) {
   const isCourse = act.modulos.size > 0 || results.length > 0;
   const tipoSesion = (ai && ai.tipo_sesion) || (isCourse ? 'curso_guiado' : 'consulta');
   const curso = (ai && ai.curso) || {};
+
+  // Gated: si no fue una sesión de curso (sin módulos/quizzes recorridos) Y la IA
+  // no entregó ningún dato de análisis de aprendizaje, se oculta toda la sección
+  // (antes se mostraba siempre, con solo el badge "Consulta" y nada más adentro).
+  const hasCursoData = curso.comprension_general != null || has(curso.puntos_fuertes)
+    || has(curso.brechas_aprendizaje) || has(curso.participacion) || curso.seguimiento != null
+    || has(curso.recomendacion_estudio) || (ai && ai.deep_learning);
+  if (!isCourse && !hasCursoData) return '';
 
   // ── Barra de progreso del curso ──
   const totalMods = 14; // F + 0-12 + proceso + vtc19
@@ -608,6 +657,24 @@ function goldenMomentSection(gm) {
   </td></tr>`;
 }
 
+// ── Sección "Tu próximo drill" (CTA, gated) ─────────────────────────────────
+// Solo se renderiza si hay una recomendación real (dc.recomendacion_siguiente o
+// ai.recomendacion). Antes se mostraba siempre, con "—" cuando no había dato.
+function drillSection(text, ctaUrl, lang) {
+  if (!has(text)) return '';
+  return `<tr><td class="px" style="padding:24px 44px 8px 44px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#221d10;border:1px solid #3a3020;border-radius:12px;"><tr><td style="padding:24px 26px;">
+      <div style="font-family:Inter,sans-serif;font-size:11px;letter-spacing:3px;color:#EAB308;text-transform:uppercase;font-weight:600;">${t('🎯 Tu próximo drill', lang)}</div>
+      <div style="height:10px;font-size:0;">&nbsp;</div>
+      <div style="font-family:Montserrat,sans-serif;font-size:18px;line-height:26px;color:#FFFFFF;letter-spacing:0.1px;">${esc(text)}</div>
+      <div style="height:18px;font-size:0;">&nbsp;</div>
+      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${ctaUrl}" style="height:44px;v-text-anchor:middle;width:230px;" arcsize="50%" fillcolor="#EAB308" stroke="f"><center><![endif]-->
+      <a href="${ctaUrl}" style="display:inline-block;background:#EAB308;color:#000000;font-family:Montserrat,sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 30px;border-radius:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.5);">${t('Entrenar de nuevo', lang)}</a>
+      <!--[if mso]></center></v:roundrect><![endif]-->
+    </td></tr></table>
+  </td></tr>`;
+}
+
 // ── Nota para entrenador: apunte interno de coaching para el gerente/entrenador humano ──
 function trainerNoteSection(nota, lang) {
   if (!has(nota)) return '';
@@ -645,6 +712,9 @@ function sparklineSvg(values, opts) {
 // cur: {score, compAvg, durSecs, sentimiento}  hist: {scores:[], count, avgScore, avgCompAvg, avgDurSecs}
 function progressSection(cur, hist) {
   hist = hist || {};
+  // Gated: sin sesiones anteriores del asesor no hay nada que comparar -> se oculta
+  // toda la sección (antes se mostraba siempre con el texto "Primera sesión...").
+  if (!hist.count) return '';
   const arrow = (now, prev, inv) => {
     if (prev == null || !isFinite(prev) || now == null || !isFinite(now)) return '<span style="color:#A3A3A3;">—</span>';
     const d = now - prev, up = inv ? d < 0 : d > 0;
@@ -782,4 +852,4 @@ function countInterventions(turns) {
   return { asesor, agente, total: asesor + agente };
 }
 
-module.exports = { esc, clean, has, fmtTime, fmtDec, buildChatTable, radarUrl, radarSvg, neuroBars, timeline, metricsRow, analyticsRow, speakingTime, extractActivity, activitySection, extractQuizResults, buildQuizData, quizItem, quizSection, courseReportSection, neuroscienceSection, goldenMomentSection, trainerNoteSection, sparklineSvg, progressSection, countInterventions, kpiRow, pieChart, heatmapBars, chartsSection };
+module.exports = { esc, clean, has, fmtTime, fmtDec, buildChatTable, radarUrl, radarSvg, radarSection, neuroBars, neuroSection, timeline, timelineSection, metricsRow, analyticsRow, speakingTime, extractActivity, activitySection, extractQuizResults, buildQuizData, quizItem, quizSection, courseReportSection, neuroscienceSection, goldenMomentSection, trainerNoteSection, drillSection, sparklineSvg, progressSection, countInterventions, kpiRow, pieChart, heatmapBars, chartsSection };
